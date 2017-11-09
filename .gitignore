@@ -1,12 +1,3 @@
-# Python runtime files
-*.pyc
-__pycache__
-
-# Python library/util caches
-.ipynb_checkpoints
-.mypy_cache
-.cache
-
 # Latex build auxiliaries
 *.aux
 *.fdb_latexmk
@@ -18,9 +9,3 @@ __pycache__
 *.out
 block8logo_svg*
 svg-inkscape
-
-# IDE, editor, and OS caches
-# (these should probably be in ./git/info/exclude)
-.idea
-.vscode
-.DS_Store
