@@ -7,5 +7,6 @@
 *.bbl
 *.blg
 *.out
+*.tdo
 block8logo_svg*
 svg-inkscape
