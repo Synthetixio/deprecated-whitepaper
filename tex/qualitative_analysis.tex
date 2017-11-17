@@ -60,8 +60,54 @@ This section provides a qualitative treatment of the reaction of the Havven syst
 	\item Creation of new Curits with new funds (not currently explored).
 \end{enumerate}
 
+\subsection{Expected Market Players}
 \todo[inline]{List expected players in the market.}
 \todo[inline]{Outline incentives and actions for different players.}
-\todo[inline]{Address possible attacks against the system.}
+
+\begin{itemize}
+	\item{Curit Holders}
+
+	A curit-holder provides collateral and liquidity. It’s assumed curit-holders seek fee revenues,
+	escrowing as many curits as they can. This incentive only really makes sense if curits are not
+	significantly volatile over the long run. But in an unstable regime we also provide incentives
+	for stabilising the nomin price. 
+
+	\item{Nomin Users}
+
+	Merchants, consumers, service providers, and so on: people who use the stable coin as a
+	medium of exchange. They provide a base demand for nomins, which is necessary for fees
+	to exist. These users may be disincentivised from using the system by excessive volatility
+	in the price of nomins, or by high fees.
+
+	\item{Arbitrageurs, Market Makers}
+
+	The arbitrage force allows us to assume that the cur/nom, cur/fiat, nom/fiat
+	prices are properly in alignment or will soon become aligned. Market making activities
+	allow us to neglect the bid/ask spread, and situations where there is insufficient
+	liquidity for players to transact.
+	
+	\item{Speculators}
+	
+	May tend to magnify price corrections, and are a significant vector by which to introduce
+	exogenous shocks to the system modelling, e.g. large capital flows in response to breaking news.
+	
+	\item{Malicious Attackers}
+	
+	We should examine what happens if a George Soros (or otherwise) attacks Havven.
+	\todo[inline]{List the various possible attacks against the system.}
+
+	\item{Central Banker}
+	
+	The Havven foundation will have significant capital reserves with which it could intervene
+	in the market if necessary to stabilise nomin prices. The system should work without
+	such actions, but in extreme situations it might be necessary to undertake them.
+	The advantage of such a market participant is, given that a very large market entity is
+	willing to underwrite the stability of the coin, profit strategies predicated upon the
+	stability of the token become less risky, so more feasible. So the Havven foundation in
+	this capacity takes on the role of providing confidence.
+
+\end{itemize}
+
+
 
 \pagebreak
