@@ -5,14 +5,14 @@
 
 \noindent What follows are the main variables of the system. Under each heading, each row will correspond to a single quantity of interest. Each row will have three columns. Leftmost, a mathematical definition of the variable; in the middle, the dimension of the quantity (which units it is measured in); and on the rightmost, a short English summary of the variable.\\
 
-\noindent Certain abbreviations will be used. For example, \(\CUR{}\) and \(\NOM{}\) will be used as abbreviations for Curits and Nomins considered as units of measurement. \\
+\noindent Certain abbreviations will be used. For example, \(\HAV{}\) and \(\NOM{}\) will be used as abbreviations for Havvens and Nomins considered as units of measurement. \\
 
 \paragraph{Prices}
 \begin{align*}
-    P_c & \ && &(\frac{\text{\$}}{\CUR{}}) && &\text{: curit price.} \\
+    P_v & \ && &(\frac{\text{\$}}{\HAV{}}) && &\text{: havven price.} \\
     P_n & \ && &(\frac{\text{\$}}{\NOM{}}) && &\text{: nomin price.} \\
-    \pi &:= \frac{P_c}{P_n} \ && &(\frac{\NOM{}}{\CUR{}}) && &\text{: curit to nomin conversion factor.} \\
-    P_c' &= f(V_n, V_v) \cdot R && &(\frac{\text{\$}}{\NOM{} \cdot \text{sec}}) && &\text{: curit price rate of change.}
+    \pi &:= \frac{P_v}{P_n} \ && &(\frac{\NOM{}}{\HAV{}}) && &\text{: havven to nomin conversion factor.} \\
+    P_v' &= f(V_n, V_v) \cdot R && &(\frac{\text{\$}}{\NOM{} \cdot \text{sec}}) && &\text{: havven price rate of change.}
     \intertext{Here \(R\) is a risk term incorporating, for example, volatility, number of buyers versus sellers, and so on.}
 \end{align*}
 \\
@@ -20,10 +20,10 @@
 
 \paragraph{Money Supply}
 \begin{align*}
-    &C \ && &(\CUR{}) && &\text{: Quantity of curits, which is constant.} \\
-    &C_e \ && &(\CUR{}) && &\text{: Quantity of escrowed curits.} \\
+    &C \ && &(\HAV{}) && &\text{: Quantity of havvens, which is constant.} \\
+    &C_e \ && &(\HAV{}) && &\text{: Quantity of escrowed havvens.} \\
     &N = C_N \cdot \pi \ && &(\NOM{}) && &\text{: Quantity of nomins. This can float.} \\
-    &C_N = \frac{N}{\pi} \ && &(\CUR{}) && &\text{: Curit value of issued nomins.}
+    &C_N = \frac{N}{\pi} \ && &(\HAV{}) && &\text{: Havven value of issued nomins.}
     \intertext{Ideally, \(C_N \leq C_e\).}
 \end{align*}
 \\
@@ -36,7 +36,7 @@
 \end{align*}
 \\
 
-\paragraph{Microeconomic Variables} These should be defined as functions of \(P_n, \ P_c, \ \text{fees, etc.}\)
+\paragraph{Microeconomic Variables} These should be defined as functions of \(P_n, \ P_v, \ \text{fees, etc.}\)
 \begin{align*}
 S_n \ && (\frac{1}{\text{sec}}) && &\text{: average nomin spend rate} \\
 S_i \ && (\frac{1}{\text{sec}}) && &\text{: average issuance rate} \\
@@ -47,11 +47,11 @@ S_r \ && (\frac{1}{\text{sec}}) && &\text{: average redemption rate}
 \paragraph{Money Movement}
 \begin{align*}
     V_n &= S_n \cdot N \ && &(\frac{\NOM{}}{\text{sec}}) && &\text{: nomin transfer rate.} \\
-    V_v &= V_i + V_r \ && &(\frac{\CUR{}}{\text{sec}}) && &\text{: nomin} \leftrightarrow \text{curit conversion rate.} \\
-    V_i &= (C - C_N) \cdot S_i \ && &(\frac{\CUR{}}{\text{sec}}) && &\text{: nomin issuance rate.} \\
-    V_r &= C_N \cdot S_r \ && &(\frac{\CUR{}}{\text{sec}}) && &\text{: curit redemption rate.} \\
-    \intertext{\(V_i\) is assumed to grow as there are more free curits in the system.}
-    \intertext{\(V_r\), by contrast, is taken to grow proportionally with the number of escrowed Curits.}
+    V_v &= V_i + V_r \ && &(\frac{\HAV{}}{\text{sec}}) && &\text{: nomin} \leftrightarrow \text{havven conversion rate.} \\
+    V_i &= (C - C_N) \cdot S_i \ && &(\frac{\HAV{}}{\text{sec}}) && &\text{: nomin issuance rate.} \\
+    V_r &= C_N \cdot S_r \ && &(\frac{\HAV{}}{\text{sec}}) && &\text{: havven redemption rate.} \\
+    \intertext{\(V_i\) is assumed to grow as there are more free havvens in the system.}
+    \intertext{\(V_r\), by contrast, is taken to grow proportionally with the number of escrowed Havvens.}
 \end{align*}
 \\
 
@@ -59,9 +59,9 @@ S_r \ && (\frac{1}{\text{sec}}) && &\text{: average redemption rate}
 \begin{align*}
 \intertext{The following fees are ratios, for example 0.1\%, levied on each transaction.}
 &F_{nx} & \ && &\text{(dimensionless)} && &\text{: nomin transfer fee} \\
-&F_{cx} & \ && &\text{(dimensionless)} && &\text{: curit transfer fee} \\
+&F_{cx} & \ && &\text{(dimensionless)} && &\text{: havven transfer fee} \\
 &F_i & \ && &\text{(dimensionless)} && &\text{: nomin issuance fee} \\
-&F_r & \ && &\text{(dimensionless)} && &\text{: curit redemption fee} \\
+&F_r & \ && &\text{(dimensionless)} && &\text{: havven redemption fee} \\
 % \intertext{These quantities are the aggregated fees accrued by the system per unit time.}
 % &Ag_{nx} &:= V_n \cdot F_{nx} \ && &(\frac{\NOM{}}{\text{sec}}) && &\text{: fees taken from nomin transfers.}
 \end{align*}
