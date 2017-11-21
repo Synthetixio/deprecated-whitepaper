@@ -15,16 +15,20 @@
 \usepackage[superscript, biblabel, nomove]{cite}
 \usepackage{hyperref}
 \usepackage{cleveref}
-\usepackage{todonotes}
 
 % Use § for sections
 \crefformat{section}{\S#2#1#3}
 \crefformat{subsection}{\S#2#1#3}
 \crefformat{subsubsection}{\S#2#1#3}
 
+\usepackage{appendix}
+
+% == Remove or comment these out for release
+\usepackage{todonotes}
 \usepackage{draftwatermark}
 \SetWatermarkText{DRAFT}
 \SetWatermarkScale{3}
+% ==
 
 \begin{document}
 
@@ -62,7 +66,15 @@ distributed ledger technology.
 
 \todo[inline]{Incorporate white paper criticisms.}
 
+\pagebreak 
+
+\tableofcontents
+
+% == Remove or comment out this section for release
+\pagebreak
+\section{TODO}
 \listoftodos{}
+% ==
 
 \pagebreak
 
@@ -70,8 +82,12 @@ distributed ledger technology.
 \input{tex/functional_description}
 \input{tex/quantitative_analysis}
 \input{tex/qualitative_analysis}
-\input{tex/system_variables}
+
+\appendix
+\appendixpage
+\addappheadtotoc
 \input{tex/alternative_approaches}
+\input{tex/system_variables}
 
 \bibliography{tex/citations}
 \bibliographystyle{plain}

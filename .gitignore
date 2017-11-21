@@ -8,5 +8,6 @@
 *.blg
 *.out
 *.tdo
+*.toc
 block8logo_svg*
 svg-inkscape
