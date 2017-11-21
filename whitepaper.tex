@@ -15,17 +15,20 @@
 \usepackage[superscript, biblabel, nomove]{cite}
 \usepackage{hyperref}
 \usepackage{cleveref}
-\usepackage{todonotes}
-\usepackage{appendix}
 
 % Use § for sections
 \crefformat{section}{\S#2#1#3}
 \crefformat{subsection}{\S#2#1#3}
 \crefformat{subsubsection}{\S#2#1#3}
 
+\usepackage{appendix}
+
+% == Remove or comment these out for release
+\usepackage{todonotes}
 \usepackage{draftwatermark}
 \SetWatermarkText{DRAFT}
 \SetWatermarkScale{3}
+% ==
 
 \begin{document}
 
@@ -67,10 +70,11 @@ distributed ledger technology.
 
 \tableofcontents
 
-% Remove or comment out this section for release
+% == Remove or comment out this section for release
 \pagebreak
 \section{TODO}
 \listoftodos{}
+% ==
 
 \pagebreak
 
