@@ -1,45 +1,16 @@
 
-\section{Qualitative Scenario Analysis}
+\section{Qualitative System Analysis}
 
 This section provides a qualitative treatment of the reaction of the Havven system in response to various scenarios listed below:
 
 \todo[inline]{Scenario analysis.}
 
-\subsection{Scenarios}
+\subsection{Incentives}
 
-\paragraph{Curits appreciate against nomins.}
+\paragraph{Why would anyone use nomins?}
 \begin{itemize}
-	\item{Curit-holders can issue more nomins.}
-
-	This might be scary because we either want the nomin supply to fall, or nomin demand to increase.
-	This is fine if the nomin price fell, because then nomin demand should increase.
-	However, if it was simply that the curit price increased, then this might encourage
-	oversupply of nomins as issuers compete for shares of the fee pool.
-
-	\item{Cheaper exit}
-
-	Anyone who has previously issued curits but who wants to exit can buy nomins for
-	cheaper than they issued them at, so egress with a profit.
-	Alternatively, if the curit price doubles, then only half of their stake is required
-	to back the nomins they have issued. They can use these proceeds to completely liquidate
-	their position.
-
-	\item{Each nomin locks fewer curits.}
-	
-\end{itemize}
-
-\paragraph{Curits depreciate against nomins.}
-\begin{itemize}
-	\item{Curit-holders can issue fewer nomins.}
-	
-	Perhaps they may even be under-staked.
-
-	\item{Each nomin locks more curits.}
-	\item{A player can issue a quantity of nomins and sell them for curits.}
-		  
-	They would do this on the assumption that, once the nomin price decreases as a result of the increased
-	supply, they will be able to buy back the same quantity of nomins to free up their
-	curits more cheaply.
+	\item Versus havvens?
+	\item Versus alternatives?
 \end{itemize}
 
 \paragraph{Why would anyone issue nomins?}
@@ -48,27 +19,89 @@ This section provides a qualitative treatment of the reaction of the Havven syst
 	\item Because they thought the peg would break in the positive direction.
 \end{itemize}
 
-\begin{enumerate}
-	\item Ratio moves favourably
-	\item Ratio moves unfavourably
-		\subitem Accumulate Curits
-			\subsubitem Few Curits available.
-			\subsubitem No Curits available.
-		\subitem Accumulate Nomis
-			\subsubitem Few Nomins available.
-			\subsubitem No Nomins available.
-	\item Creation of new Curits with new funds (not currently explored).
-\end{enumerate}
+\subsection{Scenarios}
+
+\subsubsection{Havvens appreciate against nomins.} \label{sec:havven-nomin-appreciation}
+\begin{itemize}
+	\item{Havven-holders can issue more nomins.}
+
+	This might be scary because we either want the nomin supply to fall, or nomin demand to increase.
+	This is fine if the nomin price fell, because then nomin demand should increase.
+	However, if it was simply that the havven price increased, then this might encourage
+	oversupply of nomins as issuers compete for shares of the fee pool.
+
+	\item{Cheaper exit}
+
+	Anyone who has previously issued havvens but who wants to exit can buy nomins for
+	cheaper than they issued them at, so egress with a profit.
+	Alternatively, if the havven price doubles, then only half of their stake is required
+	to back the nomins they have issued. They can use these proceeds to completely liquidate
+	their position.
+
+	\item{Each nomin locks fewer havvens.}
+	
+\end{itemize}
+
+\subsubsection{Havvens depreciate against nomins.} \label{sec:havven-nomin-depreciation}
+
+\begin{itemize}
+	\item{Havven-holders can issue fewer nomins.}
+	
+	Perhaps they may even be under-staked.
+
+	\item{Each nomin locks more havvens.}
+	\item{A player can issue a quantity of nomins and sell them for havvens.}
+		  
+	They would do this on the assumption that, once the nomin price decreases as a result of the increased
+	supply, they will be able to buy back the same quantity of nomins to free up their
+	havvens more cheaply.
+\end{itemize}
+
+\subsubsection{Nomin/havven liquidity dries up}
+\begin{itemize}
+	\item Low nomin supply
+
+	Nomins should appreciate against the havven. See \cref{sec:havven-nomin-depreciation}.
+	Fee takings will decrease, hurting havven-holders in the long run,
+	which should incentivise them to inject nomins into the ecosystem.
+
+	\item Low havven supply
+
+	If system backers are sitting on a pile of havvens, then the havven should
+	appreciate. See \cref{sec:havven-nomin-appreciation,sec:havven-appreciation}.
+\end{itemize}
+
+
+\subsubsection{Long-run havven price appreciation}\label{sec:havven-appreciation}
+\todo[inline]{Long-run havven appreciation scenario.}
+In this instance, over the long run, the price of havvens could appreciate quite substantially,
+which will lead to an increase in nomin issuance rights (and so probably actual nomins in circulation).
+There are at least two reasons that havvens could appreciate:
+\begin{itemize}
+	\item Increased nomin velocity/demand, leading to greater fees;
+	This is fine: in this case, nomin issuance rights increase in proportion with demand for the currency.
+
+	\item Speculation
+	This is not so fine: in this case, the nomin supply can be expanded without any accompanying
+	expansion in its demand, which will depress the nomin price.
+	\todo[inline]{Resolve disconnect between speculation-driven value of havvens and nomin supply.}
+\end{itemize}
+
+\subsubsection{Long-run havven price depreciation}\label{sec:havven-depreciation}
+\todo[inline]{Long-run havven depreciation scenario.}
+
+\subsubsection{Radical shifts in usage}
+\todo[inline]{Usage-shift scenario.}
 
 \subsection{Expected Market Players}
 \todo[inline]{List expected players in the market.}
 \todo[inline]{Outline incentives and actions for different players.}
 
 \begin{itemize}
-	\item{Curit Holders}
+	\item{Havven Holders}
 
-	A curit-holder provides collateral and liquidity. It’s assumed curit-holders seek fee revenues,
-	escrowing as many curits as they can. This incentive only really makes sense if curits are not
+	A havven-holder provides collateral and liquidity. It’s assumed havven-holders seek fee revenues,
+	escrowing as many havvens as they can. This incentive only really makes sense if havvens are not
 	significantly volatile over the long run. But in an unstable regime we also provide incentives
 	for stabilising the nomin price. 
 
