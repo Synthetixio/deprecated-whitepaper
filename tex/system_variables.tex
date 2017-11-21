@@ -20,17 +20,17 @@
 
 \paragraph{Money Supply}
 \begin{align*}
-    &C \ && &(\HAV{}) && &\text{: Quantity of havvens, which is constant.} \\
-    &C_e \ && &(\HAV{}) && &\text{: Quantity of escrowed havvens.} \\
-    &N = C_N \cdot \pi \ && &(\NOM{}) && &\text{: Quantity of nomins. This can float.} \\
-    &C_N = \frac{N}{\pi} \ && &(\HAV{}) && &\text{: Havven value of issued nomins.}
-    \intertext{Ideally, \(C_N \leq C_e\).}
+    &H \ && &(\HAV{}) && &\text{: Quantity of havvens, which is constant.} \\
+    &H_e \ && &(\HAV{}) && &\text{: Quantity of escrowed havvens.} \\
+    &N = H_N \cdot \pi \ && &(\NOM{}) && &\text{: Quantity of nomins. This can float.} \\
+    &H_N = \frac{N}{\pi} \ && &(\HAV{}) && &\text{: Havven value of issued nomins.}
+    \intertext{Ideally, \(H_N \leq H_e\).}
 \end{align*}
 \\
 
 \paragraph{Utilisation Ratios}
 \begin{align*}
-    &U = \frac{C_N}{C} \ && &\text{(dimensionless)} && &\text{: Empirical issuance ratio. } \\
+    &U = \frac{H_N}{H} \ && &\text{(dimensionless)} && &\text{: Empirical issuance ratio. } \\
     &U_{max} \ && &\text{(dimensionless)} && &\text{: Targeted issuance ratio ceiling.}
     \intertext{\(0 \leq U \leq U_{max} \leq 1\)}
 \end{align*}
@@ -48,8 +48,8 @@ S_r \ && (\frac{1}{\text{sec}}) && &\text{: average redemption rate}
 \begin{align*}
     V_n &= S_n \cdot N \ && &(\frac{\NOM{}}{\text{sec}}) && &\text{: nomin transfer rate.} \\
     V_v &= V_i + V_r \ && &(\frac{\HAV{}}{\text{sec}}) && &\text{: nomin} \leftrightarrow \text{havven conversion rate.} \\
-    V_i &= (C - C_N) \cdot S_i \ && &(\frac{\HAV{}}{\text{sec}}) && &\text{: nomin issuance rate.} \\
-    V_r &= C_N \cdot S_r \ && &(\frac{\HAV{}}{\text{sec}}) && &\text{: havven redemption rate.} \\
+    V_i &= (H - H_N) \cdot S_i \ && &(\frac{\HAV{}}{\text{sec}}) && &\text{: nomin issuance rate.} \\
+    V_r &= H_N \cdot S_r \ && &(\frac{\HAV{}}{\text{sec}}) && &\text{: havven redemption rate.} \\
     \intertext{\(V_i\) is assumed to grow as there are more free havvens in the system.}
     \intertext{\(V_r\), by contrast, is taken to grow proportionally with the number of escrowed Havvens.}
 \end{align*}
@@ -59,7 +59,7 @@ S_r \ && (\frac{1}{\text{sec}}) && &\text{: average redemption rate}
 \begin{align*}
 \intertext{The following fees are ratios, for example 0.1\%, levied on each transaction.}
 &F_{nx} & \ && &\text{(dimensionless)} && &\text{: nomin transfer fee} \\
-&F_{cx} & \ && &\text{(dimensionless)} && &\text{: havven transfer fee} \\
+&F_{vx} & \ && &\text{(dimensionless)} && &\text{: havven transfer fee} \\
 &F_i & \ && &\text{(dimensionless)} && &\text{: nomin issuance fee} \\
 &F_r & \ && &\text{(dimensionless)} && &\text{: havven redemption fee} \\
 % \intertext{These quantities are the aggregated fees accrued by the system per unit time.}
