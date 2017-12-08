@@ -1,11 +1,12 @@
-\section{System Overview} Havven is designed to provide a decentralised currency with price stability. To achieve this, Havven implements two tokens and a unique price stabilisation mechanism. The first token is the Havven token, referred to as \HAV{} to avoid confusion with the system itself. \HAV{} serves two functions:
+
+\section{System Overview} Havven is designed to provide a decentralised currency with price stability relative to some external currency or asset, such as USD. To achieve this, Havven uses a two token money system, together with a set of novel price incentive mechanisms designed to stabilise the price of one of the two tokens. The first of these is the Havven token, referred to as \HAV{} to avoid confusion with the system itself. \HAV{} serves two functions:
 
 \begin{enumerate}
 \item{To provide the system with collateral.}
-\item{To allow actors to contribute to the process price stabilisation process and be rewarded for their efforts.}
+\item{To allow actors to contribute to the price stabilisation process through a set of incentives.}
 \end{enumerate}
 
-\noindent The second token is the Nomin, which will be referred to primarily as the \NOM{}, to remain consistent with \HAV{}. The goal of Havven is to maintain a constant \NOM{} price of \$1. In addition to providing collateral for the system, owners of the \HAV{} token are incentivised to maintain a level of supply in the \NOM{} market such that the market price remains constant. \\
+\noindent The second token is the Nomin, (\NOM{}), whose purpose is to track the price of a chosen external denominating value, e.g. \$1 USD via the actions of the \HAV{} token holders who modify the level of supply in the \NOM{} market such that the market price of \NOM{} remains constant. \\
 
 \noindent Before continuing, we first introduce some basic system variables:
 
@@ -16,33 +17,58 @@ P_h &= \text{\HAV{} Price,}  & P_n &= \text{\NOM{} Price.}
 
 \noindent All \HAV{} tokens are created in the initial system state, so $H$ is a constant value. The quantity of \NOM{}, $N$ can float to ensure that the \NOM{} price, $P_n$ remains stable with changes in demand.
 
-\subsubsection*{Price Stabilisation Rationale} Havven's approach to achieving price stability is to be passive where possible, intervening only when needed. To begin with, Havven leverages the utilisation ratio in order overcollateralize the Nomin, discussed in the next section. \\
+\subsection{Incentive Mechanism Layering}
 
-\noindent Further, Havven provides economic incentives for \HAV{} holders to adjust the supply of \NOM{} when demand changes. In order to create these incentives, Havven charges fees when \NOM{} are transacted. These fees are redirected to the \HAV{} holders as a reward for maintaining the correct supply of \NOM{} . \\
+\paragraph{Overcollateralisation}
+
+Havven's approach to achieving price stability is to be passive where possible, intervening only when needed. To begin with, Havven institutes overcollateralisation of the stablecoin (i.e. the is a greater value in collateral backing the stablecoin than there is in the market capitalisation of all the \NOM{} in circulation. This ratio of \NOM{} to \HAV{} is known as the utilisation ratio. This is discussed in the next section.
+
+\paragraph{Fees}
+
+\noindent Havven provides a second layer of economic incentives for \HAV{} holders to adjust the supply of \NOM{} in response to changing demand through fees. In order to generate a pool of value with which to operate such an incentive mechanism, Havven charges transaction fees on \NOM{}. These fees are redirected to the \HAV{} holders as a reward for helping maintain the correct supply of \NOM{}.
+
+\paragraph{Interest Rates}
+
+\noindent Interest rates as applied to \HAV{} can be applied in superposition to the application of fees. Such schemes can be applied in either fixed or floating supply regimes. Interest rates will be discussed in a future iteration of the whitepaper.
+
+\paragraph{Collateral Recovery}
+
+\noindent As a final incentive mechanism layer, forced recovery of an actors \HAV{} may be required in order to equilibriate individual positions. Collateral recovery will be discussed in a future iteration of the whitepaper.
+
+\paragraph{????}
 
 \noindent Havven also benefits from a positive feedback loop for for small changes in $P_n$. A small decrease in $P_n$ should result in increased market demand, given the expectation of the return to \$1. 
 
 \newpage
 
-\subsection{Nomin Issuance} The only way \NOM{} can be issued is when a \HAV{} owner decides to escrow their \HAV{}. This ensures that there is always collateral backing a \NOM{} when it is issued. \\
+\subsection{Overcollateralisation}
 
-\begin{namedthm}{Escrow}[]
-To lock some quantity of \HAV{} in the system.
-\end{namedthm}
+\subsubsection{Escrow and Nomin Issuance} 
 
-\noindent When a Havven holder escrows their \HAV{}, the system will generate a quantity of \NOM{}. The system will then immediately place a limit sell order with a price of \$1 for on the Havven Decentralised Exchange. This means that the \NOM{} will be sold at market price, until the price reaches \$1 USD. The proceeds of this sale are then remitted to the issuer in ETH. It is important that the pool of \NOM{} is always overcollateralized by the value of \HAV{}. In order to achieve this, Havven must determine what is known as the utilisation ratio. \\
+The only way \NOM{} can be issued is when a \HAV{} owner decides to escrow their \HAV{}. Once the \HAV{} have been escrowed via smart contract, this generates a quantity of \NOM{}. \\
 
-\begin{namedthm}{Utilisation Ratio}[]
+\noindent When a Havven holder escrows their \HAV{}, the system will generate a quantity of \NOM{}. The system will then immediately place a limit sell order with a price of \$1 for on the Havven Decentralised Exchange. This means that the \NOM{} will be sold at market price, but with a minimum of \$1 USD. The proceeds of this sale are then remitted to the issuer in ETH. It is important that the pool of \NOM{} is always overcollateralized by the value of \HAV{}. In order to achieve this, Havven must determine what is known as the \textbf{utilisation ratio}. This ensures that there is always collateral backing a \NOM{} when it is issued.\\
+
+\paragraph{Utilisation Ratio}
+
 $$ U = \frac{P_n * N}{P_h * H}. $$
-\end{namedthm}
 
-\noindent The utilisation ratio compares the total value of \NOM{} against the total value of \HAV{}. Intuitively if $U = 1$, the value of \NOM{} and \HAV{} are equal. Havven wants to be overcollateralised which means we would like to maintain $U <  1$. To do this, Havven only allows the issuance of \NOM{} up to a maximum utilisation ratio. \\
+\noindent The utilisation ratio is defined by the total value of \NOM{} against the total value of \HAV{}. Intuitively, if $U = 1$, the value of \NOM{} and \HAV{} are equal. Havven intends to be overcollateralised, which means that we would like to maintain $U <  1$. To do this, Havven only allows the issuance of \NOM{} up to a maximum utilisation ratio. \\
 
-\begin{namedthm}{Havven Collateralisation Goal}[]
+\paragraph{Collateralisation Goal SGB: can we call it 'target' instead of 'goal'?}
+
 $$ 0 \leq U \leq U_{max} \leq 1.$$
-\end{namedthm}
 
-\noindent The maximum utilisation ratio is the first of Havven's price stabilisation mechanisms. It ensures that for every \NOM{}, there is a multiple of \HAV{} backing its value, escrowed in the system. \\
+\noindent The maximum utilisation ratio is the first of Havven's price stabilisation mechanisms. It ensures that for every \NOM{}, there is a multiple of \HAV{} under escrow backing its value. \\
+
+\noindent The target utilisation ratio is one which provides maximum incentives to havven holders. The target utilisation ratio is one which incentivises the creation and destruction of nomins. $$U_{target}$$ is defined formally below. \\
+
+\paragraph{Releasing Havvens from Escrow}
+
+\noindent In order to access the original \HAV{} that have been escrowed, the owner must return the same quantity of issued \NOM{} to the system for destruction. This is known as 'burning' the \NOM{}.
+
+
+\subsubsection{Issuance Example}
 
 \noindent The issuance concept is best understood using an example:
 \begin{enumerate}
@@ -54,12 +80,6 @@ $$ 0 \leq U \leq U_{max} \leq 1.$$
 \end{enumerate} 
 
 \newpage
-
-\noindent What If Bob wishes to retrieve his \HAV{} from escrow? He must burn the same the quantity of \NOM{} that was sold initially. \\
-
-\begin{namedthm}{Burn}[]
-To return \NOM{} to the system to be destroyed and release the \HAV{} that were escrowed. 
-\end{namedthm}
 
 \noindent In our example from before, Bob would need to burn the $20$ \NOM{} that he issued originally. \\
 
