@@ -9,10 +9,10 @@
 
 \paragraph{Prices}
 \begin{align*}
-    P_v & \ && &(\frac{\text{\$}}{\HAV{}}) && &\text{: havven price.} \\
+    P_h & \ && &(\frac{\text{\$}}{\HAV{}}) && &\text{: havven price.} \\
     P_n & \ && &(\frac{\text{\$}}{\NOM{}}) && &\text{: nomin price.} \\
-    \pi &:= \frac{P_v}{P_n} \ && &(\frac{\NOM{}}{\HAV{}}) && &\text{: havven to nomin conversion factor.} \\
-    P_v' &= f(V_n, V_v) \cdot R && &(\frac{\text{\$}}{\NOM{} \cdot \text{sec}}) && &\text{: havven price rate of change.}
+    \pi &:= \frac{P_h}{P_n} \ && &(\frac{\NOM{}}{\HAV{}}) && &\text{: havven to nomin conversion factor.} \\
+    P_h' &= f(V_n, V_h) \cdot R && &(\frac{\text{\$}}{\NOM{} \cdot \text{sec}}) && &\text{: havven price rate of change.}
     \intertext{Here \(R\) is a risk term incorporating, for example, volatility, number of buyers versus sellers, and so on.}
 \end{align*}
 \\
@@ -20,17 +20,17 @@
 
 \paragraph{Money Supply}
 \begin{align*}
-    &C \ && &(\HAV{}) && &\text{: Quantity of havvens, which is constant.} \\
-    &C_e \ && &(\HAV{}) && &\text{: Quantity of escrowed havvens.} \\
-    &N = C_N \cdot \pi \ && &(\NOM{}) && &\text{: Quantity of nomins. This can float.} \\
-    &C_N = \frac{N}{\pi} \ && &(\HAV{}) && &\text{: Havven value of issued nomins.}
-    \intertext{Ideally, \(C_N \leq C_e\).}
+    &H \ && &(\HAV{}) && &\text{: Quantity of havvens, which is constant.} \\
+    &H_e \ && &(\HAV{}) && &\text{: Quantity of escrowed havvens.} \\
+    &N = H_N \cdot \pi \ && &(\NOM{}) && &\text{: Quantity of nomins. This can float.} \\
+    &H_N = \frac{N}{\pi} \ && &(\HAV{}) && &\text{: Havven value of issued nomins.}
+    \intertext{Ideally, \(H_N \leq H_e\).}
 \end{align*}
 \\
 
 \paragraph{Utilisation Ratios}
 \begin{align*}
-    &U = \frac{C_N}{C} \ && &\text{(dimensionless)} && &\text{: Empirical issuance ratio. } \\
+    &U = \frac{H_N}{H} \ && &\text{(dimensionless)} && &\text{: Empirical issuance ratio. } \\
     &U_{max} \ && &\text{(dimensionless)} && &\text{: Targeted issuance ratio ceiling.}
     \intertext{\(0 \leq U \leq U_{max} \leq 1\)}
 \end{align*}

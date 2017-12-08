@@ -9,6 +9,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{svg}
 \usepackage{graphicx}
@@ -30,6 +31,26 @@
 \SetWatermarkScale{3}
 % ==
 
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+ 
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{thm}{Theorem}[section] % the main one
+\newtheorem{lemma}[thm]{Lemma}
+
+\theoremstyle{plain} % just in case the style had changed
+\newcommand{\thistheoremname}{}
+\newtheorem{genericthm}[thm]{\thistheoremname}
+\newenvironment{namedthm}[1]
+  {\renewcommand{\thistheoremname}{#1}%
+   \begin{genericthm}}
+  {\end{genericthm}}
+
+
 \begin{document}
 
 % Macros
@@ -38,7 +59,7 @@
 
 
 \title{Havven: a stablecoin system\\ v0.3}
-\author{Samuel Brooks, Anton Jurisevic, Kain Warwick}
+\author{Samuel Brooks, Anton Jurisevic, Michael Spain, Kain Warwick}
 \date{October 2017}
 
 
@@ -79,7 +100,8 @@ distributed ledger technology.
 \pagebreak
 
 \input{tex/introduction}
-\input{tex/functional_description}
+\input{tex/design_rationale}
+\input{tex/system_overview}
 \input{tex/quantitative_analysis}
 \input{tex/qualitative_analysis}
 
