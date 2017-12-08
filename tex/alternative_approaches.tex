@@ -60,9 +60,13 @@ Recently, Tether announced support for issuing ERC-20 compatible tokens on Ether
 
 
 \subsection{MakerDAO}
-\paragraph{Description of system}
+\paragraph{Description of system} MakerDAO allows users to escrow collateral to generate a stablecoin, known as the Dai, similar to Havvens escrow system. However, the difference is that in Havven, the collateral is derived from the system itself, whereas in MakerDAO any ERC20 token can be used to generate Dai. The tokens are locked into a smart contract known as a collateralised debt position (CDP). CDPs have multiple risk parameters which are set by the holders of the MKR token. In this way, governance is not directly linked to the capital that backs the Dai.
 
-\paragraph{Key issues}
+\paragraph{Key issues} 
+
+\noindent Allowing the system to be collateralised by a range of ERC20 tokens introduces significant complexity, because the system must react to changes in many types of collateral. MKR token holders vote to set the risk parameters of each type of collateral. This raises the question, how can the market be confident that the Maker holders are capable of deciding these values correctly? The system incentivises the holders to vote responsibly, but this does not provide confidence that the MKR holders possess the required knowledge. \\
+
+\noindent The collateral in a CDP is always some form of ERC20 token, initially only Eth. This means MakerDAO can never eliminate the systematic risk of the price of Eth and whichever other ERC20 tokens are used in CDPs. We acknowledge that this approach makes the system less susceptible to price shocks initially. \\
 
 \paragraph{Current state}
 

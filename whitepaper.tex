@@ -16,6 +16,7 @@
 \usepackage[superscript, biblabel, nomove]{cite}
 \usepackage{hyperref}
 \usepackage{cleveref}
+\usepackage{pgfplots}
 
 % Use § for sections
 \crefformat{section}{\S#2#1#3}
@@ -50,6 +51,11 @@
    \begin{genericthm}}
   {\end{genericthm}}
 
+\newtheorem*{genericthm*}{\thistheoremname}
+\newenvironment{namedthm*}[1]
+  {\renewcommand{\thistheoremname}{#1}%
+   \begin{genericthm*}}
+  {\end{genericthm*}}
 
 \begin{document}
 
