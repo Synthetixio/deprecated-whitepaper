@@ -1,67 +1,67 @@
 
-\section{System Overview} Havven is designed to provide a decentralised currency with price stability relative to some external currency or asset, such as USD. To achieve this, Havven uses a two token money system, together with a set of novel price incentive mechanisms designed to stabilise the price of one of the two tokens. The first of these is the Havven token, referred to as \HAV{} to avoid confusion with the system itself. \HAV{} serves two functions:
+\section{System Overview} Havven is designed to incentivise stability in a decentralised cryptocurrency denominated in some external currency, such as the USD. The dual-token asset system is combined with a set of novel incentive mechanisms designed to stabilise the price of one of the two tokens. We refer to these as the Havven token (\HAV{}) - to avoid confusion with the system itself - and the nomin, \NOM{} (short for denominator). \\
+
+\noindent \HAV{} serves two functions:
 
 \begin{enumerate}
-\item{To provide the system with collateral.}
+\item{To provide the system with collateral (the system itself it tokenised), and,}
 \item{To allow actors to contribute to the price stabilisation process through a set of incentives.}
 \end{enumerate}
 
-\noindent The second token is the Nomin, (\NOM{}), whose purpose is to track the price of a chosen external denominating value, e.g. \$1 USD via the actions of the \HAV{} token holders who modify the level of supply in the \NOM{} market such that the market price of \NOM{} remains constant. \\
+\noindent The second token, \NOM{}, is the stablecoin. The purpose of \NOM{} is to track the price of a chosen external denominating currency via the actions of \HAV{} token holders; holders of \HAV{} participate in modifying the level of supply in the \NOM{} market such that the market price of \NOM{} is maximally stable.
 
-\noindent Before continuing, we first introduce some basic system variables:
+\subsection{Incentive Mechanism Layering}
+
+We classify the various incentives that can be applied in a stablecoin system. Note that any subset of these can be linearly combined in order to produce a sophisticated and powerful incentive structure. Havven's approach to achieving price stability is to be as passive as possible and only switch on higher levels of incentivisation when necessary. The order in which these categories appear is the order in which they are applied:
+
+\paragraph{Overcollateralisation}
+
+The basis for price stability within Havven is overcollateralisation of stablecoin value (i.e. the is a greater value in collateral backing the stablecoin than there is in the market capitalisation of all the \NOM{} in circulation. This ratio of \NOM{} to \HAV{} is known as the utilisation ratio.
+
+\paragraph{Fees}
+
+\noindent The second layer of economic incentives for \HAV{} holders is to provide them with earned fees in accordance with their performance in adjusting the supply of \NOM{}. These fees are generated from small charges on all \NOM{} transfers. These fees are directed to the \HAV{} holders as a reward for helping maintain the correct supply of \NOM{}.
+
+\paragraph{Interest Rates}
+
+\noindent Interest rates for \HAV{} can be applied in addition to the application of fees, in either fixed or floating \HAV{} supply regimes. Interest rates will be discussed in a future iteration of the whitepaper.
+
+\paragraph{Collateral Recovery}
+
+\noindent As a final layer of incentives, forced recovery of an actor's \HAV{} may be required in order to equilibriate individual positions of utilisation ratio. Collateral recovery will be discussed in a future iteration of the whitepaper.
+
+\subsection{Overcollateralisation}
+
+\noindent We first introduce the core system variables:
 
 \begin{align*}
 H &= \text{Quantity of \HAV{},} & N &= \text{Quantity of \NOM{},} \\
 P_h &= \text{\HAV{} Price,}  & P_n &= \text{\NOM{} Price.}
 \end{align*}
 
-\noindent All \HAV{} tokens are created in the initial system state, so $H$ is a constant value. The quantity of \NOM{}, $N$ can float to ensure that the \NOM{} price, $P_n$ remains stable with changes in demand.
+\noindent All \HAV{} tokens are created in the initial system state, so $H$ is constant. The quantity of \NOM{}, $N$, floats in response to the actions of havven holders, who, for the most part, are assumed to act in accordance with their incentives, thereby encouraging the \NOM{} price, $P_n$, to stabilise with changes in demand.
 
-\subsection{Incentive Mechanism Layering}
+\subsubsection{Nomin Supply Control}
 
-\paragraph{Overcollateralisation}
+\noindent \NOM{} can only be issued when a \HAV{} holder decides to escrow \HAV{} under their control. Once the \HAV{} have been escrowed (via smart contract) a quantity of \NOM{} are generated. equal in value to the value of \HAV{} multiplied by the maximum utilisation ratio. This ensures the value of the \NOM{} that is produced is less than the value of the backing \HAV{} collateral. \\
 
-Havven's approach to achieving price stability is to be passive where possible, intervening only when needed. To begin with, Havven institutes overcollateralisation of the stablecoin (i.e. the is a greater value in collateral backing the stablecoin than there is in the market capitalisation of all the \NOM{} in circulation. This ratio of \NOM{} to \HAV{} is known as the utilisation ratio. This is discussed in the next section.
+\noindent When a havven holder escrows their \HAV{}, the system will then immediately place a limit sell order with a price of \$1 on the Havven Decentralised Exchange. This means that the \NOM{} will be sold at market price, but with a minimum of \$1 USD. If we assume implementation on Ethereum, the \NOM{} are sold for an amount of ETH valued at \$1, with the proceeds of the sale remitted to the issuer. \\
 
-\paragraph{Fees}
+\noindent It is important for the proper functioning of the system that the pool of \NOM{} is always overcollateralized by the value of \HAV{}. The \textbf{utilisation ratio} is what initialises this property.
 
-\noindent Havven provides a second layer of economic incentives for \HAV{} holders to adjust the supply of \NOM{} in response to changing demand through fees. In order to generate a pool of value with which to operate such an incentive mechanism, Havven charges transaction fees on \NOM{}. These fees are redirected to the \HAV{} holders as a reward for helping maintain the correct supply of \NOM{}.
+\subsubsection{Utilisation Ratio}
 
-\paragraph{Interest Rates}
-
-\noindent Interest rates as applied to \HAV{} can be applied in superposition to the application of fees. Such schemes can be applied in either fixed or floating supply regimes. Interest rates will be discussed in a future iteration of the whitepaper.
-
-\paragraph{Collateral Recovery}
-
-\noindent As a final incentive mechanism layer, forced recovery of an actors \HAV{} may be required in order to equilibriate individual positions. Collateral recovery will be discussed in a future iteration of the whitepaper.
-
-\paragraph{????}
-
-\noindent Havven also benefits from a positive feedback loop for for small changes in $P_n$. A small decrease in $P_n$ should result in increased market demand, given the expectation of the return to \$1. 
-
-\newpage
-
-\subsection{Overcollateralisation}
-
-\subsubsection{Escrow and Nomin Issuance} 
-
-The only way \NOM{} can be issued is when a \HAV{} owner decides to escrow their \HAV{}. Once the \HAV{} have been escrowed via smart contract, this generates a quantity of \NOM{}. \\
-
-\noindent When a Havven holder escrows their \HAV{}, the system will generate a quantity of \NOM{}. The system will then immediately place a limit sell order with a price of \$1 for on the Havven Decentralised Exchange. This means that the \NOM{} will be sold at market price, but with a minimum of \$1 USD. The proceeds of this sale are then remitted to the issuer in ETH. It is important that the pool of \NOM{} is always overcollateralized by the value of \HAV{}. In order to achieve this, Havven must determine what is known as the \textbf{utilisation ratio}. This ensures that there is always collateral backing a \NOM{} when it is issued.\\
-
-\paragraph{Utilisation Ratio}
+\noindent The utilisation ratio is defined by the total value of \NOM{} against the total value of \HAV{}.
 
 $$ U = \frac{P_n * N}{P_h * H}. $$
 
-\noindent The utilisation ratio is defined by the total value of \NOM{} against the total value of \HAV{}. Intuitively, if $U = 1$, the value of \NOM{} and \HAV{} are equal. Havven intends to be overcollateralised, which means that we would like to maintain $U <  1$. To do this, Havven only allows the issuance of \NOM{} up to a maximum utilisation ratio. \\
+\noindent Intuitively, if $U = 1$, the value of \NOM{} and \HAV{} are equal. Hence, given our desirable property of overcollateralisation, our target $U <  1$. To do this, Havven only allows the issuance of \NOM{} up to a maximum utilisation ratio. \\
 
-\paragraph{Collateralisation Goal SGB: can we call it 'target' instead of 'goal'?}
+\subsubsection{Collateralisation Target}
 
 $$ 0 \leq U \leq U_{max} \leq 1.$$
 
-\noindent The maximum utilisation ratio is the first of Havven's price stabilisation mechanisms. It ensures that for every \NOM{}, there is a multiple of \HAV{} under escrow backing its value. \\
-
-\noindent The target utilisation ratio is one which provides maximum incentives to havven holders. The target utilisation ratio is one which incentivises the creation and destruction of nomins. $$U_{target}$$ is defined formally below. \\
+\noindent The target utilisation ratio is defined as the point at which maximum incentives are applied to havven holders who comply with this property; as individual havven holders have an individual utilisation ratio, the system can measure whether the degree to which the havven holder is above or below the target and adjust their incentives accordingly. In this way the system incentivises the creation and destruction of nomins. $$U_{target}$$ is defined formally below. \\
 
 \paragraph{Releasing Havvens from Escrow}
 
