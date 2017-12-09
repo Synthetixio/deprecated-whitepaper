@@ -1,4 +1,3 @@
-
 \section{System Overview} Havven is designed to incentivise stability in a decentralised cryptocurrency denominated in some external currency, such as the USD. The dual-token asset system is combined with a set of novel incentive mechanisms designed to stabilise the price of one of the two tokens. We refer to these as the Havven token (\HAV{}) - to avoid confusion with the system itself - and the nomin, \NOM{} (short for denominator). \\
 
 \noindent \HAV{} serves two functions:
@@ -10,7 +9,7 @@
 
 \noindent The second token, \NOM{}, is the stablecoin. The purpose of \NOM{} is to track the price of a chosen external denominating currency via the actions of \HAV{} token holders; holders of \HAV{} participate in modifying the level of supply in the \NOM{} market such that the market price of \NOM{} is maximally stable.
 
-\subsection{Incentive Mechanism Layering}
+\subsection{Incentive Layering}
 
 We classify the various incentives that can be applied in a stablecoin system. Note that any subset of these can be linearly combined in order to produce a sophisticated and powerful incentive structure. Havven's approach to achieving price stability is to be as passive as possible and only switch on higher levels of incentivisation when necessary. The order in which these categories appear is the order in which they are applied:
 
@@ -43,30 +42,31 @@ P_h &= \text{\HAV{} Price,}  & P_n &= \text{\NOM{} Price.}
 
 \subsubsection{Nomin Supply Control}
 
-\noindent \NOM{} can only be issued when a \HAV{} holder decides to escrow \HAV{} under their control. Once the \HAV{} have been escrowed (via smart contract) a quantity of \NOM{} are generated. equal in value to the value of \HAV{} multiplied by the maximum utilisation ratio. This ensures the value of the \NOM{} that is produced is less than the value of the backing \HAV{} collateral. \\
+\noindent \NOM{} can only be issued when a \HAV{} holder decides to escrow some number of \HAV{} under their control. Once the \HAV{} have been escrowed (via smart contract) a quantity of \NOM{} are generated equal in value to the value of escrowed \HAV{} multiplied by the maximum utilisation ratio. This ensures the value of the \NOM{} that is produced is less than the value of the backing \HAV{} collateral. \\
 
-\noindent When a havven holder escrows their \HAV{}, the system will then immediately place a limit sell order with a price of \$1 on the Havven Decentralised Exchange. This means that the \NOM{} will be sold at market price, but with a minimum of \$1 USD. If we assume implementation on Ethereum, the \NOM{} are sold for an amount of ETH valued at \$1, with the proceeds of the sale remitted to the issuer. \\
+\noindent Once the \HAV{} are escrowed, the system immediately places a \textbf{limit sell} order with a price of \$1 on an exchange (such as a dedicated decentralised exchange for havven and nomin trading). This means that the \NOM{} will be sold at the current market price, but with a minimum price of \$1 USD. If we assume implementation on Ethereum, then the \NOM{} are sold for an amount of ETH valued at \$1, with the proceeds of the sale remitted to the issuer. \\
 
 \noindent It is important for the proper functioning of the system that the pool of \NOM{} is always overcollateralized by the value of \HAV{}. The \textbf{utilisation ratio} is what initialises this property.
 
 \subsubsection{Utilisation Ratio}
 
-\noindent The utilisation ratio is defined by the total value of \NOM{} against the total value of \HAV{}.
+\noindent The utilisation ratio is defined by the total value of \NOM{} against the total value of \HAV{}:
 
-$$ U = \frac{P_n * N}{P_h * H}. $$
+$$ U = \frac{P_n * N}{P_h * H} $$ \\
 
-\noindent Intuitively, if $U = 1$, the value of \NOM{} and \HAV{} are equal. Hence, given our desirable property of overcollateralisation, our target $U <  1$. To do this, Havven only allows the issuance of \NOM{} up to a maximum utilisation ratio. \\
+\noindent Intuitively, if $U = 1$, the value of \NOM{} and \HAV{} are equal. Hence, given our overcollateralisation property, our target $U <  1$. To do this, Havven only allows the issuance of \NOM{} up to a maximum utilisation ratio.
 
 \subsubsection{Collateralisation Target}
 
+\noindent Given the need to adjust the supply of \NOM{}, a target utilisation ratio is defined as the point at which maximum incentives are applied:
+
 $$ 0 \leq U \leq U_{max} \leq 1.$$
 
-\noindent The target utilisation ratio is defined as the point at which maximum incentives are applied to havven holders who comply with this property; as individual havven holders have an individual utilisation ratio, the system can measure whether the degree to which the havven holder is above or below the target and adjust their incentives accordingly. In this way the system incentivises the creation and destruction of nomins. $$U_{target}$$ is defined formally below. \\
+\noindent Because individual havven holders have a unique utilisation ratio, $ U_i $, the system can measure the degree to which their $ U_i $ is above or below the target and adjust their incentives accordingly. In this way the system incentivises the creation and destruction of \NOM{}. $ U_{target} $ is defined formally below in terms of $ P_n $ (as \NOM{} price diverges from the desired \$1, increasing incentives are applied to either expand or contract the supply).
 
-\paragraph{Releasing Havvens from Escrow}
+\subsubsection{Releasing Havvens from Escrow}
 
 \noindent In order to access the original \HAV{} that have been escrowed, the owner must return the same quantity of issued \NOM{} to the system for destruction. This is known as 'burning' the \NOM{}.
-
 
 \subsubsection{Issuance Example}
 
@@ -74,38 +74,35 @@ $$ 0 \leq U \leq U_{max} \leq 1.$$
 \begin{enumerate}
 \item{Bob owns 10 \HAV{} worth \$10 each, total value \$100.}
 \item{The maximum utilisation ratio is 0.2.}
-\item{Bob decides to escrow all of his \HAV{}, equivalent to 20 \NOM{}.}
-\item{The system sells 20 \NOM{} on the market and transfers the proceeds, in eth to Bob's wallet.}
-\item{Bob's \HAV{} are escrowed meaning he cannot use them in any way.}
+\item{Bob decides to escrow all of his \HAV{}, equivalent to 20 \NOM{}. These \HAV{} are now not able to be traded.}
+\item{The system sells 20 \NOM{} on the market and transfers the proceeds, in ETH, to Bob's wallet.}
+\item{Bob is free to use the ETH in his wallet in any way, including retaining it for the future purchase of \NOM{}.}
+\item{In order to release the escrowed \HAV{}, the same number of \NOM{} (20) must be returned to the system, even if they have changed in value to say \$21 or \$19.}
 \end{enumerate} 
 
-\newpage
-
-\noindent In our example from before, Bob would need to burn the $20$ \NOM{} that he issued originally. \\
-
-\noindent Likely some questions have already arisen: \\
+\noindent Some questions may have already arisen in the reader's mind: \\
 
 \noindent \emph{1. Does Bob have to lock all of his \HAV{} into escrow?} \\ 
 
-\noindent There is no requirement for Bob to escrow all of his \HAV{}, he can escrow as many as he likes. The quantity of \NOM{} that is sold on the market is $ P_h * H_e * U_{max} $ where $H_e$ indicates the quantity of \HAV{} that was escrowed. \\
+\noindent There is no requirement for Bob to escrow all of his \HAV{}; he can escrow as many as he likes. The quantity of \NOM{} that is sold on the market is $ P_h * H_e * U_{max} $ where $H_e$ indicates the quantity of \HAV{} that was escrowed. \\
 
 \noindent \emph{2.What if Bob would like to release his \HAV{}? Where would he acquire \NOM{}?} \\ 
 
-\noindent He simply needs to buy some more in the open market. \HAV{} and \NOM{} are both ERC20 tokens that will be traded on a variety of centralised and decentralised exchanges. Once he buys $20$ \NOM{}, he can present them to the system to be burned, thus releasing the escrowed \HAV{} back to him. \\ 
+\noindent He simply needs to purchase them in the open market. Assuming an implementation on Ethereum, \HAV{} and \NOM{} would both be ERC20-compatible tokens able to be traded on a variety of centralised and decentralised exchanges. Once Bob buys $20$ \NOM{}, he can present them to the system to be burned, thus releasing the escrowed \HAV{} back to him. \\ 
 
-\noindent \emph{3. What happens if the price of \HAV{} has changed?} \\
+\noindent \emph{3. What happens if the price of \HAV{} changes?} \\
 
-\noindent All issuance of \NOM{} is done at the current $P_h$. However, $P_h$ is determined by the market (or by target price ratio TBA). This means when $P_h$ changes, the quantity of escrowed \HAV{} changes with it. An increase in $P_h$ means that fewer of Bob's \HAV{} are escrowed. In contrast, a decrease in the $P_h$ means that more of his \HAV{} are escrowed. This process occurs automatically in order to ensure that the system remains overcollateralised. \\ 
+\noindent All issuance of \NOM{} is done at the current $P_h$. However, when $P_h$ changes, the quantity of escrowed \HAV{} changes with it (not the \emph{value}). An increase in $P_h$ means that fewer of Bob's \HAV{} are escrowed. By contrast, a decrease in the $P_h$ means that more of his \HAV{} are escrowed. This process occurs automatically in order to ensure that the system remains overcollateralised. \\ 
 
-\noindent \emph{4. What happens if the price of \NOM{} has changed?} \\ 
+\noindent \emph{4. What happens if the price of \NOM{} changes?} \\ 
 
-\noindent In order to release escrowed \HAV{} the Bob must return the same quantity of \NOM{} that he issued. This means that if $P_n$ has increased in the market, he will need to spend more Eth than he received when he issued the \NOM{} in order to release his \HAV{}. In contrast, if $P_n$ has decreased, the user will need to spend less Eth in order to release his \HAV{}.
+\noindent In order to release escrowed \HAV{}, Bob must return the same quantity of \NOM{} that he issued. This means that if $P_n$ has increased in the market, he will need to spend more ether than he received when he issued in order to release his \HAV{}. Conversely, if $P_n$ has decreased, Bob will need to spend less in order to release his \HAV{}.
 
 \newpage
 
 \subsection{Nomin Demand and Supply} 
 
-\noindent Demand and supply economics shows that there exists some optimal supply of \NOM{} where the related level of demand yields an equilibrium price of \$1. We can express this quantity in terms of the utilisation ratio, $U_{opt}$. The graph below visualises this situation. \\
+\noindent Demand and supply economics shows that there exists some optimal supply of \NOM{} where the related level of demand yields an equilibrium price of \$1. We can express this quantity in terms of an optimum utilisation ratio, $U_{opt}$. The graph below visualises this situation. \\
 
 \begin{figure}[h!]
     \centering
@@ -114,23 +111,19 @@ $$ 0 \leq U \leq U_{max} \leq 1.$$
 
 \subsubsection*{Demand}
 
-\noindent The system is unable to influence the demand for \NOM{}. It will come primarily from the utility of a stable Nomin.
+\noindent The system is unable to influence the demand for \NOM{}. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency.
 
 \subsubsection*{Supply}
 
-\noindent However, the supply of \NOM{} is controlled directly by the Havven holders, who use the system to issue and burn \NOM{}. This means the system can provide incentives for Havven holders to expand and contract the \NOM{} supply when demand changes. \\
+\noindent However where demand is unable to be directly influenced, the supply of \NOM{} is controlled by havven holders who use system levers to issue and burn \NOM{} in response to system incentives. Maximum incentive is achieved when $U_i = U_{opt}$, such that $P_n = 1$. $U_{opt}$ will be discussed further below. \\
 
-\noindent The goal of Havven is to incentivise the Havven holders to maintain the level of \NOM{} supply at $U_{opt}$, such that $P_n = 1$. In order to do this, the system must provide incentives to the \HAV{} token holders.  \\
+\subsection{Fees} Every time a Nomin transaction occurs, the Havven system charges a small transaction fee. Transaction fees allow the system to generate revenue, which it can distribute to \HAV{} holders as an incentive to maintain \NOM{} supply at $U_{opt}$. \\
 
-\newpage
+\subsubsection{Transaction fees}
 
-\subsection{Transaction Fees} Every time a Nomin transaction occurs, the Havven system charges a small transaction fee. Transaction fees allow the system to generate revenue, which it can distribute to \HAV{} holders as an incentive to maintain \NOM{} supply at $U_{opt}$. \\
+\noindent The fee charged on nomin transactions is constant and will be sufficiently small that it provides little to no friction for the user. \\
 
-\begin{namedthm}{Fees Charged (per transaction)}[]
 $$ a_c = k.$$
-\end{namedthm}
-
-\noindent The fee charged on Nomin transactions is constant and will be sufficiently small that it provides little to no friction for the user. \\
 
 \begin{figure}[h!]
     \centering
@@ -138,8 +131,8 @@ $$ a_c = k.$$
 \end{figure}
 
 \newpage
+\subsubsection{Fees received}
 
-\begin{namedthm}{Fees Received (per escrower)}[]
 \[
 \alpha_r = 
 \begin{cases}
@@ -148,7 +141,6 @@ $$ a_c = k.$$
  0 &\mbox{otherwise}.
  \end{cases}
 \]
-\end{namedthm}
 
 \begin{figure}[h!]
     \centering
@@ -157,39 +149,38 @@ $$ a_c = k.$$
 
 \noindent Fees are only paid to \HAV{} holders who have elected to escrow, as a reward for collateralising the system. The fees received increases linearly to a maximum at the optimal utilisation ratio $U_{opt}$. However, the fees quickly diminish as $U_I$ approaches $U_{max}$ and drop to nothing after this point. \\
 
-\noindent Intuitively, this equation encourages \HAV{} holders who have escrowed to maintain their $U_I$ at $U_{opt}$. 
+\noindent Intuitively, this equation encourages \HAV{} holders who have escrowed to maintain their $U_i$ at $U_{opt}$. 
 
 \newpage
 
 \noindent Recall the concept of the utilisation ratio, which was introduced earlier:
 
-$$ U = \frac{P_n * N}{P_h * H}. $$ \\
+$$ U = \frac{P_n * N}{P_h * H} $$
 
-\noindent We have introduced the concept of an optimal utilisation ratio and its importance in achieving Havven's  goal $P_n = 1$. Havven's fee structure encourages all \HAV{} holders who escrow to maintain their personal utilisation ratio $U_I$ at $U_{opt}$. However, the system needs a function to determine what $U_{opt}$ is. \\
+\noindent We have introduced the concept of an optimal utilisation ratio and its importance in achieving $P_n = 1$. Havven's fee structure encourages all \HAV{} holders who escrow to maintain their personal utilisation ratio $U_i$ at $U_{opt}$. However, the system needs a function to determine what $U_{opt}$ is. \\
 
-\noindent If $P_n > 1$ then the system must encourage more \NOM{} to be issued. If $P_n < 1$ the system must encourage \NOM{} to be burned. The definition of $U_{opt}$ must provide this incentive. \\
+\noindent If $P_n > 1$ then the system must encourage more \NOM{} to be issued. If $P_n < 1$, the system must encourage \NOM{} to be burned. The definition of $U_{opt}$ must therefore provide this incentive. \\
 
-\begin{namedthm}{Optimal Utilisation Ratio}[]
+\subsubsection{Optimal Utilisation Ratio}
+
 $$ U_{opt} = f(P_n) * U,$$
 $$ f(x) = max(\sigma * (x - 1)^{\phi} + 1, 0), $$
 $$\text{where } 0 \leq \sigma, \text{ the price sensitivity parameter}, $$
 $$\phi \geq 1, \text{ the flattening parameter}. $$
-\end{namedthm}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=.5\textwidth]{img/U_opt}
 \end{figure}
 
-\noindent The graph above shows that the when $P_n$ is near \$1, f'(x) is small. However, the further $P_n$ diverges from \$1, the larger the derivative becomes. This means the incentive to move toward $U_{opt}$ increases as $P_n$ diverges from \$1.
+\noindent The function above shows that the when $P_n$ is near \$1, $ f'(P_n) $ is small. However, the further $P_n$ diverges from \$1, the larger the derivative becomes. This means the incentive to move toward $U_{opt}$ increases as $P_n$ diverges from \$1.
 
 \newpage
 
-\subsection*{Maximum Utilisation Ratio}
+\subsection{Maximum Utilisation Ratio}
 
-\noindent When we discussed the concept of issuing \NOM{}, we introduced the idea of a maximum utilisation ratio, $U_{max}$. Havven needs to maintain $U < U_{max} < 1$, in order to remain overcapitalised. It might seem intuitive that $U_{max}$ should be a static value. However, since $U_{opt}$ changes linearly with $P_n$ and inversely with $P_h$, there are several situations where $U_{max}$ may need to change. Below we define $U_{max}$.
+\noindent Havven seeks to maintain $U < U_{max} < 1$, in order to remain overcollateralised. It might seem intuitive that $U_{max}$ should be a static value. However, since $U_{opt}$ changes linearly with $P_n$ and inversely with $P_h$, there are several situations where $U_{max}$ may need to change. Below we define $U_{max}$.
 
-\begin{namedthm}{}[]
 \[
 U_{max} = 
 \begin{cases}
@@ -197,7 +188,6 @@ U_{max} =
  \alpha * U_{opt} &\mbox{otherwise}.
  \end{cases}
 \]
-\end{namedthm}
 
 \begin{figure}[h!]
     \centering
@@ -208,9 +198,8 @@ U_{max} =
 
 \subsection{Intrinsic Havven Price} With the \HAV{} token being ERC20 compliant, it will have a market price on both decentralised and centralised exchanges. \\
 
-\noindent While the system will access the market price via an oracle, it is also beneficial to define a $P_h$ that can be determined internally, thus avoiding the impact of speculation. Ignoring speculative demand, $P_h$ can be expressed as a function of the transaction fees that the system charges. Below we define an initial iteration of the intrinsic $P_h$.
+\noindent While the Havven system will access the current market price via a price oracle, it is beneficial to define a $P_h$ that can be determined internally to avoiding the influence of speculation. Ignoring speculative demand, $P_h$ can be expressed as a function of the transaction fees that the system charges. Below we define an initial iteration of the intrinsic $P_h$.
 
-\begin{namedthm}{Havven Price}[]
 \begin{align*} 
 P_{h,t} &= \frac{1}{H}* \sum\limits_{t=1}^\infty \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{(1+R)^t} \approx \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{R * H}, \\
 & P_{h,t} \text{ is the price of one \HAV{} at time } t, \\
@@ -220,14 +209,12 @@ P_{h,t} &= \frac{1}{H}* \sum\limits_{t=1}^\infty \frac{d_{n,t} *v_{n,t} * \alpha
 & \alpha_{R,t} \text{ is the fee from trade with \NOM{}}, \\
 & R \text{ is the interest rate / rate of return of havvens}. \\
 \end{align*}
-\end{namedthm}
 
 \newpage
 
-\subsection{Juans Description of Players (Refactored)}
-\begin{namedthm}{Havven Holder}[]
-An investor who owns \HAV{} tokens.
-\end{namedthm}
+\subsection{Actor Definitions}
+\paragraph{Havven Holder}
+\emph{An investor who owns \HAV{} tokens.} \\
 
 \noindent In order to purchase \HAV{} the expected return has to be greater than that of alternative investments (opportunity cost). The expected return of \HAV{} comes from:
 \begin{enumerate}
@@ -238,13 +225,12 @@ An investor who owns \HAV{} tokens.
 
 \noindent At any moment in time, the investor must decide:
 \begin{enumerate}
-\item{Whether or not to issue new \NOM{} (assuming $U_I < U_{max}$), or to burn some of them. All \NOM{} are issued/burnt at the prevailing market exchange rate, denominated in ETH.}
+\item{Whether or not to issue new \NOM{} (assuming $U_i < U_{max}$), or to burn some of them. All \NOM{} are issued/burnt at the prevailing market exchange rate, denominated in ETH.}
 \item{Whether to sell some quantity of \HAV{} in the market at price $P^M_{h,t}$. Only \HAV{} which haven't been escrowed can be sold. Otherwise they must burn \NOM{} to release them. }
 \end{enumerate}
 
-\begin{namedthm}{Nomin User}[]
-A person who uses the Nomin token.
-\end{namedthm}
+\paragraph{Nomin User}
+\emph{A person who uses the Nomin token.} \\
  
 \noindent In order to purchase \NOM{}, it must provide the user more utility than USD, since both have the same consumption value in the market. This utility may come from the properties of crypto. \\
 
