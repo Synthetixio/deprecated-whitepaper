@@ -15,7 +15,7 @@ We classify the various incentives that can be applied in a stablecoin system. N
 
 \paragraph{Overcollateralisation}
 
-The basis for price stability within Havven is overcollateralisation of stablecoin value (i.e. the is a greater value in collateral backing the stablecoin than there is in the market capitalisation of all the \NOM{} in circulation. This ratio of \NOM{} to \HAV{} is known as the utilisation ratio.
+The basis for price stability within Havven is overcollateralisation of stablecoin value. This means the value of the escrowed collateral backing the stablecoin is strictly greater than all the \NOM{} in circulation. In Havven, this ratio of \NOM{} to \HAV{} is known as the utilisation ratio.
 
 \paragraph{Fees}
 
@@ -23,11 +23,11 @@ The basis for price stability within Havven is overcollateralisation of stableco
 
 \paragraph{Interest Rates}
 
-\noindent Interest rates for \HAV{} can be applied in addition to the application of fees, in either fixed or floating \HAV{} supply regimes. Interest rates will be discussed in a future iteration of the whitepaper.
+\noindent Interest rates on \HAV{} can be applied in addition to the application of fees, in either fixed or floating \HAV{} supply regimes. Interest rates will be discussed in a future iteration of the whitepaper.
 
 \paragraph{Collateral Recovery}
 
-\noindent As a final layer of incentives, forced recovery of an actor's \HAV{} may be required in order to equilibriate individual positions of utilisation ratio. Collateral recovery will be discussed in a future iteration of the whitepaper.
+\noindent As a final layer of incentives, forced recovery of an actor's escrowed \HAV{} may be required in order to equilibriate individual positions of utilisation ratio. Collateral recovery will be discussed in a future iteration of the whitepaper.
 
 \subsection{Overcollateralisation}
 
@@ -44,7 +44,7 @@ P_h &= \text{\HAV{} Price,}  & P_n &= \text{\NOM{} Price.}
 
 \noindent \NOM{} can only be issued when a \HAV{} holder decides to escrow some number of \HAV{} under their control. Once the \HAV{} have been escrowed (via smart contract) a quantity of \NOM{} are generated equal in value to the value of escrowed \HAV{} multiplied by the maximum utilisation ratio. This ensures the value of the \NOM{} that is produced is less than the value of the backing \HAV{} collateral. \\
 
-\noindent Once the \HAV{} are escrowed, the system immediately places a \textbf{limit sell} order with a price of \$1 on an exchange (such as a dedicated decentralised exchange for havven and nomin trading). This means that the \NOM{} will be sold at the current market price, but with a minimum price of \$1 USD. If we assume implementation on Ethereum, then the \NOM{} are sold for an amount of ETH valued at \$1, with the proceeds of the sale remitted to the issuer. \\
+\noindent The system then immediately places a \textbf{limit sell} order with a price of \$1 on an exchange (such as a dedicated decentralised exchange for \HAV{} and \NOM{} trading). This means that the \NOM{} will be sold at the current market price, down to a minimum price of \$1 USD. If we assume implementation on Ethereum, then the \NOM{} are sold for an amount of ETH valued at \$1, with the proceeds of the sale remitted to the issuer. \\
 
 \noindent It is important for the proper functioning of the system that the pool of \NOM{} is always overcollateralized by the value of \HAV{}. The \textbf{utilisation ratio} is what initialises this property.
 
@@ -73,32 +73,52 @@ $$ 0 \leq U \leq U_{max} \leq 1.$$
 
 \noindent Demand and supply economics shows that there exists some optimal supply of \NOM{} where the related level of demand yields an equilibrium price of \$1. We can express this quantity in terms of an optimum utilisation ratio, $U_{opt}$. The graph below visualises this situation. \\
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=.7\textwidth]{img/nomin-demand-vs-supply}
-\end{figure}
+\begin{tikzpicture}[scale=3]
 
+% draw axes
+\draw [<->, thick] (0,2) node (yaxis) [above] {$P$} |- (2.5,0) node (xaxis) [right] {$Q$};
+
+% draw intersecting lines
+\draw (0.5, 0.5) coordinate (a_1) -- (2,1.8) coordinate (a_2);
+\draw (0.5, 1.8) coordinate (b_1) -- (2,0.5) coordinate (b_2);
+
+% calculate coordinate of intersection
+\coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
+
+\draw[dashed] (yaxis |- c) node [left] {$1$} -| (xaxis -| c) node[below] {$u_{opt}$};
+
+\end{tikzpicture}
+	
 \subsubsection*{Demand}
 
-\noindent The system is unable to influence the demand for \NOM{}. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency.
+\noindent The system is unable to influence the demand for \NOM{}. We assume that some level of demand exists given the utility of \NOM{} as a stable cryptocurrency.
 
 \subsubsection*{Supply}
 
-\noindent However where demand is unable to be directly influenced, the supply of \NOM{} is controlled by havven holders who use system levers to issue and burn \NOM{} in response to system incentives. Maximum incentive is achieved when $U_i = U_{opt}$, such that $P_n = 1$. $U_{opt}$ will be discussed further below. \\
+\noindent However where demand is unable to be directly influenced, the supply of \NOM{} is controlled by \HAV{} holders who use the system to issue and burn \NOM{} in response to its incentives. Maximum incentive is achieved when $U_i = U_{opt}$, such that $P_n = 1$. $U_{opt}$ will be discussed further below. \\
 
 \newpage
-\subsection{Fees} Every time a Nomin transaction occurs, the Havven system charges a small transaction fee. Transaction fees allow the system to generate revenue, which it can distribute to \HAV{} holders as an incentive to maintain \NOM{} supply at $U_{opt}$.
+\subsection{Fees} Every time a \NOM{} transaction occurs, the Havven system charges a small transaction fee. Transaction fees allow the system to generate revenue, which it can distribute to \HAV{} holders as an incentive to maintain \NOM{} supply at $U_{opt}$.
 
 \subsubsection{Transaction fees}
 
-\noindent The fee charged on nomin transactions is constant and will be sufficiently small that it provides little to no friction for the user. \\
+\noindent The fee charged on \NOM{} transactions is constant and will be sufficiently small that it provides little to no friction for the user. \\
 
 $$ a_c = k.$$
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=.55\textwidth]{img/fees-charged}
-\end{figure}
+\begin{tikzpicture}[scale=3]
+
+% draw axes
+\draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_c$} |- (2.5,0) node (xaxis) [right] {$P_N$};
+
+% draw one line
+\draw (0.0, 0.75) coordinate (a_1) -- (2.0,0.75) coordinate (a_2);
+
+\coordinate (c) at (1.75, 0.75);
+
+\draw[dashed] (yaxis |- c) node [left] {k};
+
+\end{tikzpicture}
 
 \newpage
 \subsubsection{Fee distribution}
@@ -108,16 +128,26 @@ $$ a_c = k.$$
 \[
 \alpha_r = 
 \begin{cases}
- \frac{\alpha_{base}}{U_{opt}} * U_I &\mbox{when } U_I \leq U_{opt}, \\ 
- \frac{\alpha_{base}}{U_{max} - U_{opt}} * (U_I  - U_{max}) &\mbox{when } U_{opt} \leq U_I \leq U_{max}, \\ 
+ \frac{\alpha_{base}}{U_{opt}} * U_I &\mbox{when } U_I \leq U_{opt}, \\[1em]
+ \frac{\alpha_{base}}{U_{max} - U_{opt}} * (U_I  - U_{max}) &\mbox{when } U_{opt} \leq U_I \leq U_{max}, \\[1em]
  0 &\mbox{otherwise}.
  \end{cases}
 \]
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=.55\textwidth]{img/fees-received}
-\end{figure}
+\begin{tikzpicture}[scale=3]
+
+% draw axes
+\draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_r$} |- (2.5,0) node (xaxis) [right] {$U_I$};
+
+% draw two lines
+\draw (0.0, 0.0) coordinate (a_1) -- (1.75,0.75) coordinate (a_2);
+\draw (1.75, 0.75) coordinate (a_1) -- (2.25,0.0) coordinate (a_2);
+
+\coordinate (c) at (1.75, 0.75);
+
+\draw[dashed] (yaxis |- c) node [left] {$a_{base}$} -| (xaxis -| c) node[below] {$u_{opt}$};
+
+\end{tikzpicture}
 
 \noindent This fee distribution curve encourages \HAV{} holders who have escrowed to maintain their $U_i$ at $U_{opt}$.  \\
 
@@ -135,10 +165,28 @@ $$ f(x) = max(\sigma * (x - 1)^{\phi} + 1, 0), $$
 $$\text{where } 0 \leq \sigma, \text{ the price sensitivity parameter}, $$
 $$\phi \geq 1, \text{ the flattening parameter}. $$ \\
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=.5\textwidth]{img/U_opt}
-\end{figure}
+\begin{tikzpicture}[scale=1.15]
+\begin{axis}[
+    axis lines = left,
+    xlabel = $P_N$,
+    ylabel = {$f(P_N)$},
+    ticks = none,
+    y label style={at={(axis description cs:.15,1.00)}, rotate=270,anchor=south},
+    x label style={at={(axis description cs:1.05,.13)},anchor=north},
+]
+\addplot[
+domain=0:2,
+range=0:2
+]
+{(x-1)^3 + 1};
+\addplot [
+domain=0:2,
+range=0:2,
+dashed
+]  
+ {x};
+\end{axis}
+\end{tikzpicture}
 
 \newpage
 
@@ -149,15 +197,26 @@ $$\phi \geq 1, \text{ the flattening parameter}. $$ \\
 \[
 U_{max} = 
 \begin{cases}
- U_{base} &\mbox{when } U_{opt} \leq U_{base}, \\ 
- \alpha * U_{opt} &\mbox{otherwise}. \\
+ U_{base} &\mbox{when } U_{opt} \leq U_{base}, \\[1em]
+ \alpha * U_{opt} &\mbox{otherwise}.
  \end{cases}
 \]
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=.75\textwidth]{img/U_max}
-\end{figure}
+\begin{tikzpicture}[scale=3]
+
+% draw axes
+\draw [<->, thick] (0,2) node (yaxis) [above] {$U_{max}$} |- (2.5,0) node (xaxis) [right] {$U_{opt}$};
+
+% draw intersecting lines
+\draw (0.0, 0.75) coordinate (a_1) -- (0.75,0.75) coordinate (a_2);
+\draw (0.75, 0.75) coordinate (a_1) -- (1.8,1.8) coordinate (a_2);
+
+% calculate coordinate of intersection
+\coordinate (c) at (0.75,0.75);
+
+\draw[dashed] (yaxis |- c) node [left] {$U_{base}$} -| (xaxis -| c) node[below] {$U_{base}$};
+
+\end{tikzpicture}
 
 \newpage
 
@@ -194,7 +253,7 @@ P_{h,t} &= \frac{1}{H}* \sum\limits_{t=1}^\infty \frac{d_{n,t} *v_{n,t} * \alpha
 \end{enumerate}
 
 \paragraph{Nomin User}
-\emph{A person who uses the Nomin token.} \\
+\emph{A person who uses the \NOM{} token.} \\
  
 \noindent In order to purchase \NOM{}, it must provide the user more utility than USD, since both have the same consumption value in the market. This utility may come from the properties of crypto. \\
 
