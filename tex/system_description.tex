@@ -1,9 +1,9 @@
-\section{System Description} Havven is designed to incentivise stability in a decentralised cryptocurrency denominated in some external currency, such as the USD. The dual-token asset system is combined with a set of novel incentive mechanisms designed to stabilise the price of one of the two tokens. We refer to these as the havven token (\HAV{}) - to avoid confusion with the system itself - and the nomin, \NOM{} (short for denominator). \\
+\section{System Description} Havven is designed to incentivise stability in a decentralised cryptocurrency denominated in some external currency, such as the USD. The dual-token system is combined with a set of novel incentive mechanisms designed to stabilise the price of one of the two tokens. The first token is the havven token, \HAV{}) - to avoid confusion with the system itself - and the nomin, \NOM{} (short for denominator). \\
 
 \noindent \HAV{} serves two functions:
 
 \begin{enumerate}
-\item{To provide the system with collateral (the system itself is tokenised), and,}
+\item{To provide the system with collateral (the system itself is tokenised).}
 \item{To allow actors to contribute to the price stabilisation process through a set of incentives.}
 \end{enumerate}
 
@@ -15,11 +15,11 @@ We classify the various incentives that can be applied in a stablecoin system. N
 
 \paragraph{Overcollateralisation}
 
-The basis for price stability within Havven is overcollateralisation of stablecoin value. This means the value of the escrowed collateral backing the stablecoin is strictly greater than all the \NOM{} in circulation. In Havven, this ratio of \NOM{} to \HAV{} is known as the utilisation ratio.
+The basis for price stability within Havven is overcollateralisation of stablecoin value. This means the value of the escrowed collateral backing the stablecoin is strictly greater than the value of \NOM{} in circulation. In Havven, this ratio of \NOM{} to \HAV{} is known as the utilisation ratio.
 
 \paragraph{Fees}
 
-\noindent The second layer of economic incentives for \HAV{} holders is to provide them with earned fees in accordance with their performance in adjusting the supply of \NOM{}. These fees are generated from small charges on all \NOM{} transfers. These fees are directed to the \HAV{} holders as a reward for helping maintain the correct supply of \NOM{}.
+\noindent The second layer of economic incentives for \HAV{} holders is to provide them with fees in accordance with their performance in adjusting the supply of \NOM{}. These fees are generated from small charges on all \NOM{} transfers. The fees are directed to the \HAV{} holders as a reward for helping maintain the correct supply of \NOM{}.
 
 \paragraph{Interest Rates}
 
@@ -38,7 +38,7 @@ H &= \text{Quantity of \HAV{},} & N &= \text{Quantity of \NOM{},} \\
 P_h &= \text{\HAV{} Price,}  & P_n &= \text{\NOM{} Price.}
 \end{align*}
 
-\noindent All \HAV{} tokens are created in the initial system state, so $H$ is constant. The quantity of \NOM{}, $N$, floats in response to the actions of havven holders, who, for the most part, are assumed to act in accordance with their incentives, thereby encouraging the \NOM{} price, $P_n$, to stabilise with changes in demand.
+\noindent All \HAV{} tokens are created in the initial system state, so $H$ is constant. The quantity of \NOM{}, $N$, floats in response to the actions of \HAV{} holders, who, for the most part, are assumed to act in accordance with their incentives, thereby encouraging the \NOM{} price, $P_n$, to stabilise with changes in demand.
 
 \subsubsection{Nomin Supply Control}
 
@@ -62,7 +62,7 @@ $$ U = \frac{P_n * N}{P_h * H} $$ \\
 
 $$ 0 \leq U \leq U_{max} \leq 1.$$
 
-\noindent Because individual havven holders have a unique utilisation ratio, $ U_i $, the system can measure the degree to which their $ U_i $ is above or below the target and adjust their incentives accordingly. In this way the system incentivises the creation and destruction of \NOM{}. $ U_{target} $ is defined formally below in terms of $ P_n $ (as \NOM{} price diverges from the desired \$1, increasing incentives are applied to either expand or contract the supply).
+\noindent Because individual \HAV{} holders have a unique utilisation ratio, $ U_i $, the system can measure the degree to which their $ U_i $ is above or below the target and adjust their incentives accordingly. In this way the system incentivises the creation and destruction of \NOM{}. $ U_{target} $ is defined formally below in terms of $ P_n $ (as \NOM{} price diverges from the desired \$1, increasing incentives are applied to either expand or contract the supply).
 
 \subsubsection{Releasing Havvens from Escrow}
 
@@ -102,9 +102,9 @@ $$ 0 \leq U \leq U_{max} \leq 1.$$
 
 \subsubsection{Transaction fees}
 
-\noindent The fee charged on \NOM{} transactions is constant and will be sufficiently small that it provides little to no friction for the user. \\
+\noindent The fee rate charged on \NOM{} transactions is $\alpha_c$. It is constant and will be sufficiently small that it provides little to no friction for the user.\\
 
-$$ a_c = k.$$
+$$ a_c = k.$$ 
 
 \begin{tikzpicture}[scale=3]
 
@@ -123,13 +123,13 @@ $$ a_c = k.$$
 \newpage
 \subsubsection{Fee distribution}
 
-\noindent Fees are only paid to \HAV{} holders who have elected to escrow, as a reward for collateralising the system. The fees received increases linearly to a maximum at the optimal utilisation ratio $U_{opt}$. However, the fees quickly diminish as $U_I$ approaches $U_{max}$ before dropping to zero. \\
+\noindent The fee rate paid to a \HAV{} holder that has escrowed their \HAV{} is $\alpha_r$. This rate changes with respect the individual's unique $U_i$. It increases linearly to a maximum at the optimal utilisation ratio $U_{opt}$, before quickly diminishing as $U_i$ approaches $U_{max}$. Beyond the maximum utilisation ratio $\alpha_r$ becomes 0. Note, $\alpha_r$ is applied to the pool of collected fees which is determined by $\alpha_c$. \\
 
 \[
 \alpha_r = 
 \begin{cases}
- \frac{\alpha_{base}}{U_{opt}} * U_I &\mbox{when } U_I \leq U_{opt}, \\[1em]
- \frac{\alpha_{base}}{U_{max} - U_{opt}} * (U_I  - U_{max}) &\mbox{when } U_{opt} \leq U_I \leq U_{max}, \\[1em]
+ \frac{\alpha_{base}}{U_{opt}} * U_i &\mbox{when } U_i \leq U_{opt}, \\[1em]
+ \frac{\alpha_{base}}{U_{max} - U_{opt}} * (U_i  - U_{max}) &\mbox{when } U_{opt} \leq U_i \leq U_{max}, \\[1em]
  0 &\mbox{otherwise}.
  \end{cases}
 \]
@@ -137,7 +137,7 @@ $$ a_c = k.$$
 \begin{tikzpicture}[scale=3]
 
 % draw axes
-\draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_r$} |- (2.5,0) node (xaxis) [right] {$U_I$};
+\draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_r$} |- (2.5,0) node (xaxis) [right] {$U_i$};
 
 % draw two lines
 \draw (0.0, 0.0) coordinate (a_1) -- (1.75,0.75) coordinate (a_2);
@@ -156,12 +156,15 @@ $$ a_c = k.$$
 \noindent If $P_n > 1$ then the system must encourage more \NOM{} to be issued. If $P_n < 1$, the system must encourage \NOM{} to be burned. The definition of $U_{opt}$ must therefore provide this incentive.
 
 \newpage
+\subsection{Utilisation Ratio}
 \subsubsection{Optimal Utilisation Ratio}
 
-\noindent The optimal utilisation function given below provides us a dynamic target for havven holders based on the price of \NOM{}. The curve shows that the when $P_n$ is close to \$1, $ f'(P_n) $ is small. However, the further $P_n$ diverges from \$1, the larger the derivative becomes, providing an increasing incentive (via fees) for a havven holder to move toward $U_{opt}$ the further $P_n$ diverges from \$1.
+\noindent The optimal utilisation ratio $U_{opt}$ is a target for \HAV{} holders to track against in order to optimise the amount of fees they receive. $U_{opt}$ is defined in terms of $P_n$ such that \HAV{} holders can influence the price of \NOM{} through directly controlling the supply of \NOM{} (a havven holder can change their individual utilisation ratio by buying or issuing more nomins). \\
+ 
+\noindent The function for $U_{opt}$ given below provides our dynamic target for \HAV{} holders based on the price of \NOM{}. The curve shows that the when $P_n$ is close to \$1, $ f'(P_n) $ is small. However, the further $P_n$ diverges from \$1, the larger the derivative becomes, providing an increasing incentive (via fees) for a havven holder to move toward $U_{opt}$.
 
 $$ U_{opt} = f(P_n) * U,$$
-$$ f(x) = max(\sigma * (x - 1)^{\phi} + 1, 0), $$
+$$ f(P_N) = max(\sigma * (x - 1)^{\phi} + 1, 0), $$
 $$\text{where } 0 \leq \sigma, \text{ the price sensitivity parameter}, $$
 $$\phi \geq 1, \text{ the flattening parameter}. $$ \\
 
@@ -170,7 +173,8 @@ $$\phi \geq 1, \text{ the flattening parameter}. $$ \\
     axis lines = left,
     xlabel = $P_N$,
     ylabel = {$f(P_N)$},
-    ticks = none,
+    xtick = {1},
+    ytick = {0},
     y label style={at={(axis description cs:.15,1.00)}, rotate=270,anchor=south},
     x label style={at={(axis description cs:1.05,.13)},anchor=north},
 ]
@@ -185,6 +189,7 @@ range=0:2,
 dashed
 ]  
  {x};
+ \addplot[dashed, samples=50, smooth,domain=0:6] coordinates {(1,1)(1,0)};
 \end{axis}
 \end{tikzpicture}
 
@@ -198,7 +203,7 @@ dashed
 U_{max} = 
 \begin{cases}
  U_{base} &\mbox{when } U_{opt} \leq U_{base}, \\[1em]
- \alpha * U_{opt} &\mbox{otherwise}.
+ a * U_{opt} &\mbox{otherwise}.
  \end{cases}
 \]
 
@@ -266,7 +271,7 @@ P_{h,t} &= \frac{1}{H}* \sum\limits_{t=1}^\infty \frac{d_{n,t} *v_{n,t} * \alpha
 
 \noindent The issuance concept is best understood using an example:
 \begin{enumerate}
-\item{Bob owns 10 \HAV{} worth \$10 each, total value \$100.}
+\item{Bob purchases 10 \HAV{} at \$10 each, total value \$100.}
 \item{The maximum utilisation ratio is 0.2.}
 \item{Bob decides to escrow all of his \HAV{}, equivalent to 20 \NOM{}. These \HAV{} are now not able to be traded.}
 \item{The system sells 20 \NOM{} on the market and transfers the proceeds, in ETH, to Bob's wallet.}
