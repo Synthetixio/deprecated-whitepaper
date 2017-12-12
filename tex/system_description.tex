@@ -73,6 +73,7 @@ $$ 0 \leq U \leq U_{max} \leq 1.$$
 
 \noindent Demand and supply economics shows that there exists some optimal supply of \NOM{} where the related level of demand yields an equilibrium price of \$1. We can express this quantity in terms of an optimum utilisation ratio, $U_{opt}$. The graph below visualises this situation. \\
 
+\begin{center}
 \begin{tikzpicture}[scale=3]
 
 % draw axes
@@ -88,6 +89,7 @@ $$ 0 \leq U \leq U_{max} \leq 1.$$
 \draw[dashed] (yaxis |- c) node [left] {$1$} -| (xaxis -| c) node[below] {$u_{opt}$};
 
 \end{tikzpicture}
+\end{center}
 	
 \subsubsection*{Demand}
 
@@ -106,6 +108,7 @@ $$ 0 \leq U \leq U_{max} \leq 1.$$
 
 $$ a_c = k.$$ 
 
+\begin{center}
 \begin{tikzpicture}[scale=3]
 
 % draw axes
@@ -119,6 +122,7 @@ $$ a_c = k.$$
 \draw[dashed] (yaxis |- c) node [left] {k};
 
 \end{tikzpicture}
+\end{center}
 
 \newpage
 \subsubsection{Fee distribution}
@@ -134,6 +138,7 @@ $$ a_c = k.$$
  \end{cases}
 \]
 
+\begin{center}
 \begin{tikzpicture}[scale=3]
 
 % draw axes
@@ -148,6 +153,7 @@ $$ a_c = k.$$
 \draw[dashed] (yaxis |- c) node [left] {$a_{base}$} -| (xaxis -| c) node[below] {$u_{opt}$};
 
 \end{tikzpicture}
+\end{center}
 
 \noindent This fee distribution curve encourages \HAV{} holders who have escrowed to maintain their $U_i$ at $U_{opt}$.  \\
 
@@ -168,6 +174,7 @@ $$ f(P_N) = max(\sigma * (x - 1)^{\phi} + 1, 0), $$
 $$\text{where } 0 \leq \sigma, \text{ the price sensitivity parameter}, $$
 $$\phi \geq 1, \text{ the flattening parameter}. $$ \\
 
+\begin{center}
 \begin{tikzpicture}[scale=1.15]
 \begin{axis}[
     axis lines = left,
@@ -192,10 +199,11 @@ dashed
  \addplot[dashed, samples=50, smooth,domain=0:6] coordinates {(1,1)(1,0)};
 \end{axis}
 \end{tikzpicture}
+\end{center}
 
 \newpage
 
-\subsection{Maximum Utilisation Ratio}
+\subsubsection{Maximum Utilisation Ratio}
 
 \noindent Havven seeks to maintain $U < U_{max} < 1$, in order to remain overcollateralised. It might seem intuitive that $U_{max}$ should be a static value. However, since $U_{opt}$ changes linearly with $P_n$ and inversely with $P_h$, there are several situations where $U_{max}$ may need to change. Below we define $U_{max}$. \\
 
@@ -207,6 +215,7 @@ U_{max} =
  \end{cases}
 \]
 
+\begin{center}
 \begin{tikzpicture}[scale=3]
 
 % draw axes
@@ -222,6 +231,7 @@ U_{max} =
 \draw[dashed] (yaxis |- c) node [left] {$U_{base}$} -| (xaxis -| c) node[below] {$U_{base}$};
 
 \end{tikzpicture}
+\end{center}
 
 \newpage
 
