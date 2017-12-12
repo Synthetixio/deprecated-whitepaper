@@ -5,9 +5,36 @@ the Havven system. In our quantitative analysis we seek to identify failure mode
 of the system, and also to characterise not just \textit{whether} Havven stabilises
 nomin prices, but \textit{how much} it does.
 
-\paragraph{Game-theoretic modelling}
+\subsection{Game-theoretic modelling}
 Discuss the structure of the game Havven represents, incorporating information the economists produce.
 \todo[inline]{Discuss game theoretic modelling.}
+
+\subsubsection{Actor Definitions}
+\paragraph{Havven Holder}
+\emph{An investor who owns \HAV{} tokens.} \\
+
+\noindent In order to purchase \HAV{} the expected return has to be greater than that of alternative investments (opportunity cost). The expected return of \HAV{} comes from:
+\begin{enumerate}
+\item{The fees received on escrowed \HAV{}.}
+\item{An increase in $P_h$.}
+\item{Seigniorage (i.e., an increment in $P_h$ implies that the investor can issue more \NOM{}, which may eventually have a larger value than his original investment.}
+\end{enumerate}
+
+\noindent At any moment in time, the investor must decide:
+\begin{enumerate}
+\item{Whether or not to issue new \NOM{} (assuming $U_i < U_{max}$), or to burn some of them. All \NOM{} are issued/burnt at the prevailing market exchange rate, denominated in ETH.}
+\item{Whether to sell some quantity of \HAV{} in the market at price $P^M_{h,t}$. Only \HAV{} which haven't been escrowed can be sold. Otherwise they must burn \NOM{} to release them. }
+\end{enumerate}
+
+\paragraph{Nomin User}
+\emph{A person who uses the \NOM{} token.} \\
+ 
+\noindent In order to purchase \NOM{}, it must provide the user more utility than USD, since both have the same consumption value in the market. This utility may come from the properties of crypto. \\
+
+\noindent At any time, they must decide: 
+\begin{enumerate}
+\item{Whether to buy or to sell \NOM{} at $P_n$.}
+\end{enumerate}
 
 \paragraph{Agent-based modelling} It has been observed that analytic methods are often difficult to
 apply in the complex and dynamic setting of a market.

@@ -1,4 +1,4 @@
-\section{System Description} Havven is designed to incentivise stability in a decentralised cryptocurrency denominated in some external currency, such as the USD. The dual-token system is combined with a set of novel incentive mechanisms designed to stabilise the price of one of the two tokens. The first token is the havven token, \HAV{}) - to avoid confusion with the system itself - and the nomin, \NOM{} (short for denominator). \\
+\section{System Description} Havven is designed to incentivise stability in a decentralised cryptocurrency denominated in some external currency, such as the USD. The dual-token system is combined with a set of novel incentive mechanisms designed to stabilise the price of one of the two tokens. The first token is the havven token, \HAV{} - to avoid confusion with the system itself - and the nomin, \NOM{} (short for denominator). \\
 
 \noindent \HAV{} serves two functions:
 
@@ -123,7 +123,7 @@ $$ a_c = k.$$
 \newpage
 \subsubsection{Fee distribution}
 
-\noindent The fee rate paid to a \HAV{} holder that has escrowed their \HAV{} is $\alpha_r$. This rate changes with respect the individual's unique $U_i$. It increases linearly to a maximum at the optimal utilisation ratio $U_{opt}$, before quickly diminishing as $U_i$ approaches $U_{max}$. Beyond the maximum utilisation ratio $\alpha_r$ becomes 0. Note, $\alpha_r$ is applied to the pool of collected fees which is determined by $\alpha_c$. \\
+\noindent The fee rate paid to a \HAV{} holder that has escrowed their \HAV{} is $\alpha_r$. This rate changes with respect the individual's unique utilisation ratio, $U_i$. It increases linearly to a maximum at the optimal utilisation ratio $U_{opt}$, before quickly diminishing as $U_i$ approaches $U_{max}$. Beyond the maximum utilisation ratio $\alpha_r$ is 0. Note, $\alpha_r$ is applied to the pool of collected fees which is determined by $\alpha_c$. \\
 
 \[
 \alpha_r = 
@@ -159,7 +159,7 @@ $$ a_c = k.$$
 \subsection{Utilisation Ratio}
 \subsubsection{Optimal Utilisation Ratio}
 
-\noindent The optimal utilisation ratio $U_{opt}$ is a target for \HAV{} holders to track against in order to optimise the amount of fees they receive. $U_{opt}$ is defined in terms of $P_n$ such that \HAV{} holders can influence the price of \NOM{} through directly controlling the supply of \NOM{} (a havven holder can change their individual utilisation ratio by buying or issuing more nomins). \\
+\noindent The optimal utilisation ratio $U_{opt}$ is a target for \HAV{} holders to reach in order to maximise the amount of fees they receive. $U_{opt}$ is defined in terms of $P_n$ such that \HAV{} holders can influence the price of \NOM{} through directly controlling the supply of \NOM{} (a havven holder can change their individual utilisation ratio by buying or issuing more nomins). \\
  
 \noindent The function for $U_{opt}$ given below provides our dynamic target for \HAV{} holders based on the price of \NOM{}. The curve shows that the when $P_n$ is close to \$1, $ f'(P_n) $ is small. However, the further $P_n$ diverges from \$1, the larger the derivative becomes, providing an increasing incentive (via fees) for a havven holder to move toward $U_{opt}$.
 
@@ -240,32 +240,6 @@ P_{h,t} &= \frac{1}{H}* \sum\limits_{t=1}^\infty \frac{d_{n,t} *v_{n,t} * \alpha
 \end{align*}
 
 \newpage
-\subsection{Actor Definitions}
-\paragraph{Havven Holder}
-\emph{An investor who owns \HAV{} tokens.} \\
-
-\noindent In order to purchase \HAV{} the expected return has to be greater than that of alternative investments (opportunity cost). The expected return of \HAV{} comes from:
-\begin{enumerate}
-\item{The fees received on escrowed \HAV{}.}
-\item{An increase in $P_h$.}
-\item{Seigniorage (i.e., an increment in $P_h$ implies that the investor can issue more \NOM{}, which may eventually have a larger value than his original investment.}
-\end{enumerate}
-
-\noindent At any moment in time, the investor must decide:
-\begin{enumerate}
-\item{Whether or not to issue new \NOM{} (assuming $U_i < U_{max}$), or to burn some of them. All \NOM{} are issued/burnt at the prevailing market exchange rate, denominated in ETH.}
-\item{Whether to sell some quantity of \HAV{} in the market at price $P^M_{h,t}$. Only \HAV{} which haven't been escrowed can be sold. Otherwise they must burn \NOM{} to release them. }
-\end{enumerate}
-
-\paragraph{Nomin User}
-\emph{A person who uses the \NOM{} token.} \\
- 
-\noindent In order to purchase \NOM{}, it must provide the user more utility than USD, since both have the same consumption value in the market. This utility may come from the properties of crypto. \\
-
-\noindent At any time, they must decide: 
-\begin{enumerate}
-\item{Whether to buy or to sell \NOM{} at $P_n$.}
-\end{enumerate}
 
 \subsection{Example Use Case}
 
