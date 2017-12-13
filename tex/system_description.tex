@@ -7,7 +7,7 @@
 \item{To allow actors to contribute to the price stabilisation process through a set of incentives.}
 \end{enumerate}
 
-\noindent The stablecoin is the nomin. The purpose of the nomin is to track the price of a chosen external currency via the actions of havven token holders; holders of havven participate in modifying the level of supply in the nomin market such that the market price of nomin is maximally stable.
+\noindent The stablecoin is the nomin. The purpose of the nomin is to track the price of a chosen external currency via the actions of havven token holders; holders of havvens participate in modifying the level of supply in the nomin market such that the market price of nomin is maximally stable.
 
 \subsection{Incentive Layering}
 
@@ -15,7 +15,7 @@ We classify the various incentives that can be applied in a stablecoin system. N
 
 \paragraph{Overcollateralisation}
 
-The basis for price stability within Havven is overcollateralisation of the stablecoin. This means the value of escrowed havven must be strictly greater than the value of all nomin in circulation. In Havven, this ratio of nomin value to havven value is known as the utilisation ratio.
+The basis for price stability within Havven is overcollateralisation of the stablecoin. This means the value of escrowed havvens must be strictly greater than the value of all nomin in circulation. In Havven, this ratio of nomin value to havven value is known as the utilisation ratio.
 
 \paragraph{Fees}
 
@@ -23,11 +23,11 @@ The basis for price stability within Havven is overcollateralisation of the stab
 
 \paragraph{Interest Rates}
 
-\noindent Interest rates on escrowed havven can be applied in addition to the application of fees, in either fixed or floating havven supply regimes. Interest rates will be discussed in a future iteration of the whitepaper.
+\noindent Interest rates on escrowed havvens can be applied in addition to the application of fees, in either fixed or floating havven supply regimes. Interest rates will be discussed in a future iteration of the whitepaper.
 
 \paragraph{Collateral Recovery}
 
-\noindent As a final layer of incentives, forced recovery of an actor's escrowed havven may be required in order to equilibriate individual positions of utilisation ratio. Collateral recovery will be discussed in a future iteration of the whitepaper.
+\noindent As a final layer of incentives, forced recovery of an actor's escrowed havvens may be required in order to equilibriate individual positions of utilisation ratio. Collateral recovery will be discussed in a future iteration of the whitepaper.
 
 \subsection{Overcollateralisation}
 
@@ -42,7 +42,7 @@ P_h &= \text{havven price,}  & P_n &= \text{nomin price.}
 
 \subsubsection{Nomin Issuance}
 
-\noindent Nomins can only be issued when a havven holder decides to escrow some or all of their havven. In Havven, escrowing means locking some quantity of havvens $ H_e $ in order to generate a quantity of nomins $q$, such that:
+\noindent Nomins can only be issued when a havven holder decides to escrow some or all of their havvens. In Havven, escrowing means locking some quantity of havvens $ H_e $ in order to generate a quantity of nomins $q$, such that:
 \begin{align*}
 q &= P_h * H_e * U_{max}, \\
 & U_{max} < 1. \\
@@ -50,17 +50,17 @@ q &= P_h * H_e * U_{max}, \\
 
 \noindent In the above equation, $U_{max}$ represents what is known as the maximum utilisation ratio, which will be discussed below. By setting $U_{max} < 1 $, all nomins are overcollateralised when issued. \\
 
-\noindent After generating the nomins, the system places a \textbf{limit sell} order with a price of \$1 on a decentralised exchange. This means that the nomin will be sold at the current market price, down to a minimum price of \$1 USD. If we assume implementation on Ethereum, then the nomin are sold for ETH, with the proceeds of the sale remitted to the issuer. \\
+\noindent After generating the nomins, the system places a \textbf{limit sell} order with a price of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market price, down to a minimum price of \$1 USD. If we assume implementation on Ethereum, then the nomins are sold for ETH, with the proceeds of the sale remitted to the issuer. \\
 
 \subsubsection{Releasing Havvens from Escrow}
 
-\noindent In order to access the original havven that have been escrowed, the issuer must return the same quantity of nomin to the system for destruction. This is known as \textbf{burning} the nomins. Nomin can be purchased in the open market.
+\noindent In order to access the original havvens that have been escrowed, the issuer must return the same quantity of nomins to the system for destruction. This is known as \textbf{burning} the nomins. Nomins can be purchased in the open market.
 
 \newpage
 
 \subsubsection{Issuance Example (Diagrams to come)}
 
-\noindent 1. Bob purchases 10 havven at \$10 each, total value \$100. We can visualise Bob's wallet below.
+\noindent 1. Bob purchases 10 havvens at \$10 each, total value \$100. We can visualise Bob's wallet below.
 
 \begin{center}
 \begin{tikzpicture}
@@ -68,7 +68,7 @@ q &= P_h * H_e * U_{max}, \\
 \end{tikzpicture}
 \end{center}
 
-\noindent 2. Bob decides to issue some Nomins. He escrows 5 of his havvens worth \$50, locking them in the system. \\
+\noindent 2. Bob decides to issue some nommin. He escrows 5 of his havvens worth \$50, locking them in the system. \\
 
 \begin{center}
 \begin{tikzpicture}
@@ -76,7 +76,7 @@ q &= P_h * H_e * U_{max}, \\
 \end{tikzpicture}
 \end{center}
 
-\noindent 3. The maximum utilisation ratio is 0.2. The system generates and sells 10 nomin on the market and transfers the proceeds, in ETH, to Bob's wallet. \\
+\noindent 3. The maximum utilisation ratio is 0.2. The system generates and sells 10 nomins on the market and transfers the proceeds, in ETH, to Bob's wallet. \\
 
 \begin{center}
 \begin{tikzpicture}
@@ -84,7 +84,7 @@ q &= P_h * H_e * U_{max}, \\
 \end{tikzpicture}
 \end{center}
 
-\noindent 4. In order to release the escrowed havven, Bob must return 10 nomin.
+\noindent 4. In order to release the escrowed havvens, Bob must return 10 nomins.
 
 \begin{center}
 \begin{tikzpicture}
@@ -94,13 +94,13 @@ q &= P_h * H_e * U_{max}, \\
 
 \subsubsection{Price changes}
 
-\noindent \emph{What happens if the price of havven changes?} \\
+\noindent \emph{What happens if the price of havvens changes?} \\
 
-\noindent All issuance of nomin is done at the current $P_h$. However, when $P_h$ changes, the quantity of escrowed havvens changes with it (not the \emph{value}). An increase in $P_h$ means that fewer of Bob's havvens are escrowed. By contrast, a decrease in the $P_h$ means that more of his havvens are escrowed. This process occurs automatically in order to ensure that the system remains overcollateralised. \\ 
+\noindent All issuance of nomins is done at the current $P_h$. However, when $P_h$ changes, the quantity of escrowed havvens changes with it (not the \emph{value}). An increase in $P_h$ means that fewer of Bob's havvens are escrowed. In contrast, a decrease in the $P_h$ means that more of his havvens are escrowed. This process occurs automatically in order to ensure that the system remains overcollateralised. \\ 
 
-\noindent \emph{What happens if the price of nomin changes?} \\ 
+\noindent \emph{What happens if the price of nomins changes?} \\ 
 
-\noindent In order to release escrowed havven, Bob must return the same quantity of nomin that he issued. This means that if $P_n$ has increased in the market, he will need to spend more ether than he received when he issued in order to release his havven. Conversely, if $P_n$ has decreased, Bob will need to spend less in order to release his havvens.
+\noindent In order to release escrowed havvens, Bob must return the same quantity of nomins that he issued. This means that if $P_n$ has increased in the market, he will need to spend more ether than he received when he issued in order to release his havvens. Conversely, if $P_n$ has decreased, Bob will need to spend less in order to release his havvens.
 
 \newpage
 
@@ -110,7 +110,7 @@ q &= P_h * H_e * U_{max}, \\
 
 $$ U = \frac{P_n * N}{P_h * H}.$$ \\
 
-\noindent Intuitively, if $U = 1$, the value of nomins and havvens are equal. Hence, given our overcollateralisation property, the system targets $U <  1$. To do this, Havven only allows the issuance of nomin up to a maximum utilisation ratio.
+\noindent Intuitively, if $U = 1$, the value of nomins and havvens are equal. Hence, given our overcollateralisation property, the system targets $U <  1$. To do this, Havven only allows the issuance of nomins up to a maximum utilisation ratio.
 
 \subsubsection{Collateralisation Target}
 
@@ -179,7 +179,7 @@ $$ a_c = k.$$
 
 \noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$. This rate changes with respect the individual's unique utilisation ratio, $U_i$. It increases linearly to a maximum at the optimal utilisation ratio $U_{opt}$, before quickly diminishing as $U_i$ approaches $U_{max}$. Beyond the maximum utilisation ratio $\alpha_r$ is 0. Note, $\alpha_r$ is applied to the pool of collected fees which is determined by $\alpha_c$. \\
 
-$$ \alpha_{R,t,I} = \alpha_{base,t} * f_{i,t}(U_{i,t}, U_{opt}, U_{max,t}), $$
+$$ \alpha_{R,t,i} = \alpha_{base,t} * f_{i,t}(U_{i,t}, U_{opt}, U_{max,t}), $$
 
 \[
 f_{i,t}(U_{i,t}, U_{opt}, U_{max,t}) = 
