@@ -38,8 +38,8 @@ $$ C = \frac{P_n * N}{P_h * H} $$
 
 \subsection{Nomin Equilibrium Price} The law of supply and demand states that there exists some supply of nomins, $N_{opt}$, where the related level of demand yields an equilibrium price of \$1. This quantity is associated with an optimal collaterisation ratio, $C_{opt}$. We visualise this situation below. \\
 
-\todo[inline]{curved lines}
-\todo[inline]{make diagrams pretty}
+% \todo[inline]{curved lines}
+% \todo[inline]{make diagrams pretty}
 \begin{center}
 \begin{tikzpicture}[scale=3]
 
@@ -62,14 +62,14 @@ $$ C = \frac{P_n * N}{P_h * H} $$
 
 \subsection{Issuance and Collateralisation} 
 
-\todo[inline]{separate wallets from accounts}
+% \todo[inline]{separate wallets from accounts}
 
 \noindent Havven's goal is to remain overcollateralised. In order to do so, the system defines a collaterisation target:
 
 $$ 0 < C_{opt} < 1$$
 
 \noindent It is necessary at this point to distinguish between the nomins in a wallet $N_i$ (equity) and the nomins that have been issued by that wallet $\check{N_i}$ (debt). Note that globally, the $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all circulating nomins were issued by some wallet. However, a given wallet may have a balance different from its issuance debt.\\
-\todo[inline]{Make sure this equity/debt language is not too security-like.}
+% \todo[inline]{Make sure this equity/debt language is not too security-like.}
 
 \noindent Hence we can define the collateralisation ratio for an individual wallet $i$ in terms of its issuance debt:
 
@@ -92,7 +92,7 @@ $$ \check{H_i} = \frac{P_n \cdot \check{N_i}}{P_h \cdot C_{opt}}$$
 \noindent In order to access the original havvens that have been escrowed, the issuer must return the same quantity of nomins to the system to be burned. Nomins can be purchased in the open market.
 
 \subsubsection{Issuance Example (Diagrams to come?)}
-\todo[inline]{Finish the example. I don't really know if dealing with nomin price changes here is right, before introducing fees.}
+% \todo[inline]{Finish the example. I don't really know if dealing with nomin price changes here is right, before introducing fees.}
 
 \begin{enumerate}
 \item{Bob purchases 10 havvens at \$10 each, total value \$100.}
@@ -165,7 +165,7 @@ $$ a_c = k.$$
 \subsubsection{Fees received by Havven Holders}
 
 \noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$. This rate changes with respect the individual's unique collaterilisation ratio, $C_i$. It increases linearly to a maximum at the optimal collaterilisation ratio $C_{opt}$, before quickly diminishing as $C_i$ approaches $C_{max}$. Beyond the maximum collaterilisation ratio $\alpha_r$ is 0. Note, $\alpha_r$ is applied to the pool of collected fees which is determined by $\alpha_c$. \\
- \todo[inline]{figure out whether t stays}
+ % \todo[inline]{figure out whether t stays}
 
 $$ \alpha_{R,t,i} = \alpha_{base,t} * f_{i,t}(C_{i,t}, C_{opt}, C_{max,t}), $$
 
@@ -200,7 +200,7 @@ f_{i,t}(C_{i,t}, C_{opt}, C_{max,t}) =
 \newpage
 
 \subsubsection{Deriving the base fee rate}The total amount of fees collected from users has to be equal to the total amount of fees paid to the havven holders. We define the total amount of fees collected, $A_{c,t}$ below: \\
- \todo[inline]{figure out whether t stays}
+ % \todo[inline]{figure out whether t stays}
 $$ A_{c,t}  = \alpha_{c,t} * v_{n,t} * \sum\limits_I N_{I,t}, $$
 $$ v_{n,t} \text{ the velocity of nomins at t}, $$
 $$  \sum\limits_I N_{I,t} \text{ the total issued nomins}. $$
