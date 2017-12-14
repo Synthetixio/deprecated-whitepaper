@@ -2,20 +2,22 @@
 
 \noindent The havven token serves two functions:
 
-\begin{enumerate}
+\begin{itemize}
 \item{To provide the system with collateral.}
-\item{To allows actors to participate profitably in stabilising the nomin price.}
-\end{enumerate}
+\item{To allow actors to participate profitably in stabilising the nomin price.}
+\end{itemize}
 
 \paragraph{Collateralisation}
 
-\noindent The basis for price stability within the Havven system is the overcollateralisation of the nomin, i.e. the value of escrowed havvens is greater than the value of nomins in circulation. In Havven, this ratio of nomin value to havven value is known as the collateralisation ratio, and is used to provide a high level of confidence in the value of nomins. The price of havvens is actually derived internally by the system in order to decouple it from speculative irrationality. This is discussed later in this section.
+\noindent Confidence in stability of the nomin begins with overcollateralisation, so that the value of escrowed havvens is greater than the value of nomins in circulation. The value of havvens is derived internally by the system as a function of the demand for nomins; this decouples the value of the collateral pool from market speculation. \\
+
+\noindent As long as the ratio of total nomin value to total havven value remains favourable, there is sufficient backing in the underlying collateral pool to ensure that nomins can be redeemed for their face value. The redeemability of a nomin for the havvens against which it was issued strongly supports a stable price.  
 
 \paragraph{Incentives}
 
-\noindent Havven improves price stability by providing havven holders with fees in accordance with their performance in adjusting the nomin supply. These fees are generated from small charges on all nomin transactions (AND on nomin balances?). The fees are directed to the havven holders as a reward for helping maintain the correct nomin supply. \\
+\noindent Havven rewards those that have issued nomins. These rewards are derived from transaction fees and are distributed in proportion with how well each issuer maintains the correct nomin supply. The system monitors the nomin price, and responds by adjusting its targeted global supply, which individual issuers are incentivised to move towards.  \\
 
-\noindent Where necessary, other incentive regimes can be added in the future in addition to fees, such as interest rates or smart margin calls on escrowed havvens.
+\noindent In the case of extreme volatility more punitive stabilisation mechanisms will be applied. For example extra fees, interest rates, and automated collateral recovery.
 
 \newpage
 \subsection{Nomin Equilibrium} Demand and supply economics shows that there exists some supply of nomins where the related level of demand yields an equilibrium price of \$1. This quantity can be expressed in terms of some optimal collaterisation ratio. We visualise this situation below. \\
