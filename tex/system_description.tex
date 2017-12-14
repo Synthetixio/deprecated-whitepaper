@@ -17,16 +17,34 @@
 
 \noindent Havven rewards those that have issued nomins. These rewards are derived from transaction fees and are distributed in proportion with how well each issuer maintains the correct nomin supply. The system monitors the nomin price, and responds by adjusting its targeted global supply, which individual issuers are incentivised to move towards.  \\
 
-\noindent In the case of extreme volatility more punitive stabilisation mechanisms will be applied. For example extra fees, interest rates, and automated collateral recovery.
+\noindent In the case of extreme volatility stronger stabilisation mechanisms may be applied. For example extra fees, interest rates, or automated collateral recovery.
 
 \newpage
-\subsection{Nomin Equilibrium} Demand and supply economics shows that there exists some supply of nomins where the related level of demand yields an equilibrium price of \$1. This quantity can be expressed in terms of some optimal collaterisation ratio. We visualise this situation below. \\
 
+\subsection{Definitions}
+
+\noindent We first introduce the core system variables:
+
+\begin{align*}
+H &:= \text{havven quantity,} & N &:= \text{nomin quantity,} \\
+P_h &:= \text{havven price,}  & P_n &:= \text{nomin price.} \\
+\end{align*}
+
+\noindent All havven tokens are created in the initial system state, so $H$ is constant. The quantity of nomins, $N$, floats in response to the actions of havven holders.The Havven system needs to incentivise havven holders to maintain $N$ such that the nomin price, $P_n$, is stable at \$1.\\
+
+\noindent In Havven, the collateralisation ratio measures the value of nomins against the value of havvens:
+
+$$ C = \frac{P_n * N}{P_h * H}. $$
+
+\subsection{Nomin Equilibrium Price} The law of supply and demand states that there exists some supply of nomins, $N_{opt}$, where the related level of demand yields an equilibrium price of \$1. This quantity is associated with an optimal collaterisation ratio, $C_{opt}$. We visualise this situation below. \\
+
+\todo[inline]{curved lines}
+\todo[inline]{make diagrams pretty}
 \begin{center}
 \begin{tikzpicture}[scale=3]
 
 % draw axes
-\draw [<->, thick] (0,2) node (yaxis) [above] {$P$} |- (2.5,0) node (xaxis) [right] {$Q$};
+\draw [<->, thick] (0,2) node (yaxis) [above] {$P_n$} |- (2.5,0) node (xaxis) [right] {$N$};
 
 % draw intersecting lines
 \draw (0.5, 0.5) coordinate (a_1) -- (2,1.8) coordinate (a_2);
@@ -35,55 +53,41 @@
 % calculate coordinate of intersection
 \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
 
-\draw[dashed] (yaxis |- c) node [left] {$1$} -| (xaxis -| c) node[below] {$c_{opt}$};
+\draw[dashed] (yaxis |- c) node [left] {$1$} -| (xaxis -| c) node[below] {$N_{opt} = \frac{C_{opt} * P_h * H}{P_n}$};
 
 \end{tikzpicture}
 \end{center}
-	
-\subsubsection*{Demand}
 
-\noindent The system is unable to influence the demand for nomins. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency.
+\noindent The system is unable to influence the demand for nomins. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency. Although demand cannot be manipulated, the supply of nomins is controlled by havven holders, whose issuance incentives are in turn controlled by the system. It follows that as we require a fixed price $P_n = \$1 $ and are unable to control either $P_h$ or $H$, we must manipulate $C_{opt}$ such that $N = N_{opt}$ in order to satisfy our requirement.
 
-\subsubsection*{Supply}
+\subsection{Issuance and Collateralisation} 
 
-\noindent However while demand is unable to be directly influenced, the supply of nomins is controlled by havven holders who use the system to issue and burn nomins in response to its incentives. The incentives are maximised such that supply moves with demand, maintaining a constant price.\\
+\noindent Havven's goal is to remain overcollateralised. In order to do so, the system defines a collaterisation target:
 
-\subsection{Overcollateralisation}
+$$ 0 < C_{opt} < 1$$
 
-\noindent We first introduce the core system variables:
+\noindent It is necessary at this point to distinguish between the nomins in a wallet $N_i$ (equity) and the nomins that have been issued by that wallet $\check{N_i}$ (debt). Note that globally, the $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all circulating nomins were issued by some wallet. However, a given wallet may have a balance different from its issuance debt.\\
+\todo[inline]{Make sure this equity/debt language is not too security-like.}
 
-\begin{align*}
-H &= \text{Quantity of havvens,} & N &= \text{Quantity of nomins,} \\
-P_h &= \text{havven price,}  & P_n &= \text{nomin price.}
-\end{align*}
+\noindent Hence we can define the collateralisation ratio for an individual wallet $i$ in terms of its issuance debt:
 
-\noindent All havven tokens are created in the initial system state, so $H$ is constant. The quantity of nomins, $N$, floats in response to the actions of havven holders. The Havven system needs to incentivise havven holders to maintain $N$ such that the nomin price, $P_n$, is stable at \$1. \\
-
-\noindent In Havven, the collateralisation ratio measures the value of nomins against the value of havvens:
-
-$$ C = \frac{P_n * N}{P_h * H}. $$
-
-\noindent Havven's goal is to always remain overcollateralised. In order to do so, the system defines a collaterisation target:
-
-$$ 0 \leq C_{opt} \leq 1. $$
-
-\noindent An individual wallet $i$ has its own collateralisation ratio:
-
-$$ C_i = \frac{P_n * N_i}{P_h * H_i}. $$
+$$ C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}$$
 
 \noindent The system provides incentives for individual issuers to bring their $C_i$ closer to $C_{opt}$ while maintaining $C_{opt}$ itself at a level that stabilises the price.
 
-\subsubsection{Nomin Issuance}
+\paragraph{Nomin Issuance}
 
-\noindent The nomin issuance mechanism allows Havven to reach its collaterisation target. Nomins can only be issued when a havven holder decides to escrow some or all of their havvens. In Havven, escrowing means locking some quantity of havvens $\hat{H}$, in order to generate a quantity of nomins $q$, such that:
-$$ q = P_h * \hat{H} * C_{opt}, $$
-$$ C_{opt} < 1. $$
+\noindent The nomin issuance mechanism allows Havven to reach its collaterisation target. Issuing nomins escrows some quantity of havvens, which cannot be moved until they are unescrowed. The quantity of havvens $\check{H_i}$ locked in generating $\check{N_i}$ nomins is:
 
-\noindent By only allowing issuance up to $C_{opt}$, all nomins are overcollateralised when issued. After generating the nomins, the system places a \textbf{limit sell} order with a price of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market price, down to a minimum price of \$1 USD. If we assume implementation on Ethereum, then the nomins are sold for ETH, with the proceeds of the sale remitted to the issuer. \\
+$$ \check{H_i} = \frac{P_n \cdot \check{N_i} \cdot C_{opt}}{P_h }$$
 
-\subsubsection{Releasing Havvens from Escrow}
+\noindent Under equilibrium conditions, this implies that $C_i = C_{opt}$ is attained for a wallet exactly when all havvens have been escrowed, at $H_i = \check{H_i}$. As a result, the issuer cannot take actions that would bring $C_i$ above $C_{opt}$ and undercollateralise their position. Instead, $C_i$ can only exceed $C_{opt}$ with price fluctuations. \\
 
-\noindent In order to access the original havvens that have been escrowed, the issuer must return the same quantity of nomins to the system for destruction. This is known as \textbf{burning} the nomins. Nomins can be purchased in the open market.
+\noindent After generating the nomins, the system places a \textbf{limit sell} order with a price of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market price, down to a minimum price of \$1 USD. If we assume implementation on Ethereum, then the nomins are sold for ETH, with the proceeds of the sale remitted to the issuer. \\
+
+\paragraph{Nomins Destruction}
+
+\noindent In order to access the original havvens that have been escrowed, the issuer must return the same quantity of nomins to the system to be burned. Nomins can be purchased in the open market.
 
 \subsubsection{Issuance Example (Diagrams to come?)}
 
