@@ -1,4 +1,4 @@
-\section{System Description} Havven is a dual-token system that, combined with a set of novel incentive mechanisms, stabilises the price of the nomin. \\
+\section{System Description} Havven is a dual-token system that, combined with a set of novel incentive mechanisms, stabilises the price of the nomin with respect to an external asset. \\
 
 \noindent The havven token serves two functions:
 
@@ -9,20 +9,15 @@
 
 \paragraph{Collateralisation}
 
-\noindent The basis for price stability within Havven is overcollateralisation of the nomin. This means the value of escrowed havvens must be greater than the value of all nomins in circulation. In Havven, this ratio of nomin value to havven value is known as the collaterilisation ratio.
+\noindent The basis for price stability within the Havven system is the overcollateralisation of the nomin, i.e. the value of escrowed havvens is greater than the value of nomins in circulation. In Havven, this ratio of nomin value to havven value is known as the collateralisation ratio, and is used to provide a high level of confidence in the value of nomins. The price of havvens is actually derived internally by the system in order to decouple it from speculative irrationality. This is discussed later in this section.
 
 \paragraph{Incentives}
 
-\noindent Havven improves price stability by providing havven holders with fees in accordance with their performance in adjusting the nomin supply. These fees are generated from small charges on all nomin transactions. The fees are directed to the havven holders as a reward for helping maintain the correct nomin supply.
+\noindent Havven improves price stability by providing havven holders with fees in accordance with their performance in adjusting the nomin supply. These fees are generated from small charges on all nomin transactions (AND on nomin balances?). The fees are directed to the havven holders as a reward for helping maintain the correct nomin supply. \\
 
-\paragraph{Incentive Layering}
+\noindent Where necessary, other incentive regimes can be added in the future in addition to fees, such as interest rates or smart margin calls on escrowed havvens.
 
-We classify the various incentives that can be applied in a stablecoin system. Note that any subset of these can be linearly combined in order to produce a sophisticated and powerful incentive structure. Havven's approach to achieving price stability is to be passive where possible, deferring to stronger incentivisation only when necessary. The order in which these categories appear is the order in which they are applied:
-
-In the event of significant price changes, reactionary measures may be insignificant. Interest rates on escrowed havvens can be applied in addition to the application of fees, in either fixed or floating havven supply regimes. Interest rates will be discussed in a future iteration of the whitepaper.
-
-Finally, forced recovery of an actor's escrowed havvens may be required in order to equilibriate individual positions of collaterilisation ratio. Collateral recovery will be discussed in a future iteration of the whitepaper.
-
+\newpage
 \subsection{Nomin Equilibrium} Demand and supply economics shows that there exists some supply of nomins where the related level of demand yields an equilibrium price of \$1. This quantity can be expressed in terms of some optimal collaterisation ratio. We visualise this situation below. \\
 
 \begin{center}
