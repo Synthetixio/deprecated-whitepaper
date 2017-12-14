@@ -1,129 +1,29 @@
-\section{System Description} Havven is designed to incentivise stability in a decentralised cryptocurrency denominated in some external currency, such as the USD. The dual-token system is combined with a set of novel incentive mechanisms that stabilise the price of one of the two tokens. The first token is the havven token - with a lowercase h - to avoid confusion with the Havven system itself. The second token is the nomin. \\
+\section{System Description} Havven is a dual-token system that, combined with a set of novel incentive mechanisms, stabilises the price of the nomin. \\
 
 \noindent The havven token serves two functions:
 
 \begin{enumerate}
-\item{To provide the system with collateral (the system itself is tokenised).}
-\item{To allow actors to contribute to the price stabilisation process through a set of incentives.}
+\item{To provide the system with collateral.}
+\item{To allows actors to participate profitably in stabilising the nomin price.}
 \end{enumerate}
 
-\noindent The stablecoin is the nomin. The purpose of the nomin is to track the price of a chosen external currency via the actions of havven token holders; holders of havvens participate in modifying the level of supply in the nomin market such that the market price of nomin is maximally stable.
+\paragraph{Collateralisation}
 
-\subsection{Incentive Layering}
+\noindent The basis for price stability within Havven is overcollateralisation of the nomin. This means the value of escrowed havvens must be greater than the value of all nomins in circulation. In Havven, this ratio of nomin value to havven value is known as the collaterilisation ratio.
 
-We classify the various incentives that can be applied in a stablecoin system. Note that any subset of these can be linearly combined in order to produce a sophisticated and powerful incentive structure. Havven's approach to achieving price stability is to be as passive as possible and only switch on higher levels of incentivisation when necessary. The order in which these categories appear is the order in which they are applied:
+\paragraph{Incentives}
 
-\paragraph{Overcollateralisation}
+\noindent Havven improves price stability by providing havven holders with fees in accordance with their performance in adjusting the nomin supply. These fees are generated from small charges on all nomin transactions. The fees are directed to the havven holders as a reward for helping maintain the correct nomin supply.
 
-The basis for price stability within Havven is overcollateralisation of the stablecoin. This means the value of escrowed havvens must be strictly greater than the value of all nomin in circulation. In Havven, this ratio of nomin value to havven value is known as the utilisation ratio.
+\paragraph{Incentive Layering}
 
-\paragraph{Fees}
+We classify the various incentives that can be applied in a stablecoin system. Note that any subset of these can be linearly combined in order to produce a sophisticated and powerful incentive structure. Havven's approach to achieving price stability is to be passive where possible, deferring to stronger incentivisation only when necessary. The order in which these categories appear is the order in which they are applied:
 
-\noindent The second layer of economic incentives is to provide havven holders with fees in accordance with their performance in adjusting the nomin supply. These fees are generated from small charges on all nomin transactions. The fees are directed to the havven holders as a reward for helping maintain the correct nomin supply.
+In the event of significant price changes, reactionary measures may be insignificant. Interest rates on escrowed havvens can be applied in addition to the application of fees, in either fixed or floating havven supply regimes. Interest rates will be discussed in a future iteration of the whitepaper.
 
-\paragraph{Interest Rates}
+Finally, forced recovery of an actor's escrowed havvens may be required in order to equilibriate individual positions of collaterilisation ratio. Collateral recovery will be discussed in a future iteration of the whitepaper.
 
-\noindent Interest rates on escrowed havvens can be applied in addition to the application of fees, in either fixed or floating havven supply regimes. Interest rates will be discussed in a future iteration of the whitepaper.
-
-\paragraph{Collateral Recovery}
-
-\noindent As a final layer of incentives, forced recovery of an actor's escrowed havvens may be required in order to equilibriate individual positions of utilisation ratio. Collateral recovery will be discussed in a future iteration of the whitepaper.
-
-\subsection{Overcollateralisation}
-
-\noindent We first introduce the core system variables:
-
-\begin{align*}
-H &= \text{Quantity of havven,} & N &= \text{Quantity of nomin,} \\
-P_h &= \text{havven price,}  & P_n &= \text{nomin price.}
-\end{align*}
-
-\noindent All havven tokens are created in the initial system state, so $H$ is constant. The quantity of nomin, $N$, floats in response to the actions of havven holders. The Havven system needs to incentivise havven holders to maintain $N$ such that the nomin price, $P_n$, is stable at \$1.
-
-\subsubsection{Nomin Issuance}
-
-\noindent Nomins can only be issued when a havven holder decides to escrow some or all of their havvens. In Havven, escrowing means locking some quantity of havvens $ H_e $ in order to generate a quantity of nomins $q$, such that:
-\begin{align*}
-q &= P_h * H_e * U_{max}, \\
-& U_{max} < 1. \\
-\end{align*}
-
-\noindent In the above equation, $U_{max}$ represents what is known as the maximum utilisation ratio, which will be discussed below. By setting $U_{max} < 1 $, all nomins are overcollateralised when issued. \\
-
-\noindent After generating the nomins, the system places a \textbf{limit sell} order with a price of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market price, down to a minimum price of \$1 USD. If we assume implementation on Ethereum, then the nomins are sold for ETH, with the proceeds of the sale remitted to the issuer. \\
-
-\subsubsection{Releasing Havvens from Escrow}
-
-\noindent In order to access the original havvens that have been escrowed, the issuer must return the same quantity of nomins to the system for destruction. This is known as \textbf{burning} the nomins. Nomins can be purchased in the open market.
-
-\newpage
-
-\subsubsection{Issuance Example (Diagrams to come)}
-
-\noindent 1. Bob purchases 10 havvens at \$10 each, total value \$100. We can visualise Bob's wallet below.
-
-\begin{center}
-\begin{tikzpicture}
-\fill[color=black] (0,0) rectangle (10,1.0);
-\end{tikzpicture}
-\end{center}
-
-\noindent 2. Bob decides to issue some nommin. He escrows 5 of his havvens worth \$50, locking them in the system. \\
-
-\begin{center}
-\begin{tikzpicture}
-\fill[color=black] (0,0) rectangle (10,1.0);
-\end{tikzpicture}
-\end{center}
-
-\noindent 3. The maximum utilisation ratio is 0.2. The system generates and sells 10 nomins on the market and transfers the proceeds, in ETH, to Bob's wallet. \\
-
-\begin{center}
-\begin{tikzpicture}
-\fill[color=black] (0,0) rectangle (10,1.0);
-\end{tikzpicture}
-\end{center}
-
-\noindent 4. In order to release the escrowed havvens, Bob must return 10 nomins.
-
-\begin{center}
-\begin{tikzpicture}
-\fill[color=black] (0,0) rectangle (10,1.0);
-\end{tikzpicture}
-\end{center}
-
-\subsubsection{Price changes}
-
-\noindent \emph{What happens if the price of havvens changes?} \\
-
-\noindent All issuance of nomins is done at the current $P_h$. However, when $P_h$ changes, the quantity of escrowed havvens changes with it (not the \emph{value}). An increase in $P_h$ means that fewer of Bob's havvens are escrowed. In contrast, a decrease in the $P_h$ means that more of his havvens are escrowed. This process occurs automatically in order to ensure that the system remains overcollateralised. \\ 
-
-\noindent \emph{What happens if the price of nomins changes?} \\ 
-
-\noindent In order to release escrowed havvens, Bob must return the same quantity of nomins that he issued. This means that if $P_n$ has increased in the market, he will need to spend more ether than he received when he issued in order to release his havvens. Conversely, if $P_n$ has decreased, Bob will need to spend less in order to release his havvens.
-
-\newpage
-
-\subsubsection{Global Utilisation Ratio}
-
-\noindent Havven can ensure that nomins are overcollateralised at the time of issuance, however, a reduction in $P_h$ lowers the value of the escrowed havvens. The global utilisation ratio is defined as the total value of nomins divided by the total value of havvens:
-
-$$ U = \frac{P_n * N}{P_h * H}.$$ \\
-
-\noindent Intuitively, if $U = 1$, the value of nomins and havvens are equal. Hence, given our overcollateralisation property, the system targets $U <  1$. To do this, Havven only allows the issuance of nomins up to a maximum utilisation ratio.
-
-\subsubsection{Collateralisation Target}
-
-\noindent Given the need to adjust the supply of nomins, an optimum utilisation ratio is defined as the point at which maximum incentives are applied:
-
-$$ 0 \leq U_{opt} \leq U_{max} \leq 1.$$
-
-\noindent Each havven holder that has issued nomins has a unique utilisation ratio, $ U_i $. The system can measure the degree to which their $ U_i $ is above or below the optimum and reward them accordingly. In this way the system incentivises the issuance and destruction of nomins. $ U_{opt} $ is defined formally below in terms of $ P_n $. As  the nomin price diverges from the desired \$1, the incentive to either expand or contract nomin supply increases.
-
-\newpage
-\subsection{Transaction Fees} In addition to overcollateralisation, the system needs a direct incentive mechanism that can react to changes in the nomin price. 
-
-\subsubsection{Nomin Equilibrium} Demand and supply economics shows that there exists some optimal nomin supply where the related level of demand yields an equilibrium price of \$1. This quantity can be expressed in terms of a special utilisation ratio, $U_{opt}$. The graph below visualises this situation. \\
+\subsection{Nomin Equilibrium} Demand and supply economics shows that there exists some supply of nomins where the related level of demand yields an equilibrium price of \$1. This quantity can be expressed in terms of some optimal collaterisation ratio. We visualise this situation below. \\
 
 \begin{center}
 \begin{tikzpicture}[scale=3]
@@ -138,21 +38,95 @@ $$ 0 \leq U_{opt} \leq U_{max} \leq 1.$$
 % calculate coordinate of intersection
 \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
 
-\draw[dashed] (yaxis |- c) node [left] {$1$} -| (xaxis -| c) node[below] {$u_{opt}$};
+\draw[dashed] (yaxis |- c) node [left] {$1$} -| (xaxis -| c) node[below] {$c_{opt}$};
 
 \end{tikzpicture}
 \end{center}
 	
 \subsubsection*{Demand}
 
-\noindent The system is unable to influence the demand for nomin. We assume that some level of demand exists given the utility of nomin as a stable cryptocurrency.
+\noindent The system is unable to influence the demand for nomins. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency.
 
 \subsubsection*{Supply}
 
-\noindent However where demand is unable to be directly influenced, the supply of nomin is controlled by havven holders who use the system to issue and burn nomin in response to its incentives. Maximum incentive is achieved when $U_i = U_{opt}$, such that $P_n = 1$. $U_{opt}$ will be discussed further below. \\
+\noindent However while demand is unable to be directly influenced, the supply of nomins is controlled by havven holders who use the system to issue and burn nomins in response to its incentives. The incentives are maximised such that supply moves with demand, maintaining a constant price.\\
+
+\subsection{Overcollateralisation}
+
+\noindent We first introduce the core system variables:
+
+\begin{align*}
+H &= \text{Quantity of havvens,} & N &= \text{Quantity of nomins,} \\
+P_h &= \text{havven price,}  & P_n &= \text{nomin price.}
+\end{align*}
+
+\noindent All havven tokens are created in the initial system state, so $H$ is constant. The quantity of nomins, $N$, floats in response to the actions of havven holders. The Havven system needs to incentivise havven holders to maintain $N$ such that the nomin price, $P_n$, is stable at \$1. \\
+
+\noindent In Havven, the collateralisation ratio measures the value of nomins against the value of havvens:
+
+$$ C = \frac{P_n * N}{P_h * H}. $$
+
+\noindent Havven's goal is to always remain overcollateralised. In order to do so, the system defines a collaterisation target:
+
+$$ 0 \leq C_{opt} \leq 1. $$
+
+\noindent An individual wallet $i$ has its own collateralisation ratio:
+
+$$ C_i = \frac{P_n * N_i}{P_h * H_i}. $$
+
+\noindent The system provides incentives for individual issuers to bring their $C_i$ closer to $C_{opt}$ while maintaining $C_{opt}$ itself at a level that stabilises the price.
+
+\subsubsection{Nomin Issuance}
+
+\noindent The nomin issuance mechanism allows Havven to reach its collaterisation target. Nomins can only be issued when a havven holder decides to escrow some or all of their havvens. In Havven, escrowing means locking some quantity of havvens $\hat{H}$, in order to generate a quantity of nomins $q$, such that:
+$$ q = P_h * \hat{H} * C_{opt}, $$
+$$ C_{opt} < 1. $$
+
+\noindent By only allowing issuance up to $C_{opt}$, all nomins are overcollateralised when issued. After generating the nomins, the system places a \textbf{limit sell} order with a price of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market price, down to a minimum price of \$1 USD. If we assume implementation on Ethereum, then the nomins are sold for ETH, with the proceeds of the sale remitted to the issuer. \\
+
+\subsubsection{Releasing Havvens from Escrow}
+
+\noindent In order to access the original havvens that have been escrowed, the issuer must return the same quantity of nomins to the system for destruction. This is known as \textbf{burning} the nomins. Nomins can be purchased in the open market.
+
+\subsubsection{Issuance Example (Diagrams to come?)}
+
+\begin{enumerate}
+\item{Bob purchases 10 havvens at \$10 each, total value \$100.}
+\item{Bob decides to issue some nomins. He escrows 5 of his havvens worth \$50, locking them in the system.}
+\item{The optimum collaterilisation ratio is 0.2. The system generates and sells 10 nomins on the market and transfers the proceeds, in ETH, to Bob's wallet.}
+\item{In order to release the escrowed havvens, Bob must return 10 nomins.}
+\end{enumerate}
+
+\subsubsection{Price changes (Table here maybe?)}
+
+\noindent \emph{What happens if the price of havvens changes?} \\
+
+\noindent All issuance of nomins is done at the current $P_h$. However, when $P_h$ changes, the quantity of escrowed havvens changes with it (not the \emph{value}). An increase in $P_h$ means that fewer of Bob's havvens are escrowed. In contrast, a decrease in the $P_h$ means that more of his havvens are escrowed. This process occurs automatically in order to ensure that the system remains overcollateralised. \\ 
+
+\noindent \emph{What happens if the price of nomins changes?} \\ 
+
+\noindent In order to release escrowed havvens, Bob must return the same quantity of nomins that he issued. This means that if $P_n$ has increased in the market, he will need to spend more ether than he received when he issued in order to release his havvens. Conversely, if $P_n$ has decreased, Bob will need to spend less in order to release his havvens.
+
+%\subsubsection{Global collaterilisation Ratio}
+
+%\noindent Havven can ensure that nomins are overcollateralised at the time of issuance, however, a reduction in $P_h$ lowers the value of the escrowed havvens. The global collaterilisation ratio is defined as the total value of nomins divided by the total value of havvens:
+
+%$$ U = \frac{P_n * N}{P_h * H}.$$ \\
+
+%\noindent Intuitively, if $U = 1$, the value of nomins and havvens are equal. Hence, given our overcollateralisation property, the system targets $U <  1$. To do this, Havven only allows the issuance of nomins up to a maximum collaterilisation ratio.
+
+%\subsubsection{Unique Collateralisation Ratio}
+
+% \noindent Given the need to adjust the supply of nomins, an optimum collaterilisation ratio is defined as the point at which maximum incentives are applied:
+
+% $$ 0 \leq U_{opt} \leq U_{max} \leq 1.$$
+
+% \noindent Each havven holder that has issued nomins has a unique collaterilisation ratio, $ U_i $. The system can measure the degree to which their $ U_i $ is above or below the optimum and reward them accordingly. In this way the system incentivises the issuance and destruction of nomins. $ U_{opt} $ is defined formally below in terms of $ P_n $. As  the nomin price diverges from the desired \$1, the incentive to either expand or contract nomin supply increases.
 
 \newpage
-\subsubsection{Nomin transaction fees} Every time a nomin transaction occurs, the Havven system charges a small transaction fee. Transaction fees allow the system to generate revenue, which it can distribute to havven holders as an incentive to maintain nomin supply at $U_{opt}$. \\
+\subsection{Transaction Fees} In addition to overcollateralisation, the system needs a direct incentive mechanism that can react to changes in demand for nomins.
+
+\subsubsection{Nomin transaction fees} Every time a nomin transaction occurs, the Havven system charges a small transaction fee. Transaction fees allow the system to generate revenue, which it can distribute to havven holders as an incentive to maintain nomin supply at $C_{opt}$. \\
 
 \noindent The fee rate charged on nomin transactions is $\alpha_c$. It is constant and will be sufficiently small that it provides little to no friction for the user.\\
 
@@ -177,15 +151,15 @@ $$ a_c = k.$$
 \newpage
 \subsubsection{Fees received by Havven Holders}
 
-\noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$. This rate changes with respect the individual's unique utilisation ratio, $U_i$. It increases linearly to a maximum at the optimal utilisation ratio $U_{opt}$, before quickly diminishing as $U_i$ approaches $U_{max}$. Beyond the maximum utilisation ratio $\alpha_r$ is 0. Note, $\alpha_r$ is applied to the pool of collected fees which is determined by $\alpha_c$. \\
+\noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$. This rate changes with respect the individual's unique collaterilisation ratio, $C_i$. It increases linearly to a maximum at the optimal collaterilisation ratio $C_{opt}$, before quickly diminishing as $C_i$ approaches $C_{max}$. Beyond the maximum collaterilisation ratio $\alpha_r$ is 0. Note, $\alpha_r$ is applied to the pool of collected fees which is determined by $\alpha_c$. \\
 
-$$ \alpha_{R,t,i} = \alpha_{base,t} * f_{i,t}(U_{i,t}, U_{opt}, U_{max,t}), $$
+$$ \alpha_{R,t,i} = \alpha_{base,t} * f_{i,t}(C_{i,t}, C_{opt}, C_{max,t}), $$
 
 \[
-f_{i,t}(U_{i,t}, U_{opt}, U_{max,t}) = 
+f_{i,t}(C_{i,t}, C_{opt}, C_{max,t}) = 
 \begin{cases}
- \frac{U_{i,t}}{U_{opt,t}} &\mbox{when } U_i \leq U_{opt}, \\[1em]
- \frac{U_{max,t} - U_{i,t}}{U_{max,t} - U_{opt,t}} &\mbox{when } U_{opt} \leq U_i \leq U_{max}, \\[1em]
+ \frac{C_{i,t}}{C_{opt,t}} &\mbox{when } C_i \leq C_{opt}, \\[1em]
+ \frac{C_{max,t} - C_{i,t}}{C_{max,t} - C_{opt,t}} &\mbox{when } C_{opt} \leq C_i \leq C_{max}, \\[1em]
  0 &\mbox{otherwise}.
  \end{cases}
 \]
@@ -194,7 +168,7 @@ f_{i,t}(U_{i,t}, U_{opt}, U_{max,t}) =
 \begin{tikzpicture}[scale=3]
 
 % draw axes
-\draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_r$} |- (2.5,0) node (xaxis) [right] {$U_i$};
+\draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_r$} |- (2.5,0) node (xaxis) [right] {$C_i$};
 
 % draw two lines
 \draw (0.0, 0.0) coordinate (a_1) -- (1.75,0.75) coordinate (a_2);
@@ -202,7 +176,7 @@ f_{i,t}(U_{i,t}, U_{opt}, U_{max,t}) =
 
 \coordinate (c) at (1.75, 0.75);
 
-\draw[dashed] (yaxis |- c) node [left] {$a_{base}$} -| (xaxis -| c) node[below] {$u_{opt}$};
+\draw[dashed] (yaxis |- c) node [left] {$a_{base}$} -| (xaxis -| c) node[below] {$C_{opt}$};
 
 \end{tikzpicture}
 \end{center}
@@ -220,24 +194,25 @@ $$ A_{R,t} = \sum\limits_I \alpha_{R,t,I}. $$
 Havven requires that: \\
 $$ A_{R,T} =  A_{c,t}. $$ \\
 Substituting our earlier definition of $\alpha_{R,t,I}$: \\
-$$ \alpha_{base,t} *\sum\limits_I f_{i,t}(U_{i,t}, U_{opt}, U_{max,t}) =  \alpha_{c,t} * v_{n,t} * \sum\limits_I N_{I,t}. $$
+$$ \alpha_{base,t} *\sum\limits_I f_{i,t}(C_{i,t}, C_{opt}, C_{max,t}) =  \alpha_{c,t} * v_{n,t} * \sum\limits_I N_{I,t}. $$
 Solving for $\alpha_{base,t}$:\\
-$$ \alpha_{base,t} = \frac{\alpha_{c,t} * v_{n,t} * \sum\limits_I N_{I,t}}{\sum\limits_I f_{i,t}(U_{i,t}, U_{opt}, U_{max,t})}.$$
+$$ \alpha_{base,t} = \frac{\alpha_{c,t} * v_{n,t} * \sum\limits_I N_{I,t}}{\sum\limits_I f_{i,t}(C_{i,t}, C_{opt}, C_{max,t})}.$$
 
 \noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $A_{c,t}$. This rate should be achieved when an individuals $U_i$ is at $U_{opt}$. \\
 
-\noindent The definition of $U_{opt}$ must therefore provide the following incentive. If $P_n > 1$ then the system must encourage more nomin to be issued. If $P_n < 1$, the system must encourage nomin to be burned. 
+\noindent The definition of $C_{opt}$ must therefore provide the following incentive. If $P_n > 1$ then the system must encourage more nomin to be issued. If $P_n < 1$, the system must encourage nomin to be burned. 
 
 \newpage
 
-\subsection{Utilisation Ratio}
-\subsubsection{Optimal Utilisation Ratio}
+\subsection{Collaterilisation Ratio}
+\subsubsection{Optimal collaterilisation Ratio}
 
-\noindent The optimal utilisation ratio $U_{opt}$ is a target for havven holders to reach in order to maximise the amount of fees they receive. $U_{opt}$ is defined in terms of $P_n$ such that havven holders can influence the price of nomin through directly controlling the supply of nomin (a havven holder can change their individual utilisation ratio by buying or issuing more nomins). \\
+
+\noindent The optimal collaterilisation ratio $C_{opt}$ is a target for havven holders to reach in order to maximise the amount of fees they receive. $C_{opt}$ is defined in terms of $P_n$ such that havven holders can influence the price of nomin through directly controlling the supply of nomin (a havven holder can change their individual collaterilisation ratio by buying or issuing more nomins). \\
  
-\noindent The function for $U_{opt}$ given below provides our dynamic target for havven holders based on the price of nomin. The curve shows that the when $P_n$ is close to \$1, $ f'(P_n) $ is small. However, the further $P_n$ diverges from \$1, the larger the derivative becomes, providing an increasing incentive (via fees) for a havven holder to move toward $U_{opt}$.
+\noindent The function for $C_{opt}$ given below provides our dynamic target for havven holders based on the price of nomin. The curve shows that the when $P_n$ is close to \$1, $ f'(P_n) $ is small. However, the further $P_n$ diverges from \$1, the larger the derivative becomes, providing an increasing incentive (via fees) for a havven holder to move toward $C_{opt}$.
 
-$$ U_{opt} = f(P_n) * U,$$
+$$ C_{opt} = f(P_n) * C,$$
 $$ f(P_N) = max(\sigma * (x - 1)^{\phi} + 1, 0), $$
 $$\text{where } 0 \leq \sigma, \text{ the price sensitivity parameter}, $$
 $$\phi \geq 1, \text{ the flattening parameter}. $$ \\
@@ -271,15 +246,15 @@ dashed
 
 \newpage
 
-\subsubsection{Maximum Utilisation Ratio}
+\subsubsection{Maximum collaterilisation Ratio}
 
-\noindent Havven seeks to maintain $U < U_{max} < 1$, in order to remain overcollateralised. It might seem intuitive that $U_{max}$ should be a static value. However, since $U_{opt}$ changes linearly with $P_n$ and inversely with $P_h$, there are several situations where $U_{max}$ may need to change. Below we define $U_{max}$. \\
+\noindent Havven seeks to maintain $C \leq C_{opt} < C_{max} < 1$, in order to remain sufficiently overcollateralised. It might seem intuitive that $C_{max}$ should be a static value. However, since $C_{opt}$ changes linearly with $P_n$ and inversely with $P_h$, there are several situations where $C_{max}$ may need to change. Below we define $C_{max}$. \\
 
 \[
 U_{max} = 
 \begin{cases}
- U_{base} &\mbox{when } U_{opt} \leq U_{base}, \\[1em]
- a * U_{opt} &\mbox{otherwise}.
+ C_{base} &\mbox{when } C_{opt} \leq C_{base}, \\[1em]
+ a * C_{opt} &\mbox{otherwise}.
  \end{cases}
 \]
 
@@ -287,7 +262,7 @@ U_{max} =
 \begin{tikzpicture}[scale=3]
 
 % draw axes
-\draw [<->, thick] (0,2) node (yaxis) [above] {$U_{max}$} |- (2.5,0) node (xaxis) [right] {$U_{opt}$};
+\draw [<->, thick] (0,2) node (yaxis) [above] {$C_{max}$} |- (2.5,0) node (xaxis) [right] {$C_{opt}$};
 
 % draw intersecting lines
 \draw (0.0, 0.75) coordinate (a_1) -- (0.75,0.75) coordinate (a_2);
@@ -296,7 +271,7 @@ U_{max} =
 % calculate coordinate of intersection
 \coordinate (c) at (0.75,0.75);
 
-\draw[dashed] (yaxis |- c) node [left] {$U_{base}$} -| (xaxis -| c) node[below] {$U_{base}$};
+\draw[dashed] (yaxis |- c) node [left] {$C_{base}$} -| (xaxis -| c) node[below] {$C_{base}$};
 
 \end{tikzpicture}
 \end{center}
