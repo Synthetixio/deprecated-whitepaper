@@ -1,4 +1,3 @@
-
 \section{Qualitative System Analysis}
 
 This section provides a qualitative treatment of the reaction of the Havven system in response to various scenarios listed below:
@@ -93,50 +92,49 @@ There are at least two reasons that havvens could appreciate:
 \subsubsection{Radical shifts in usage}
 % \todo[inline]{Usage-shift scenario.}
 
-\subsection{Expected Market Players}
 % \todo[inline]{List expected players in the market.}
 % \todo[inline]{Outline incentives and actions for different players.}
+
+
+\subsection{Expected Market Players}
 
 \begin{itemize}
 	\item{Havven Holders}
 
-	A havven-holder provides collateral and liquidity. It’s assumed havven-holders seek fee revenues,
-	escrowing as many havvens as they can. This incentive only really makes sense if havvens are not
-	significantly volatile over the long run. But in an unstable regime we also provide incentives
-	for stabilising the nomin price. 
+	A havven-holder provides the collateral and liquidity for the system. It is assumed that havven holders seek fee revenues,
+	and escrow most of their havvens at any point in time. While this fee incentive holds if havvens are relatively stable in the long term, Havven also provide incentives for stabilising nomin price in in the short term. 
 
 	\item{Nomin Users}
 
-	Merchants, consumers, service providers, and so on: people who use the stable coin as a
-	medium of exchange. They provide a base demand for nomins, which is necessary for fees
-	to exist. These users may be disincentivised from using the system by excessive volatility
-	in the price of nomins, or by high fees.
+	Merchants, consumers, service providers, cryptocurrency market actors and so on: people who use the stable coin as a
+	medium of exchange or as a means to hedge other forms of value. Nomin users provide a base demand for nomins, which is necessary for fees
+	to exist. These users may be disincentivised from using the system in high fee situations or with excessive volatility
+	in the price of nomins.
 
 	\item{Arbitrageurs, Market Makers}
 
-	The arbitrage force allows us to assume that the cur/nom, cur/fiat, nom/fiat
-	prices are properly in alignment or will soon become aligned. Market making activities
+	The arbitrage force allows us to assume that the havven/nomin, havven/fiat, nomin/fiat
+	prices are properly in alignment or will soon become aligned. Market-making activities
 	allow us to neglect the bid/ask spread, and situations where there is insufficient
 	liquidity for players to transact.
 	
 	\item{Speculators}
 	
-	May tend to magnify price corrections, and are a significant vector by which to introduce
-	exogenous shocks to the system modelling, e.g. large capital flows in response to breaking news.
+	Speculators may tend to magnify price corrections, and are a significant vector by which to introduce
+	exogenous shocks to the system. In modelling this we induce volatility through simulating modes such as large capital flows in response to breaking news.
 	
-	\item{Malicious Attackers}
+	%\item{Malicious Attackers}
 	
-	We should examine what happens if a George Soros (or otherwise) attacks Havven.
+	%We should examine what happens if a George Soros (or otherwise) attacks Havven.
 	% \todo[inline]{List the various possible attacks against the system.}
 
 	\item{Central Banker}
 	
-	The Havven foundation will have significant capital reserves with which it could intervene
-	in the market if necessary to stabilise nomin prices. The system should work without
-	such actions, but in extreme situations it might be necessary to undertake them.
+	While the system is designed to work without intervention, the Havven foundation will have capital reserves with which to intervene
+	in the market to stabilise nomin prices in extreme situations.
 	The advantage of such a market participant is, given that a very large market entity is
 	willing to underwrite the stability of the coin, profit strategies predicated upon the
-	stability of the token become less risky, so more feasible. So the Havven foundation in
+	stability of the token become less risky and so more feasible. The Havven foundation in
 	this capacity takes on the role of providing confidence.
 
 \end{itemize}
