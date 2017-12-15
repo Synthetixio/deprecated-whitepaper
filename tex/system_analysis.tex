@@ -1,6 +1,6 @@
 \section{System Analysis}
 
-Although we have strong confidence in it already, the more Havven's stabilisation mechanism
+Although we have strong confidence in it, the more Havven's stabilisation mechanism
 stands up to attack, the more we can trust to its ultimate validity.
 Therefore we take the view that falsification is vital in validating our
 proposals. \\
@@ -9,13 +9,13 @@ proposals. \\
 Havven extensively in our our preliminary examination of its dynamics.
 Therefore in our quantitative analysis we seek above all to identify its failure
 modes, and also to characterise not just \textit{whether} Havven stabilises
-nomin prices, but also by \textit{how much}.\\
+nomin prices, but also \textit{how well}.\\
 
 \noindent In our quantitative analysis, we take three distinct approaches in modelling the system:
 \begin{itemize}
     \item[] \textbf{Analytical}
     
-	Expressing our system in the language of game theory and microeconomics,
+	By expressing our system in the language of game theory and microeconomics,
 	we seek to gain insight into Havven's incentive structure and the resulting
 	price equilibria. Examining the problem from this direction can lead us to
 	concise and mathematically robust conclusions.
@@ -39,7 +39,7 @@ nomin prices, but also by \textit{how much}.\\
 
 \subsection{Expected Market Players}
 
-We here outline some of the players we anticipate will exist in the
+We here outline some of the players anticipated to exist in the
 market. These represent only a selection of some of the most important 
 agents that our modelling and simulations are predicated upon.
 
@@ -56,22 +56,15 @@ agents that our modelling and simulations are predicated upon.
 
 	\item[] \textbf{Nomin Users}
 
-	These are the market participants who, chasing its superior utility, will make up the
-	base demand for any stablecoin.
+	These are the market participants who will make up the base demand
+	for any stablecoin, chasing its superior utility as a medium of exchange or as
+	as means of hedging against other forms of value. 
 	The users of nomins may include merchants, consumers, service providers, cryptocurrency market actors
-	such as exchanges. These are people who use the stable coin as a medium of
-	exchange or as a means to hedge other forms of value. \\
-	The volume these nomin users provide is necessary for fees to exist.
-	These users may be disincentivised from using the system in low liquidity situations or with excessive volatility
+	such as exchanges. \\
+	The transaction volume these users provide is necessary for fees to exist.
+	They may be disincentivised from using the system in low liquidity situations or with excessive volatility
 	in the price of nomins.
 
-	\item[] \textbf{Arbitrageurs and Market Makers}
-
-	The arbitrage force allows us to assume that the havven/nomin, havven/fiat, nomin/fiat
-	prices are properly in alignment or will soon become aligned. Market-making activities
-	allow us in our modelling to neglect the bid/ask spread, and situations where there is insufficient
-	liquidity for players to transact.
-	
 	\item[] \textbf{Speculators}
 	
 	Speculators may tend to magnify price corrections, and are a significant vector by which to introduce
@@ -81,9 +74,9 @@ agents that our modelling and simulations are predicated upon.
 	Speculators also produce an important stabilisation force. When the market believes that the price is
 	being stabilised, upward price shifts induce sell pressure, and downward
 	price shifts induce buy pressure. This strategy is profitable on the assumption that the price
-	will return to the equilibrium point. This neutral stabilisation force is a self-reinforcing
+	will return to the equilibrium point. This neutral stabilisation force is a self-sustaining
 	negative feedback loop which operates independently of other incentives; preliminary simulations and observations of other systems
-	have verified the efficacy of this corrective force.
+	have verified the efficacy of this corrective pressure.
 	
 	%\item{Malicious Attackers}
 	
@@ -100,6 +93,13 @@ agents that our modelling and simulations are predicated upon.
 	stability of the token become less risky and so more feasible. The Havven foundation in
 	this capacity takes on the role of providing confidence.
 
+	\item[] \textbf{Arbitrageurs and Market Makers}
+
+	The arbitrage force allows us to assume that the havven/nomin, havven/fiat, nomin/fiat
+	prices are properly in alignment or will soon become aligned. Market-making activities
+	allow us in our modelling to neglect the bid/ask spread, and situations where there is insufficient
+	liquidity for players to transact.
+	
 \end{itemize}
 
 \subsection{Agent-based modelling}
