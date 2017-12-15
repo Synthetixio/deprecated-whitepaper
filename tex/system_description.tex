@@ -153,6 +153,8 @@ C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollat}
 \check{H_i} = \frac{P_n \cdot \check{N_i}}{P_h \cdot C_{max}}  \label{eq:escrowed}
 \end{equation}
 
+\vspace{3 mm}
+
 \noindent Under equilibrium conditions, there is some $\check{H_i} \leq H_i$ when $C_i = C_{opt}$, which the issuer is incentivised to target. These incentives are provided in the form of transaction fees, discussed in section 2.4. It is important to note that the issuer may voluntarily increase their $C_i$ up to the limit of $C_{max}$; for example if they anticipate a positive movement in $C_{opt}$. $C_i$ may never exceed $C_{max}$, except by price fluctuations, and in such circumstances, issuers are rewarded for bringing $C_i$ back under $C_{max}$. \\
 
 \noindent After generating the nomins, the system places a \textbf{limit sell} order with a price of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market price, down to a minimum price of \$1 USD. If we assume implementation on Ethereum, then the nomins are sold for ETH, with the proceeds of the sale remitted to the issuer.
