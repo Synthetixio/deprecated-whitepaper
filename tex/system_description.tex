@@ -120,10 +120,10 @@ Further, if it is assumed that the average fee take is approximated by $F_t$, an
 0 < C_{opt} < 1  \label{eq:target}
 \end{equation}
 
-\noindent It is necessary at this point to distinguish between the nomins in a wallet $N_i$ (equity) and the nomins that have been issued by that wallet $\check{N_i}$ (debt). Note that globally, the $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all circulating nomins were issued by some wallet. However, a given wallet may have a balance different from its issuance debt.\\
+\noindent It is necessary at this point to distinguish, for an account $i$, between the nomins it contains $N_i$ (equity) and the nomins it has been issued $\check{N_i}$ (debt). Note that globally, the $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all circulating nomins were issued by some account. However, a given account may have a balance different from its issuance debt.\\
 % \todo[inline]{Make sure this equity/debt language is not too security-like.}
 
-\noindent Hence we can define the collateralisation ratio for an individual wallet $i$ in terms of its issuance debt:
+\noindent Hence we can define the collateralisation ratio for an individual account $i$ in terms of its issuance debt:
 
 \begin{equation}
 C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollat}
@@ -154,7 +154,7 @@ an issuer can reduce their collateralisation ratio. If an issuer does not posses
 \begin{enumerate}
 \item{Bob purchases 100 havvens at \$1 each, total value \$100. The maximum collateralisation ratio $C_{max}$ is 0.5, the optimum collateralisation ratio $C_{opt}$ is 0.4 and the nomin price $P_n$ is \$1.}
 \item{Bob decides to issue nomins up to $C_{opt}$. By equation \eqref{eq:escrowed}, the system generates 40 nomins and escrows 80 of his havvens, locking \$80 worth of value in the system $ (\check{N_i} \cdot C_{max})$.}
-\item{The system sells the nomins on the market for \$40 worth of ether, transferring it to his wallet}.
+\item{The system sells the nomins on the market for \$40 worth of ether, transferring it to his account}.
 \item{The havven price drops to \$0.90. The value of his havvens has decreased to \$90 which means his $C_i$ has increased to 0.44, greater than $C_{opt}$. The system escrows more of Bob's havvens to maintain the value of the locked collateral.}
 \item{By \eqref{eq:escrowed} the system escrows an extra 8.9 of his havvens. He now has 88.9 havvens escrowed. The value locked in the system remains unchanged at \$80.}
 \item{The havven price then increases back to \$1. The value of his havvens has increased to \$100 and his $C_i$ has decreased back to 0.4. The system releases the 8.9 havvens back to Bob and he has 80 escrowed.}
