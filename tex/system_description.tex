@@ -104,10 +104,10 @@ an issuer can reduce their collateralisation ratio. If an issuer does not posses
 % \todo[inline]{Finish the example. I don't really know if dealing with nomin price changes here is right, before introducing fees.}
 
 \begin{enumerate}
-\item{Bob purchases 10 havvens at \$10 each, total value \$100. The maximum collateralisation ratio $C_{max}$ is 0.5, the optimum collateralisation ratio $C_{opt}$ is 0.4 and the nomin price $P_n$ is 1.}
-\item{Bob decides to issue nomins up to $C_{opt}$. By equation \eqref{eq:4}, the system generates 40 nomins and escrows 8 of his havvens, locking \$80 worth of value in the system $ (\check{N} \cdot C_{max})$.}
-\item{The system sells the nomins on the market for \$40 in Eth, transferring it to his wallet}
-\item{The havven price drops to \$9. The value of his havvens has decreased to \$90 which means his $C_i$ has increased to 0.44 which is above $C_{opt}$. The system also needs to escrow more of Bob's havvens to maintain the value of the locked collateral.}
+\item{Bob purchases 10 havvens at \$10 each, total value \$100. The maximum collateralisation ratio $C_{max}$ is 0.5, the optimum collateralisation ratio $C_{opt}$ is 0.4 and the nomin price $P_n$ is \$1.}
+\item{Bob decides to issue nomins up to $C_{opt}$. By equation \eqref{eq:4}, the system generates 40 nomins and escrows 8 of his havvens, locking \$80 worth of value in the system $ (\check{N_i} \cdot C_{max})$.}
+\item{The system sells the nomins on the market for \$40 worth of ether, transferring it to his wallet}.
+\item{The havven price drops to \$9. The value of his havvens has decreased to \$90 which means his $C_i$ has increased to 0.44 which is above $C_{opt}$. The system escrows more of Bob's havvens to maintain the value of the locked collateral.}
 \item{By \eqref{eq:4} the system escrows an extra .89 of his havvens. He now has 8.89 havvens escrowed. The value locked in the system is still \$80 $(8.89 \cdot 9)$}
 \item{The havven price then increases back to \$10. The value of his havvens has increased to \$100 and his $C_i$ has decreased back to 0.4. The system releases the .89 havvens back to Bob and he has 8 escrowed.}
 \end{enumerate}
