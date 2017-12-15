@@ -1,15 +1,13 @@
 \section{System Analysis}
 
-Although we have strong confidence in it, the more Havven's stabilisation mechanism
-stands up to attack, the more we can trust to its ultimate validity.
-Therefore we take the view that falsification is vital in validating our
-proposals. \\
+While the Havven mechanism feels intuitively viable and we have strong confidence in it,
+we take the view that falsification is vital in validating our proposal.
+The more stands up to attack, the more we can trust to its ultimate validity. \\
 
-\noindent Ultimately this must done empirically, but it is important to stress test
-Havven extensively in our our preliminary examination of its dynamics.
+\noindent Ultimately this must done empirically, but it is also important to model
+Havven extensively before launching it.
 Therefore in our quantitative analysis we seek above all to identify its failure
-modes, and also to characterise not just \textit{whether} Havven stabilises
-nomin prices, but also \textit{how well}.\\
+modes, and also to characterise its stability under a range of conditions.\\
 
 \noindent In our quantitative analysis, we take three distinct approaches in modelling the system:
 \begin{itemize}
@@ -31,17 +29,39 @@ nomin prices, but also \textit{how well}.\\
 
     Initial releases of Havven will be invaluable in checking our assumptions.
     Observation of real market behaviour will allow us to better understand
-    how the it responds in different situations, and therefore how to choose good values
-    for system variables.
+	how the it responds in different situations, and therefore how to choose appropriate
+	values for system variables.
 \end{itemize}
 
 \noindent The results of these investigations will be published as they are completed.
 
+\subsection{Agent-based modelling}
+It has been observed that analytic methods are often difficult to
+apply in the complex and dynamic setting of a market.
+One suggested solution to this problem is \textit{agent-based modelling}.
+Under this paradigm, we proceed by first defining rational agent behaviour
+and then simulating the interplay of those strategies over time.
+We seek to develop a more effective
+method of characterising market behaviour and equilibrium prices than pure analytic reasoning. \\
+%~\cite{poggio2001agent}\\
+
+\noindent Such simulations also provide an immediate means of measuring
+quantities of interest. Simply by observing
+the model, we can discover how varying input parameters
+affect system outputs in an experimental fashion.
+One important corollary is that this is a way of extracting reasonable
+settings for system parameters (such as fee levels) that might be difficult
+to reason about \textit{a priori}. These systems, reactive as they are,
+also provide a method for testing proposed remedies for any identified failure
+modes, and are a platform to simulate the conclusions of any antecedent game-theoretic
+reasoning. \\
+
+\noindent Please visit \href{http://research.havven.io}{\texttt{http://research.havven.io}} for an alpha version of our model.
+
 \subsection{Expected Market Players}
 
-We here outline some of the players anticipated to exist in the
-market. These represent only a selection of some of the most important 
-agents that our modelling and simulations are predicated upon.
+Here we outline some of the players anticipated in the market. These
+represent only some of the agents that our modelling and simulations are predicated upon.
 
 \begin{itemize}
 	\item[] \textbf{Havven Holders}
@@ -103,29 +123,6 @@ agents that our modelling and simulations are predicated upon.
 	liquidity for players to transact.
 	
 \end{itemize}
-
-\subsection{Agent-based modelling}
-It has been observed that analytic methods are often difficult to
-apply in the complex and dynamic setting of a market.
-One suggested solution to this problem is \textit{agent-based modelling}.
-Under this paradigm, we proceed by first defining rational agent behaviour
-and then simulating the interplay of those strategies over time.
-We seek to develop a more effective
-method of characterising market behaviour and equilibrium prices than pure analytic reasoning. \\
-%~\cite{poggio2001agent}\\
-
-\noindent Such simulations also provide an immediate means of measuring
-quantities of interest. Simply by observing
-the model, we can discover how varying input parameters
-affect system outputs in an experimental fashion.
-One important corollary is that this is a way of extracting reasonable
-settings for system parameters (such as fee levels) that might be difficult
-to reason about \textit{a priori}. These systems, reactive as they are,
-also provide a method for testing proposed remedies for any identified failure
-modes, and are a platform to simulate the conclusions of any antecedent game-theoretic
-reasoning. \\
-
-\noindent Please visit \href{http://research.havven.io}{\texttt{http://research.havven.io}} for an alpha version of our model. \\
 
 \pagebreak
 
