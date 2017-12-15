@@ -384,4 +384,27 @@ C_{max,t} =
 \end{tikzpicture}
 \end{center}
 
+\newpage 
+
+\subsection{Fee Evasion}
+
+\noindent Being based on Ethereum, Havven is potentially vulnerable to its tokens being wrapped in another
+smart contract. These wrapped tokens could then be exchanged without incurring fees. We consider this 
+unlikely for a number of reasons. First, the fees are designed to be low enough that most users
+will not notice them. Second, network effect is tremendously important for currencies; in order to
+become useful, these tokens must first be accepted as a legitimate currency by vendors. To this end,
+we do not believe that token wrappers of this kind will be credible, not having been tested or audited,
+while its authors may also lack credibility. \\
+
+\noindent Nevertheless, it is simple to implement a democratic method, weighted by havven balance,
+by which havven holders could freeze the assets of any contract that wraps assets.
+Those havven holders are incentivised not to abuse this system for the same reason that
+bitcoin mining pools do not form cartels to double-spend: because abuse of this power
+would undermine the value of the system, and thus devalue their own holdings. \\
+
+\noindent The credible threat of such a system existing is enough to discourage wrapper
+tokens from being used, even if they are written, since any user who does so risks the balance
+in the wrapper being confiscated or frozen, so that they could not then unwrap those tokens
+to retrieve the nomins they wrapped.
+
 \newpage
