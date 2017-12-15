@@ -1,4 +1,4 @@
-\section{System Description} Havven is a dual-token system that, combined with a set of novel incentive mechanisms, stabilises the price of the nomin with respect to an external asset. \\
+\section{System Description} Havven is a dual-token system that, combined with a set of novel incentive mechanisms, stabilises the price of the nomin with respect to an external asset. Users of the nomin token pay the owners of the havven token for collateralising and stabilising the system. \\
 
 \noindent The havven token serves two functions:
 
@@ -17,7 +17,7 @@
 
 \noindent Havven rewards those that have issued nomins. These rewards are derived from transaction fees and are distributed in proportion with how well each issuer maintains the correct nomin supply. The system monitors the nomin price, and responds by adjusting its targeted global supply, which individual issuers are incentivised to move towards. \\
 
-\noindent Where volatility persists, stronger stabilisation mechanisms may be applied such as interest rates or automated collateral recovery. Where a significant portion of nomins are being used for hedging, (and hence not generating transaction fees) time-based account fees can be added to ensure that the cost of utility for hedging is not being solely borne by transactions.
+\noindent Where volatility persists, stronger stabilisation mechanisms may be applied such as automated collateral recovery. Where a significant portion of nomins are being used for hedging, (and hence not generating transaction fees) a charge can be applied to ensure that the cost of utility for hedging is not being solely borne by transactions.
 
 \newpage
 
@@ -37,7 +37,7 @@ P_h &:= \text{havven price}  & P_n &:= \text{nomin price} \\
 \noindent In Havven, the collateralisation ratio measures the value of nomins against the value of havvens:
 
 \begin{equation}
-C = \frac{P_n * N}{P_h * H} \label{eq:1}
+C = \frac{P_n * N}{P_h * H} \label{eq:collateralisation}
 \end{equation}
 
 \subsection{Nomin Equilibrium Price} The law of supply and demand states that there exists some supply of nomins, $N_{opt}$, where the related level of demand yields an equilibrium price of \$1. This quantity is associated with an optimal collaterisation ratio, $C_{opt}$. We visualise this equilibrium below with a hypothetical demand curve, D, and a supply curve, S.  \\
@@ -76,7 +76,7 @@ exactly when demand has increased. \\
 \noindent We define the value of a havven in the following way:
 
 \begin{equation}
-P_{h,t} = \frac{1}{H}* \sum\limits_{t=1}^\infty \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{(1+R)^t} \approx \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{R * H} \label{eq:2}
+P_{h,t} = \frac{1}{H}* \sum\limits_{t=1}^\infty \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{(1+R)^t} \approx \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{R * H} \label{eq:price}
 \end{equation}
 
 where
@@ -97,7 +97,7 @@ where
 \noindent Havven's goal is to remain overcollateralised. In order to do so, the system defines a collaterisation target:
 
 \begin{equation}
-0 < C_{opt} < 1  \label{eq:2}
+0 < C_{opt} < 1  \label{eq:target}
 \end{equation}
 
 \noindent It is necessary at this point to distinguish between the nomins in a wallet $N_i$ (equity) and the nomins that have been issued by that wallet $\check{N_i}$ (debt). Note that globally, the $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all circulating nomins were issued by some wallet. However, a given wallet may have a balance different from its issuance debt.\\
@@ -106,7 +106,7 @@ where
 \noindent Hence we can define the collateralisation ratio for an individual wallet $i$ in terms of its issuance debt:
 
 \begin{equation}
-C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:3}
+C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollat}
 \end{equation}
 
 \noindent The system provides incentives for individual issuers to bring their $C_i$ closer to $C_{opt}$ while maintaining $C_{opt}$ itself at a level that stabilises the price.
@@ -116,7 +116,7 @@ C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:3}
 \noindent The nomin issuance mechanism allows Havven to reach its collaterisation target. Issuing nomins escrows some quantity of havvens, which cannot be moved until they are unescrowed. The quantity of havvens $\check{H_i}$ locked in generating $\check{N_i}$ nomins is:
 
 \begin{equation}
-\check{H_i} = \frac{P_n \cdot \check{N_i}}{P_h \cdot C_{max}}  \label{eq:4}
+\check{H_i} = \frac{P_n \cdot \check{N_i}}{P_h \cdot C_{max}}  \label{eq:escrowed}
 \end{equation}
 
 \noindent Under equilibrium conditions, there is some $\check{H_i} \leq H_i$ when $C_i = C_{opt}$, which the issuer is incentivised to target. These incentives are provided in the form of transaction fees, discussed in section 2.4. It is important to note that the issuer may voluntarily increase their $C_i$ up to the limit of $C_{max}$; for example if they anticipate a positive movement in $C_{opt}$. $C_i$ may never exceed $C_{max}$, except by price fluctuations, and in such circumstances, issuers are rewarded for bringing $C_i$ back under $C_{max}$. \\
@@ -128,19 +128,21 @@ C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:3}
 \noindent In order to access the original havvens that have been escrowed, the issuer must return the same quantity of nomins to the system to be burned. This is a main way 
 an issuer can reduce their collateralisation ratio. If an issuer does not possess the required nomins, they can be purchased on the open market.
 
+\newpage
+
 \subsubsection{Issuance Example}
 % \todo[inline]{Finish the example. I don't really know if dealing with nomin price changes here is right, before introducing fees.}
 
 \begin{enumerate}
-\item{Bob purchases 10 havvens at \$10 each, total value \$100. The maximum collateralisation ratio $C_{max}$ is 0.5, the optimum collateralisation ratio $C_{opt}$ is 0.4 and the nomin price $P_n$ is \$1.}
-\item{Bob decides to issue nomins up to $C_{opt}$. By equation \eqref{eq:4}, the system generates 40 nomins and escrows 8 of his havvens, locking \$80 worth of value in the system $ (\check{N_i} \cdot C_{max})$.}
+\item{Bob purchases 100 havvens at \$1 each, total value \$100. The maximum collateralisation ratio $C_{max}$ is 0.5, the optimum collateralisation ratio $C_{opt}$ is 0.4 and the nomin price $P_n$ is \$1.}
+\item{Bob decides to issue nomins up to $C_{opt}$. By equation \eqref{eq:escrowed}, the system generates 40 nomins and escrows 80 of his havvens, locking \$80 worth of value in the system $ (\check{N_i} \cdot C_{max})$.}
 \item{The system sells the nomins on the market for \$40 worth of ether, transferring it to his wallet}.
-\item{The havven price drops to \$9. The value of his havvens has decreased to \$90 which means his $C_i$ has increased to 0.44 which is above $C_{opt}$. The system escrows more of Bob's havvens to maintain the value of the locked collateral.}
-\item{By \eqref{eq:4} the system escrows an extra .89 of his havvens. He now has 8.89 havvens escrowed. The value locked in the system is still \$80 $(8.89 \cdot 9)$}
-\item{The havven price then increases back to \$10. The value of his havvens has increased to \$100 and his $C_i$ has decreased back to 0.4. The system releases the .89 havvens back to Bob and he has 8 escrowed.}
+\item{The havven price drops to \$0.90. The value of his havvens has decreased to \$90 which means his $C_i$ has increased to 0.44, greater than $C_{opt}$. The system escrows more of Bob's havvens to maintain the value of the locked collateral.}
+\item{By \eqref{eq:escrowed} the system escrows an extra 8.9 of his havvens. He now has 88.9 havvens escrowed. The value locked in the system remains unchanged at \$80.}
+\item{The havven price then increases back to \$1. The value of his havvens has increased to \$100 and his $C_i$ has decreased back to 0.4. The system releases the 8.9 havvens back to Bob and he has 80 escrowed.}
 \end{enumerate}
 
-\paragraph{Motivation} The above example has illustrated how the system maintains the value of the underlying collateral by adjusting the quantity of a user's escrowed havvens as the havven price changes.
+\noindent The above example has illustrated how the system maintains the value of the underlying collateral by adjusting the quantity of a user's escrowed havvens as the havven price changes.
 
 %\subsubsection{Price changes (Table here maybe?)}
 
@@ -228,8 +230,11 @@ f_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) =
 \draw (1.75, 0.75) coordinate (a_1) -- (2.25,0.0) coordinate (a_2);
 
 \coordinate (c) at (1.75, 0.75);
+\coordinate (d) at (2.25, 0.0);
+\coordinate (e) at (0.00, 0.00);
 
 \draw[dashed] (yaxis |- c) node [left] {$a_{base}$} -| (xaxis -| c) node[below] {$C_{opt}$};
+\draw[dashed] (yaxis |- e) node [left] {$a_{base}$} -| (xaxis -| d) node[below] {$C_{max}$};
 
 \end{tikzpicture}
 \end{center}
