@@ -64,31 +64,40 @@ C = \frac{P_n * N}{P_h * H} \label{eq:1}
 
 \noindent The system is unable to influence the demand for nomins. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency. Although demand cannot be manipulated, the supply of nomins is controlled by havven holders, whose issuance incentives are in turn controlled by the system. It follows that as we require a fixed price $P_n = \$1 $ and are unable to control either $P_h$ or $H$, we must manipulate $C_{opt}$ such that $N = N_{opt}$ in order to satisfy our requirement.
 
-\subsection{Intrinsic Price}
+\subsection{Intrinsic Havven Value}
 
-\noindent Being a freely-tradable ERC20 token, havvens will have a market price. However, using this for
-$P_h$ would expose the collateralisation ratio computation to speculative price shocks.
-Instead, the ``True'' price of a havven is computed as a function of the transaction fees
-that the system charges. In this way we connect the computed price of the havven directly
-with demand for nomins. Price increases will allow an expansion in the money supply
-exactly when demand has increased. \\
+\noindent Being a freely-tradable ERC20 token, havvens will have a market price.
+However, using this for $P_h$ would expose the collateralisation ratio computation
+to speculative price shocks. Instead, the ``true'' price of a havven is computed as a
+function of the transaction fees that the system charges. In this way we connect the
+computed price of the havven directly with demand for nomins.
+Price increases will allow an expansion in the money supply exactly when demand has increased. \\
 
-\noindent We define the value of a havven in the following way:
+\noindent We define the value of a havven as a share in the discounted sum over past fee returns.
+In this way the price is not vulnerable to instantaneous volume spikes, while
+taking the most recent transaction volumes to be the most highly-correlated with future volumes.
 
 \begin{equation}
-P_{h,t} = \frac{1}{H}* \sum\limits_{t=1}^\infty \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{(1+R)^t} \approx \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{R * H} \label{eq:2}
+    P_{h,t} = \frac{1}{H} \sum_{t'=1}^{t} \frac{f_{t - t'}}{(1 + r)^{t'}}
 \end{equation}
 
 where
 
 \begin{align*} 
 & P_{h,t} \text{ is the price of one havven at time } t  \\
+& f_t \text{ is the total fees collected in period } t\\
 & H \text{ is the number of havvens}  \\
-& d_{n,t} \text{ is the demand for nomins at t}  \\
-& v_{n,t} \text{ is the velocity of nomins at t}  \\
-& \alpha_{R,t} \text{ is the fee from trade with nomins}  \\
-& R \text{ is the interest rate / rate of return of havvens}  \\
-\end{align*}   
+& r \text{ is a falloff term}  \\
+\end{align*}
+
+\noindent This can be computed efficiently, because $P_{h,t+1} = \frac{P_{h,t} + f_t}{r}$. 
+Further, if it is assumed that the average fee take is approximated by $f_t$, and $t$ is large, then
+
+\begin{equation}
+    P_{h,t} \approx \frac{1}{H} \sum_{t'=1}^{\infty} \frac{f_t}{(1 + r)^{t'}} = \frac{f_t}{H \cdot r}
+\end{equation}
+
+\newpage
 
 \subsection{Issuance and Collateralisation} 
 
