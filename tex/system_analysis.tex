@@ -11,8 +11,8 @@ Therefore in our quantitative analysis we seek above all to identify its failure
 modes, and also to characterise not just \textit{whether} Havven stabilises
 nomin prices, but also by \textit{how much}.\\
 
-\noindent Our present confidence in Havven stems from the three distinct approaches 
-we take in modelling it:
+\noindent Our confidence in Havven will stem from the three distinct approaches 
+we will take in modelling it:
 \begin{itemize}
     \item[] \textbf{Analytical}
     
@@ -36,38 +36,64 @@ we take in modelling it:
     for system variables.
 \end{itemize}
 
+The results of these investigations will be published as they are completed.
 
-\subsection{Game-theoretic modelling}
-% \todo[inline]{Discuss game theoretic modelling.}
+\subsection{Expected Market Players}
 
-\subsubsection{Actor Definitions}
-\paragraph{Havven Holder}
-\emph{An investor who owns \HAV{} tokens.} \\
+\begin{itemize}
+	\item{Havven Holders}
 
-\noindent In order to purchase \HAV{} the expected return has to be greater than that of alternative investments (opportunity cost). The expected return of \HAV{} comes from:
-\begin{enumerate}
-\item{The fees received on escrowed \HAV{}.}
-\item{An increase in $P_h$.}
-\item{Seigniorage (i.e., an increment in $P_h$ implies that the investor can issue more \NOM{}, which may eventually have a larger value than his original investment.}
-\end{enumerate}
+	A havven-holder provides the collateral and liquidity for the system.
+	It is assumed that havven holders primarily seek fee revenues, and escrow most of their havvens,
+	adjusting their issuance to track Havven's moving fee incentives.
+	While these incentives make sense if havvens are relatively stable in the long term,
+	Havven will also provide incentives for correcting the nomin price in in the short term.
+	Returns for these actors are primarily realised in fees, seignorage, and the appreciation of havvens resulting
+	from their constrained supply.
 
-\noindent At any moment in time, the investor must decide:
-\begin{enumerate}
-\item{Whether or not to issue new \NOM{} (assuming $U_i < U_{max}$), or to burn some of them. All \NOM{} are issued/burnt at the prevailing market exchange rate, denominated in ETH.}
-\item{Whether to sell some quantity of \HAV{} in the market at price $P^M_{h,t}$. Only \HAV{} which haven't been escrowed can be sold. Otherwise they must burn \NOM{} to release them. }
-\end{enumerate}
+	\item{Nomin Users}
 
-\paragraph{Nomin User}
-\emph{A person who uses the \NOM{} token.} \\
- 
-\noindent In order to purchase \NOM{}, it must provide the user more utility than USD, since both have the same consumption value in the market. This utility may come from the properties of crypto. \\
+	These are the market participants who, chasing its superior utility, will make up the
+	base demand for any stablecoin.
+	The users of nomins may include merchants, consumers, service providers, cryptocurrency market actors
+	such as exchanges. These are people who use the stable coin as a medium of
+	exchange or as a means to hedge other forms of value.
+	The volume these nomin users provide is necessary for fees to exist.
+	These users may be disincentivised from using the system in low liquidity situations or with excessive volatility
+	in the price of nomins.
 
-\noindent At any time, they must decide: 
-\begin{enumerate}
-\item{Whether to buy or to sell \NOM{} at $P_n$.}
-\end{enumerate}
+	\item{Arbitrageurs and Market Makers}
 
-\paragraph{Agent-based modelling} It has been observed that analytic methods are often difficult to
+	The arbitrage force allows us to assume that the havven/nomin, havven/fiat, nomin/fiat
+	prices are properly in alignment or will soon become aligned. Market-making activities
+	allow us in our modelling to neglect the bid/ask spread, and situations where there is insufficient
+	liquidity for players to transact.
+	
+	\item{Speculators}
+	
+	Speculators may tend to magnify price corrections, and are a significant vector by which to introduce
+	exogenous shocks to the system. In our modelling we induce volatility by simulating modes of interest
+	such as large capital flows in response to breaking news and the like.
+	
+	%\item{Malicious Attackers}
+	
+	%We should examine what happens if a George Soros (or otherwise) attacks Havven.
+	% \todo[inline]{List the various possible attacks against the system.}
+
+	\item{Buyer of Last Resort}
+	
+	While the system is designed to work without intervention, the Havven foundation
+	will have capital reserves with which to intervene in the market to stabilise
+	nomin prices in extreme situations. \\
+	The advantage of such a market participant is, given that a very large market entity is
+	willing to underwrite the stability of the coin, profit strategies predicated upon the
+	stability of the token become less risky and so more feasible. The Havven foundation in
+	this capacity takes on the role of providing confidence.
+
+\end{itemize}
+
+\subsection{Agent-based modelling}
+It has been observed that analytic methods are often difficult to
 apply in the complex and dynamic setting of a market.
 One suggested solution to this problem is \textit{agent-based modelling}.
 Under this paradigm, we proceed by first defining rational agent behaviour
@@ -212,51 +238,5 @@ There are at least two reasons that havvens could appreciate:
 
 % \todo[inline]{List expected players in the market.}
 % \todo[inline]{Outline incentives and actions for different players.}
-
-
-\subsection{Expected Market Players}
-
-\begin{itemize}
-	\item{Havven Holders}
-
-	A havven-holder provides the collateral and liquidity for the system. It is assumed that havven holders seek fee revenues,
-	and escrow most of their havvens at any point in time. While this fee incentive holds if havvens are relatively stable in the long term, Havven also provide incentives for stabilising nomin price in in the short term. 
-
-	\item{Nomin Users}
-
-	Merchants, consumers, service providers, cryptocurrency market actors and so on: people who use the stable coin as a
-	medium of exchange or as a means to hedge other forms of value. Nomin users provide a base demand for nomins, which is necessary for fees
-	to exist. These users may be disincentivised from using the system in high fee situations or with excessive volatility
-	in the price of nomins.
-
-	\item{Arbitrageurs, Market Makers}
-
-	The arbitrage force allows us to assume that the havven/nomin, havven/fiat, nomin/fiat
-	prices are properly in alignment or will soon become aligned. Market-making activities
-	allow us to neglect the bid/ask spread, and situations where there is insufficient
-	liquidity for players to transact.
-	
-	\item{Speculators}
-	
-	Speculators may tend to magnify price corrections, and are a significant vector by which to introduce
-	exogenous shocks to the system. In modelling this we induce volatility through simulating modes such as large capital flows in response to breaking news.
-	
-	%\item{Malicious Attackers}
-	
-	%We should examine what happens if a George Soros (or otherwise) attacks Havven.
-	% \todo[inline]{List the various possible attacks against the system.}
-
-	\item{Central Banker}
-	
-	While the system is designed to work without intervention, the Havven foundation will have capital reserves with which to intervene
-	in the market to stabilise nomin prices in extreme situations.
-	The advantage of such a market participant is, given that a very large market entity is
-	willing to underwrite the stability of the coin, profit strategies predicated upon the
-	stability of the token become less risky and so more feasible. The Havven foundation in
-	this capacity takes on the role of providing confidence.
-
-\end{itemize}
-
-
 
 \pagebreak
