@@ -21,7 +21,7 @@
 
 \newpage
 
-\subsection{Definitions}
+\subsection{Equilibrium Nomin Price}
 
 \noindent We first introduce the core system variables:
 
@@ -32,20 +32,26 @@ P_h &:= \text{havven price}  & P_n &:= \text{nomin price} \\
 
 % \todo[inline]{Consider renaming havven price symbol to reflect that it is computed from income}
 
-\noindent All havven tokens are created in the initial system state, so $H$ is constant. The quantity of nomins, $N$, floats in response to the actions of havven holders.The Havven system needs to incentivise havven holders to maintain $N$ such that the nomin price, $P_n$, is stable at \$1.\\
+\noindent All havven tokens are created at initialisation, so $H$ is constant.
+The quantity of nomins, $N$, floats in response to the actions of havven holders.
+The Havven system needs to incentivise havven holders to maintain $N$ such that
+the nomin price, $P_n$, is stable at \$1.\\
 
-\noindent In Havven, the collateralisation ratio measures the value of nomins against the value of havvens:
+\noindent In Havven, the measure of the value of nomins against the value
+of havvens is called the collateralisation ratio:
 
 \begin{equation}
 C = \frac{P_n * N}{P_h * H} \label{eq:collateralisation}
 \end{equation}
 
-\noindent We will subscript variables with $t$ to indicate the value of that
-variable at a given time.
+\noindent As we proceed, we may subscript variables with $t$ to indicate the value of that
+variable at a given time. \\
 
-\pagebreak
-
-\subsection{Nomin Equilibrium Price} The law of supply and demand states that there exists some supply of nomins, $N_{opt}$, where the related level of demand yields an equilibrium price of \$1. This quantity is associated with an optimal collaterisation ratio, $C_{opt}$. We visualise this equilibrium below with a hypothetical demand curve, D, and a supply curve, S.  \\
+\noindent The law of supply and demand states that there exists some supply
+of nomins, $N_{opt}$, where the related level of demand yields an equilibrium
+price of \$1. This quantity is associated with an optimal collaterisation ratio,
+$C_{opt}$. We visualise this equilibrium below with a hypothetical demand
+curve, D, and a supply curve, S.  \\
 
 % \todo[inline]{curved lines}
 % \todo[inline]{make diagrams pretty}
