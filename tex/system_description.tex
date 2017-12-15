@@ -128,8 +128,6 @@ C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollat}
 \noindent In order to access the original havvens that have been escrowed, the issuer must return the same quantity of nomins to the system to be burned. This is a main way 
 an issuer can reduce their collateralisation ratio. If an issuer does not possess the required nomins, they can be purchased on the open market.
 
-\newpage
-
 \subsubsection{Issuance Example}
 % \todo[inline]{Finish the example. I don't really know if dealing with nomin price changes here is right, before introducing fees.}
 
@@ -243,7 +241,9 @@ f_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) =
 
 \newpage
 
-\subsubsection{Deriving the Base Fee Rate}The total amount of fees collected from users has to be equal to the total amount of fees paid to the havven holders. We define the total amount of fees collected, $A_{c,t}$ below: \\
+\subsubsection{Deriving the Base Fee Rate}
+
+The total amount of fees collected from users has to be equal to the total amount of fees paid to the havven holders. We define the total amount of fees collected, $A_{c,t}$ below: \\
  % \todo[inline]{figure out whether t stays}
 \begin{equation}
 A_{c,t}  = \alpha_{c,t} * v_{n,t} * \sum\limits_I N_{I,t}  \label{eq:8}
