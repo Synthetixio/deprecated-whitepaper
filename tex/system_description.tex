@@ -173,7 +173,7 @@ an issuer can reduce their collateralisation ratio. If an issuer does not posses
 
 \noindent Some of the equations below are defined in the discrete time domain and are referenced with a subscript $t$. These will be specifically used in our game theoretic modelling.
 
-\subsubsection{Nomin transaction fees} Every time a nomin transaction occurs, the Havven system charges a small transaction fee. Transaction fees allow the system to generate revenue, which it can distribute to havven holders as an incentive to maintain nomin supply at $C_{opt}$. \\
+\subsubsection{Nomin Transaction Fees} Every time a nomin transaction occurs, the Havven system charges a small transaction fee. Transaction fees allow the system to generate revenue, which it can distribute to havven holders as an incentive to maintain nomin supply at $C_{opt}$. \\
 
 \noindent The fee rate charged on nomin transactions is $\alpha_c$. It is constant and will be sufficiently small that it provides little to no friction for the user.\\
 
@@ -198,7 +198,7 @@ a_c = k \ \label{eq:5}
 \end{center}
 
 \newpage
-\subsubsection{Fees received by Havven Holders}
+\subsubsection{Fees Received by Havven Holders}
 
 \noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$. This rate changes with respect their unique collaterilisation ratio, $C_i$. It increases linearly to a maximum at the optimal collaterilisation ratio $C_{opt}$, before quickly diminishing as $C_i$ approaches the maximum collaterisation ratio $C_{max}$. When $C > C_{max}$, $\alpha_r = 0$. Note, $\alpha_r$ is applied to the pool of collected fees which is determined by $\alpha_c$. \\
  % \todo[inline]{figure out whether t stays}
@@ -238,7 +238,7 @@ f_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) =
 
 \newpage
 
-\subsubsection{Deriving the base fee rate}The total amount of fees collected from users has to be equal to the total amount of fees paid to the havven holders. We define the total amount of fees collected, $A_{c,t}$ below: \\
+\subsubsection{Deriving the Base Fee Rate}The total amount of fees collected from users has to be equal to the total amount of fees paid to the havven holders. We define the total amount of fees collected, $A_{c,t}$ below: \\
  % \todo[inline]{figure out whether t stays}
 \begin{equation}
 A_{c,t}  = \alpha_{c,t} * v_{n,t} * \sum\limits_I N_{I,t}  \label{eq:8}
@@ -265,7 +265,7 @@ Solving for $\alpha_{base,t} $:\\
 \newpage
 
 \subsection{Collaterilisation Ratio}
-\subsubsection{Optimal collaterilisation Ratio}
+\subsubsection{Optimal Collaterilisation Ratio}
 
 \noindent The optimal collaterilisation ratio $C_{opt}$ is a target for havven holders to reach in order to maximise the amount of fees they receive. $C_{opt}$ is defined in terms of $P_n$ such that havven holders can influence the price of nomin through directly controlling the supply of nomin (a havven holder can change their individual collaterilisation ratio by buying or issuing more nomins). \\
  
@@ -312,7 +312,7 @@ dashed
 
 \newpage
 
-\subsubsection{Maximum collaterilisation Ratio}
+\subsubsection{Maximum Collaterilisation Ratio}
 
 \noindent Havven seeks to maintain $C \leq C_{opt} < C_{max} < 1$, in order to remain sufficiently overcollateralised. It might seem intuitive that $C_{max}$ should be a static value. However, since $C_{opt}$ changes linearly with $P_n$ and inversely with $P_h$, there are several situations where $C_{max}$ may need to change. Below we define $C_{max}$. \\
 
