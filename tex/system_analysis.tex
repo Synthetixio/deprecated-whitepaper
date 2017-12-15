@@ -109,21 +109,22 @@ One important corollary is that this is a way of extracting reasonable
 settings for system parameters (such as fee levels) that might be difficult
 to reason about \textit{a priori}. These systems, reactive as they are,
 also provide a method for testing proposed remedies for any identified failure
-modes.
+modes, and are a platform to simulate the conclusions of any antecedent game-theoretic
+reasoning.
 
 % \todo[inline]{Discuss that the game theory conclusions can be simulated}
 
-\noindent In sum, then, the modelling seeks to answer the following, among other questions:
+% \noindent In sum, then, the modelling seeks to answer the following, among other questions:
 
-\begin{itemize}
-    \item Does the system stabilise its nomin price?
-    \item Under what conditions can stability fail?
-    \item What are reasonable initial settings for fees and other parameters?
-    \item What effect does the utilisation ratio have on havven/nomin price ratio?
-    \item What is an effective utilisation ratio?
-    \item What is the effect of a direct redemption regime?
-    \item What are the expected returns for havven-holders?
-\end{itemize}
+% \begin{itemize}
+%     \item Does the system stabilise its nomin price?
+%     \item Under what conditions can stability fail?
+%     \item What are reasonable initial settings for fees and other parameters?
+%     \item What effect does the utilisation ratio have on havven/nomin price ratio?
+%     \item What is an effective utilisation ratio?
+%     \item What is the effect of a direct redemption regime?
+%     \item What are the expected returns for havven-holders?
+% \end{itemize}
 
 % \todo[inline]{Fuller description of the technicals of the modelling.}
 
@@ -137,106 +138,106 @@ modes.
 
 \noindent Please visit \href{http://research.havven.io}{\texttt{research.havven.io}} for a pre-alpha version of our model.
 
-\subsection{Fee/velocity/return computations}
+% \subsection{Fee/velocity/return computations}
 % \todo[inline]{Fee/velocity/return computations}
 
 \pagebreak
 
-\section{Qualitative System Analysis}
+% \section{Qualitative System Analysis}
 
-This section provides a qualitative treatment of the reaction of the Havven system in response to various scenarios listed below:
+% This section provides a qualitative treatment of the reaction of the Havven system in response to various scenarios listed below:
 
 % \todo[inline]{Scenario analysis.}
 
-\subsection{Incentives}
+% \subsection{Incentives}
 
-\paragraph{Why would anyone use nomins?}
-\begin{itemize}
-	\item Versus havvens?
-	\item Versus alternatives?
-\end{itemize}
+% \paragraph{Why would anyone use nomins?}
+% \begin{itemize}
+% 	\item Versus havvens?
+% 	\item Versus alternatives?
+% \end{itemize}
 
-\paragraph{Why would anyone issue nomins?}
-\begin{itemize}
-	\item Fees
-	\item Because they thought the peg would break in the positive direction.
-\end{itemize}
+% \paragraph{Why would anyone issue nomins?}
+% \begin{itemize}
+% 	\item Fees
+% 	\item Because they thought the peg would break in the positive direction.
+% \end{itemize}
 
-\subsection{Scenarios}
+% \subsection{Scenarios}
 
-\subsubsection{Havvens appreciate against nomins.} \label{sec:havven-nomin-appreciation}
-\begin{itemize}
-	\item{Havven-holders can issue more nomins.}
+% \subsubsection{Havvens appreciate against nomins.} \label{sec:havven-nomin-appreciation}
+% \begin{itemize}
+% 	\item{Havven-holders can issue more nomins.}
 
-	This might be scary because we either want the nomin supply to fall, or nomin demand to increase.
-	This is fine if the nomin price fell, because then nomin demand should increase.
-	However, if it was simply that the havven price increased, then this might encourage
-	oversupply of nomins as issuers compete for shares of the fee pool.
+% 	This might be scary because we either want the nomin supply to fall, or nomin demand to increase.
+% 	This is fine if the nomin price fell, because then nomin demand should increase.
+% 	However, if it was simply that the havven price increased, then this might encourage
+% 	oversupply of nomins as issuers compete for shares of the fee pool.
 
-	\item{Cheaper exit}
+% 	\item{Cheaper exit}
 
-	Anyone who has previously issued havvens but who wants to exit can buy nomins for
-	cheaper than they issued them at, so egress with a profit.
-	Alternatively, if the havven price doubles, then only half of their stake is required
-	to back the nomins they have issued. They can use these proceeds to completely liquidate
-	their position.
+% 	Anyone who has previously issued havvens but who wants to exit can buy nomins for
+% 	cheaper than they issued them at, so egress with a profit.
+% 	Alternatively, if the havven price doubles, then only half of their stake is required
+% 	to back the nomins they have issued. They can use these proceeds to completely liquidate
+% 	their position.
 
-	\item{Each nomin locks fewer havvens.}
+% 	\item{Each nomin locks fewer havvens.}
 	
-\end{itemize}
+% \end{itemize}
 
-\subsubsection{Havvens depreciate against nomins.} \label{sec:havven-nomin-depreciation}
+% \subsubsection{Havvens depreciate against nomins.} \label{sec:havven-nomin-depreciation}
 
-\begin{itemize}
-	\item{Havven-holders can issue fewer nomins.}
+% \begin{itemize}
+% 	\item{Havven-holders can issue fewer nomins.}
 	
-	Perhaps they may even be under-staked.
+% 	Perhaps they may even be under-staked.
 
-	\item{Each nomin locks more havvens.}
-	\item{A player can issue a quantity of nomins and sell them for havvens.}
+% 	\item{Each nomin locks more havvens.}
+% 	\item{A player can issue a quantity of nomins and sell them for havvens.}
 		  
-	They would do this on the assumption that, once the nomin price decreases as a result of the increased
-	supply, they will be able to buy back the same quantity of nomins to free up their
-	havvens more cheaply.
-\end{itemize}
+% 	They would do this on the assumption that, once the nomin price decreases as a result of the increased
+% 	supply, they will be able to buy back the same quantity of nomins to free up their
+% 	havvens more cheaply.
+% \end{itemize}
 
-\subsubsection{Nomin/havven liquidity dries up}
-\begin{itemize}
-	\item Low nomin supply
+% \subsubsection{Nomin/havven liquidity dries up}
+% \begin{itemize}
+% 	\item Low nomin supply
 
-	Nomins should appreciate against the havven. See \cref{sec:havven-nomin-depreciation}.
-	Fee takings will decrease, hurting havven-holders in the long run,
-	which should incentivise them to inject nomins into the ecosystem.
+% 	Nomins should appreciate against the havven. See \cref{sec:havven-nomin-depreciation}.
+% 	Fee takings will decrease, hurting havven-holders in the long run,
+% 	which should incentivise them to inject nomins into the ecosystem.
 
-	\item Low havven supply
+% 	\item Low havven supply
 
-	If system backers are sitting on a pile of havvens, then the havven should
-	appreciate. See \cref{sec:havven-nomin-appreciation,sec:havven-appreciation}.
-\end{itemize}
+% 	If system backers are sitting on a pile of havvens, then the havven should
+% 	appreciate. See \cref{sec:havven-nomin-appreciation,sec:havven-appreciation}.
+% \end{itemize}
 
 
-\subsubsection{Long-run havven price appreciation}\label{sec:havven-appreciation}
+% \subsubsection{Long-run havven price appreciation}\label{sec:havven-appreciation}
 % \todo[inline]{Long-run havven appreciation scenario.}
-In this instance, over the long run, the price of havvens could appreciate quite substantially,
-which will lead to an increase in nomin issuance rights (and so probably actual nomins in circulation).
-There are at least two reasons that havvens could appreciate:
-\begin{itemize}
-	\item Increased nomin velocity/demand, leading to greater fees;
-	This is fine: in this case, nomin issuance rights increase in proportion with demand for the currency.
+% In this instance, over the long run, the price of havvens could appreciate quite substantially,
+% which will lead to an increase in nomin issuance rights (and so probably actual nomins in circulation).
+% There are at least two reasons that havvens could appreciate:
+% \begin{itemize}
+% 	\item Increased nomin velocity/demand, leading to greater fees;
+% 	This is fine: in this case, nomin issuance rights increase in proportion with demand for the currency.
 
-	\item Speculation
-	This is not so fine: in this case, the nomin supply can be expanded without any accompanying
-	expansion in its demand, which will depress the nomin price.
+% 	\item Speculation
+% 	This is not so fine: in this case, the nomin supply can be expanded without any accompanying
+% 	expansion in its demand, which will depress the nomin price.
 	% \todo[inline]{Resolve disconnect between speculation-driven value of havvens and nomin supply.}
-\end{itemize}
+% \end{itemize}
 
-\subsubsection{Long-run havven price depreciation}\label{sec:havven-depreciation}
+% \subsubsection{Long-run havven price depreciation}\label{sec:havven-depreciation}
 % \todo[inline]{Long-run havven depreciation scenario.}
 
-\subsubsection{Radical shifts in usage}
+% \subsubsection{Radical shifts in usage}
 % \todo[inline]{Usage-shift scenario.}
 
 % \todo[inline]{List expected players in the market.}
 % \todo[inline]{Outline incentives and actions for different players.}
 
-\pagebreak
+% \pagebreak
