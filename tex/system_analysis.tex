@@ -11,8 +11,7 @@ Therefore in our quantitative analysis we seek above all to identify its failure
 modes, and also to characterise not just \textit{whether} Havven stabilises
 nomin prices, but also by \textit{how much}.\\
 
-\noindent Our confidence in Havven will stem from the three distinct approaches 
-we will take in modelling it:
+\noindent In our quantitative analysis, we take three distinct approaches in modelling the system:
 \begin{itemize}
     \item[] \textbf{Analytical}
     
@@ -41,7 +40,7 @@ we will take in modelling it:
 \subsection{Expected Market Players}
 
 \begin{itemize}
-	\item{Havven Holders}
+	\item[] \textbf{Havven Holders}
 
 	A havven-holder provides the collateral and liquidity for the system.
 	It is assumed that havven holders primarily seek fee revenues, and escrow most of their havvens,
@@ -51,25 +50,25 @@ we will take in modelling it:
 	Returns for these actors are primarily realised in fees, seignorage, and the appreciation of havvens resulting
 	from their constrained supply.
 
-	\item{Nomin Users}
+	\item[] \textbf{Nomin Users}
 
 	These are the market participants who, chasing its superior utility, will make up the
 	base demand for any stablecoin.
 	The users of nomins may include merchants, consumers, service providers, cryptocurrency market actors
 	such as exchanges. These are people who use the stable coin as a medium of
-	exchange or as a means to hedge other forms of value.
+	exchange or as a means to hedge other forms of value. \\
 	The volume these nomin users provide is necessary for fees to exist.
 	These users may be disincentivised from using the system in low liquidity situations or with excessive volatility
 	in the price of nomins.
 
-	\item{Arbitrageurs and Market Makers}
+	\item[] \textbf{Arbitrageurs and Market Makers}
 
 	The arbitrage force allows us to assume that the havven/nomin, havven/fiat, nomin/fiat
 	prices are properly in alignment or will soon become aligned. Market-making activities
 	allow us in our modelling to neglect the bid/ask spread, and situations where there is insufficient
 	liquidity for players to transact.
 	
-	\item{Speculators}
+	\item[] \textbf{Speculators}
 	
 	Speculators may tend to magnify price corrections, and are a significant vector by which to introduce
 	exogenous shocks to the system. In our modelling we induce volatility by simulating modes of interest
@@ -77,15 +76,16 @@ we will take in modelling it:
 	Speculators also produce an important stabilisation force when the market believes that the price is
 	already being stabilised. In this circumstance, upward price shifts induce sell pressure, and downward
 	price shifts induce buy pressure, on the assumption that the price will return to the equilibrium point.
-	This is a self-reinforcing negative feedback loop which operates independently of other incentives;
-	preliminary simulations have verified the efficacy of this corrective force.
+	This neutral stabilisation force is a self-reinforcing negative feedback loop which operates
+	independently of other incentives; preliminary simulations and observations of other systems
+	have verified the efficacy of this corrective force.
 	
 	%\item{Malicious Attackers}
 	
 	%We should examine what happens if a George Soros (or otherwise) attacks Havven.
 	% \todo[inline]{List the various possible attacks against the system.}
 
-	\item{Buyer of Last Resort}
+	\item[] \textbf{Buyer of Last Resort}
 	
 	While the system is designed to work without intervention, the Havven foundation
 	will have capital reserves with which to intervene in the market to stabilise
@@ -115,7 +115,11 @@ settings for system parameters (such as fee levels) that might be difficult
 to reason about \textit{a priori}. These systems, reactive as they are,
 also provide a method for testing proposed remedies for any identified failure
 modes, and are a platform to simulate the conclusions of any antecedent game-theoretic
-reasoning.
+reasoning. \\
+
+\noindent Please visit \href{http://research.havven.io}{\texttt{research.havven.io}} for a pre-alpha version of our model.
+
+\pagebreak
 
 % \todo[inline]{Discuss that the game theory conclusions can be simulated}
 
@@ -141,12 +145,9 @@ reasoning.
 
 % \paragraph{Optimal strategy mix}
 
-\noindent Please visit \href{http://research.havven.io}{\texttt{research.havven.io}} for a pre-alpha version of our model.
 
 % \subsection{Fee/velocity/return computations}
 % \todo[inline]{Fee/velocity/return computations}
-
-\pagebreak
 
 % \section{Qualitative System Analysis}
 
