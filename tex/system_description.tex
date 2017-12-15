@@ -40,7 +40,7 @@ P_h &:= \text{havven price}  & P_n &:= \text{nomin price} \\
 C = \frac{P_n * N}{P_h * H} \label{eq:1}
 \end{equation}
 
-\subsection{Nomin Equilibrium Price} The law of supply and demand states that there exists some supply of nomins, $N_{opt}$, where the related level of demand yields an equilibrium price of \$1. This quantity is associated with an optimal collaterisation ratio, $C_{opt}$. We visualise this situation below. \\
+\subsection{Nomin Equilibrium Price} The law of supply and demand states that there exists some supply of nomins, $N_{opt}$, where the related level of demand yields an equilibrium price of \$1. This quantity is associated with an optimal collaterisation ratio, $C_{opt}$. We visualise this equilibrium below with a hypothetical demand curve, D, and a supply curve, S.  \\
 
 % \todo[inline]{curved lines}
 % \todo[inline]{make diagrams pretty}
@@ -51,8 +51,8 @@ C = \frac{P_n * N}{P_h * H} \label{eq:1}
 \draw [<->, thick] (0,2) node (yaxis) [above] {$P_n$} |- (2.5,0) node (xaxis) [right] {$N$};
 
 % draw intersecting lines
-\draw (0.5, 0.5) coordinate (a_1) -- (2,1.8) coordinate (a_2);
-\draw (0.5, 1.8) coordinate (b_1) -- (2,0.5) coordinate (b_2);
+\draw (0.5, 0.5) coordinate (a_1) -- (2,1.8) coordinate (a_2) node[pos=0.0, left] {S};
+\draw (0.5, 1.8) coordinate (b_1) -- (2,0.5) coordinate (b_2) node[pos=1.0, right] {D};
 
 % calculate coordinate of intersection
 \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
