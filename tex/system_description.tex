@@ -40,6 +40,11 @@ P_h &:= \text{havven price}  & P_n &:= \text{nomin price} \\
 C = \frac{P_n * N}{P_h * H} \label{eq:collateralisation}
 \end{equation}
 
+\noindent We will subscript variables with $t$ to indicate the value of that
+variable at a given time.
+
+\pagebreak
+
 \subsection{Nomin Equilibrium Price} The law of supply and demand states that there exists some supply of nomins, $N_{opt}$, where the related level of demand yields an equilibrium price of \$1. This quantity is associated with an optimal collaterisation ratio, $C_{opt}$. We visualise this equilibrium below with a hypothetical demand curve, D, and a supply curve, S.  \\
 
 % \todo[inline]{curved lines}
@@ -78,23 +83,23 @@ In this way the price is not vulnerable to instantaneous volume spikes, while
 taking the most recent transaction volumes to be the most highly-correlated with future volumes.
 
 \begin{equation}
-    P_{h,t} = \frac{1}{H} \sum_{t'=1}^{t} \frac{f_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
+    P_{h,t} = \frac{1}{H} \sum_{t'=1}^{t} \frac{F_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
 \end{equation}
 
 where
 
 \begin{align*} 
 & P_{h,t} \text{ is the price of one havven at time } t  \\
-& f_t \text{ is the total fees collected in period } t\\
-& H \text{ is the number of havvens}  \\
+& F_t \text{ is the total fees collected in period } t\\
+& H \text{ is the total supply of havvens}  \\
 & r \text{ is a falloff term}  \\
 \end{align*}
 
-\noindent This can be computed efficiently, because $P_{h,t+1} = \frac{P_{h,t} + f_t}{r}$. 
-Further, if it is assumed that the average fee take is approximated by $f_t$, and $t$ is large, then
+\noindent This can be computed efficiently, because $P_{h,t+1} = \frac{P_{h,t} + F_t}{r}$. 
+Further, if it is assumed that the average fee take is approximated by $F_t$, and $t$ is large, then
 
 \begin{equation}
-    P_{h,t} \approx \frac{1}{H} \sum_{t'=1}^{\infty} \frac{f_t}{(1 + r)^{t'}} = \frac{f_t}{H \cdot r}
+    P_{h,t} \approx \frac{1}{H} \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} = \frac{F_t}{H \cdot r}
 \end{equation}
 
 \newpage
@@ -187,7 +192,7 @@ an issuer can reduce their collateralisation ratio. If an issuer does not posses
 \noindent The fee rate charged on nomin transactions is $\alpha_c$. It is constant and will be sufficiently small that it provides little to no friction for the user.\\
 
 \begin{equation}
-a_c = k \ \label{eq:5}
+\alpha_c = k \ \label{eq:5}
 \end{equation}
 
 \begin{center}
@@ -197,7 +202,7 @@ a_c = k \ \label{eq:5}
 \draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_c$} |- (2.5,0) node (xaxis) [right] {$P_N$};
 
 % draw one line
-\draw (0.0, 0.75) coordinate (a_1) -- (2.0,0.75) coordinate (a_2);
+\draw (0.0, 0.75) coordinate (a_1) -- (2.4,0.75) coordinate (a_2);
 
 \coordinate (c) at (1.75, 0.75);
 
@@ -205,6 +210,13 @@ a_c = k \ \label{eq:5}
 
 \end{tikzpicture}
 \end{center}
+
+\noindent We may then express the total fees collected in period $t$, $F_t$, as a function
+of the velocity of nomins $v_t$ and the total nomin supply $N_t$:
+
+\begin{equation}
+    F_t = v_t \cdot \alpha_c \cdot N_t
+\end{equation}
 
 \newpage
 \subsubsection{Fees Received by Havven Holders}
@@ -262,20 +274,20 @@ fees if they do so.\\
 
 \subsubsection{Base Fee Rate}
 
-The total fees collected from users has to be equal to the total amount of fees paid to the havven holders.
-The fees collected in period $t$ is $f_t$. We define the total fees paid to havven holders $F_{r,t}$: \\
+Let us define the total fees paid to havven holders $F_{r,t}$: \\
 
 \begin{equation}
 F_{r,t} = \sum_{i} \check{H_i} \cdot \alpha_{r,t,i} \label{eq:totalfeesreceived}
 \end{equation} \\
 
-\noindent Havven requires that $F_{r,t} = f_t$. So, substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,t,i}$ and solving for $\alpha_{base,t} $: \\
+\noindent Havven requires that the total fees collected from users has to be equal to the total amount of
+fees paid to the havven holders, so that $F_{r,t} = F_t$. Substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,t,i}$ and solving for $\alpha_{base,t} $: \\
 
 \begin{equation}
-\alpha_{base,t} = \frac{f_t}{\sum_{i} \check{H_i} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})} \label{eq:10}
+\alpha_{base,t} = \frac{F_t}{\sum_{i} \check{H_i} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})} \label{eq:10}
 \end{equation} \\
 
-\noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $f_t$. This rate should be achieved when an individual's $C_i$ is at $C_{opt}$. \\
+\noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $F_t$. This rate should be achieved when an individual's $C_i$ is at $C_{opt}$. \\
 
 \noindent The definition of $C_{opt}$ must therefore provide the following incentive. If $P_n > 1$ then the system must encourage more nomins to be issued. If $P_n < 1$, the system must encourage nomins to be burned. 
 
