@@ -38,7 +38,9 @@ P_h &:= \text{havven price}  & P_n &:= \text{nomin price} \\
 \noindent All havven tokens are created at initialisation, so $H$ is constant.
 The quantity of nomins, $N$, floats in response to the actions of havven holders.
 The Havven system needs to incentivise havven holders to maintain $N$ such that
-the nomin price, $P_n$, is stable at \$1.\\
+the nomin price, $P_n$, is stable at \$1.
+As we proceed, we may subscript variables with $t$ to indicate the value of that
+variable at a given time. \\
 
 \noindent In Havven, the measure of the value of nomins against the value
 of havvens is called the collateralisation ratio:
@@ -47,8 +49,7 @@ of havvens is called the collateralisation ratio:
 C = \frac{P_n * N}{P_h * H} \label{eq:collateralisation}
 \end{equation}
 
-\noindent As we proceed, we may subscript variables with $t$ to indicate the value of that
-variable at a given time. \\
+\vspace{3 mm}
 
 \noindent The law of supply and demand states that there exists some supply
 of nomins, $N_{opt}$, where the related level of demand yields an equilibrium
@@ -129,6 +130,8 @@ Further, if it is assumed that the average fee take is approximated by $F_t$, an
 0 < C_{opt} < 1  \label{eq:target}
 \end{equation}
 
+\vspace{3 mm}
+
 \noindent It is necessary at this point to distinguish, for an account $i$, between the nomins it contains $N_i$ (equity) and the nomins it has been issued $\check{N_i}$ (debt). Note that globally, the $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all circulating nomins were issued by some account. However, a given account may have a balance different from its issuance debt.\\
 % \todo[inline]{Make sure this equity/debt language is not too security-like.}
 
@@ -137,6 +140,8 @@ Further, if it is assumed that the average fee take is approximated by $F_t$, an
 \begin{equation}
 C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollat}
 \end{equation}
+
+\vspace{3 mm}
 
 \noindent The system provides incentives for individual issuers to bring their $C_i$ closer to $C_{opt}$ while maintaining $C_{opt}$ itself at a level that stabilises the price.
 
