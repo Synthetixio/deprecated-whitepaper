@@ -77,12 +77,19 @@ curve, D, and a supply curve, S.  \\
 
 \subsection{Intrinsic Havven Value}
 
-\noindent Being a freely-tradable ERC20 token, havvens will have a market price.
-However, using this for $P_h$ would expose the collateralisation ratio computation
-to speculative price shocks. Instead, the ``true'' price of a havven is computed as a
-function of the transaction fees that the system charges. In this way we connect the
-computed price of the havven directly with demand for nomins.
-Price increases will allow an expansion in the money supply exactly when demand has increased. \\
+\noindent Being freely-tradable ERC20 tokens, havvens will have a market price which, like
+the nomin price, can be measured by an oracle. In the initial phases, while nomin demand is low, 
+we will use the market price. However, once nomin transaction volume has increased to sufficient
+levels, we may transition to a different havven-valuation system that attempts to more directly
+connect the valuation of the havven with demand for nomins. \\
+
+\noindent One problem with using the market price for $P_h$ is that would it exposes the
+collateralisation ratio computation to speculative price shocks.
+Instead, the ``true'' price of a havven is computed as a function of the transaction
+fees that the system charges. In this way we connect the computed price of the havven directly with
+nomin velocity.
+Price increases will allow an expansion in the money supply exactly when demand has expanded,
+while contractions in the money supply will be incentivised exactly when demand has contracted. \\
 
 \noindent We define the value of a havven as a share in the discounted sum over past fee returns.
 In this way the price is not vulnerable to instantaneous volume spikes, while
@@ -97,7 +104,6 @@ where
 \begin{align*} 
 & P_{h,t} \text{ is the price of one havven at time } t  \\
 & F_t \text{ is the total fees collected in period } t\\
-& H \text{ is the total supply of havvens}  \\
 & r \text{ is a falloff term}  \\
 \end{align*}
 
