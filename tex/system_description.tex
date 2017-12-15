@@ -161,21 +161,21 @@ an issuer can reduce their collateralisation ratio. If an issuer does not posses
 
 %\noindent In order to release escrowed havvens, Bob must return the same quantity of nomins that he issued. This means that if $P_n$ has increased in the market, he will need to spend more ether than he received when he issued in order to release his havvens. Conversely, if $P_n$ has decreased, Bob will need to spend less in order to release his havvens.
 
-%\subsubsection{Global collateralisation Ratio}
+%\subsubsection{Global collaterilisation Ratio}
 
-%\noindent Havven can ensure that nomins are overcollateralised at the time of issuance, however, a reduction in $P_h$ lowers the value of the escrowed havvens. The global collateralisation ratio is defined as the total value of nomins divided by the total value of havvens:
+%\noindent Havven can ensure that nomins are overcollateralised at the time of issuance, however, a reduction in $P_h$ lowers the value of the escrowed havvens. The global collaterilisation ratio is defined as the total value of nomins divided by the total value of havvens:
 
 %$$ U = \frac{P_n * N}{P_h * H}.$$ \\
 
-%\noindent Intuitively, if $U = 1$, the value of nomins and havvens are equal. Hence, given our overcollateralisation property, the system targets $U <  1$. To do this, Havven only allows the issuance of nomins up to a maximum collateralisation ratio.
+%\noindent Intuitively, if $U = 1$, the value of nomins and havvens are equal. Hence, given our overcollateralisation property, the system targets $U <  1$. To do this, Havven only allows the issuance of nomins up to a maximum collaterilisation ratio.
 
 %\subsubsection{Unique Collateralisation Ratio}
 
-% \noindent Given the need to adjust the supply of nomins, an optimum collateralisation ratio is defined as the point at which maximum incentives are applied:
+% \noindent Given the need to adjust the supply of nomins, an optimum collaterilisation ratio is defined as the point at which maximum incentives are applied:
 
 % $$ 0 \leq U_{opt} \leq U_{max} \leq 1.$$
 
-% \noindent Each havven holder that has issued nomins has a unique collateralisation ratio, $ U_i $. The system can measure the degree to which their $ U_i $ is above or below the optimum and reward them accordingly. In this way the system incentivises the issuance and destruction of nomins. $ U_{opt} $ is defined formally below in terms of $ P_n $. As  the nomin price diverges from the desired \$1, the incentive to either expand or contract nomin supply increases.
+% \noindent Each havven holder that has issued nomins has a unique collaterilisation ratio, $ U_i $. The system can measure the degree to which their $ U_i $ is above or below the optimum and reward them accordingly. In this way the system incentivises the issuance and destruction of nomins. $ U_{opt} $ is defined formally below in terms of $ P_n $. As  the nomin price diverges from the desired \$1, the incentive to either expand or contract nomin supply increases.
 
 \newpage
 \subsection{Transaction Fees} Havven needs a direct incentive mechanism that can correct changes in the global collaterisation ratio, $C$, when the price of havvens or nomins changes. \\
@@ -209,15 +209,25 @@ a_c = k \ \label{eq:5}
 \newpage
 \subsubsection{Fees Received by Havven Holders}
 
-\noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$. This rate changes with respect their unique collateralisation ratio, $C_i$. It increases linearly to a maximum at the optimal collateralisation ratio $C_{opt}$, before quickly diminishing as $C_i$ approaches the maximum collaterisation ratio $C_{max}$. When $C > C_{max}$, $\alpha_r = 0$. Note, $\alpha_r$ is applied to the pool of collected fees which is determined by $\alpha_c$. \\
+\noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$.
+The actual fee they receive is $\check{H_i} \cdot \alpha_r$, being proportional with the value they stake.
+The received fee rate changes with respect their unique collaterilisation ratio, $C_i$.
+It increases linearly to a maximum $\alpha_{base}$ at the optimal collaterilisation ratio $C_{opt}$, before quickly
+diminishing as $C_i$ approaches the maximum collaterisation ratio $C_{max}$. 
+
+\noindent This function is designed to encourage havven holders to constantly
+target the optimal collateralisation ratio, by rewarding them with greater
+fees if they do so.\\
+
+
  % \todo[inline]{figure out whether t stays}
 
 \begin{equation}
-\alpha_{R,t,i} = \alpha_{base,t} * f_{i,t}(C_{i,t}, C_{opt}, C_{max,t})  \label{eq:6}
+\alpha_{r,t,i} = \alpha_{base,t} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt}, C_{max,t})  \label{eq:feesreceived}
 \end{equation}
 
 \begin{equation}
-f_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) = 
+\mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) = 
 \begin{cases}
  \frac{C_{i,t}}{C_{opt,t}} &\mbox{when } C_{i,t} \leq C_{opt,t} \\[1em]
  \frac{C_{max,t} - C_{i,t}}{C_{max,t} - C_{opt,t}} &\mbox{when } C_{opt,t} \leq C_{i,t} \leq C_{max,t} \\[1em]
@@ -240,8 +250,8 @@ f_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) =
 \coordinate (d) at (2.25, 0.0);
 \coordinate (e) at (0.00, 0.00);
 
-\draw[dashed] (yaxis |- c) node [left] {$a_{base}$} -| (xaxis -| c) node[below] {$C_{opt}$};
-\draw[dashed] (yaxis |- e) node [left] {$a_{base}$} -| (xaxis -| d) node[below] {$C_{max}$};
+\draw[dashed] (yaxis |- c) node [left] {$\alpha_{base}$} -| (xaxis -| c) node[below] {$C_{opt}$};
+\draw[dashed] (yaxis |- e) node [left] {$\alpha_{base}$} -| (xaxis -| d) node[below] {$C_{max}$};
 
 \end{tikzpicture}
 \end{center}
@@ -250,38 +260,31 @@ f_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) =
 
 \newpage
 
-\subsubsection{Deriving the Base Fee Rate}
+\subsubsection{Base Fee Rate}
 
-The total amount of fees collected from users has to be equal to the total amount of fees paid to the havven holders. We define the total amount of fees collected, $A_{c,t}$ below: \\
- % \todo[inline]{figure out whether t stays}
-\begin{equation}
-A_{c,t}  = \alpha_{c,t} * v_{n,t} * \sum\limits_I N_{I,t}  \label{eq:8}
-\end{equation}
-$$ v_{n,t} \text{ the velocity of nomins at t} $$
-$$  \sum\limits_I N_{I,t} \text{ the total issued nomins} $$
-Next we define the total fees paid to havven holders $A_{R,t}$: \\
-\begin{equation}
-A_{R,t} = \sum\limits_I \alpha_{R,t,I} \label{eq:9}
-\end{equation}
-Havven requires that: \\
-$$ A_{R,T} =  A_{c,t} $$
-Substituting our earlier definition of $\alpha_{R,t,I}$ \eqref{eq:6}: \\
-$$ \alpha_{base,t} *\sum\limits_I f_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) =  \alpha_{c,t} * v_{n,t} * \sum\limits_I N_{I,t} $$
-Solving for $\alpha_{base,t} $:\\
-\begin{equation}
-\alpha_{base,t} = \frac{\alpha_{c,t} * v_{n,t} * \sum\limits_I N_{I,t}}{\sum\limits_I f_{i,t}(C_{i,t}, C_{opt,t},C_{max,t})} \label{eq:10}
-\end{equation}
+The total fees collected from users has to be equal to the total amount of fees paid to the havven holders.
+The fees collected in period $t$ is $f_t$. We define the total fees paid to havven holders $F_{r,t}$: \\
 
-\noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $A_{c,t}$. This rate should be achieved when an individuals $C_i$ is at $C_{opt}$. \\
+\begin{equation}
+F_{r,t} = \sum_{i} \check{H_i} \cdot \alpha_{r,t,i} \label{eq:totalfeesreceived}
+\end{equation} \\
 
-\noindent The definition of $C_{opt}$ must therefore provide the following incentive. If $P_n > 1$ then the system must encourage more nomin to be issued. If $P_n < 1$, the system must encourage nomin to be burned. 
+\noindent Havven requires that $F_{r,t} = f_t$. So, substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,t,i}$ and solving for $\alpha_{base,t} $: \\
+
+\begin{equation}
+\alpha_{base,t} = \frac{f_t}{\sum_{i} \check{H_i} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})} \label{eq:10}
+\end{equation} \\
+
+\noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $f_t$. This rate should be achieved when an individual's $C_i$ is at $C_{opt}$. \\
+
+\noindent The definition of $C_{opt}$ must therefore provide the following incentive. If $P_n > 1$ then the system must encourage more nomins to be issued. If $P_n < 1$, the system must encourage nomins to be burned. 
 
 \newpage
 
-\subsection{Collaterilisation Ratio}
-\subsubsection{Optimal Collaterilisation Ratio}
+\subsection{Collateralisation Ratio}
+\subsubsection{Optimal Collateralisation Ratio}
 
-\noindent The optimal collateralisation ratio $C_{opt}$ is a target for havven holders to reach in order to maximise the amount of fees they receive. $C_{opt}$ is defined in terms of $P_n$ such that havven holders can influence the price of nomin through directly controlling the supply of nomin (a havven holder can change their individual collateralisation ratio by buying or issuing more nomins). \\
+\noindent The optimal collaterilisation ratio $C_{opt}$ is a target for havven holders to reach in order to maximise the amount of fees they receive. $C_{opt}$ is defined in terms of $P_n$ such that havven holders can influence the price of nomin through directly controlling the supply of nomin (a havven holder can change their individual collaterilisation ratio by buying or issuing more nomins). \\
  
 \noindent The function for $C_{opt}$ given below provides our dynamic target for havven holders based on the price of nomin. The curve shows that the when $P_n$ is close to \$1, $ f'(P_n) $ is small. However, the further $P_n$ diverges from \$1, the larger the derivative becomes, providing an increasing incentive (via fees) for a havven holder to move toward $C_{opt}$.
 
@@ -326,7 +329,7 @@ dashed
 
 \newpage
 
-\subsubsection{Maximum Collaterilisation Ratio}
+\subsubsection{Maximum Collateralisation Ratio}
 
 \noindent Havven seeks to maintain $C \leq C_{opt} < C_{max} < 1$, in order to remain sufficiently overcollateralised. It might seem intuitive that $C_{max}$ should be a static value. However, since $C_{opt}$ changes linearly with $P_n$ and inversely with $P_h$, there are several situations where $C_{max}$ may need to change. Below we define $C_{max}$. \\
 
