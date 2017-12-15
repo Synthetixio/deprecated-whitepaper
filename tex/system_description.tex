@@ -30,6 +30,8 @@ H &:= \text{havven quantity} & N &:= \text{nomin quantity} \\
 P_h &:= \text{havven price}  & P_n &:= \text{nomin price} \\
 \end{align*}
 
+% \todo[inline]{Consider renaming havven price symbol to reflect that it is computed from income}
+
 \noindent All havven tokens are created in the initial system state, so $H$ is constant. The quantity of nomins, $N$, floats in response to the actions of havven holders.The Havven system needs to incentivise havven holders to maintain $N$ such that the nomin price, $P_n$, is stable at \$1.\\
 
 \noindent In Havven, the collateralisation ratio measures the value of nomins against the value of havvens:
@@ -61,6 +63,32 @@ C = \frac{P_n * N}{P_h * H} \label{eq:1}
 \end{center}
 
 \noindent The system is unable to influence the demand for nomins. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency. Although demand cannot be manipulated, the supply of nomins is controlled by havven holders, whose issuance incentives are in turn controlled by the system. It follows that as we require a fixed price $P_n = \$1 $ and are unable to control either $P_h$ or $H$, we must manipulate $C_{opt}$ such that $N = N_{opt}$ in order to satisfy our requirement.
+
+\subsection{Intrinsic Price}
+
+\noindent Being a freely-tradable ERC20 token, havvens will have a market price. However, using this for
+$P_h$ would expose the collateralisation ratio computation to speculative price shocks.
+Instead, the ``True'' price of a havven is computed as a function of the transaction fees
+that the system charges. In this way we connect the computed price of the havven directly
+with demand for nomins. Price increases will allow an expansion in the money supply
+exactly when demand has increased. \\
+
+\noindent We define the value of a havven in the following way:
+
+\begin{equation}
+P_{h,t} = \frac{1}{H}* \sum\limits_{t=1}^\infty \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{(1+R)^t} \approx \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{R * H} \label{eq:2}
+\end{equation}
+
+where
+
+\begin{align*} 
+& P_{h,t} \text{ is the price of one havven at time } t  \\
+& H \text{ is the number of havvens}  \\
+& d_{n,t} \text{ is the demand for nomins at t}  \\
+& v_{n,t} \text{ is the velocity of nomins at t}  \\
+& \alpha_{R,t} \text{ is the fee from trade with nomins}  \\
+& R \text{ is the interest rate / rate of return of havvens}  \\
+\end{align*}   
 
 \subsection{Issuance and Collateralisation} 
 
@@ -314,23 +342,5 @@ C_{max,t} =
 
 \end{tikzpicture}
 \end{center}
-
-\newpage
-
-\subsection{Intrinsic Havven Price} With the havven token being ERC20 compliant, it will have a market price on both decentralised and centralised exchanges. \\
-
-\noindent While the Havven system will access the current market price via a price oracle, it is beneficial to define a $P_h$ that can be determined internally to avoiding the influence of speculation. Ignoring speculative demand, $P_h$ can be expressed as a function of the transaction fees that the system charges. Below we define an initial iteration of the intrinsic $P_h$.
-
-\begin{align} 
-\begin{split}
-P_{h,t} &= \frac{1}{H}* \sum\limits_{t=1}^\infty \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{(1+R)^t} \approx \frac{d_{n,t} *v_{n,t} * \alpha_{R,t}}{R * H} \\
-& P_{h,t} \text{ is the price of one havven at time } t  \\
-& H \text{ is the number of havvens}  \\
-& d_{n,t} \text{ is the demand for nomins at t}  \\
-& v_{n,t} \text{ is the velocity of nomins at t}  \\
-& \alpha_{R,t} \text{ is the fee from trade with nomins}  \\
-& R \text{ is the interest rate / rate of return of havvens}  \\
-\end{split}
-\end{align}   
 
 \newpage
