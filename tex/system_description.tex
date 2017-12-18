@@ -83,9 +83,10 @@ curve, D, and a supply curve, S.  \\
 
 \noindent Being freely-tradable ERC20 tokens, havvens will have a market price which, like
 the nomin price, can be measured by an oracle. In the initial phases, while nomin demand is low, 
-we will use the market price. However, once nomin transaction volume has increased to sufficient
-levels, we may transition to a different havven-valuation system that attempts to more directly
-connect the valuation of the havven with demand for nomins. \\
+we will use a seven day rolling average of the market price for both havvens and nomins. This rolling
+average is designed to smooth out fluctuations in the market price and increase the cost of attacking the
+system. However, once nomin transaction volume has increased to sufficient levels, we may transition to a different
+havven-valuation system that attempts to more directly connect the valuation of the havven with demand for nomins. \\
 
 \noindent One problem with using the market price for $P_h$ is that it exposes the
 collateralisation ratio computation to speculative price shocks.
@@ -111,6 +112,8 @@ where
 & r \text{ is a falloff term}  \\
 \end{align*}
 
+\newpage
+
 \noindent This can be computed efficiently, because $P_{h,t+1} = \frac{P_{h,t} + F_t}{r}$. 
 Further, if it is assumed that the average fee take is approximated by $F_t$, and $t$ is large, then
 
@@ -118,7 +121,6 @@ Further, if it is assumed that the average fee take is approximated by $F_t$, an
     P_{h,t} \approx \frac{1}{H} \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} = \frac{F_t}{H \cdot r}
 \end{equation}
 
-\newpage
 
 \subsection{Issuance and Collateralisation} 
 
