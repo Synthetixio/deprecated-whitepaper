@@ -83,9 +83,10 @@ curve, D, and a supply curve, S.  \\
 
 \noindent Being freely-tradable ERC20 tokens, havvens will have a market price which, like
 the nomin price, can be measured by an oracle. In the initial phases, while nomin demand is low, 
-we will use the market price. However, once nomin transaction volume has increased to sufficient
-levels, we may transition to a different havven-valuation system that attempts to more directly
-connect the valuation of the havven with demand for nomins. \\
+we will use a seven day rolling average of the market price for both havvens and nomins. This rolling
+average is designed to smooth out fluctuations in the market price and increase the cost of attacking the
+system. However, once nomin transaction volume has increased to sufficient levels, we may transition to a different
+havven-valuation system that attempts to more directly connect the valuation of the havven with demand for nomins. \\
 
 \noindent One problem with using the market price for $P_h$ is that it exposes the
 collateralisation ratio computation to speculative price shocks.
