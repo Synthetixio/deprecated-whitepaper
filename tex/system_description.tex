@@ -112,6 +112,8 @@ where
 & r \text{ is a falloff term}  \\
 \end{align*}
 
+\newpage
+
 \noindent This can be computed efficiently, because $P_{h,t+1} = \frac{P_{h,t} + F_t}{r}$. 
 Further, if it is assumed that the average fee take is approximated by $F_t$, and $t$ is large, then
 
@@ -119,7 +121,6 @@ Further, if it is assumed that the average fee take is approximated by $F_t$, an
     P_{h,t} \approx \frac{1}{H} \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} = \frac{F_t}{H \cdot r}
 \end{equation}
 
-\newpage
 
 \subsection{Issuance and Collateralisation} 
 
