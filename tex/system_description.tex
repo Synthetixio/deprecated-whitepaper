@@ -89,7 +89,7 @@ curve, D, and a supply curve, S.  \\
 
 \noindent The system is unable to influence the demand for nomins. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency. Although demand cannot be manipulated, the supply of nomins is controlled by havven holders, whose issuance incentives are in turn controlled by the system. It follows that as we require a fixed price $P_n = \$1 $ and are unable to control either $P_h$ or $H$, we must manipulate $C_{opt}$ such that $N = N_{opt}$ in order to satisfy our requirement.
 
-\subsection{Intrinsic Havven Value}
+\subsection{Measuring Havven Value}
 
 \noindent Being freely-tradable ERC20 tokens, havvens will have a market price which, like
 the nomin price, can be measured with an oracle. In the initial phases, while nomin demand is low, 
@@ -155,9 +155,11 @@ C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollat}
 
 \vspace{3 mm}
 
-\noindent The system provides incentives for individual issuers to bring their $C_i$ closer to $C_{opt}$ while maintaining $C_{opt}$ itself at a level that stabilises the price.
+\noindent The system provides incentives for individual issuers to bring their $C_i$ closer to $C_{opt}$ while maintaining $C_{opt}$ itself at a level that stabilises the price. \\
 
-\paragraph{Nomin Issuance}
+\noindent \textbf{Nomin Issuance}
+
+\vspace{1mm}
 
 \noindent The nomin issuance mechanism allows Havven to reach its collaterisation target.
 Issuing nomins escrows some quantity of havvens, which cannot be moved until they are unescrowed.
@@ -181,14 +183,16 @@ that would lock more than $H_i$ havvens.
 Consequently, $C_i$ may never exceed $C_{max}$, except by price fluctuations,
 and in such circumstances, issuers are rewarded for bringing $C_i$ back under $C_{max}$. \\
 
-\noindent After generating the nomins, the system places a \textbf{limit sell} order with a price of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market price, down to a minimum price of \$1. If we assume implementation on Ethereum, then the nomins are sold for an equivalent value in ether, with the proceeds of the sale remitted to the issuer.
+\noindent After generating the nomins, the system places a \textbf{limit sell} order with a price of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market price, down to a minimum price of \$1. If we assume implementation on Ethereum, then the nomins are sold for an equivalent value in ether, with the proceeds of the sale remitted to the issuer. \\
 
-\paragraph{Nomin Destruction}
+\noindent \textbf{Nomin Destruction}
+
+\vspace{1mm}
 
 \noindent In order to access the original havvens that have been escrowed, the issuer must return the same quantity of nomins to the system to be burned. This is a main way 
-an issuer can reduce their collateralisation ratio. If an issuer does not possess the required nomins, they can be purchased on the open market.
+an issuer can reduce their collateralisation ratio. If an issuer does not possess the required nomins, they can be purchased on the open market. \\
 
-\subsubsection{Issuance Example}
+\noindent \textbf{Issuance Example}
 % \todo[inline]{Finish the example. I don't really know if dealing with nomin price changes here is right, before introducing fees.}
 
 \begin{enumerate}
