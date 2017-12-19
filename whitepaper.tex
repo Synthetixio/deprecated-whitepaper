@@ -36,7 +36,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsthm}
- 
+
+% Make itemize bullets slightly smaller
+\renewcommand\labelitemi{{\boldmath$\cdot$}}
+
 \newtheorem{theorem}{Theorem}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -78,14 +81,12 @@
 stable tokens have either relied on significant centralisation or have been undermined by their
 complexity. We present Havven, a representative money system which seeks to achieve price
 stability with respect to an external asset.
-
-\noindent Havven is a dual-token solution, composed of a
+Havven is a dual-token solution, composed of a
 stabilised exchange token and the reserve token which backs it. Users are incentivised to maintain
 this distributed reserve, and to manage the potential stable token supply so that it is in
 proportion with the value of the collateral. Because the collateral is encapsulated entirely within
 the system and distributed among its users, we remove the need for a trusted central authority.
-
-\noindent Such a stable cryptocurrency, useful for everyday economic purposes, will accelerate the adoption of
+Such a stable cryptocurrency, useful for everyday economic purposes, will accelerate the adoption of
 distributed ledger technology.
 \end{abstract}	
 
