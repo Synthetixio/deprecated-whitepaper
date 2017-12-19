@@ -46,7 +46,7 @@ variable at a given time. \\
 of havvens is called the collateralisation ratio:
 
 \begin{equation}
-C = \frac{P_n * N}{P_h * H} \label{eq:collateralisation}
+C = \frac{P_n \cdot N}{P_h \cdot H} \label{eq:collateralisation}
 \end{equation}
 
 \vspace{3 mm}
@@ -72,7 +72,7 @@ curve, D, and a supply curve, S.  \\
 % calculate coordinate of intersection
 \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
 
-\draw[dashed] (yaxis |- c) node [left] {$1$} -| (xaxis -| c) node[below] {$N_{opt} = \frac{C_{opt} * P_h * H}{P_n}$};
+\draw[dashed] (yaxis |- c) node [left] {$1$} -| (xaxis -| c) node[below] {$N_{opt} = \frac{C_{opt} \cdot P_h \cdot H}{P_n}$};
 
 \end{tikzpicture}
 \end{center}
@@ -194,7 +194,7 @@ an issuer can reduce their collateralisation ratio. If an issuer does not posses
 
 %\noindent Havven can ensure that nomins are overcollateralised at the time of issuance, however, a reduction in $P_h$ lowers the value of the escrowed havvens. The global collaterilisation ratio is defined as the total value of nomins divided by the total value of havvens:
 
-%$$ U = \frac{P_n * N}{P_h * H}.$$ \\
+%$$ U = \frac{P_n \cdot N}{P_h \cdot H}.$$ \\
 
 %\noindent Intuitively, if $U = 1$, the value of nomins and havvens are equal. Hence, given our overcollateralisation property, the system targets $U <  1$. To do this, Havven only allows the issuance of nomins up to a maximum collaterilisation ratio.
 
@@ -327,8 +327,8 @@ fees paid to the havven holders, so that $F_{r,t} = F_t$. Substituting our earli
 \begin{gather} 
 \begin{align}
 \begin{split}
-C_{opt,t} &= f(P_{n,t}) * C_t  \\ 
-f(P_{N,t}) &= max(\sigma * (P_{N,t} - 1)^{\phi} + 1, 0) \\
+C_{opt,t} &= f(P_{n,t}) \cdot C_t  \\ 
+f(P_{N,t}) &= max(\sigma \cdot (P_{N,t} - 1)^{\phi} + 1, 0) \\
 & 0 \leq \sigma, \text{ the price sensitivity parameter} \\
 & \phi \geq 1, \text{ the flattening parameter} \\
 \end{split}
@@ -374,7 +374,7 @@ dashed
 C_{max,t} = 
 \begin{cases}
  C_{base,t} &\mbox{when } C_{opt,t} \leq C_{base,t} \\[1em]
- a * C_{opt,t} &\mbox{otherwise}.
+ a \cdot C_{opt,t} &\mbox{otherwise}.
  \end{cases}
 \end{equation}
 
