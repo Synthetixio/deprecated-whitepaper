@@ -465,23 +465,37 @@ of nomins immediately diminishes $C$, $C_{opt}$ and $C_{max}$, bringing them bac
 
 \subsection{Fee Evasion}
 
-\noindent Being based on Ethereum, Havven is potentially vulnerable to its tokens being wrapped in another
-smart contract. These wrapped tokens could then be exchanged without incurring fees. We consider this 
-unlikely for a number of reasons. First, the fees are designed to be low enough that most users
-will not notice them. Second, network effect is tremendously important for currencies; in order to
-become useful, these tokens must first be accepted as a legitimate currency by vendors. To this end,
-we do not believe that token wrappers of this kind will be credible, not having been tested or audited,
-while its authors may also lack credibility. \\
+\noindent Being based on Ethereum, Havven is potentially vulnerable to its tokens being wrapped by another
+smart contract which takes deposits, and replicates all exchange functionality on redeemable IOU tokens
+it issues. These wrapped tokens could then be exchanged without incurring fees. \\
 
-\noindent Nevertheless, it is simple to implement a democratic method, weighted by havven balance,
-by which havven holders could freeze the assets of any contract that wraps assets.
+\noindent We consider this situation unlikely for a number of reasons.
+
+\noindent First, the fees are designed to be low enough that most users
+shouldn't notice them, so users will not in general be strongly motivated to switch
+to a marginal and less trustworthy alternative. \\
+\noindent Second, network effect is tremendously important for currencies; in order to
+become useful, any token must first be broadly accepted as ``legal'' tender. This is difficult
+enough by itself, but a wrapped token must do this to the extent that it displaces its own perfect
+substitute good: the token it wraps.
+
+\noindent In the case of Havven, this would undermine built-in stabilisation mechanisms,
+which become more powerful with increased transaction volume.
+Consequently, as a wrapped nomin parasitises more of the nomin market,
+it destroys the basis of its own utility, which is that nomins themselves are stable.
+
+\noindent Finally, it is unlikely that any token wrapper will be credible,
+not having been publicly and expensively audited, while its primary function
+tends to redound against the trustworthiness of its authors. \\
+
+\noindent Nevertheless, it's simple to implement a democratic method, weighted by havven balance,
+by which havven holders can freeze or confiscate the balance of any contract that wraps assets.
 Those havven holders are incentivised not to abuse this system for the same reason that
 bitcoin mining pools do not form cartels to double-spend: because abuse of this power
-would undermine the value of the system, and thus devalue their own holdings. \\
+would undermine the value of the system, and thus devalue their own holdings.
 
-\noindent The credible threat of such a system existing is enough to discourage wrapper
-tokens from being used, even if they are written, since any user who does so risks the balance
-in the wrapper being confiscated or frozen, so that they could not then unwrap those tokens
-to retrieve the nomins they wrapped.
+\noindent The credible threat of such a system existing is enough to discourage token wrappers
+from being used, even if they are written, since any user who does so risks losing their
+entire wrapped balance.
 
 \newpage
