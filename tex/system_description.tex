@@ -1,24 +1,34 @@
 \section{System Description} Havven is a dual-token system that, combined with a set of novel incentive mechanisms, stabilises the price of the nomin with respect to an external asset. Users of the nomin token pay the owners of the havven token for collateralising and stabilising the system. \\
 
-\noindent The havven token incentivises those who hold it to serve two functions:
+\noindent The havven token incentivises those who hold it to fulfil two functions:
 
 \begin{itemize}
 \item{To provide the system with collateral.}
 \item{To participate in the stabilisation of the nomin price.}
 \end{itemize}
 
-\paragraph{Collateralisation}
+\vspace{2mm}
 
-\noindent Confidence in stability of the nomin begins with overcollateralisation, so that the value of escrowed havvens is greater than the value of nomins in circulation. The value of havvens is derived internally by the system as a function of the demand for nomins; this decouples the value of the collateral pool from market speculation. \\
+\noindent \textbf{Collateralisation}
+\vspace{2mm}
+
+\noindent Confidence in the stability of the nomin begins with overcollateralisation, so that the value of escrowed havvens is greater than the value of nomins in circulation. The value of havvens is derived internally by the system as a function of the demand for nomins; this decouples the value of the collateral pool from market speculation.
+
+\vspace{2mm}
 
 \noindent As long as the ratio of total nomin value to total havven value remains favourable,
 there is sufficient backing in the underlying collateral pool to ensure that nomins
 can be redeemed for their face value. The redeemability of a nomin for the havvens
-against which it was issued strongly supports a stable price.  
+against which it was issued strongly supports a stable price. \\
 
-\paragraph{Incentives}
+\vspace{2mm}
 
-\noindent Havven rewards those that have issued nomins. These rewards are derived from transaction fees and are distributed in proportion with how well each issuer maintains the correct nomin supply. The system monitors the nomin price, and responds by adjusting its targeted global supply, which individual issuers are incentivised to move towards. \\
+\noindent \textbf{Stabilisation Incentives}
+\vspace{2mm}
+
+\noindent Havven rewards those that have issued nomins. These rewards are derived from transaction fees and are distributed in proportion with how well each issuer maintains the correct nomin supply. The system monitors the nomin price, and responds by adjusting its targeted global supply, which individual issuers are incentivised to move towards.
+
+\vspace{2mm}
 
 \noindent Where volatility persists, stronger stabilisation mechanisms may be applied such as automated collateral recovery. Where a significant portion of nomins are being used for hedging, (and hence not generating transaction fees) a charge can be applied to ensure that the cost of utility for hedging is not being solely borne by transactions.
 
@@ -51,7 +61,7 @@ C = \frac{P_n \cdot N}{P_h \cdot H} \label{eq:collateralisation}
 
 \vspace{3 mm}
 
-\noindent The law of supply and demand states that there exists some supply
+\noindent From the law of supply and demand, there exists some supply
 of nomins, $N_{opt}$, where the related level of demand yields an equilibrium
 price of \$1. This quantity is associated with an optimal collaterisation ratio,
 $C_{opt}$. We visualise this equilibrium below with a hypothetical demand
