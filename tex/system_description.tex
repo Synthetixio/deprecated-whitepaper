@@ -403,7 +403,11 @@ dashed
 
 \subsubsection{Maximum Collateralisation Ratio}
 
-\noindent Havven seeks to maintain $C \leq C_{opt} < C_{max} < 1$, in order to remain sufficiently overcollateralised. It might seem intuitive that $C_{max}$ should be a static value. However, since $C_{opt}$ changes linearly with $P_n$ and inversely with $P_h$, there are several situations where $C_{max}$ may need to change. Below we define $C_{max}$. \\
+\noindent Havven seeks to maintain $C \leq C_{opt} < C_{max} < 1$, in order to retain sufficient collateral.
+It might seem intuitive that $C_{max}$ should be a static value.
+However, since $C_{opt}$ changes linearly with $P_n$ and inversely with $P_h$,
+there are several situations where $C_{max}$ may need to change.
+Below we define $C_{max}$. \\
 
 \begin{equation}
 \label{eq:12}
@@ -432,7 +436,32 @@ C_{max,t} =
 \end{tikzpicture}
 \end{center}
 
-\newpage 
+\noindent A collateralisation ratio less than $1$ implies that
+the backing capital is more valuable than the tokens issued against it;
+at $C = 1$, the total value of nomins in circulation equals the value of havvens
+in circulation. Thus, choosing $C_{max}$ determines how overcollateralised the system
+is at equilibrium. \\
+
+\noindent The most significant tradeoff intrinsic in the selection of $C_{max}$
+is then the one between \textit{efficiency} and \textit{resilience}. 
+If $C_{max}$ is high, then the system is making more efficient use
+of its backing capital, while if it is low, then it has a much greater capacity
+to absorb negative shocks in the havven price before the system becomes
+undercollateralised.
+
+\noindent So a balance must be struck between the two, and where $C_{max}$
+lies is what determines this balance. Here $C_{max}$ is defined as a
+function of $C_{opt}$, which allows the control of the additional tradeoff 
+between targeting a healthy collateralisation level and aggressive nomin price
+stabilisation. \\
+
+\noindent It should also be observed that using $C_{max} > 1$ corresponds to a
+fractional reserve monetary system. In Havven, this situation is unstable:
+if it were the case, a greater value in nomins could be issued against a single havven
+than the value of that havven. In such a circumstance, the simultaneous appreciation
+of havvens (up to at least the value of the nomins a havven can issue) and depreciation
+of nomins immediately diminishes $C$, $C_{opt}$ and $C_{max}$, bringing them back under $1$.
+
 
 \subsection{Fee Evasion}
 
