@@ -299,7 +299,7 @@ fees paid to the havven holders, so that $F_{r,t} = F_t$. Substituting our earli
 
 \noindent The optimal collaterilisation ratio $C_{opt}$ is a target for havven
 holders to reach in order to maximise the amount of fees they receive.
-$C_{opt}$ is defined in terms of $P_n$ such that its value directly tracks changes in the nomin price; a havven
+$C_{opt}$ is defined in terms of the nomin price $P_n$, such that its value directly tracks changes in the nomin price; a havven
 holder wishing to maximise their fees will target $C_{opt}$ by issuing or destroying nomins. \\
 
 \noindent The function for $C_{opt}$ given below provides our dynamic target
@@ -309,9 +309,9 @@ for havven holders based on the price of nomins:
 \begin{align}
 \begin{split}
 C_{opt,t} &= f(P_{n,t}) \cdot C_t  \\ 
-f(P_{N,t}) &= max(\sigma \cdot (P_{N,t} - 1)^{\phi} + 1, 0) \\
+f(P_{n,t}) &= max(\sigma \cdot (P_{n,t} - 1)^{\phi} + 1, 0) \\
 \sigma & \text{: price sensitivity parameter } (\sigma \geq 0)\\
-\phi   & \text{: flattening parameter } (\phi \geq 1 \text{, } \phi \nmid 2) \\
+\phi   & \text{: flattening parameter } (\phi \in \mathbb{N} \text{, } \phi \nmid 2) \\
 \end{split}
 \end{align}
 \end{gather}
@@ -344,19 +344,19 @@ dashed
 \end{tikzpicture}
 \end{center}
 
-\noindent When $P_n$ is at \$1, $C_{opt} = C$ and there is no incentive given to move away from the current global collateralisation level. However, if $P_n < \$1$, then $C_{opt} < C$, incentivising issuers to burn nomins, thereby raising the price. The $P_n > \$1$ case is symmetric. Notice that when $P_n$ is close to \$1, $ f'(P_n) $ is small. However, the further $P_n$ diverges from \$1, the larger the slope becomes, providing a stronger incentive, in the form of potential fees, for a havven holder to move toward $C_{opt}$. \\
+\noindent When $P_n$ is at \$1, $C_{opt} = C$ and there is no incentive given to move away from the current global collateralisation level. However, if $P_n < \$1$, then $C_{opt} < C$, incentivising issuers to burn nomins, thereby raising the price. The $P_n > \$1$ case is symmetric. Notice that when the $P_n$ is close to \$1, $ f'(P_n) $ is small. However, the further it diverges from \$1, the larger the slope becomes, providing a stronger incentive, in the form of potential fees, for a havven holder to move toward $C_{opt}$. \\
 
 \newpage
 
 \subsubsection{Maximum Collateralisation Ratio}
 
-\noindent Havven seeks to maintain $C \leq C_{opt} < C_{max} < 1$, in order to retain sufficient overcollateralisation. It might seem intuitive that $C_{max}$ should be a static value. However, since $C_{opt}$ varies linearly with $P_n$ and inversely with $P_h$,  there are situations where $C_{max}$ may need to change. Below we define $C_{max}$: \\
+\noindent Havven seeks to maintain $C \leq C_{opt} < C_{max} < 1$, in order to retain sufficient overcollateralisation. It might seem intuitive that $C_{max}$ should be a static value. However, since $C_{opt}$ varies linearly with $P_n$ and inversely with $P_h$,  there are situations where $C_{max}$ may need to change. Below we define $C_{max}$ in terms of $C_{opt}$. \\
 
 \begin{gather} \label{eq:maxcollateralisation}
 \begin{align}
 \begin{split}
 C_{max,t} &=  a \cdot C_{opt,t} \\ 
-a &\geq 1 \\
+a & \geq 1 \\
 \end{split}
 \end{align}
 \end{gather}
@@ -386,7 +386,7 @@ dashed
 \end{tikzpicture}
 \end{center}
 
-\noindent The value of $C_{max}$ determines how overcollateralised each nomin is at issuance \eqref{eq:escrowed}. The higher its value, the more nomins can be generated for the same quantity of havvens. In contrast, if $C_{max}$ is low, the system has a greater capacity to absorb negative shocks in the havven price before it becomes undercollateralised.  The value of $C_{max}$ therefore represents a tradeoff between \textit{efficiency} and \textit{resilience}. By defining $C_{max}$ as a function of $C_{opt}$, Havven finds the optimal balance in this dilemma. This ensures that like $C_{opt}$, $C_{max}$ only changes as a consequence of instability in the nomin price. \\
+\noindent The value of $C_{max}$ determines how overcollateralised each nomin is at issuance. The higher its value, the more nomins can be generated for the same quantity of havvens. In contrast, if $C_{max}$ is low, the system has a greater capacity to absorb negative shocks in the havven price before it becomes undercollateralised.  The value of $C_{max}$ therefore represents a tradeoff between \textit{efficiency} and \textit{resilience}. By defining $C_{max}$ as a function of $C_{opt}$, Havven finds the optimal balance in this dilemma. This ensures that like $C_{opt}$, $C_{max}$ only changes as a consequence of instability in the nomin price. \\
 
 \noindent It should be noted that $C_{max} > 1$ corresponds to a fractional reserve monetary system. In Havven, this situation is unsustainable because it would cause simultaneous appreciation of havvens (up to at least the value of the nomins a havven can issue) and depreciation of nomins, immediately diminishing $C$, $C_{opt}$ and $C_{max}$, bringing them back under $1$.
 
@@ -400,14 +400,14 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \sigma &= 50 & \phi &= 3 & a&= 1.25
 \end{align*}
 
-\noindent The system is in price equilibirum, with the global collateralisation ratio $C$ equal to the optimal collaterisation ratio $C_{opt}$. Initially,  Bob's wallet contains only free havvens:
+\noindent The system is in price equilibirum, with the global collateralisation ratio $C$ equal to the optimal collaterisation ratio $C_{opt}$. Initially,  Bob's wallet contains only free havvens.
 
 \begin{figure}[h!]
 \centering
     \includegraphics[width=0.40\textwidth]{img/wallet}
 \end{figure}
 
-\noindent Bob wants to earn the maximum possible fees, so he issues nomins up to $C_{opt}$ \eqref{eq:feesreceived}. The system generates 40 nomins and escrows 80 of his havvens \eqref{eq:escrowed}, locking \$80 worth of value in the system. The nomins are sold for \$40 worth of ether and the proceeds are transferred to Bob's account. His wallet can be visualised below:
+\noindent Bob wants to earn the maximum possible fees, so he issues nomins up to $C_{opt}$. The system generates 40 nomins and escrows 80 of his havvens, locking \$80 worth of value in the system. The nomins are sold for \$40 worth of ether and the proceeds are transferred to Bob's account.
 \begin{figure}[h!]
 \centering
     \includegraphics[width=0.6\textwidth]{img/escrowed}
@@ -416,14 +416,14 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \noindent \textbf{Nomin Price Change} This example shows how the system incentivises havven holders to correct instability in the nomin price.
 
 \begin{enumerate}
-\item{As a consequence of reduced demand in decentralised trading markets, the nomin price $P_n$, drops to \$.90. The system needs to incentivise havven holders to reduce the supply of nomins so that the price returns to \$1.00.}
-\item{First, consider that both $C$ \eqref{eq:collateralisation} and Bob's $C_i$ \eqref{eq:individualcollateralisation} have decreased to 0.36. Since the nomin price has changed, $C_{opt}$ is recalculated to 0.342 \eqref{eq:optcollateralisation}. It is now smaller than both $C_i$ and $C$. Consequently, $C_{max}$ changes to 0.4275 \eqref{eq:maxcollateralisation}. This changes the quantity of Bob's locked havvens $\check{H_i}$, visualised below:}
+\item{As a consequence of reduced demand in decentralised trading markets, the nomin price $P_n$ drops to \$.90. The system needs to incentivise havven holders to reduce the supply of nomins so that the price returns to \$1.00.}
+\item{First, consider that both $C$ and Bob's $C_i$ have decreased to 0.36. Since the nomin price has changed, $C_{opt}$ is recalculated to 0.342. It is now smaller than both $C_i$ and $C$. $C_{max}$ also changes to 0.4275. This increases the percentage of Bob's havvens that are locked.}
 \begin{figure}[h!]
 \centering
     \includegraphics[width=0.6\textwidth]{img/pn_drop}
 \end{figure}
 \item{Bob now has a higher dollar value of locked havvens and his $C_i > C_{opt}$. This means that he is no longer receiving the maximum fee rate $\alpha_{base}$. In order to return to $\alpha_{base}$ he must lower his $C_i$ back to $C_{opt}$ by burning some nomins. He needs to workout how many to burn.}
-\item{He should burn 2 nomins so that he has 38 total issued \eqref{eq:individualcollateralisation}, which will cost \$1.80. When the system completes this process, his locked havvens will reduce back to 80 \eqref{eq:escrowed}. In addition, his $C_i = C_{opt} = 0.342 $, which means he is once again receiving the maximum fee rate.}
+\item{He should burn 2 nomins so that he has 38 total issued, which will cost \$1.80. When the system completes this process, his locked havvens will reduce back to 80. In addition, his $C_i = C_{opt} = 0.342 $, which means he is once again receiving the maximum fee rate.}
 \begin{figure}[h!]
 \centering
     \includegraphics[width=0.6\textwidth]{img/post_burn}
@@ -433,7 +433,7 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 
 \newpage
 
-\noindent \textbf{Havven Price Change (Market Price)} This example illustrates how the system maintains the dollar value of the underlying collateral by adjusting the quantity of a user's escrowed havvens as the havven price changes. Consider the same initial conditions as before:
+\noindent \textbf{Havven Price Change (Market Price)} This example illustrates how the system maintains the dollar value of the underlying collateral by adjusting the quantity of a user's escrowed havvens when the havven price changes. Consider the same initial conditions as before:
 
 \begin{align*}
 C_{max} &= 0.5 & C_{opt} &= 0.4 & C &= 0.4 \\
@@ -442,13 +442,13 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \end{align*}
 
 \begin{enumerate}
-\item{Like before, Bob elects to issue up to $C_{opt}$ in order to maximise fees:}
+\item{Like before, Bob elects to issue up to $C_{opt}$ in order to maximise fees.}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.6\textwidth]{img/escrowed}
 \end{figure}
-\item{The havven price, $P_h$, drops to \$0.90, which means the value of Bob's wallet has decreased to \$90. Both $C$ \eqref{eq:collateralisation} and Bob's $C_i$ \eqref{eq:individualcollateralisation} have increased to 0.44. Since the nomin price has not changed, the system does not need to incentivise issuance or burning. This is reflected in the new value of $C_{opt}$, which changes to 0.44, matching $C$ and $C_i$. }
-\item{However, the system needs to escrow more of Bob's havvens to maintain the dollar value of the locked collateral. The system has now locked around 89\% of Bob's havvens, to maintain \$80 of locked collateral:}
+\item{The havven price, $P_h$, drops to \$0.90, which means the value of Bob's wallet has decreased to \$90. Both $C$ and Bob's $C_i$ have increased to 0.44. Since the nomin price has not changed, the system does not need to incentivise issuance or burning. This is reflected in the new value of $C_{opt}$, which changes to 0.44, matching $C$ and $C_i$. }
+\item{However, the system needs to escrow more of Bob's havvens to maintain the dollar value of the locked collateral. The system has now locked around 89\% of Bob's havvens, to maintain \$80 of locked collateral.}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.6\textwidth]{img/ph_drop}
