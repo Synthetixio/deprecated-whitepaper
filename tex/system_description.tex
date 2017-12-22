@@ -404,15 +404,13 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 
 \begin{figure}[h!]
 \centering
-   % \includesvg[width=0.44\textwidth]{img/wallet}
-     \includegraphics[width=0.44\textwidth]{img/wallet_new}
+    \includegraphics[width=0.40\textwidth]{img/wallet}
 \end{figure}
 
 \noindent Bob wants to earn the maximum possible fees, so he issues nomins up to $C_{opt}$ \eqref{eq:feesreceived}. The system generates 40 nomins and escrows 80 of his havvens \eqref{eq:escrowed}, locking \$80 worth of value in the system. The nomins are sold for \$40 worth of ether and the proceeds are transferred to Bob's account. His wallet can be visualised below:
 \begin{figure}[h!]
 \centering
-  %  \includesvg[width=0.5\textwidth]{img/escrowed_wallet}
-    \includegraphics[width=0.5\textwidth]{img/escrowed_wallet_new}
+    \includegraphics[width=0.6\textwidth]{img/escrowed}
 \end{figure}
 
 \noindent \textbf{Nomin Price Change} This example shows how the system incentivises havven holders to correct instability in the nomin price.
@@ -422,15 +420,13 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \item{First, consider that both $C$ \eqref{eq:collateralisation} and Bob's $C_i$ \eqref{eq:individualcollateralisation} have decreased to 0.36. Since the nomin price has changed, $C_{opt}$ is recalculated to 0.342 \eqref{eq:optcollateralisation}. It is now smaller than both $C_i$ and $C$. Consequently, $C_{max}$ changes to 0.4275 \eqref{eq:maxcollateralisation}. This changes the quantity of Bob's locked havvens $\check{H_i}$, visualised below:}
 \begin{figure}[h!]
 \centering
-   %\includesvg[width=0.5\textwidth]{img/pn_drop}
-     \includegraphics[width=0.5\textwidth]{img/pn_drop_new}
+    \includegraphics[width=0.6\textwidth]{img/pn_drop}
 \end{figure}
 \item{Bob now has a higher dollar value of locked havvens and his $C_i > C_{opt}$. This means that he is no longer receiving the maximum fee rate $\alpha_{base}$. In order to return to $\alpha_{base}$ he must lower his $C_i$ back to $C_{opt}$ by burning some nomins. He needs to workout how many to burn.}
 \item{He should burn 2 nomins so that he has 38 total issued \eqref{eq:individualcollateralisation}, which will cost \$1.80. When the system completes this process, his locked havvens will reduce back to 80 \eqref{eq:escrowed}. In addition, his $C_i = C_{opt} = 0.342 $, which means he is once again receiving the maximum fee rate.}
 \begin{figure}[h!]
 \centering
-    %\includesvg[width=0.5\textwidth]{img/post_burn}
-      \includegraphics[width=0.5\textwidth]{img/post_burn_new}
+    \includegraphics[width=0.6\textwidth]{img/post_burn}
 \end{figure}
 \item{Bob has taken the correct actions to raise the low nomin price. By electing to burn nomins, the system performed a limit buy order on his behalf, putting upward pressure on the nomin price. As compensation for doing so, he is rewarded with the optimal fee rate $\alpha_{base}$.}
 \end{enumerate}
@@ -448,16 +444,14 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \begin{enumerate}
 \item{Like before, Bob elects to issue up to $C_{opt}$ in order to maximise fees:}
 \begin{figure}[h!]
-\centering
-   % \includesvg[width=0.5\textwidth]{img/escrowed_wallet}
-       \includegraphics[width=0.5\textwidth]{img/escrowed_wallet_new}
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/escrowed}
 \end{figure}
 \item{The havven price, $P_h$, drops to \$0.90, which means the value of Bob's wallet has decreased to \$90. Both $C$ \eqref{eq:collateralisation} and Bob's $C_i$ \eqref{eq:individualcollateralisation} have increased to 0.44. Since the nomin price has not changed, the system does not need to incentivise issuance or burning. This is reflected in the new value of $C_{opt}$, which changes to 0.44, matching $C$ and $C_i$. }
 \item{However, the system needs to escrow more of Bob's havvens to maintain the dollar value of the locked collateral. The system has now locked around 89\% of Bob's havvens, to maintain \$80 of locked collateral:}
 \begin{figure}[h!]
     \centering
-    %\includesvg[width=0.5\textwidth]{img/ph_drop}
-      \includegraphics[width=0.5\textwidth]{img/ph_drop_new}
+    \includegraphics[width=0.6\textwidth]{img/ph_drop}
 \end{figure}
 \item{What happens if the havven price drops below \$.80? The system can't lock more than 100\% of Bob's havvens, but it can impose a collateral debt. Alternatively, if the nomin price is stable, the system may raise $C_{max}$ to allow more efficient operation.} 
 \end{enumerate} 
