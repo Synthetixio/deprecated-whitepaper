@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="618px" height="358px" viewBox="0 0 618 358" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Havven Diagram 1 WHITE</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M10,2.51994807e-15 L22.0774548,2.51994807e-15 L315.642458,2.51994807e-15 L315.642458,1.77635684e-15 C321.165306,7.61826213e-16 325.642458,4.4771525 325.642458,10 L325.642458,234 L325.642458,234 C325.642458,239.522847 321.165306,244 315.642458,244 L10,244 L10,244 C4.4771525,244 6.76353751e-16,239.522847 0,234 L0,10 L0,10 C-6.76353751e-16,4.4771525 4.4771525,1.01453063e-15 10,0 Z" id="path-1"></path>
+        <path d="M237.709497,80.4492754 L331,80.4492754 L331,80.4492754 C333.209139,80.4492754 335,82.2401364 335,84.4492754 L335,163.086957 L335,163.086957 C335,165.296096 333.209139,167.086957 331,167.086957 L237.709497,167.086957 L237.709497,167.086957 C229.425226,167.086957 222.709497,160.371228 222.709497,152.086957 L222.709497,95.4492754 L222.709497,95.4492754 C222.709497,87.1650041 229.425226,80.4492754 237.709497,80.4492754 Z" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="White-Paper-Diagrams" transform="translate(-286.000000, -1950.000000)">
+            <g id="Havven-Diagram-1-WHITE" transform="translate(286.000000, 1950.000000)">
+                <g id="DIAGRAM-1.1">
+                    <path d="M230,-101 L238,-101 L238,-101 C239.104569,-101 240,-100.104569 240,-99 L240,216 L240,216 C240,217.104569 239.104569,218 238,218 L230,218" id="Path-15" stroke="#171923" stroke-width="1.5" transform="translate(235.000000, 58.500000) rotate(-90.000000) translate(-235.000000, -58.500000) "></path>
+                    <g id="Wallet" transform="translate(72.000000, 76.000000)">
+                        <g id="Rectangle-4">
+                            <use fill-opacity="0.514747509" fill="#52578E" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            <path stroke="#171923" stroke-width="2" d="M10,1 C5.02943725,1 1,5.02943725 1,10 L1,234 C1,238.970563 5.02943725,243 10,243 L315.642458,243 C320.613021,243 324.642458,238.970563 324.642458,234 L324.642458,10 C324.642458,5.02943725 320.613021,1 315.642458,1 L10,1 Z"></path>
+                        </g>
+                        <g id="Rectangle-4">
+                            <use fill="#A6A9C5" fill-rule="evenodd" xlink:href="#path-2"></use>
+                            <path stroke="#171923" stroke-width="2" d="M237.709497,81.4492754 C229.977511,81.4492754 223.709497,87.7172889 223.709497,95.4492754 L223.709497,152.086957 C223.709497,159.818943 229.977511,166.086957 237.709497,166.086957 L331,166.086957 C332.656854,166.086957 334,164.743811 334,163.086957 L334,84.4492754 C334,82.7924211 332.656854,81.4492754 331,81.4492754 L237.709497,81.4492754 Z"></path>
+                        </g>
+                        <rect id="Rectangle-4" stroke="#171923" stroke-width="2" x="243.360335" y="105.318841" width="38" height="38" rx="19"></rect>
+                    </g>
+                    <rect id="Rectangle-11" stroke="#171923" stroke-width="2" x="1" y="1" width="616" height="356" rx="6"></rect>
+                    <text id="FREE" font-family="Rubik-Regular, Rubik" font-size="15" font-weight="normal" fill="#171923">
+                        <tspan x="206" y="45">FREE</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

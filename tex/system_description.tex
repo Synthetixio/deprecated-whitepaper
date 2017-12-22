@@ -73,7 +73,7 @@ curve, D, and a supply curve, S.  \\
 \begin{tikzpicture}[scale=3]
 
 % draw axes
-\draw [<->, thick] (0,2) node (yaxis) [above] {$P_n$} |- (2.5,0) node (xaxis) [right] {$N$};
+\draw [<->, thick] (0,2) node (yaxis) [above] {$P_n (\$)$} |- (2.5,0) node (xaxis) [right] {$N$};
 
 % draw intersecting lines
 \draw (0.5, 0.5) coordinate (a_1) -- (2,1.8) coordinate (a_2) node[pos=0.0, left] {S};
@@ -184,32 +184,6 @@ The quantity of havvens $\check{H_i}$ locked in generating $\check{N_i}$ nomins 
 
 \noindent In order to access the havvens that have been escrowed, the system must destroy the same number of nomins that were originally issued. When the issuer indicates the intention to retrieve their havvens, the system places a \textbf{limit buy} order on a decentralised exchange, up to a maximum price of \$1. The system places this order on behalf of the issuer and upon completion, the nomins are immediately destroyed. \\
 
-%\subsubsection{Price changes (Table here maybe?)}
-
-%\noindent \emph{What happens if the price of havvens changes?} \\
-
-%\noindent All issuance of nomins is done at the current $P_h$. However, when $P_h$ changes, the quantity of escrowed havvens changes with it (not the \emph{value}). An increase in $P_h$ means that fewer of Bob's havvens are escrowed. In contrast, a decrease in the $P_h$ means that more of his havvens are escrowed. This process occurs automatically in order to ensure that the system remains overcollateralised. \\ 
-
-%\noindent \emph{What happens if the price of nomins changes?} \\ 
-
-%\noindent In order to release escrowed havvens, Bob must return the same quantity of nomins that he issued. This means that if $P_n$ has increased in the market, he will need to spend more ether than he received when he issued in order to release his havvens. Conversely, if $P_n$ has decreased, Bob will need to spend less in order to release his havvens.
-
-%\subsubsection{Global collaterilisation Ratio}
-
-%\noindent Havven can ensure that nomins are overcollateralised at the time of issuance, however, a reduction in $P_h$ lowers the value of the escrowed havvens. The global collaterilisation ratio is defined as the total value of nomins divided by the total value of havvens:
-
-%$$ U = \frac{P_n \cdot N}{P_h \cdot H}.$$ \\
-
-%\noindent Intuitively, if $U = 1$, the value of nomins and havvens are equal. Hence, given our overcollateralisation property, the system targets $U <  1$. To do this, Havven only allows the issuance of nomins up to a maximum collaterilisation ratio.
-
-%\subsubsection{Unique Collateralisation Ratio}
-
-% \noindent Given the need to adjust the supply of nomins, an optimum collaterilisation ratio is defined as the point at which maximum incentives are applied:
-
-% $$ 0 \leq U_{opt} \leq U_{max} \leq 1.$$
-
-% \noindent Each havven holder that has issued nomins has a unique collaterilisation ratio, $ U_i $. The system can measure the degree to which their $ U_i $ is above or below the optimum and reward them accordingly. In this way the system incentivises the issuance and destruction of nomins. $ U_{opt} $ is defined formally below in terms of $ P_n $. As  the nomin price diverges from the desired \$1, the incentive to either expand or contract nomin supply increases.
-
 \newpage
 \subsection{Transaction Fees} Havven needs a direct incentive mechanism that can correct changes in the global collaterisation ratio, $C$, when the price of havvens or nomins changes. \\
 
@@ -316,7 +290,7 @@ fees paid to the havven holders, so that $F_{r,t} = F_t$. Substituting our earli
 
 \noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $F_t$. This rate should be achieved when an individual's $C_i$ is at $C_{opt}$. \\
 
-\noindent The definition of $C_{opt}$ must therefore provide the following incentive. If $P_n > 1$ then the system must encourage more nomins to be issued. However, if $P_n < 1$, the system must encourage nomins to be burned. 
+\noindent The definition of $C_{opt}$ must therefore provide the following incentive. If $P_n > \$1$ then the system must encourage more nomins to be issued. However, if $P_n < \$1$, the system must encourage nomins to be burned. 
 
 \newpage
 
@@ -378,10 +352,14 @@ dashed
 
 \noindent Havven seeks to maintain $C \leq C_{opt} < C_{max} < 1$, in order to retain sufficient overcollateralisation. It might seem intuitive that $C_{max}$ should be a static value. However, since $C_{opt}$ varies linearly with $P_n$ and inversely with $P_h$,  there are situations where $C_{max}$ may need to change. Below we define $C_{max}$: \\
 
-\begin{equation}
-\label{eq:maxcollateralisation}
-C_{max,t} =  a \cdot C_{opt,t}
-\end{equation}
+\begin{gather} \label{eq:maxcollateralisation}
+\begin{align}
+\begin{split}
+C_{max,t} &=  a \cdot C_{opt,t} \\ 
+a &\geq 1 \\
+\end{split}
+\end{align}
+\end{gather}
 
 \begin{center}
 \begin{tikzpicture}[scale=1.15]
@@ -408,13 +386,13 @@ dashed
 \end{tikzpicture}
 \end{center}
 
-\noindent The collateralisation ratio $C$ compares the value of nomins against the value of havvens \eqref{eq:collateralisation}. Choosing $C_{max}$ determines how overcollateralised each nomin is at issuance \eqref{eq:escrowed}. The higher the value of $C_{max}$, the more nomins can be generated for the same quantity of havvens, so the system becomes more efficient as $C \to 1 $. In contrast, if $C_{max}$ is low, the system has a greater capacity to absorb negative shocks in the havven price before it becomes undercollateralised.  The value of $C_{max}$ therefore represents a tradeoff between \textit{efficiency} and \textit{resilience}. By defining $C_{max}$ as a function of $C_{opt}$, Havven finds the optimal balance in this dilemma. This ensures that like $C_{opt}$, $C_{max}$ only changes as a consequence of instability in the nomin price. \\
+\noindent The value of $C_{max}$ determines how overcollateralised each nomin is at issuance \eqref{eq:escrowed}. The higher its value, the more nomins can be generated for the same quantity of havvens. In contrast, if $C_{max}$ is low, the system has a greater capacity to absorb negative shocks in the havven price before it becomes undercollateralised.  The value of $C_{max}$ therefore represents a tradeoff between \textit{efficiency} and \textit{resilience}. By defining $C_{max}$ as a function of $C_{opt}$, Havven finds the optimal balance in this dilemma. This ensures that like $C_{opt}$, $C_{max}$ only changes as a consequence of instability in the nomin price. \\
 
-\noindent It should be noted that $C_{max} > 1$ corresponds to a fractional reserve monetary system, where more nomins could be issued than collateral. In Havven, this situation is unsustainable because it would cause simultaneous appreciation of havvens (up to at least the value of the nomins a havven can issue) and depreciation of nomins, immediately diminishing $C$, $C_{opt}$ and $C_{max}$, bringing them back under $1$.
+\noindent It should be noted that $C_{max} > 1$ corresponds to a fractional reserve monetary system. In Havven, this situation is unsustainable because it would cause simultaneous appreciation of havvens (up to at least the value of the nomins a havven can issue) and depreciation of nomins, immediately diminishing $C$, $C_{opt}$ and $C_{max}$, bringing them back under $1$.
 
 \subsection{Issuance and Fees Example} 
 
-\noindent Bob decides to purchase 100 havvens at \$1 each, a total wallet value of \$100. Consider the following initial conditions:
+\noindent Bob decides to purchase 100 havvens at \$1 each. Consider the following initial conditions:
 
 \begin{align*}
 C_{max} &= 0.5 & C_{opt} &= 0.4 & C &= 0.4 \\
@@ -426,12 +404,14 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 
 \begin{figure}[h!]
 \centering
-    \includegraphics[width=0.44\textwidth]{img/wallet_new}
+   % \includesvg[width=0.44\textwidth]{img/wallet}
+     \includegraphics[width=0.44\textwidth]{img/wallet_new}
 \end{figure}
 
 \noindent Bob wants to earn the maximum possible fees, so he issues nomins up to $C_{opt}$ \eqref{eq:feesreceived}. The system generates 40 nomins and escrows 80 of his havvens \eqref{eq:escrowed}, locking \$80 worth of value in the system. The nomins are sold for \$40 worth of ether and the proceeds are transferred to Bob's account. His wallet can be visualised below:
 \begin{figure}[h!]
 \centering
+  %  \includesvg[width=0.5\textwidth]{img/escrowed_wallet}
     \includegraphics[width=0.5\textwidth]{img/escrowed_wallet_new}
 \end{figure}
 
@@ -442,13 +422,15 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \item{First, consider that both $C$ \eqref{eq:collateralisation} and Bob's $C_i$ \eqref{eq:individualcollateralisation} have decreased to 0.36. Since the nomin price has changed, $C_{opt}$ is recalculated to 0.342 \eqref{eq:optcollateralisation}. It is now smaller than both $C_i$ and $C$. Consequently, $C_{max}$ changes to 0.4275 \eqref{eq:maxcollateralisation}. This changes the quantity of Bob's locked havvens $\check{H_i}$, visualised below:}
 \begin{figure}[h!]
 \centering
-    \includegraphics[width=0.5\textwidth]{img/pn_drop_new.png}
+   %\includesvg[width=0.5\textwidth]{img/pn_drop}
+     \includegraphics[width=0.5\textwidth]{img/pn_drop_new}
 \end{figure}
 \item{Bob now has a higher dollar value of locked havvens and his $C_i > C_{opt}$. This means that he is no longer receiving the maximum fee rate $\alpha_{base}$. In order to return to $\alpha_{base}$ he must lower his $C_i$ back to $C_{opt}$ by burning some nomins. He needs to workout how many to burn.}
 \item{He should burn 2 nomins so that he has 38 total issued \eqref{eq:individualcollateralisation}, which will cost \$1.80. When the system completes this process, his locked havvens will reduce back to 80 \eqref{eq:escrowed}. In addition, his $C_i = C_{opt} = 0.342 $, which means he is once again receiving the maximum fee rate.}
 \begin{figure}[h!]
 \centering
-    \includegraphics[width=0.5\textwidth]{img/post_burn_new.png}
+    %\includesvg[width=0.5\textwidth]{img/post_burn}
+      \includegraphics[width=0.5\textwidth]{img/post_burn_new}
 \end{figure}
 \item{Bob has taken the correct actions to raise the low nomin price. By electing to burn nomins, the system performed a limit buy order on his behalf, putting upward pressure on the nomin price. As compensation for doing so, he is rewarded with the optimal fee rate $\alpha_{base}$.}
 \end{enumerate}
@@ -467,16 +449,17 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \item{Like before, Bob elects to issue up to $C_{opt}$ in order to maximise fees:}
 \begin{figure}[h!]
 \centering
-    \includegraphics[width=0.5\textwidth]{img/escrowed_wallet_new}
+   % \includesvg[width=0.5\textwidth]{img/escrowed_wallet}
+       \includegraphics[width=0.5\textwidth]{img/escrowed_wallet_new}
 \end{figure}
 \item{The havven price, $P_h$, drops to \$0.90, which means the value of Bob's wallet has decreased to \$90. Both $C$ \eqref{eq:collateralisation} and Bob's $C_i$ \eqref{eq:individualcollateralisation} have increased to 0.44. Since the nomin price has not changed, the system does not need to incentivise issuance or burning. This is reflected in the new value of $C_{opt}$, which changes to 0.44, matching $C$ and $C_i$. }
 \item{However, the system needs to escrow more of Bob's havvens to maintain the dollar value of the locked collateral. The system has now locked around 89\% of Bob's havvens, to maintain \$80 of locked collateral:}
 \begin{figure}[h!]
     \centering
-    %\includesvg[width=0.33\textwidth]{img/block8logo}
-    \includegraphics[width=0.5\textwidth]{img/ph_drop_new}
+    %\includesvg[width=0.5\textwidth]{img/ph_drop}
+      \includegraphics[width=0.5\textwidth]{img/ph_drop_new}
 \end{figure}
-\item{What happens if the havven price drops below \$.80? The system can't lock more than 100\% of Bob's havvens. If the nomin price is stable, the system may raise $C_{max}$ to allow more efficient operation. If the nomin price is not stable, then the system will incentivise havven holders to correct the supply.} 
+\item{What happens if the havven price drops below \$.80? The system can't lock more than 100\% of Bob's havvens, but it can impose a collateral debt. Alternatively, if the nomin price is stable, the system may raise $C_{max}$ to allow more efficient operation.} 
 \end{enumerate} 
 
 \newpage
