@@ -4,31 +4,17 @@
 
 \begin{itemize}
 \item{To provide the system with collateral.}
-\item{To participate in the stabilisation of the nomin price.}
+\item{To participate in the stabilisation of the nomin price.} \\
 \end{itemize}
 
-\vspace{2mm}
+\noindent \textbf{Collateralisation} \\
 
-\noindent \textbf{Collateralisation}
-\vspace{2mm}
+\noindent Confidence in the stability of the nomin begins with overcollateralisation, so that the value of escrowed havvens is greater than the value of nomins in circulation. As long as the ratio of total nomin value to total havven value remains favourable, there is sufficient backing in the underlying collateral pool to ensure that nomins
+can be redeemed for their face value. The redeemability of a nomin for the havvens against which it was issued strongly supports a stable price. \\
 
-\noindent Confidence in the stability of the nomin begins with overcollateralisation, so that the value of escrowed havvens is greater than the value of nomins in circulation. The value of havvens is derived internally by the system as a function of the demand for nomins; this decouples the value of the collateral pool from market speculation.
+\noindent \textbf{Stabilisation Incentives} \\
 
-\vspace{2mm}
-
-\noindent As long as the ratio of total nomin value to total havven value remains favourable,
-there is sufficient backing in the underlying collateral pool to ensure that nomins
-can be redeemed for their face value. The redeemability of a nomin for the havvens
-against which it was issued strongly supports a stable price. \\
-
-\vspace{2mm}
-
-\noindent \textbf{Stabilisation Incentives}
-\vspace{2mm}
-
-\noindent Havven rewards those that have issued nomins. These rewards are derived from transaction fees and are distributed in proportion with how well each issuer maintains the correct nomin supply. The system monitors the nomin price, and responds by adjusting its targeted global supply, which individual issuers are incentivised to move towards.
-
-\vspace{2mm}
+\noindent Havven rewards those that have issued nomins. These rewards are derived from transaction fees and are distributed in proportion with how well each issuer maintains the correct nomin supply. The system monitors the nomin price, and responds by adjusting its targeted global supply, which individual issuers are incentivised to move towards. \\
 
 \noindent Where volatility persists, stronger stabilisation mechanisms may be applied such as automated collateral recovery. Where a significant portion of nomins are being used for hedging, (and hence not generating transaction fees) a charge can be applied to ensure that the cost of utility for hedging is not being solely borne by transactions.
 
@@ -46,11 +32,9 @@ P_h &:= \text{havven price}  & P_n &:= \text{nomin price} \\
 % \todo[inline]{Consider renaming havven price symbol to reflect that it is computed from income}
 
 \noindent All havven tokens are created at initialisation, so $H$ is constant.
-The quantity of nomins $N$ floats, responding to the issuance actions of havven holders.
+The quantity of nomins $N$, floats responding to the issuance actions of havven holders.
 The Havven system needs to incentivise issuers to maintain $N$ such that
-the nomin price, $P_n$, is stable at \$1.
-As we proceed, we may subscript variables with $t$ to indicate the value of that
-variable at a given time. \\
+the nomin price $P_n$, is stable at \$1. As we proceed, we may subscript variables with $t$ to indicate the value of that variable at a given time. \\
 
 \noindent In Havven, the measure of the value of nomins against the value
 of havvens is called the collateralisation ratio:
@@ -62,10 +46,9 @@ C = \frac{P_n \cdot N}{P_h \cdot H} \label{eq:collateralisation}
 \vspace{3 mm}
 
 \noindent From the law of supply and demand, there exists some supply
-of nomins, $N_{opt}$, where the related level of demand yields an equilibrium
-price of \$1. This quantity is associated with an optimal collaterisation ratio,
-$C_{opt}$. We visualise this equilibrium below with a hypothetical demand
-curve, D, and a supply curve, S.  \\
+of nomins $N_{opt}$, where the related level of demand yields an equilibrium
+price of \$1. This quantity is associated with an optimal collaterisation ratio
+$C_{opt}$. We visualise this equilibrium below with a hypothetical demand and supply curve.  \\
 
 % \todo[inline]{curved lines}
 % \todo[inline]{make diagrams pretty}
@@ -73,7 +56,7 @@ curve, D, and a supply curve, S.  \\
 \begin{tikzpicture}[scale=3]
 
 % draw axes
-\draw [<->, thick] (0,2) node (yaxis) [above] {$P_n (\$)$} |- (2.5,0) node (xaxis) [right] {$N$};
+\draw [<->, thick] (0,2) node (yaxis) [above] {$P_n$} |- (2.5,0) node (xaxis) [right] {$N$};
 
 % draw intersecting lines
 \draw (0.5, 0.5) coordinate (a_1) -- (2,1.8) coordinate (a_2) node[pos=0.0, left] {S};
@@ -82,54 +65,12 @@ curve, D, and a supply curve, S.  \\
 % calculate coordinate of intersection
 \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
 
-\draw[dashed] (yaxis |- c) node [left] {$1$} -| (xaxis -| c) node[below] {$N_{opt} = \frac{C_{opt} \cdot P_h \cdot H}{P_n}$};
+\draw[dashed] (yaxis |- c) node [left] {$\$1$} -| (xaxis -| c) node[below] {$N_{opt} = \frac{C_{opt} \cdot P_h \cdot H}{P_n}$};
 
 \end{tikzpicture}
 \end{center}
 
 \noindent The system is unable to influence the demand for nomins. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency. Although demand cannot be manipulated, the supply of nomins is controlled by havven holders, whose issuance incentives are in turn controlled by the system. It follows that as we require a fixed price $P_n = \$1 $ and are unable to control either $P_h$ or $H$, we must manipulate $C_{opt}$ such that $N = N_{opt}$ in order to satisfy our requirement.
-
-\subsection{Measuring Havven Value}
-
-\noindent Being freely-tradable ERC20 tokens, havvens will have a market price which, like
-the nomin price, can be measured with an oracle. In the initial phases, while nomin demand is low, 
-we will use a seven day rolling average of the market price for both havvens and nomins. This rolling
-average is designed to smooth out fluctuations in the market price and increase the cost of attacking the
-system. However, once nomin transaction volume has increased to sufficient levels, we may transition to a different
-havven-valuation system that attempts to more directly connect the valuation of the havven with demand for nomins. \\
-
-\noindent One problem with using the market price for $P_h$ is that it exposes the
-collateralisation ratio computation to speculative price shocks.
-Instead, the ``true'' price of a havven can be computed as a function of the transaction
-fees that the system charges. In this way we connect the computed price of the havven directly with
-nomin velocity.
-Valuation increases will allow an expansion in the money supply exactly when demand has expanded,
-while contractions in the money supply will be incentivised exactly when demand has contracted. \\
-
-\noindent We define the value of a havven as a share in the discounted sum over past fee returns.
-In this way the price is not vulnerable to instantaneous volume spikes, while
-taking the most recent transaction volumes to be the most highly-correlated with future volumes:
-
-\begin{equation}
-    P_{h,t} = \frac{1}{H} \sum_{t'=1}^{t} \frac{F_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
-\end{equation}
-
-where
-
-\begin{align*} 
-& P_{h,t} \text{ is the price of one havven at time } t  \\
-& F_t \text{ is the total fees collected in period } t\\
-& r \text{ is a falloff term}  \\
-\end{align*}
-
-\newpage
-
-\noindent This can be computed efficiently, because $P_{h,t+1} = \frac{P_{h,t} + F_t}{r}$. 
-Further, if it is assumed that the average fee take is approximated by $F_t$, and $t$ is large, then:
-
-\begin{equation}
-    P_{h,t} \approx \frac{1}{H} \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} = \frac{F_t}{H \cdot r}
-\end{equation}
 
 \subsection{Issuance and Collateralisation} 
 
@@ -141,7 +82,7 @@ Further, if it is assumed that the average fee take is approximated by $F_t$, an
 0 < C_{opt} < 1  \label{eq:target}
 \end{equation}
 
-\vspace{3 mm}
+\vspace{2 mm}
 
 \noindent It is necessary at this point to distinguish, for an account $i$, between the nomins it contains $N_i$ (equity) and the nomins it has issued $\check{N_i}$ (debt). Note that globally, the $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all nomins were issued by some account. However, a given account may have a balance different from its issuance debt.\\
 % \todo[inline]{Make sure this equity/debt language is not too security-like.}
@@ -152,13 +93,11 @@ Further, if it is assumed that the average fee take is approximated by $F_t$, an
 C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollateralisation}
 \end{equation}
 
-\vspace{3 mm}
+\vspace{2 mm}
 
 \noindent The system provides incentives for individual issuers to bring their $C_i$ closer to $C_{opt}$ while maintaining $C_{opt}$ itself at a level that stabilises the price. \\
 
-\noindent \textbf{Nomin Issuance}
-
-\vspace{1mm}
+\noindent \textbf{Nomin Issuance} \\
 
 \noindent The nomin issuance mechanism allows Havven to reach its collaterisation target.
 Issuing nomins escrows some quantity of havvens, which cannot be moved until they are unescrowed.
@@ -168,13 +107,13 @@ The quantity of havvens $\check{H_i}$ locked in generating $\check{N_i}$ nomins 
 \check{H_i} = \frac{P_n \cdot \check{N_i}}{P_h \cdot C_{max}}  \label{eq:escrowed}
 \end{equation}
 
-\vspace{3 mm}
+\vspace{2 mm}
 
 \noindent Under equilibrium conditions, there is some $\check{H_i} \leq H_i$ when $C_i = C_{opt}$, which the issuer is incentivised to target. These incentives are provided in the form of transaction fees, discussed in section 2.4. It is important to note that the issuer may voluntarily increase their $C_i$ up to the limit of $C_{max}$; for example if they anticipate a positive movement in $C_{opt}$. \\
 
-\newpage
-
 \noindent On the other hand, an issuer may not issue a quantity of nomins that would lock more than $H_i$ havvens.  Consequently, $C_i$ may never exceed $C_{max}$, except by price fluctuations, and in such circumstances, issuers are rewarded for bringing $C_i$ back under $C_{max}$. \\
+
+\newpage
 
 \noindent After generating the nomins, the system places a \textbf{limit sell} order with a price of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market price, down to a minimum price of \$1. If we assume implementation on Ethereum, then the nomins are sold for an equivalent value in ether, with the proceeds of the sale remitted to the issuer. \\
 
@@ -388,7 +327,7 @@ dashed
 
 \noindent The value of $C_{max}$ determines how overcollateralised each nomin is at issuance. The higher its value, the more nomins can be generated for the same quantity of havvens. In contrast, if $C_{max}$ is low, the system has a greater capacity to absorb negative shocks in the havven price before it becomes undercollateralised.  The value of $C_{max}$ therefore represents a tradeoff between \textit{efficiency} and \textit{resilience}. By defining $C_{max}$ as a function of $C_{opt}$, Havven finds the optimal balance in this dilemma. This ensures that like $C_{opt}$, $C_{max}$ only changes as a consequence of instability in the nomin price. \\
 
-\noindent It should be noted that $C_{max} > 1$ corresponds to a fractional reserve monetary system. In Havven, this situation is unsustainable because it would cause simultaneous appreciation of havvens (up to at least the value of the nomins a havven can issue) and depreciation of nomins, immediately diminishing $C$, $C_{opt}$ and $C_{max}$, bringing them back under $1$.
+\noindent It should be noted that $C_{max} > 1$ corresponds to a fractional reserve monetary system, where a greater value of nomins can be issued against each havven. In Havven, this situation is unsustainable because it would cause simultaneous appreciation of havvens (up to at least the value of nomins issuable against a havven) and depreciation of nomins, immediately diminishing $C$, $C_{opt}$ and $C_{max}$, bringing them back under $1$.
 
 \subsection{Issuance and Fees Example} 
 
@@ -422,7 +361,7 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \centering
     \includegraphics[width=0.6\textwidth]{img/pn_drop}
 \end{figure}
-\item{Bob now has a higher dollar value of locked havvens and his $C_i > C_{opt}$. This means that he is no longer receiving the maximum fee rate $\alpha_{base}$. In order to return to $\alpha_{base}$ he must lower his $C_i$ back to $C_{opt}$ by burning some nomins. He needs to workout how many to burn.}
+\item{Bob now has a higher dollar value of locked havvens and his $C_i > C_{opt}$. This means that he is no longer receiving the maximum fee rate $\alpha_{base}$. In order to return to $\alpha_{base}$ he must lower his $C_i$ back to $C_{opt}$ by burning some nomins. He needs to work out how many to burn.}
 \item{He should burn 2 nomins so that he has 38 total issued, which will cost \$1.80. When the system completes this process, his locked havvens will reduce back to 80. In addition, his $C_i$ is equal to $C_{opt}$ at 0.342, which means he is once again receiving the maximum fee rate.}
 \begin{figure}[h!]
 \centering
@@ -468,19 +407,12 @@ it issues. These wrapped tokens could then be exchanged without incurring fees. 
 \noindent First, the fees are designed to be low enough that most users
 shouldn't notice them, so users will not in general be strongly motivated to switch
 to a marginal and less trustworthy alternative. \\
-\noindent Second, network effect is tremendously important for currencies; in order to
-become useful, any token must first be broadly accepted as ``legal'' tender. This is difficult
-enough by itself, but a wrapped token must do this to the extent that it displaces its own perfect
-substitute good: the token it wraps.
 
-\noindent In the case of Havven, this would undermine built-in stabilisation mechanisms,
-which become more powerful with increased transaction volume.
-Consequently, as a wrapped nomin parasitises more of the nomin market,
-it destroys the basis of its own utility, which is that nomins themselves are stable.
+\noindent Second, network effects are tremendously important for currencies; in order to have utility a token must demonstrate acceptability. This is challenging enough in itself, but a wrapped token must do this to an extent that it displaces its own perfect substitute: the token it wraps.
 
-\noindent Finally, it is unlikely that any token wrapper will be credible,
-not having been publicly and expensively audited, while its primary function
-tends to redound against the trustworthiness of its authors. \\
+\noindent This would undermine built-in stabilisation mechanisms, which become more powerful with increased transaction volume.Consequently, as a wrapped nomin parasitises more of the nomin market, it destroys the basis of its own utility, which is that nomins themselves are stable.
+
+\noindent Finally, it is unlikely that a token wrapper will be credible, not having been publicly and expensively audited, while its primary function undermines the trustworthiness of its authors. \\
 
 \noindent Nevertheless, it's simple to implement a democratic method, weighted by havven balance,
 by which havven holders can freeze or confiscate the balance of any contract that wraps assets.
@@ -493,3 +425,34 @@ from being used, even if they are written, since any user who does so risks losi
 entire wrapped balance.
 
 \newpage
+
+\subsection{Pricing Considerations}
+
+\noindent Being freely-tradable ERC20 tokens, havvens will have a market price which, like
+the nomin price, can be measured with an oracle. Initially, while nomin demand is low, we will use a seven day rolling average of the market price for both havvens and nomins. This rolling average is designed to smooth out fluctuations in the market price and increase the cost of attacking the system. However, once nomin transaction volume has increased to sufficient levels, we may consider an approach that allows incentives to be applied directly as a consequence of changes in nomin demand. In this way, the system can avoid the influence of speculative components of the havven price. \\
+
+\noindent \textbf{Approximating Nomin Demand} \\
+
+\noindent It is possible to approximate nomin demand internally as function of the transaction fees that the system charges. This computation is not vulnerable to instantaneous volume spikes, while taking the most recent transaction volumes to be the most highly-correlated with future volumes:
+
+\begin{equation}
+    D_{t} = \sum_{t'=1}^{t} \frac{F_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
+\end{equation}
+
+where
+
+\begin{align*} 
+& D_{t} \text{ is the approximate nomin demand in period } t  \\
+& F_t \text{ is the total fees collected in period } t\\
+& r \text{ is a falloff term}  \\
+\end{align*}
+
+\noindent This can be computed efficiently, because $U_{h,t+1} = \frac{U_{h,t} + F_t}{r}$. 
+Further, if it is assumed that the average fee take is approximated by $F_t$, and $t$ is large, then:
+
+\begin{equation}
+    U_{h,t} \approx \frac{1}{H} \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} = \frac{F_t}{H \cdot r}
+\end{equation}
+
+\newpage
+
