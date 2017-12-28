@@ -84,10 +84,9 @@ $C_{opt}$. We visualise this equilibrium below with a hypothetical demand and su
 
 \vspace{2 mm}
 
-\noindent It is necessary at this point to distinguish, for an account $i$, between the nomins it contains $N_i$ (equity) and the nomins it has issued $\check{N_i}$ (debt). Note that globally, the $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all nomins were issued by some account. However, a given account may have a balance different from its issuance debt.\\
-% \todo[inline]{Make sure this equity/debt language is not too security-like.}
+\noindent It is necessary at this point to distinguish, for an account $i$, between the nomins it contains $N_i$ (equity) and the nomins it has issued $\check{N_i}$ (debt). Note that globally, the $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all nomins were issued by some account. However, a given account may have a balance different from its issuance debt. Hence we can define the collateralisation ratio for an individual account $i$ in terms of its issuance debt:
 
-\noindent Hence we can define the collateralisation ratio for an individual account $i$ in terms of its issuance debt:
+% \todo[inline]{Make sure this equity/debt language is not too security-like.}
 
 \begin{equation}
 C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollateralisation}
@@ -426,32 +425,30 @@ entire wrapped balance.
 
 \newpage
 
-\subsection{Pricing Considerations}
+\subsection{Approximating Nomin Demand}
 
 \noindent Being freely-tradable ERC20 tokens, havvens will have a market price which, like
-the nomin price, can be measured with an oracle. Initially, while nomin demand is low, we will use a seven day rolling average of the market price for both havvens and nomins. This rolling average is designed to smooth out fluctuations in the market price and increase the cost of attacking the system. However, once nomin transaction volume has increased to sufficient levels, we may consider an approach that allows incentives to be applied directly as a consequence of changes in nomin demand. In this way, the system can avoid the influence of speculative components of the havven price. \\
+the nomin price, can be measured with an oracle. Initially, while nomin demand is low, we will use a seven day rolling average of the market price for both havvens and nomins. This rolling average is designed to smooth out fluctuations in the market price and increase the cost of attacking the system.\\
 
-\noindent \textbf{Approximating Nomin Demand} \\
-
-\noindent It is possible to approximate nomin demand internally as function of the transaction fees that the system charges. This computation is not vulnerable to instantaneous volume spikes, while taking the most recent transaction volumes to be the most highly-correlated with future volumes:
+\noindent Once nomin transaction volume has increased to sufficient levels, we may consider applying issuance incentives directly as a consequence of changes in demand. In this way, the system can avoid the influence of speculation in the havven price. While the system cannot perfectly determine the level of nomin demand, it is possible to approximate as a function of the transaction fees that the system has generated. This computation is not vulnerable to instantaneous volume spikes, while taking the most recent transaction volumes to be the most highly-correlated with future volumes:
 
 \begin{equation}
-    D_{t} = \sum_{t'=1}^{t} \frac{F_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
+    D_{t} \approx \sum_{t'=1}^{t} \frac{F_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
 \end{equation}
 
 where
 
 \begin{align*} 
-& D_{t} \text{ is the approximate nomin demand in period } t  \\
+& D_{t} \text{ is the nomin demand in period } t  \\
 & F_t \text{ is the total fees collected in period } t\\
 & r \text{ is a falloff term}  \\
 \end{align*}
 
-\noindent This can be computed efficiently, because $U_{h,t+1} = \frac{U_{h,t} + F_t}{r}$. 
+\noindent This can be computed efficiently, because $D_{t+1} = \frac{D_t + F_t}{r}$. 
 Further, if it is assumed that the average fee take is approximated by $F_t$, and $t$ is large, then:
 
 \begin{equation}
-    U_{h,t} \approx \frac{1}{H} \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} = \frac{F_t}{H \cdot r}
+    D_t \approx \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} = \frac{F_t}{H \cdot r}
 \end{equation}
 
 \newpage

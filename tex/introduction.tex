@@ -56,24 +56,24 @@ Other than price stability, the system should also encourage some adequate level
 of liquidity for nomins to act as a useful medium of exchange. \\
 
 \noindent Each holder of havvens is able to issue a value of nomins in proportion to the USD value
-of the havvens they hold and are willing to place into escrow. If the user wishes to release their escrowed havvens, they must
-present the system with nomins in order to free their havvens and trade them again.
+of the havvens they hold and are willing to place into escrow. If the user wishes to release their escrowed havvens, they must present the system with nomins in order to free their havvens and trade them again.
 The holders of this token provide both collateral and liquidity, and in so doing assume some
 level of risk. To compensate this risk, such nomin-issuers will be rewarded with fees the system levies
 automatically as part of its normal operation. \\
 
 \subsection{Design Rationale}
 
-\noindent This issuance mechanism allows nomins to act as a form of representative money, where each nomin represents a share in the havven value held in reserve. Nomins derive value insofar as they provide a superior medium of exchange, and are effectively redeemable for a constant value of the denominating asset. In this paper, we use USD as this asset, but this could be any external and appropriately fungible asset, such as a commodity or a fiat currency. \\
+\noindent This issuance mechanism allows nomins to act as a form of representative money, where each nomin represents a share in the havven value held in reserve. Nomins derive value insofar as they provide a superior medium of exchange, and are effectively redeemable for a constant value of the denominating asset. In this paper, we use USD as this asset, but this could be any external and appropriately fungible asset, such as a commodity or a fiat currency. The system incentivises the issuance and destruction of nomins in response to changes in demand, to maintain a constant price. \\
 
-\noindent In this manner, the system incentivises the issuance and destruction of nomins so that the value of the nomin pool expands and contracts in proportion with the total value of havvens backing them. If price changes exogenously, then the system is designed to provide incentives for actors to recalibrate to the new price. The mechanism design of the system and these incentives is described in detail in section 2. \\
-
-\noindent Due to denominating the value of the stablecoin in an external fiat currency stability is relative only to that currency. In the future the system may support additional 'flavors' of stablecoin that are denominated in other currencies such as the Euro. Denominating the stablecoin in a fiat currency removes the need to respond to macroeconomic conditions, as it benefits from the stabilisation efforts of large institutions acting in fiat markets. \\
 %\noindent The design choice to back the system with a self-referential token was obvious;
 %an asset-backed stablecoin with a cryptocurrency basket as reserve will always be inherently
 %volatile, despite diversification, and will never be able to achieve the bespoke functionality
 %of an asset which derives its value from stability. \\
 
-\noindent Havven overcollateralises the pool of circulating currency, thus insulating itself against dramatic corrections in the havven market. This raises the cost of stabilising the currency which is why the market mechanism inherent in the system is critical for finding an equilibrium between demand for a stable cryptocurrency and the supply of collateral to back it at a certain price. There is a trade-off between the cost inherent in the collateralisation ratio and the circulating supply. To illustrate: if the ratio is set to 100:1 then the price of Havvens would need to fall 99\% for the stablecoin to no longer be fully collateralised. Similarly the ratio could be set to 1:1 initially, but any decrease in price would mean the currency was no longer overcollaterised. The trade-off between these two levels is determined by the cost of capital and the fee yield. The lower the collateralisation ratio the higher the fee yield for any given demand in currency. Thus the system needs to be adjusted to a level where protection from price shocks is balanced against the fee yield. \\
+\noindent In order to issue a nomin, there must be a greater value of havvens escrowed in the system. Overcollateralisation in this way provides confidence that nomins can be redeemed for their face value, even if there is a reduction in the value of the locked havvens. For example, if the collateralisation ratio is set to 100:1 then the price of havvens would need to fall 99\% for the nomin to no longer be overcollateralised. On the other hand, the ratio could be set to 1:1, but any decrease in havven price would mean the currency was no longer overcollateralised. In this situation, it would not be possible for all nomins to be redeemed for their face value, which may cause confidence in the system to drop.  \\
+
+\noindent While overcollateralisation strongly supports a stable nomin price, it simultaneously reduces the efficiency of the system by limiting the utility of the nomin. A ratio of 1:1 provides far greater utility than 100:1, with respect to both the effiicency of the collateral and the revenue generated from transaction fees. There is clearly a trade-off between efficiency and resilience in Havven, which means the collateralisation incentives must therefore not only promote nomin price stability. They must also allow the system to operate as efficiently as possible, whilst maintaining resilience to reduction in the value of the collateral. The design of these incentives is described in detail in section 2. \\
+
+\noindent Due to denominating the value of the stablecoin in an external fiat currency stability is relative only to that currency. In the future the system may support additional 'flavors' of stablecoin that are denominated in other currencies such as the Euro. Denominating the stablecoin in a fiat currency removes the need to respond to macroeconomic conditions, as it benefits from the stabilisation efforts of large institutions acting in fiat markets. \\
 
 \pagebreak
