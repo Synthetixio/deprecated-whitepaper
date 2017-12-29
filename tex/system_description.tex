@@ -16,7 +16,7 @@ can be redeemed for their face value. The redeemability of a nomin for the havve
 
 \noindent Havven rewards those that have issued nomins. These rewards are derived from transaction fees and are distributed in proportion with how well each issuer maintains the correct nomin supply. The system monitors the nomin price, and responds by adjusting its targeted global supply, which individual issuers are incentivised to move towards. \\
 
-\noindent Where volatility persists, stronger stabilisation mechanisms may be applied such as automated collateral recovery. Where a significant portion of nomins are being used for hedging, (and hence not generating transaction fees) a charge can be applied to ensure that the cost of utility for hedging is not being solely borne by transactions.
+\noindent Where volatility persists, stronger stabilisation mechanisms may be applied, for example automated collateral recovery. Where a significant portion of nomins are being used for hedging, (and hence not generating transaction fees) a charge can be applied to ensure that the cost of utility for hedging is not being solely borne by transactions.
 
 \newpage
 
@@ -25,14 +25,14 @@ can be redeemed for their face value. The redeemability of a nomin for the havve
 \noindent We first introduce the core system variables:
 
 \begin{align*}
-H &:= \text{havven quantity} & N &:= \text{nomin quantity} \\
-P_h &:= \text{havven price}  & P_n &:= \text{nomin price} \\
+H &\text{: havven quantity} & N &\text{: nomin quantity} \\
+P_h &\text{: havven price}  & P_n &\text{: nomin price} \\
 \end{align*}
 
 % \todo[inline]{Consider renaming havven price symbol to reflect that it is computed from income}
 
 \noindent All havven tokens are created at initialisation, so $H$ is constant.
-The quantity of nomins $N$, floats responding to the issuance actions of havven holders.
+The quantity of nomins floats, responding to the issuance actions of havven holders.
 The Havven system needs to incentivise issuers to maintain $N$ such that
 the nomin price $P_n$, is stable at \$1. As we proceed, we may subscript variables with $t$ to indicate the value of that variable at a given time. \\
 
@@ -248,7 +248,7 @@ for havven holders based on the price of nomins:
 \begin{split}
 C_{opt,t} &= f(P_{n,t}) \cdot C_t  \\ 
 f(P_{n,t}) &= max(\sigma \cdot (P_{n,t} - 1)^{\phi} + 1, 0) \\
-\sigma & \text{: price sensitivity parameter } (\sigma \geq 0)\\
+\sigma & \text{: price sensitivity parameter } (\sigma > 0)\\
 \phi   & \text{: flattening parameter } (\phi \in \mathbb{N} \text{, } \phi \nmid 2) \\
 \end{split}
 \end{align}
