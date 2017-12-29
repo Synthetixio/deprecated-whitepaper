@@ -425,31 +425,52 @@ entire wrapped balance.
 
 \newpage
 
-\subsection{Approximating Nomin Demand}
+\subsection{Nomin Demand and Havven Value}
 
 \noindent Being freely-tradable ERC20 tokens, havvens will have a market price which, like
-the nomin price, can be measured with an oracle. Initially, while nomin demand is low, we will use a seven day rolling average of the market price for both havvens and nomins. This rolling average is designed to smooth out fluctuations in the market price and increase the cost of attacking the system.\\
+the nomin price, can be measured with an oracle.
+Initially, while nomin demand is low, we will use a seven day rolling average of the market price for both havvens and nomins.
+This rolling average is designed to smooth out fluctuations in the market price and increase the cost of attacking the system.\\
 
-\noindent Once nomin transaction volume has increased to sufficient levels, we may consider applying issuance incentives directly as a consequence of changes in demand. In this way, the system can avoid the influence of speculation in the havven price. While the system cannot perfectly determine the level of nomin demand, it is possible to approximate as a function of the transaction fees that the system has generated. This computation is not vulnerable to instantaneous volume spikes, while taking the most recent transaction volumes to be the most highly-correlated with future volumes:
+\noindent However, once nomin transaction volume is sufficiently high, we may instead consider internally estimating
+the value of a havven by the fees it is likely to accrue in the future. This value, which implicitly measures nomin volume,
+would allow issuance incentives to directly reflect changes in nomin demand.
+By using this value instead of the havven market price, the system can avoid the influence of speculation,
+since the permitted nomin supply would expand and contract in line with how much nomins are actually being used. \\
+
+\noindent While the system cannot perfectly determine future fee returns and hence nomin demand, it is possible to estimate as a
+function of the transaction fees that the system has recently generated.
+This computation is designed not to be vulnerable to instantaneous volume spikes, while taking the most recent transaction
+volumes to be the most highly-correlated with future volumes:
+
+\vspace{3mm}
 
 \begin{equation}
-    D_{t} \approx \sum_{t'=1}^{t} \frac{F_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
+    V_{t} \approx \sum_{t'=1}^{t} \frac{F_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
 \end{equation}
 
 where
 
 \begin{align*} 
-& D_{t} \text{ is the nomin demand in period } t  \\
-& F_t \text{ is the total fees collected in period } t\\
-& r \text{ is a falloff term}  \\
+& V_{t} \text{: the system's valuation of a havven in period } t  \\
+& F_t \text{: the total fees collected in period } t\\
+& r \text{: a falloff term}  \\
 \end{align*}
 
-\noindent This can be computed efficiently, because $D_{t+1} = \frac{D_t + F_t}{r}$. 
+\noindent This can be computed efficiently, because $V_{t+1} = \frac{V_t + F_t}{r}$. 
 Further, if it is assumed that the average fee take is approximated by $F_t$, and $t$ is large, then:
 
+\vspace{2mm}
+
 \begin{equation}
-    D_t \approx \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} = \frac{F_t}{H \cdot r}
+    V_t \approx \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} = \frac{F_t}{H \cdot r}
 \end{equation}
+
+\vspace{3mm}
+
+\noindent Consequently, $\frac{1}{r}$ approximates the number of periods for a havven to yield a fee return of $V_t$.
+A judicious choice of $r$ can then yield a $V_t$ which underestimates the market price of havvens (which also incorporates,
+for example, capital gains), while not unduly constraining nomin supply.
 
 \newpage
 
