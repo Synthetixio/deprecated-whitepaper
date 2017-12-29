@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="465"
+   height="286.13281"
+   viewBox="0 0 465 286.13281"
+   version="1.1"
+   id="svg88"
+   sodipodi:docname="pn_drop.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata92">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1266"
+     inkscape:window-height="719"
+     id="namedview90"
+     showgrid="false"
+     inkscape:zoom="0.50809061"
+     inkscape:cx="237"
+     inkscape:cy="142.96815"
+     inkscape:window-x="0"
+     inkscape:window-y="22"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg88" />
+  <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title2">DIAGRAM 1.1</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <defs
+     id="defs9">
+    <path
+       d="M 10,0 H 22.077455 315.64246 v 0 c 5.52285,0 10,4.4771525 10,10 v 224 0 c 0,5.52285 -4.47715,10 -10,10 H 10 v 0 C 4.4771525,244 0,239.52285 0,234 V 10 10 C 0,4.4771525 4.4771525,0 10,0 Z"
+       id="path-1"
+       inkscape:connector-curvature="0" />
+    <path
+       d="M 69,0 H 86.399489 315.64246 v 0 c 5.52285,0 10,4.4771525 10,10 v 224 0 c 0,5.52285 -4.47715,10 -10,10 H 69 Z"
+       id="path-2"
+       inkscape:connector-curvature="0" />
+    <path
+       d="M 237.7095,80.449275 H 331 v 0 c 2.20914,0 4,1.790861 4,4 v 78.637685 0 c 0,2.20914 -1.79086,4 -4,4 h -93.2905 v 0 c -8.28427,0 -15,-6.71573 -15,-15 v -56.637685 0 c 0,-8.284271 6.71573,-15 15,-15 z"
+       id="path-3"
+       inkscape:connector-curvature="0" />
+  </defs>
+  <g
+     id="Page-1"
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1"
+     transform="translate(-72,-33.867187)">
+    <g
+       id="White-Paper-Diagrams"
+       transform="translate(-286,-552)">
+      <g
+         id="Havven-Diagram-2-WHITE"
+         transform="translate(286,154)">
+        <g
+           id="DIAGRAM-1.1"
+           transform="translate(0,398)">
+          <path
+             d="m 261,-64 h 14 v 0 c 1.10457,0 2,0.895431 2,2 v 247 0 c 0,1.10457 -0.89543,2 -2,2 h -14"
+             id="Path-15"
+             transform="rotate(-90,269,61.5)"
+             inkscape:connector-curvature="0"
+             style="stroke:#171923;stroke-width:1.5" />
+          <path
+             d="m 99,29 h 14 v 0 c 1.10457,0 2,0.89543 2,2 v 61 0 c 0,1.104569 -0.89543,2 -2,2 H 99"
+             id="path12"
+             transform="rotate(-90,107,61.5)"
+             inkscape:connector-curvature="0"
+             style="stroke:#171923;stroke-width:1.5" />
+          <g
+             id="Ethers"
+             transform="translate(449,163)">
+            <ellipse
+               id="Oval"
+               cx="43.5"
+               cy="118.71675"
+               rx="43.5"
+               ry="24.362068"
+               style="fill:#ecf0f1;fill-rule:nonzero;stroke:#171923;stroke-linecap:round;stroke-linejoin:round" />
+            <path
+               d="m 0,114.55665 v 15.21152 C 0,143.17645 19.488,154 43.5,154 67.512,154 87,143.17645 87,129.76817 v -15.21152 c 0,13.40828 -19.488,24.23183 -43.5,24.23183 -24.012,0 -43.5,-10.82355 -43.5,-24.23183 z"
+               id="Shape"
+               inkscape:connector-curvature="0"
+               style="fill:#7f7f7f;fill-rule:nonzero;stroke:#171923;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" />
+            <ellipse
+               id="ellipse16"
+               cx="43.5"
+               cy="102.47537"
+               rx="43.5"
+               ry="24.362068"
+               style="fill:#6a7eb3;fill-rule:nonzero;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round" />
+            <path
+               d="m 0,99.08867 v 15.21152 c 0,13.40828 19.488,24.23183 43.5,24.23183 24.012,0 43.5,-10.82355 43.5,-24.23183 V 99.08867 C 87,112.49695 67.512,123.3205 43.5,123.3205 19.488,123.3205 0,112.49695 0,99.08867 Z"
+               id="path18"
+               inkscape:connector-curvature="0"
+               style="fill:#7f7f7f;fill-rule:nonzero;stroke:#171923;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" />
+            <ellipse
+               id="ellipse20"
+               cx="43.5"
+               cy="87.007393"
+               rx="43.5"
+               ry="24.362068"
+               style="fill:#ecf0f1;fill-rule:nonzero;stroke:#434a54;stroke-linecap:round;stroke-linejoin:round" />
+            <path
+               d="m 0,83.62069 c 0,13.408279 19.488,24.23183 43.5,24.23183 24.012,0 43.5,-10.823551 43.5,-24.23183 v 15.21152 c 0,13.40828 -19.488,24.23183 -43.5,24.23183 -24.012,0 -43.5,-10.82355 -43.5,-24.23183 z"
+               id="path22"
+               inkscape:connector-curvature="0"
+               style="fill:#7f7f7f;fill-rule:nonzero;stroke:#171923;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" />
+            <ellipse
+               id="ellipse24"
+               cx="43.5"
+               cy="71.539406"
+               rx="43.5"
+               ry="24.362068"
+               style="fill:#6a7eb3;fill-rule:nonzero;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round" />
+            <path
+               d="m 0,68.37931 v 15.211521 c 0,13.408279 19.488,24.231829 43.5,24.231829 24.012,0 43.5,-10.82355 43.5,-24.231829 V 68.37931 C 87,81.787589 67.512,92.61114 43.5,92.61114 19.488,92.61114 0,81.787589 0,68.37931 Z"
+               id="path26"
+               inkscape:connector-curvature="0"
+               style="fill:#7f7f7f;fill-rule:nonzero;stroke:#171923;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" />
+            <ellipse
+               id="ellipse28"
+               cx="43.5"
+               cy="54.524632"
+               rx="43.5"
+               ry="24.362068"
+               style="fill:#17192a;fill-rule:nonzero;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round" />
+            <path
+               d="m 0,53.91133 c 0,13.408279 19.488,24.231829 43.5,24.231829 24.012,0 43.5,-10.82355 43.5,-24.231829 V 69.122851 C 87,82.531129 67.512,93.35468 43.5,93.35468 19.488,93.35468 0,82.531129 0,69.122851 Z"
+               id="path30"
+               inkscape:connector-curvature="0"
+               style="fill:#7f7f7f;fill-rule:nonzero;stroke:#171923;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" />
+            <ellipse
+               id="ellipse32"
+               cx="43.5"
+               cy="39.830048"
+               rx="43.5"
+               ry="24.362068"
+               style="fill:#39838b;fill-rule:nonzero;stroke:#434a54;stroke-linecap:round;stroke-linejoin:round" />
+            <path
+               d="M 0,38.44335 V 53.65487 C 0,67.063149 19.488,77.8867 43.5,77.8867 67.512,77.8867 87,67.063149 87,53.65487 V 38.44335 C 87,51.851629 67.512,62.675179 43.5,62.675179 19.488,62.675179 0,51.851629 0,38.44335 Z"
+               id="path34"
+               inkscape:connector-curvature="0"
+               style="fill:#7f7f7f;fill-rule:nonzero;stroke:#171923;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" />
+            <ellipse
+               id="ellipse36"
+               cx="43.5"
+               cy="24.362068"
+               rx="43.5"
+               ry="24.362068"
+               style="fill:#7f7f7f;fill-rule:nonzero;stroke:#171923;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" />
+            <g
+               id="ETH"
+               transform="rotate(15,-7.4616729,148.75715)"
+               style="stroke:#171923">
+              <polygon
+                 id="Path-9"
+                 points="9.15625,1 17.3125,13.431771 9.15625,17.241379 1,13.431771 " />
+              <polygon
+                 id="Path-11"
+                 points="1.5179667,16.275454 9.6742167,27.876439 17.830467,16.275454 9.6742167,20.369919 " />
+              <path
+                 d="M 8.8598625,0.95415259 9.5446429,17.241379"
+                 id="Path-20"
+                 inkscape:connector-curvature="0" />
+              <path
+                 d="M 9.7767857,27.802396 9.3013486,19.988466"
+                 id="path41"
+                 inkscape:connector-curvature="0" />
+              <polyline
+                 id="Path-21"
+                 points="0.822868842 13.4604204 9.31320803 10.3734678 17.3129582 13.1830189" />
+            </g>
+            <path
+               d="M 0,23.20197 V 38.413491 C 0,51.82177 19.488,62.64532 43.5,62.64532 67.512,62.64532 87,51.82177 87,38.413491 V 23.20197 C 87,36.610249 67.512,47.4338 43.5,47.4338 19.488,47.4338 0,36.610249 0,23.20197 Z"
+               id="path45"
+               inkscape:connector-curvature="0"
+               style="fill:#7f7f7f;fill-rule:nonzero;stroke:#171923;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" />
+          </g>
+          <g
+             id="Wallet"
+             transform="translate(72,76)">
+            <g
+               id="Rectangle-4">
+              <use
+                 xlink:href="#path-1"
+                 id="use48"
+                 style="fill:#52578e;fill-opacity:0.51474753;fill-rule:evenodd"
+                 x="0"
+                 y="0"
+                 width="100%"
+                 height="100%" />
+              <path
+                 d="M 10,1 C 5.0294372,1 1,5.0294372 1,10 v 224 c 0,4.97056 4.0294372,9 9,9 h 305.64246 c 4.97056,0 9,-4.02944 9,-9 V 10 c 0,-4.9705628 -4.02944,-9 -9,-9 z"
+                 id="path50"
+                 inkscape:connector-curvature="0"
+                 style="stroke:#171923;stroke-width:2" />
+            </g>
+            <g
+               id="g57">
+              <use
+                 xlink:href="#path-2"
+                 id="use53"
+                 style="fill:#52578e;fill-rule:evenodd"
+                 x="0"
+                 y="0"
+                 width="100%"
+                 height="100%" />
+              <path
+                 d="m 70,1 v 242 h 245.64246 c 4.97056,0 9,-4.02944 9,-9 V 10 c 0,-4.9705628 -4.02944,-9 -9,-9 z"
+                 id="path55"
+                 inkscape:connector-curvature="0"
+                 style="stroke:#171923;stroke-width:2" />
+            </g>
+            <g
+               id="g63">
+              <use
+                 xlink:href="#path-3"
+                 id="use59"
+                 style="fill:#52578e;fill-rule:evenodd"
+                 x="0"
+                 y="0"
+                 width="100%"
+                 height="100%" />
+              <path
+                 d="m 237.7095,81.449275 c -7.73199,0 -14,6.268014 -14,14 v 56.637685 c 0,7.73198 6.26801,14 14,14 H 331 c 1.65685,0 3,-1.34315 3,-3 V 84.449275 c 0,-1.656854 -1.34315,-3 -3,-3 z"
+                 id="path61"
+                 inkscape:connector-curvature="0"
+                 style="stroke:#171923;stroke-width:2" />
+            </g>
+            <rect
+               id="rect65"
+               x="243.36034"
+               y="105.31884"
+               width="38"
+               height="38"
+               rx="19"
+               style="stroke:#171923;stroke-width:2" />
+          </g>
+          <text
+             id="ESCROWED"
+             font-size="15"
+             font-weight="normal"
+             style="font-weight:normal;font-size:15px;font-family:Rubik-Regular, Rubik;fill:#171923">
+            <tspan
+               x="221.6675"
+               y="45"
+               id="tspan69">ESCROWED</tspan>
+          </text>
+          <text
+             id="FREE"
+             font-size="15"
+             font-weight="normal"
+             style="font-weight:normal;font-size:15px;font-family:Rubik-Regular, Rubik;fill:#171923">
+            <tspan
+               x="89"
+               y="45"
+               id="tspan72">FREE</tspan>
+          </text>
+          <text
+             id="15.79%"
+             font-size="15"
+             font-weight="normal"
+             style="font-weight:normal;font-size:15px;font-family:Rubik-Regular, Rubik;fill:#171923">
+            <tspan
+               x="85.047501"
+               y="102"
+               id="tspan75">15.79%</tspan>
+          </text>
+          <text
+             id="84.21%"
+             font-size="15"
+             font-weight="normal"
+             style="font-weight:normal;font-size:15px;font-family:Rubik-Regular, Rubik;fill:#ffffff">
+            <tspan
+               x="237.47501"
+               y="102"
+               id="tspan78">84.21%</tspan>
+          </text>
+          <text
+             id="$40-ETH"
+             font-size="15"
+             font-weight="normal"
+             style="font-weight:normal;font-size:15px;font-family:Rubik-Regular, Rubik;fill:#171923">
+            <tspan
+               x="462.45499"
+               y="148"
+               id="tspan81">$40 ETH</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
