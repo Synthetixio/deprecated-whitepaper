@@ -124,9 +124,7 @@ The quantity of havvens $\check{H_i}$ locked in generating $\check{N_i}$ nomins 
 
 \newpage
 \subsection{Transaction Fees}
-Havven needs a direct incentive mechanism that can correct changes in the global collaterisation ratio, $C$, when the price of havvens or nomins changes. \\
-
-\noindent Some of the equations below are defined in a discrete time domain and are referenced with a subscript $t$, which denotes the period at which they are defined.
+Havven needs a direct incentive mechanism that can correct changes in the global collaterisation ratio, $C$, when the price of havvens or nomins changes.
 
 \subsubsection{Nomin Transaction Fees} Every time a nomin transaction occurs, the Havven system charges a small transaction fee. Transaction fees allow the system to generate revenue, which it can distribute to havven holders as an incentive to maintain nomin supply at $C_{opt}$. \\
 
@@ -175,7 +173,7 @@ fees if they do so.\\
  % \todo[inline]{figure out whether t stays}
 
 \begin{equation}
-\alpha_{r,t,i} = \alpha_{base,t} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt}, C_{max,t})  \label{eq:feesreceived}
+\alpha_{r,t,i} = \alpha_{base,t} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})  \label{eq:feesreceived}
 \end{equation}
 
 \begin{equation}
