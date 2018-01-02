@@ -34,7 +34,10 @@ P_h &\text{: havven price}  & P_n &\text{: nomin price} \\
 \noindent All havven tokens are created at initialisation, so $H$ is constant.
 The quantity of nomins floats, responding to the issuance actions of havven holders.
 The Havven system needs to incentivise issuers to maintain $N$ such that
-the nomin price $P_n$, is stable at \$1. As we proceed, we may subscript variables with $t$ to indicate the value of that variable at a given time. \\
+the nomin price $P_n$, is stable at \$1.
+As we proceed, we may subscript variables with $t$ to indicate the value of that variable at a
+given time. Any variable lacking such a subscript indicates the value of the quantity
+it represents at the current time. \\
 
 \noindent In Havven, the measure of the value of nomins against the value
 of havvens is called the collateralisation ratio:
@@ -96,7 +99,9 @@ C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollatera
 
 \noindent The system provides incentives for individual issuers to bring their $C_i$ closer to $C_{opt}$ while maintaining $C_{opt}$ itself at a level that stabilises the price. \\
 
-\noindent \textbf{Nomin Issuance} \\
+\noindent \textbf{Nomin Issuance}
+
+\vspace{1mm}
 
 \noindent The nomin issuance mechanism allows Havven to reach its collaterisation target.
 Issuing nomins escrows some quantity of havvens, which cannot be moved until they are unescrowed.
@@ -108,11 +113,9 @@ The quantity of havvens $\check{H_i}$ locked in generating $\check{N_i}$ nomins 
 
 \vspace{2 mm}
 
-\noindent Under equilibrium conditions, there is some $\check{H_i} \leq H_i$ when $C_i = C_{opt}$, which the issuer is incentivised to target. These incentives are provided in the form of transaction fees, discussed in section 2.4. It is important to note that the issuer may voluntarily increase their $C_i$ up to the limit of $C_{max}$; for example if they anticipate a positive movement in $C_{opt}$. \\
+\noindent Under equilibrium conditions, there is some $\check{H_i} \leq H_i$ when $C_i$ coincides with $C_{opt}$, which the issuer is incentivised to target. These incentives are provided in the form of transaction fees, discussed in section 2.4. It is important to note that the issuer may voluntarily increase their $C_i$ up to the limit of $C_{max}$; for example if they anticipate a positive movement in $C_{opt}$. \\
 
 \noindent On the other hand, an issuer may not issue a quantity of nomins that would lock more than $H_i$ havvens.  Consequently, $C_i$ may never exceed $C_{max}$, except by price fluctuations, and in such circumstances, issuers are rewarded for bringing $C_i$ back under $C_{max}$. \\
-
-\newpage
 
 \noindent After generating the nomins, the system places a \textbf{limit sell} order with a price
 of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market
@@ -396,7 +399,7 @@ for example, capital gains), while not unduly constraining nomin supply.
 
 \newpage
 
-\subsection{Issuance Case Studies} 
+\subsection{Issuance Case Study} 
 
 \noindent Bob decides to purchase 100 havvens at \$1 each. Consider the following initial conditions:
 
@@ -422,7 +425,7 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \noindent \textbf{Nomin Price Change} This example shows how the system incentivises havven holders to correct instability in the nomin price.
 
 \begin{enumerate}
-\item{As a consequence of reduced demand in decentralised trading markets, the nomin price $P_n$ drops to \$.90. The system needs to incentivise havven holders to reduce the supply of nomins so that the price returns to \$1.00.}
+\item{As a consequence of reduced demand in decentralised trading markets, the nomin price $P_n$ drops to \$0.90. The system needs to incentivise havven holders to reduce the supply of nomins so that the price returns to \$1.00.}
 \item{First, consider that both $C$ and Bob's $C_i$ have decreased to 0.36. Since the nomin price has changed, $C_{opt}$ is recalculated to 0.342, which is smaller than both $C_i$ and $C$. Consequently, $C_{max}$ also changes to 0.4275. This increases the percentage of Bob's havvens that are locked.}
 \begin{figure}[h!]
 \centering
