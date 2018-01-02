@@ -174,7 +174,7 @@ fees if they do so.\\
 
 
 \begin{equation}
-\alpha_{r,t,i} \ = \ \alpha_{base,t} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})  \label{eq:feesreceived}
+\alpha_{r,i,t} \ = \ \alpha_{base,t} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})  \label{eq:feesreceived}
 \end{equation}
 
 \begin{equation}
@@ -211,11 +211,11 @@ fees if they do so.\\
 Let us define the total fees paid to havven holders $F_{r,t}$: \\
 
 \begin{equation}
-F_{r,t} \ = \ \sum_{i} \check{H_{i,t}} \cdot \alpha_{r,t,i} \label{eq:totalfeesreceived}
+F_{r,t} \ = \ \sum_{i} \check{H_{i,t}} \cdot \alpha_{r,i,t} \label{eq:totalfeesreceived}
 \end{equation} \\
 
 \noindent Havven requires that the total fees collected from users has to be equal to the total amount of
-fees paid to the havven holders, so that $F_{r,t} = F_t$. Substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,t,i}$ and solving for $\alpha_{base,t} $: \\
+fees paid to the havven holders, so that $F_{r,t} = F_t$. Substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,i,t}$ and solving for $\alpha_{base,t} $: \\
 
 \begin{equation}
 \alpha_{base,t} \ = \ \frac{F_t}{\sum_{i} \check{H_{i,t}} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})} \label{eq:10}
