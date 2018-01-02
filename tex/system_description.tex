@@ -153,11 +153,11 @@ sufficiently small that it provides little to no friction for the user: \\
 \end{tikzpicture}
 \end{center}
 
-\noindent We may then express the total fees collected in period $t$, $F_t$, as a function
-of the velocity of nomins $v_t$ and the total nomin supply $N_t$:
+\noindent We may then express the total fees collected in the last period, $F$, as a function
+of the velocity of nomins $v$ and the total nomin supply $N$:
 
 \begin{equation}
-    F_t \ = \ v_t \cdot \alpha_c \cdot N_t
+    F \ = \ v \cdot \alpha_c \cdot N
 \end{equation}
 
 \newpage
@@ -174,14 +174,14 @@ fees if they do so.\\
 
 
 \begin{equation}
-\alpha_{r,i,t} \ = \ \alpha_{base,t} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})  \label{eq:feesreceived}
+\alpha_{r,i} \ = \ \alpha_{base} \cdot \mathcal{F}_{i}(C_{i}, C_{opt}, C_{max})  \label{eq:feesreceived}
 \end{equation}
 
 \begin{equation}
-\mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) \ = \
+\mathcal{F}_{i}(C_{i}, C_{opt}, C_{max}) \ = \
 \begin{cases}
- \frac{C_{i,t}}{C_{opt,t}} &\mbox{when } C_{i,t} \leq C_{opt,t} \\[1em]
- \frac{C_{max,t} - C_{i,t}}{C_{max,t} - C_{opt,t}} &\mbox{when } C_{opt,t} \leq C_{i,t} \leq C_{max,t} \\[1em]
+ \frac{C_{i}}{C_{opt}} &\mbox{when } C_{i} \leq C_{opt} \\[1em]
+ \frac{C_{max} - C_{i}}{C_{max} - C_{opt}} &\mbox{when } C_{opt} \leq C_{i} \leq C_{max} \\[1em]
  0 &\mbox{otherwise}
  \end{cases}
  \label{eq:7}
@@ -208,22 +208,22 @@ fees if they do so.\\
 
 \subsubsection{Base Fee Rate}
 
-Let us define the total fees paid to havven holders $F_{r,t}$: \\
+Let us define the total fees paid to havven holders $F_{r}$: \\
 
 \begin{equation}
-F_{r,t} \ = \ \sum_{i} \check{H_{i,t}} \cdot \alpha_{r,i,t} \label{eq:totalfeesreceived}
+F_{r} \ = \ \sum_{i} \check{H_{i}} \cdot \alpha_{r,i} \label{eq:totalfeesreceived}
 \end{equation} \\
 
 \noindent Havven requires that the total fees collected from users has to be equal to the total amount of
-fees paid to the havven holders, so that $F_{r,t} = F_t$. Substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,i,t}$ and solving for $\alpha_{base,t} $: \\
+fees paid to the havven holders, so that $F_{r} = F$. Substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,i}$ and solving for $\alpha_{base} $: \\
 
 \begin{equation}
-\alpha_{base,t} \ = \ \frac{F_t}{\sum_{i} \check{H_{i,t}} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})} \label{eq:10}
+\alpha_{base} \ = \ \frac{F}{\sum_{i} \check{H_{i}} \cdot \mathcal{F}_{i}(C_{i}, C_{opt}, C_{max})} \label{eq:10}
 \end{equation} \\
 
-\noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $F_t$. This rate should be achieved when an individual's $C_i$ is at $C_{opt}$. \\
+\noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $F$. This rate should be achieved when an individual's $C_i$ is at $C_{opt}$. \\
 
-\noindent The definition of $C_{opt}$ must therefore provide the following incentive. If $P_n > \$1$ then the system must encourage more nomins to be issued. However, if $P_n < \$1$, the system must encourage nomins to be burned. 
+\noindent The definition of $C_{opt}$ must therefore provide the following incentive. If $P_n > \$1$ then the system must encourage more nomins to be issued. However, if $P_n < \$1$, the system must encourage nomins to be burned.
 
 \newpage
 
@@ -241,8 +241,8 @@ for havven holders based on the price of nomins:
 \begin{gather} \label{eq:optcollateralisation}
 \begin{align}
 \begin{split}
-C_{opt,t} \ &= \ f(P_{n,t}) \cdot C_t  \\ 
-f(P_{n,t}) \ &= \ max(\sigma \cdot (P_{n,t} - 1)^{\phi} + 1, 0) \\
+C_{opt} \ &= \ f(P_{n}) \cdot C  \\ 
+f(P_n) \ &= \ max(\sigma \cdot (P_n - 1)^{\phi} + 1, 0) \\
 \sigma \ & \text{ \ price sensitivity parameter } (\sigma > 0)\\
 \phi   \ & \text{ \ flattening parameter } (\phi \in \mathbb{N} \text{, } \phi \nmid 2) \\
 \end{split}
@@ -279,7 +279,7 @@ f(P_{n,t}) \ &= \ max(\sigma \cdot (P_{n,t} - 1)^{\phi} + 1, 0) \\
 \begin{gather} \label{eq:maxcollateralisation}
 \begin{align}
 \begin{split}
-C_{max,t} \ &= \ a \cdot C_{opt,t} \\ 
+C_{max} \ &= \ a \cdot C_{opt} \\ 
 a & \geq 1 \\
 \end{split}
 \end{align}
