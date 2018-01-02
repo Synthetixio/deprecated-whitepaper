@@ -18,6 +18,8 @@
 \usepackage{cleveref}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{datetime}
+\usepackage{color}
 
 % Use § for sections
 \crefformat{section}{\S#2#1#3}
@@ -64,8 +66,7 @@
 
 \title{Havven: a stablecoin system\\ v0.5}
 \author{Samuel Brooks, Anton Jurisevic, Michael Spain, Kain Warwick}
-\date{December 2017}
-
+\date{}
 
 \begin{figure}
     \centering
@@ -80,6 +81,11 @@
 \noindent There is currently no effective decentralised unit of account; previous attempts to create one have either relied on significant centralisation or have been undermined by their complexity. Havven resolves these issues by creating a decentralised stability market that incorporates clearly defined incentives between participants. It employs a dual-token solution, composed of a stabilised exchange token and the reserve token which backs it. Users requiring price-stability support the system through fees which incentivises collateral holders to maintain the distributed reserve. Because the collateral is encapsulated entirely within the system and distributed among its users, we remove the need for a central authority. Such a stable cryptocurrency, useful for everyday economic purposes, will accelerate the adoption of decentralised systems.
 
 \end{abstract}	
+\vspace{20mm}
+\begin{center}
+  %\color{gray}
+  \small{\textit{\currenttime , \today}}
+\end{center}
 
 % \todo[inline]{Incorporate white paper criticisms.}
 
