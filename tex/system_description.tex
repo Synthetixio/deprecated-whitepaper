@@ -57,27 +57,20 @@ $C_{opt}$. We visualise this equilibrium below with a hypothetical demand and su
 % \todo[inline]{make diagrams pretty}
 \begin{center}
 \begin{tikzpicture}[scale=3]
-
-% draw axes
-\draw [<->, thick] (0,2) node (yaxis) [above] {$P_n$} |- (2.5,0) node (xaxis) [right] {$N$};
-
-% draw intersecting lines
-\draw (0.5, 0.5) coordinate (a_1) -- (2,1.8) coordinate (a_2) node[pos=0.0, left] {S};
-\draw (0.5, 1.8) coordinate (b_1) -- (2,0.5) coordinate (b_2) node[pos=1.0, right] {D};
-
-% calculate coordinate of intersection
-\coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
-
-\draw[dashed] (yaxis |- c) node [left] {$\$1$} -| (xaxis -| c) node[below] {$N_{opt} = \frac{C_{opt} \cdot P_h \cdot H}{P_n}$};
-
+    % draw axes
+    \draw [<->, thick] (0,2) node (yaxis) [above] {$P_n$} |- (2.5,0) node (xaxis) [right] {$N$};
+    % draw intersecting lines
+    \draw (0.5, 0.5) coordinate (a_1) -- (2,1.8) coordinate (a_2) node[pos=0.0, left] {S};
+    \draw (0.5, 1.8) coordinate (b_1) -- (2,0.5) coordinate (b_2) node[pos=1.0, right] {D};
+    % calculate coordinate of intersection
+    \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
+    \draw[dashed] (yaxis |- c) node [left] {$\$1$} -| (xaxis -| c) node[below] {$N_{opt} = \frac{C_{opt} \cdot P_h \cdot H}{P_n}$};
 \end{tikzpicture}
 \end{center}
 
 \noindent The system is unable to influence the demand for nomins. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency. Although demand cannot be manipulated, the supply of nomins is controlled by havven holders, whose issuance incentives are in turn controlled by the system. It follows that as we require a fixed price $P_n = \$1 $ and are unable to control either $P_h$ or $H$, we must manipulate $C_{opt}$ such that $N = N_{opt}$ in order to satisfy our requirement.
 
 \subsection{Issuance and Collateralisation} 
-
-% \todo[inline]{separate wallets from accounts}
 
 \noindent Havven's goal is to remain overcollateralised. In order to do so, the system defines a collaterisation target:
 
@@ -88,8 +81,6 @@ $C_{opt}$. We visualise this equilibrium below with a hypothetical demand and su
 \vspace{2 mm}
 
 \noindent It is necessary at this point to distinguish, for an account $i$, between the nomins it contains $N_i$ (equity) and the nomins it has issued $\check{N_i}$ (debt). Note that globally, $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all nomins were issued by some account. However, a given account may have a balance different from its issuance debt. Hence we can define the collateralisation ratio for an individual account $i$ in terms of its issuance debt:
-
-% \todo[inline]{Make sure this equity/debt language is not too security-like.}
 
 \begin{equation}
 C_i \ = \ \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollateralisation}
@@ -153,17 +144,12 @@ sufficiently small that it provides little to no friction for the user: \\
 
 \begin{center}
 \begin{tikzpicture}[scale=3]
-
-% draw axes
-\draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_c$} |- (2.5,0) node (xaxis) [right] {$P_n$};
-
-% draw one line
-\draw (0.0, 0.75) coordinate (a_1) -- (2.4,0.75) coordinate (a_2);
-
-\coordinate (c) at (1.75, 0.75);
-
-\draw[dashed] (yaxis |- c) node [left] {k};
-
+    % draw axes
+    \draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_c$} |- (2.5,0) node (xaxis) [right] {$P_n$};
+    % draw one line
+    \draw (0.0, 0.75) coordinate (a_1) -- (2.4,0.75) coordinate (a_2);
+    \coordinate (c) at (1.75, 0.75);
+    \draw[dashed] (yaxis |- c) node [left] {k};
 \end{tikzpicture}
 \end{center}
 
@@ -203,21 +189,16 @@ fees if they do so.\\
 
 \begin{center}
 \begin{tikzpicture}[scale=3]
-
-% draw axes
-\draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_r$} |- (2.5,0) node (xaxis) [right] {$C_i$};
-
-% draw two lines
-\draw (0.0, 0.0) coordinate (a_1) -- (1.75,0.75) coordinate (a_2);
-\draw (1.75, 0.75) coordinate (a_1) -- (2.25,0.0) coordinate (a_2);
-
-\coordinate (c) at (1.75, 0.75);
-\coordinate (d) at (2.25, 0.0);
-\coordinate (e) at (0.00, 0.00);
-
-\draw[dashed] (yaxis |- c) node [left] {$\alpha_{base}$} -| (xaxis -| c) node [below] {$C_{opt}$};
-\draw[dashed] (xaxis -| d) node [below] {$C_{max}$};
-
+    % draw axes
+    \draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_r$} |- (2.5,0) node (xaxis) [right] {$C_i$};
+    % draw two lines
+    \draw (0.0, 0.0) coordinate (a_1) -- (1.75,0.75) coordinate (a_2);
+    \draw (1.75, 0.75) coordinate (a_1) -- (2.25,0.0) coordinate (a_2);
+    \coordinate (c) at (1.75, 0.75);
+    \coordinate (d) at (2.25, 0.0);
+    \coordinate (e) at (0.00, 0.00);
+    \draw[dashed] (yaxis |- c) node [left] {$\alpha_{base}$} -| (xaxis -| c) node [below] {$C_{opt}$};
+    \draw[dashed] (xaxis -| d) node [below] {$C_{max}$};
 \end{tikzpicture}
 \end{center}
 
@@ -321,10 +302,7 @@ a & \geq 1 \\
 ]
 \addplot[domain=0:0.8]{1.25 * x};
 \addplot[domain=0:1, dashed, smooth]{x};
-%\addplot[domain=0:1.00, dashed, samples=50, smooth] coordinates {(1,1)(1,0)};
 \end{axis}
-%\draw[dashed] (0,0) -- (5,5);
-%\draw (0,0) -- (4.5,5.5);
 \end{tikzpicture}
 \end{center}
 
@@ -362,12 +340,11 @@ volumes to be the most highly-correlated with future volumes:
     V_{t} \ = \ \sum_{t'=1}^{t} \frac{F_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
 \end{equation}
 
-where
-
+with
 \begin{align*} 
-& V_{t} \text{: the system's valuation of a havven in period } t  \\
-& F_t \text{: the total fees collected in period } t\\
-& r \text{: a falloff term}  \\
+V_{t} \ \ & \text{ the system's valuation of a havven in period } t  \\
+F_t \ \ & \text{ the total fees collected in period } t\\
+r \ \ & \text{ a falloff term}  \\
 \end{align*}
 
 \noindent This can be computed efficiently, because $V_{t+1} = \frac{V_t + F_t}{r}$. 
