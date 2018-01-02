@@ -50,7 +50,7 @@ C \ = \ \frac{P_n \cdot N}{P_h \cdot H} \label{eq:collateralisation}
 
 \noindent From the law of supply and demand, there exists some supply
 of nomins $N_{opt}$, where the related level of demand yields an equilibrium
-price of \$1. This quantity is associated with an optimal collaterisation ratio
+price of \$1. This quantity is associated with an optimal collateralisation ratio
 $C_{opt}$. We visualise this equilibrium below with a hypothetical demand and supply curve.  \\
 
 % \todo[inline]{curved lines}
@@ -72,7 +72,7 @@ $C_{opt}$. We visualise this equilibrium below with a hypothetical demand and su
 
 \subsection{Issuance and Collateralisation} 
 
-\noindent Havven's goal is to remain overcollateralised. In order to do so, the system defines a collaterisation target:
+\noindent Havven's goal is to remain overcollateralised. In order to do so, the system defines a collateralisation target:
 
 \begin{equation}
 0 < C_{opt} < 1  \label{eq:target}
@@ -94,7 +94,7 @@ C_i \ = \ \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcolla
 
 \vspace{1mm}
 
-\noindent The nomin issuance mechanism allows Havven to reach its collaterisation target.
+\noindent The nomin issuance mechanism allows Havven to reach its collateralisation target.
 Issuing nomins escrows some quantity of havvens, which cannot be moved until they are unescrowed.
 The quantity of havvens $\check{H_i}$ locked in generating $\check{N_i}$ nomins is:
 
@@ -125,7 +125,7 @@ completion, the nomins are immediately destroyed. \\
 
 \newpage
 \subsection{Transaction Fees}
-Havven needs a direct incentive mechanism that can correct the global collaterisation
+Havven needs a direct incentive mechanism that can correct the global collateralisation
 ratio, $C$, in response to changes in the price of havvens or nomins. In order to target
 the correct price, the system adjusts the fees it pays to havven holders as according
 to their effectiveness in stabilising the price.
@@ -166,7 +166,7 @@ of the velocity of nomins $v_t$ and the total nomin supply $N_t$:
 \noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$.
 The actual fee they receive is $\check{H_i} \cdot \alpha_r$, being proportional with the value they escrow.
 This rate changes with respect their unique collateralisation ratio, $C_i$. It increases linearly to a maximum $\alpha_{base}$ at the optimal collateralisation ratio $C_{opt}$, before quickly
-diminishing as $C_i$ approaches the maximum collaterisation ratio $C_{max}$.  \\
+diminishing as $C_i$ approaches the maximum collateralisation ratio $C_{max}$.  \\
 
 \noindent This function is designed to encourage havven holders to constantly
 target the optimal collateralisation ratio, by rewarding them with greater
@@ -211,14 +211,14 @@ fees if they do so.\\
 Let us define the total fees paid to havven holders $F_{r,t}$: \\
 
 \begin{equation}
-F_{r,t} \ = \ \sum_{i} \check{H_i} \cdot \alpha_{r,t,i} \label{eq:totalfeesreceived}
+F_{r,t} \ = \ \sum_{i} \check{H_{i,t}} \cdot \alpha_{r,t,i} \label{eq:totalfeesreceived}
 \end{equation} \\
 
 \noindent Havven requires that the total fees collected from users has to be equal to the total amount of
 fees paid to the havven holders, so that $F_{r,t} = F_t$. Substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,t,i}$ and solving for $\alpha_{base,t} $: \\
 
 \begin{equation}
-\alpha_{base,t} \ = \ \frac{F_t}{\sum_{i} \check{H_i} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})} \label{eq:10}
+\alpha_{base,t} \ = \ \frac{F_t}{\sum_{i} \check{H_{i,t}} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})} \label{eq:10}
 \end{equation} \\
 
 \noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $F_t$. This rate should be achieved when an individual's $C_i$ is at $C_{opt}$. \\
@@ -374,7 +374,7 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \sigma &= 50 & \phi &= 3 & a&= 1.25
 \end{align*}
 
-\noindent The system is in price equilibrium, with the global collateralisation ratio $C$ equal to the optimal collaterisation ratio $C_{opt}$. Initially,  Bob's wallet contains only free havvens.
+\noindent The system is in price equilibrium, with the global collateralisation ratio $C$ equal to the optimal collateralisation ratio $C_{opt}$. Initially,  Bob's wallet contains only free havvens.
 
 \begin{figure}[h!]
 \centering
