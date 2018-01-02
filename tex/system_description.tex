@@ -25,8 +25,8 @@ can be redeemed for their face value. The redeemability of a nomin for the havve
 \noindent We first introduce the core system variables:
 
 \begin{align*}
-H &\text{: havven quantity} & N &\text{: nomin quantity} \\
-P_h &\text{: havven price}  & P_n &\text{: nomin price} \\
+H &\text{\ \ havven quantity} & N &\text{\ \ nomin quantity} \\
+P_h &\text{\ \ havven price}  & P_n &\text{\ \ nomin price} \\
 \end{align*}
 
 % \todo[inline]{Consider renaming havven price symbol to reflect that it is computed from income}
@@ -43,7 +43,7 @@ it represents at the current time. \\
 of havvens is called the collateralisation ratio:
 
 \begin{equation}
-C = \frac{P_n \cdot N}{P_h \cdot H} \label{eq:collateralisation}
+C \ = \ \frac{P_n \cdot N}{P_h \cdot H} \label{eq:collateralisation}
 \end{equation}
 
 \vspace{3 mm}
@@ -92,7 +92,7 @@ $C_{opt}$. We visualise this equilibrium below with a hypothetical demand and su
 % \todo[inline]{Make sure this equity/debt language is not too security-like.}
 
 \begin{equation}
-C_i = \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollateralisation}
+C_i \ = \ \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollateralisation}
 \end{equation}
 
 \vspace{2 mm}
@@ -108,7 +108,7 @@ Issuing nomins escrows some quantity of havvens, which cannot be moved until the
 The quantity of havvens $\check{H_i}$ locked in generating $\check{N_i}$ nomins is:
 
 \begin{equation}
-\check{H_i} = \frac{P_n \cdot \check{N_i}}{P_h \cdot C_{max}}  \label{eq:escrowed}
+\check{H_i} \ = \ \frac{P_n \cdot \check{N_i}}{P_h \cdot C_{max}}  \label{eq:escrowed}
 \end{equation}
 
 \vspace{2 mm}
@@ -148,7 +148,7 @@ as an incentive to maintain nomin supply at $C_{opt}$. \\
 sufficiently small that it provides little to no friction for the user: \\
 
 \begin{equation}
-\alpha_c = k \ \label{eq:5}
+\alpha_c \ = \ k \ \label{eq:5}
 \end{equation}
 
 \begin{center}
@@ -171,7 +171,7 @@ sufficiently small that it provides little to no friction for the user: \\
 of the velocity of nomins $v_t$ and the total nomin supply $N_t$:
 
 \begin{equation}
-    F_t = v_t \cdot \alpha_c \cdot N_t
+    F_t \ = \ v_t \cdot \alpha_c \cdot N_t
 \end{equation}
 
 \newpage
@@ -188,11 +188,11 @@ fees if they do so.\\
 
 
 \begin{equation}
-\alpha_{r,t,i} = \alpha_{base,t} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})  \label{eq:feesreceived}
+\alpha_{r,t,i} \ = \ \alpha_{base,t} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})  \label{eq:feesreceived}
 \end{equation}
 
 \begin{equation}
-\mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) = 
+\mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t}) \ = \
 \begin{cases}
  \frac{C_{i,t}}{C_{opt,t}} &\mbox{when } C_{i,t} \leq C_{opt,t} \\[1em]
  \frac{C_{max,t} - C_{i,t}}{C_{max,t} - C_{opt,t}} &\mbox{when } C_{opt,t} \leq C_{i,t} \leq C_{max,t} \\[1em]
@@ -230,14 +230,14 @@ fees if they do so.\\
 Let us define the total fees paid to havven holders $F_{r,t}$: \\
 
 \begin{equation}
-F_{r,t} = \sum_{i} \check{H_i} \cdot \alpha_{r,t,i} \label{eq:totalfeesreceived}
+F_{r,t} \ = \ \sum_{i} \check{H_i} \cdot \alpha_{r,t,i} \label{eq:totalfeesreceived}
 \end{equation} \\
 
 \noindent Havven requires that the total fees collected from users has to be equal to the total amount of
 fees paid to the havven holders, so that $F_{r,t} = F_t$. Substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,t,i}$ and solving for $\alpha_{base,t} $: \\
 
 \begin{equation}
-\alpha_{base,t} = \frac{F_t}{\sum_{i} \check{H_i} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})} \label{eq:10}
+\alpha_{base,t} \ = \ \frac{F_t}{\sum_{i} \check{H_i} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})} \label{eq:10}
 \end{equation} \\
 
 \noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $F_t$. This rate should be achieved when an individual's $C_i$ is at $C_{opt}$. \\
@@ -260,10 +260,10 @@ for havven holders based on the price of nomins:
 \begin{gather} \label{eq:optcollateralisation}
 \begin{align}
 \begin{split}
-C_{opt,t} &= f(P_{n,t}) \cdot C_t  \\ 
-f(P_{n,t}) &= max(\sigma \cdot (P_{n,t} - 1)^{\phi} + 1, 0) \\
-\sigma & \text{: price sensitivity parameter } (\sigma > 0)\\
-\phi   & \text{: flattening parameter } (\phi \in \mathbb{N} \text{, } \phi \nmid 2) \\
+C_{opt,t} \ &= \ f(P_{n,t}) \cdot C_t  \\ 
+f(P_{n,t}) \ &= \ max(\sigma \cdot (P_{n,t} - 1)^{\phi} + 1, 0) \\
+\sigma \ & \text{ \ price sensitivity parameter } (\sigma > 0)\\
+\phi   \ & \text{ \ flattening parameter } (\phi \in \mathbb{N} \text{, } \phi \nmid 2) \\
 \end{split}
 \end{align}
 \end{gather}
