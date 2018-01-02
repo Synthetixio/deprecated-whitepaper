@@ -187,8 +187,6 @@ target the optimal collateralisation ratio, by rewarding them with greater
 fees if they do so.\\
 
 
- % \todo[inline]{figure out whether t stays}
-
 \begin{equation}
 \alpha_{r,t,i} = \alpha_{base,t} \cdot \mathcal{F}_{i,t}(C_{i,t}, C_{opt,t}, C_{max,t})  \label{eq:feesreceived}
 \end{equation}
@@ -217,8 +215,8 @@ fees if they do so.\\
 \coordinate (d) at (2.25, 0.0);
 \coordinate (e) at (0.00, 0.00);
 
-\draw[dashed] (yaxis |- c) node [left] {$\alpha_{base}$} -| (xaxis -| c) node[below] {$C_{opt}$};
-\draw[dashed] (yaxis |- e) node [left] {$\alpha_{base}$} -| (xaxis -| d) node[below] {$C_{max}$};
+\draw[dashed] (yaxis |- c) node [left] {$\alpha_{base}$} -| (xaxis -| c) node [below] {$C_{opt}$};
+\draw[dashed] (xaxis -| d) node [below] {$C_{max}$};
 
 \end{tikzpicture}
 \end{center}
@@ -278,22 +276,13 @@ f(P_{n,t}) &= max(\sigma \cdot (P_{n,t} - 1)^{\phi} + 1, 0) \\
     xlabel = $P_n$,
     ylabel = {$f(P_n)$},
     xtick = {1},
-    ytick = {0},
+    ytick = {1},
     y label style={at={(axis description cs:.15,1.00)}, rotate=270,anchor=south},
     x label style={at={(axis description cs:1.05,.13)},anchor=north},
 ]
-\addplot[
-domain=0:2,
-range=0:2
-]
-{(x-1)^3 + 1};
-\addplot [
-domain=0:2,
-range=0:2,
-dashed
-]  
- {x};
- \addplot[dashed, samples=50, smooth,domain=0:6] coordinates {(1,1)(1,0)};
+\addplot[domain=0:2, range=0:2]{(x-1)^3 + 1};
+\addplot[domain=0:2, range=0:2, dashed]{x};
+\addplot[dashed, samples=50, smooth,domain=0:6] coordinates {(1,1)(1,0)};
 \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -309,7 +298,7 @@ dashed
 \begin{gather} \label{eq:maxcollateralisation}
 \begin{align}
 \begin{split}
-C_{max,t} &=  a \cdot C_{opt,t} \\ 
+C_{max,t} \ &= \ a \cdot C_{opt,t} \\ 
 a & \geq 1 \\
 \end{split}
 \end{align}
@@ -320,23 +309,22 @@ a & \geq 1 \\
 \begin{axis}[
     axis lines = left,
     xlabel = $C_{opt}$,
-    ylabel = {$C_{max}$},
+    ylabel = $C_{max}$,
     xtick = {1},
-    ytick = {0},
-    y label style={at={(axis description cs:.15,1.00)}, rotate=270,anchor=south},
-    x label style={at={(axis description cs:1.08,.13)},anchor=north},
+    ytick = {1},
+    xticklabels = {,,},
+    yticklabels = {,,},
+    xtick style = {draw=none},
+    ytick style = {draw=none},
+    y label style={at={(axis description cs:0.18,1.00)}, rotate=270, anchor=south},
+    x label style={at={(axis description cs:1.08,0.14)}, anchor=north},
 ]
-\addplot[
-domain=0:1.00
-]
-{1.25 * x};
-\addplot [
-domain=0:1.00,
-dashed
-]  
- {x};
- \addplot[dashed, samples=50, smooth,domain=0:6] coordinates {(1,1)(1,0)};
+\addplot[domain=0:0.8]{1.25 * x};
+\addplot[domain=0:1, dashed, smooth]{x};
+%\addplot[domain=0:1.00, dashed, samples=50, smooth] coordinates {(1,1)(1,0)};
 \end{axis}
+%\draw[dashed] (0,0) -- (5,5);
+%\draw (0,0) -- (4.5,5.5);
 \end{tikzpicture}
 \end{center}
 
@@ -371,7 +359,7 @@ volumes to be the most highly-correlated with future volumes:
 \vspace{3mm}
 
 \begin{equation}
-    V_{t} \approx \sum_{t'=1}^{t} \frac{F_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
+    V_{t} \ = \ \sum_{t'=1}^{t} \frac{F_{t - t'}}{(1 + r)^{t'}} \label{eq:price}
 \end{equation}
 
 where
@@ -388,7 +376,7 @@ Further, if it is assumed that the average fee take is approximated by $F_t$, an
 \vspace{2mm}
 
 \begin{equation}
-    V_t \approx \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} = \frac{F_t}{H \cdot r}
+    V_t \ \approx \ \sum_{t'=1}^{\infty} \frac{F_t}{(1 + r)^{t'}} \ = \ \frac{F_t}{H \cdot r}
 \end{equation}
 
 \vspace{3mm}
