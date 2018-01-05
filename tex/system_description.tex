@@ -130,37 +130,6 @@ ratio, $C$, in response to changes in the price of havvens or nomins. In order t
 the correct price, the system adjusts the fees it pays to havven holders as according
 to their effectiveness in stabilising the price.
 
-\subsubsection{Nomin Transaction Fees}
-Every time a nomin transaction occurs, the Havven system charges a small transaction fee.
-Transaction fees allow the system to generate revenue, which it can distribute to havven holders
-as an incentive to maintain nomin supply at $C_{opt}$. \\
-
-\noindent The fee rate charged on nomin transactions is $\alpha_c$. It is constant and will be
-sufficiently small that it provides little to no friction for the user: \\
-
-\begin{equation}
-\alpha_c \ = \ k \ \label{eq:5}
-\end{equation}
-
-\begin{center}
-\begin{tikzpicture}[scale=3]
-    % draw axes
-    \draw [<->, thick] (0,2) node (yaxis) [above] {$\alpha_c$} |- (2.5,0) node (xaxis) [right] {$P_n$};
-    % draw one line
-    \draw (0.0, 0.75) coordinate (a_1) -- (2.4,0.75) coordinate (a_2);
-    \coordinate (c) at (1.75, 0.75);
-    \draw[dashed] (yaxis |- c) node [left] {k};
-\end{tikzpicture}
-\end{center}
-
-\noindent We may then express the total fees collected in the last period, $F$, as a function
-of the velocity of nomins $v$ and the total nomin supply $N$:
-
-\begin{equation}
-    F \ = \ v \cdot \alpha_c \cdot N
-\end{equation}
-
-\newpage
 \subsubsection{Fees Received by Havven Holders}
 
 \noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$.
@@ -170,7 +139,7 @@ diminishing as $C_i$ approaches the maximum collateralisation ratio $C_{max}$.  
 
 \noindent This function is designed to encourage havven holders to constantly
 target the optimal collateralisation ratio, by rewarding them with greater
-fees if they do so.\\
+fees if they bring their $C_i$ into alignment with $C_{opt}$.\\
 
 
 \begin{equation}
@@ -202,9 +171,20 @@ fees if they do so.\\
 \end{tikzpicture}
 \end{center}
 
-\noindent This fee distribution curve encourages havven holders who have escrowed to maintain their $C_i$ at $C_{opt}$.  \\
-
 \newpage
+
+\subsubsection{Nomin Transaction Fees}
+Every time a nomin transaction occurs, the Havven system charges a small transaction fee.
+Transaction fees allow the system to generate revenue, which it can distribute to havven holders
+as an incentive to maintain nomin supply at $N_{opt}$. \\
+
+\noindent The fee rate charged on nomin transactions is $\alpha_c$. It is constant and will be
+sufficiently small that it provides little to no friction for the user. We may then express the total fees collected in the last period, $F$, as a function
+of the velocity of nomins $v$ and the total nomin supply $N$:
+
+\begin{equation}
+    F \ = \ v \cdot \alpha_c \cdot N
+\end{equation}
 
 \subsubsection{Base Fee Rate}
 
