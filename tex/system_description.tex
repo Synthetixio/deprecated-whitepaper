@@ -133,7 +133,7 @@ to their effectiveness in stabilising the price.
 \subsubsection{Fees Received by Havven Holders}
 
 \noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$.
-The actual fee they receive is $\check{H_i} \cdot \alpha_r$, being proportional with the value they escrow.
+The actual fee they receive is $H_i \cdot \alpha_r$, being proportional with their havven balance.
 This rate changes with respect their unique collateralisation ratio, $C_i$. It increases linearly to a maximum $\alpha_{base}$ at the optimal collateralisation ratio $C_{opt}$, before quickly
 diminishing as $C_i$ approaches the maximum collateralisation ratio $C_{max}$.  \\
 
@@ -150,7 +150,7 @@ fees if they bring their $C_i$ into alignment with $C_{opt}$.\\
 \mathcal{F}_{i}(C_{i}, C_{opt}, C_{max}) \ = \
 \begin{cases}
  \frac{C_{i}}{C_{opt}} &\mbox{when } C_{i} \leq C_{opt} \\[1em]
- \frac{C_{max} - C_{i}}{C_{max} - C_{opt}} &\mbox{when } C_{opt} \leq C_{i} \leq C_{max} \\[1em]
+ \frac{C_{max} - C_{i}}{C_{max} - C_{opt}} &\mbox{when } C_{opt} < C_{i} \leq C_{max} \\[1em]
  0 &\mbox{otherwise}
  \end{cases}
  \label{eq:7}
@@ -191,14 +191,14 @@ of the velocity of nomins $v$ and the total nomin supply $N$:
 Let us define the total fees paid to havven holders $F_{r}$: \\
 
 \begin{equation}
-F_{r} \ = \ \sum_{i} \check{H_{i}} \cdot \alpha_{r,i} \label{eq:totalfeesreceived}
+F_{r} \ = \ \sum_{i} H_{i} \cdot \alpha_{r,i} \label{eq:totalfeesreceived}
 \end{equation} \\
 
 \noindent Havven requires that the total fees collected from users has to be equal to the total amount of
 fees paid to the havven holders, so that $F_{r} = F$. Substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,i}$ and solving for $\alpha_{base} $: \\
 
 \begin{equation}
-\alpha_{base} \ = \ \frac{F}{\sum_{i} \check{H_{i}} \cdot \mathcal{F}_{i}(C_{i}, C_{opt}, C_{max})} \label{eq:10}
+\alpha_{base} \ = \ \frac{F}{\sum_{i} H_{i} \cdot \mathcal{F}_{i}(C_{i}, C_{opt}, C_{max})} \label{eq:10}
 \end{equation} \\
 
 \noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $F$. This rate should be achieved when an individual's $C_i$ is at $C_{opt}$. \\
