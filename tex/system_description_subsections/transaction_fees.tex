@@ -1,21 +1,24 @@
 \newpage
 \subsection{Transaction Fees}
-Havven needs a direct incentive mechanism that can correct the global collateralisation
-ratio, $C$, in response to changes in the price of havvens or nomins. In order to target
-the correct price, the system adjusts the fees it pays to havven holders as according
-to their effectiveness in stabilising the price.
+Havven needs a direct incentive mechanism that can correct the global
+collateralisation ratio, $C$, in response to changes in the price of havvens
+or nomins. In order to target the correct price, the system adjusts the fees
+it pays to havven holders as according to their effectiveness in stabilising
+the price.
 
 \subsubsection{Fees Received by Havven Holders}
 
-\noindent The fee rate paid to a havven holder that has escrowed is $\alpha_r$.
-The actual fee they receive is $H_i \cdot \alpha_r$, being proportional with their havven balance.
-This rate changes with respect to their unique collateralisation ratio, $C_i$. It increases linearly to a maximum $\alpha_{base}$ at the optimal collateralisation ratio $C_{opt}$, before quickly
-diminishing as $C_i$ approaches the maximum collateralisation ratio $C_{max}$.  \\
+\noindent The fee rate paid to a havven holder that has escrowed is
+$\alpha_r$. The actual fee they receive is $H_i \cdot \alpha_r$, being
+proportional with their havven balance. This rate changes with respect to
+their unique collateralisation ratio, $C_i$. It increases linearly to a
+maximum $\alpha_{base}$ at the optimal collateralisation ratio $C_{opt}$,
+before quickly diminishing as $C_i$ approaches the maximum collateralisation
+ratio $C_{max}$. \\
 
 \noindent This function is designed to encourage havven holders to constantly
 target the optimal collateralisation ratio, by rewarding them with greater
 fees if they bring their $C_i$ into alignment with $C_{opt}$.\\
-
 
 \begin{equation}
 \alpha_{r,i} \ = \ \alpha_{base} \cdot \mathcal{F}_{i}(C_{i}, C_{opt}, C_{max})  \label{eq:feesreceived}
@@ -49,13 +52,16 @@ fees if they bring their $C_i$ into alignment with $C_{opt}$.\\
 \newpage
 
 \subsubsection{Nomin Transaction Fees}
-Every time a nomin transaction occurs, the Havven system charges a small transaction fee.
-Transaction fees allow the system to generate revenue, which it can distribute to havven holders
-as an incentive to maintain nomin supply at $N_{opt}$. \\
+Every time a nomin transaction occurs, the Havven system charges a small
+transaction fee. Transaction fees allow the system to generate revenue, which
+it can distribute to havven holders as an incentive to maintain nomin supply
+at $N_{opt}$. \\
 
-\noindent The fee rate charged on nomin transactions is $\alpha_c$. It is constant and will be
-sufficiently small that it provides little to no friction for the user. We may then express the total fees collected in the last period, $F$, as a function
-of the velocity of nomins $v$ and the total nomin supply $N$:
+\noindent The fee rate charged on nomin transactions is $\alpha_c$. It is
+constant and will be sufficiently small that it provides little to no
+friction for the user. We may then express the total fees collected in the
+last period, $F$, as a function of the velocity of nomins $v$ and the total
+nomin supply $N$:
 
 \begin{equation}
     F \ = \ v \cdot \alpha_c \cdot N
@@ -69,13 +75,20 @@ Let us define the total fees paid to havven holders $F_{r}$: \\
 F_{r} \ = \ \sum_{i} H_{i} \cdot \alpha_{r,i} \label{eq:totalfeesreceived}
 \end{equation} \\
 
-\noindent Havven requires that the total fees collected from users has to be equal to the total amount of
-fees paid to the havven holders, so that $F_{r} = F$. Substituting our earlier definition \eqref{eq:feesreceived} for $\alpha_{r,i}$ and solving for $\alpha_{base} $: \\
+\noindent Havven requires that the total fees collected from users has to be
+equal to the total amount of fees paid to the havven holders, so that $F_{r}
+= F$. Substituting our earlier definition \eqref{eq:feesreceived} for
+$\alpha_{r,i}$ and solving for $\alpha_{base} $: \\
 
 \begin{equation}
 \alpha_{base} \ = \ \frac{F}{\sum_{i} H_{i} \cdot \mathcal{F}_{i}(C_{i}, C_{opt}, C_{max})} \label{eq:10}
 \end{equation} \\
 
-\noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms of the fees collected, $F$. This rate should be achieved when an individual's $C_i$ is at $C_{opt}$. \\
+\noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms
+of the fees collected, $F$. This rate should be achieved when an individual's
+$C_i$ is at $C_{opt}$. \\
 
-\noindent The definition of $C_{opt}$ must therefore provide the following incentive. If $P_n > \$1$ then the system must encourage more nomins to be issued. However, if $P_n < \$1$, the system must encourage nomins to be burned.
+\noindent The definition of $C_{opt}$ must therefore provide the following
+incentive. If $P_n > \$1$ then the system must encourage more nomins to be
+issued. However, if $P_n < \$1$, the system must encourage nomins to be
+burned.

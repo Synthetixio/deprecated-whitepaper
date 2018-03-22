@@ -1,6 +1,7 @@
 \subsection{Issuance and Collateralisation} 
 
-\noindent Havven's goal is to remain overcollateralised. In order to do so, the system defines a collateralisation target:
+\noindent Havven's goal is to remain overcollateralised. In order to do so,
+the system defines a collateralisation target:
 
 \begin{equation}
 0 < C_{opt} < 1  \label{eq:target}
@@ -8,7 +9,13 @@
 
 \vspace{2 mm}
 
-\noindent It is necessary at this point to distinguish, for an account $i$, between the nomins it contains $N_i$ (equity) and the nomins it has issued $\check{N_i}$ (debt). Note that globally, $\sum_{i}N_i = \sum_{i}\check{N_i}$, as all nomins were issued by some account. However, a given account may have a balance different from its issuance debt. Hence we can define the collateralisation ratio for an individual account $i$ in terms of its issuance debt:
+\noindent It is necessary at this point to distinguish, for an account $i$,
+between the nomins it contains $N_i$ (equity) and the nomins it has issued
+$\check{N_i}$ (debt). Note that globally, $\sum_{i}N_i =
+\sum_{i}\check{N_i}$, as all nomins were issued by some account. However, a
+given account may have a balance different from its issuance debt. Hence we
+can define the collateralisation ratio for an individual account $i$ in terms
+of its issuance debt:
 
 \begin{equation}
 C_i \ = \ \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollateralisation}
@@ -16,15 +23,18 @@ C_i \ = \ \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcolla
 
 \vspace{2 mm}
 
-\noindent The system provides incentives for individual issuers to bring their $C_i$ closer to $C_{opt}$ while maintaining $C_{opt}$ itself at a level that stabilises the price. \\
+\noindent The system provides incentives for individual issuers to bring
+their $C_i$ closer to $C_{opt}$ while maintaining $C_{opt}$ itself at a level
+that stabilises the price. \\
 
 \noindent \textbf{Nomin Issuance}
 
 \vspace{1mm}
 
-\noindent The nomin issuance mechanism allows Havven to reach its collateralisation target.
-Issuing nomins escrows some quantity of havvens, which cannot be moved until they are unescrowed.
-The quantity of havvens $\check{H_i}$ locked in generating $\check{N_i}$ nomins is:
+\noindent The nomin issuance mechanism allows Havven to reach its
+collateralisation target. Issuing nomins escrows some quantity of havvens,
+which cannot be moved until they are unescrowed. The quantity of havvens
+$\check{H_i}$ locked in generating $\check{N_i}$ nomins is:
 
 \begin{equation}
 \check{H_i} \ = \ \frac{P_n \cdot \check{N_i}}{P_h \cdot C_{max}}  \label{eq:escrowed}
@@ -32,21 +42,32 @@ The quantity of havvens $\check{H_i}$ locked in generating $\check{N_i}$ nomins 
 
 \vspace{2 mm}
 
-\noindent Under equilibrium conditions, there is some $\check{H_i} \leq H_i$ when $C_i$ coincides with $C_{opt}$, which the issuer is incentivised to target. These incentives are provided in the form of transaction fees, discussed in section 2.4. It is important to note that the issuer may voluntarily increase their $C_i$ up to the limit of $C_{max}$; for example if they anticipate a positive movement in $C_{opt}$. \\
+\noindent Under equilibrium conditions, there is some $\check{H_i} \leq H_i$
+when $C_i$ coincides with $C_{opt}$, which the issuer is incentivised to
+target. These incentives are provided in the form of transaction fees,
+discussed in section 2.4. It is important to note that the issuer may
+voluntarily increase their $C_i$ up to the limit of $C_{max}$; for example if
+they anticipate a positive movement in $C_{opt}$. \\
 
-\noindent On the other hand, an issuer may not issue a quantity of nomins that would lock more than $H_i$ havvens.  Consequently, $C_i$ may never exceed $C_{max}$, except by price fluctuations, and in such circumstances, issuers are rewarded for bringing $C_i$ back under $C_{max}$. \\
+\noindent On the other hand, an issuer may not issue a quantity of nomins
+that would lock more than $H_i$ havvens. Consequently, $C_i$ may never exceed
+$C_{max}$, except by price fluctuations, and in such circumstances, issuers
+are rewarded for bringing $C_i$ back under $C_{max}$. \\
 
-\noindent After generating the nomins, the system places a \textbf{limit sell} order with a price
-of \$1 on a decentralised exchange. This means that the nomins will be sold at the current market
-price, down to a minimum price of \$1. If we assume implementation on Ethereum, then the nomins
-are sold for an equivalent value in ether, with the proceeds of the sale remitted to the issuer. \\
+\noindent After generating the nomins, the system places a \textbf{limit
+sell} order with a price of \$1 on a decentralised exchange. This means that
+the nomins will be sold at the current market price, down to a minimum price
+of \$1. If we assume implementation on Ethereum, then the nomins are sold for
+an equivalent value in ether, with the proceeds of the sale remitted to the
+issuer. \\
 
 \noindent \textbf{Nomin Destruction}
 
 \vspace{1mm}
 
-\noindent In order to access the havvens that have been escrowed, the system must destroy the
-same number of nomins that were originally issued. When the issuer indicates the intention to
-retrieve their havvens, the system places a \textbf{limit buy} order on a decentralised exchange,
-up to a maximum price of \$1. The system places this order on behalf of the issuer and upon
+\noindent In order to access the havvens that have been escrowed, the system
+must destroy the same number of nomins that were originally issued. When the
+issuer indicates the intention to retrieve their havvens, the system places a
+\textbf{limit buy} order on a decentralised exchange, up to a maximum price
+of \$1. The system places this order on behalf of the issuer and upon
 completion, the nomins are immediately destroyed. \\

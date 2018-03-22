@@ -2,7 +2,8 @@
 
 \subsection{Issuance Case Study} 
 
-\noindent Bob decides to purchase 100 havvens at \$1 each. Consider the following initial conditions:
+\noindent Bob decides to purchase 100 havvens at \$1 each. Consider the
+following initial conditions:
 
 \begin{align*}
 C_{max} &= 0.5 & C_{opt} &= 0.4 & C &= 0.4 \\
@@ -10,20 +11,24 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 \sigma &= 50 & \phi &= 3 & a&= 1.25
 \end{align*}
 
-\noindent The system is in price equilibrium, with the global collateralisation ratio $C$ equal to the optimal collateralisation ratio $C_{opt}$. Initially,  Bob's wallet contains only free havvens.
+\noindent The system is in price equilibrium, with the global
+collateralisation ratio $C$ equal to the optimal collateralisation ratio
+$C_{opt}$. Initially, Bob's wallet contains only free havvens.
 
 \begin{figure}[h!]
 \centering
     \includegraphics[width=0.40\textwidth]{img/wallet}
 \end{figure}
 
-\noindent Bob wants to earn the maximum possible fees, so he issues nomins up to $C_{opt}$. The system generates 40 nomins and escrows 80 of his havvens, locking \$80 worth of value in the system. The nomins are sold for \$40 worth of ether and the proceeds are transferred to Bob's account.
-\begin{figure}[h!]
-\centering
-    \includegraphics[width=0.6\textwidth]{img/escrowed}
-\end{figure}
+\noindent Bob wants to earn the maximum possible fees, so he issues nomins up
+to $C_{opt}$. The system generates 40 nomins and escrows 80 of his havvens,
+locking \$80 worth of value in the system. The nomins are sold for \$40 worth
+of ether and the proceeds are transferred to Bob's account.
+\begin{figure}[h!] \centering
+\includegraphics[width=0.6\textwidth]{img/escrowed} \end{figure}
 
-\noindent \textbf{Nomin Price Change} This example shows how the system incentivises havven holders to correct instability in the nomin price.
+\noindent \textbf{Nomin Price Change} This example shows how the system
+incentivises havven holders to correct instability in the nomin price.
 
 \begin{enumerate}
 \item{As a consequence of reduced demand in decentralised trading markets, the nomin price $P_n$ drops to \$0.90. The system needs to incentivise havven holders to reduce the supply of nomins so that the price returns to \$1.00.}
@@ -43,7 +48,10 @@ P_n &= 1 & P_h &= 1 & H_i &= 100 \\
 
 \newpage
 
-\noindent \textbf{Havven Price Change (Market Price)} This example illustrates how the system maintains the dollar value of the underlying collateral by adjusting the quantity of a user's escrowed havvens when the havven price changes. Consider the same initial conditions as before:
+\noindent \textbf{Havven Price Change (Market Price)} This example
+illustrates how the system maintains the dollar value of the underlying
+collateral by adjusting the quantity of a user's escrowed havvens when the
+havven price changes. Consider the same initial conditions as before:
 
 \begin{align*}
 C_{max} &= 0.5 & C_{opt} &= 0.4 & C &= 0.4 \\

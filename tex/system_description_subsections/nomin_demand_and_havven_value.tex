@@ -2,22 +2,28 @@
 
 \subsection{Nomin Demand and Havven Value}
 
-\noindent Being freely-tradable ERC20 tokens, havvens will have a market price which, like
-the nomin price, can be measured with an oracle.
-Initially, while nomin demand is low, we will use a seven day rolling average of the market price for both havvens and nomins.
-This rolling average is designed to smooth out fluctuations in the market price and increase the cost of attacking the system.\\
+\noindent Being freely-tradable ERC20 tokens, havvens will have a market
+price which, like the nomin price, can be measured with an oracle. Initially,
+while nomin demand is low, we will use a seven day rolling average of the
+market price for both havvens and nomins. This rolling average is designed to
+smooth out fluctuations in the market price and increase the cost of
+attacking the system.\\
 
-\noindent However, once nomin transaction volume is sufficiently high, we may instead consider internally estimating
-the value of a havven by the fees it is likely to accrue in the future. This value, which implicitly measures nomin volume,
-would allow issuance incentives to directly reflect changes in nomin demand.
-By using this value instead of the havven market price, the system can avoid the influence of speculation,
-since the permitted nomin supply would expand and contract in line with how much nomins are actually being used. \\
+\noindent However, once nomin transaction volume is sufficiently high, we may
+instead consider internally estimating the value of a havven by the fees it
+is likely to accrue in the future. This value, which implicitly measures
+nomin volume, would allow issuance incentives to directly reflect changes in
+nomin demand. By using this value instead of the havven market price, the
+system can avoid the influence of speculation, since the permitted nomin
+supply would expand and contract in line with how much nomins are actually
+being used. \\
 
-\noindent While the system cannot perfectly determine future fee returns and hence nomin demand, it is possible to estimate as a
-function of the transaction fees that the system has recently generated.
-This computation is designed not to be vulnerable to instantaneous volume spikes, while taking the most recent transaction
-volumes to be the most highly-correlated with future volumes:
-
+\noindent While the system cannot perfectly determine future fee returns and
+hence nomin demand, it is possible to estimate as a function of the
+transaction fees that the system has recently generated. This computation is
+designed not to be vulnerable to instantaneous volume spikes, while taking
+the most recent transaction volumes to be the most highly-correlated with
+future volumes:
 \vspace{3mm}
 
 \begin{equation}
@@ -42,6 +48,8 @@ Further, if it is assumed that the average fee take is approximated by $F_t$, an
 
 \vspace{3mm}
 
-\noindent Consequently, $\frac{1}{r}$ approximates the number of periods for a havven to yield a fee return of $V_t$.
-A judicious choice of $r$ can then yield a $V_t$ which underestimates the market price of havvens (which also incorporates,
-for example, capital gains), while not unduly constraining nomin supply.
+\noindent Consequently, $\frac{1}{r}$ approximates the number of periods for
+a havven to yield a fee return of $V_t$. A judicious choice of $r$ can then
+yield a $V_t$ which underestimates the market price of havvens (which also
+incorporates, for example, capital gains), while not unduly constraining
+nomin supply.
