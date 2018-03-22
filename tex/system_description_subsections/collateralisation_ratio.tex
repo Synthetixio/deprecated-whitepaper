@@ -1,0 +1,88 @@
+\newpage
+\subsection{Collateralisation Ratio}
+\subsubsection{Optimal Collateralisation Ratio}
+
+\noindent The optimal collateralisation ratio $C_{opt}$ is a target for havven
+holders to reach in order to maximise the amount of fees they receive.
+$C_{opt}$ is defined in terms of the nomin price $P_n$, such that its value directly tracks changes in the nomin price; a havven
+holder wishing to maximise their fees will target $C_{opt}$ by issuing or destroying nomins. \\
+
+\noindent The function for $C_{opt}$ given below provides our dynamic target
+for havven holders based on the price of nomins:
+
+\begin{gather} \label{eq:optcollateralisation}
+\begin{align}
+\begin{split}
+C_{opt} \ &= \ f(P_{n}) \cdot C  \\ 
+f(P_n) \ &= \ max(\sigma \cdot (P_n - 1)^{\phi} + 1, 0) \\
+\sigma \ & \text{ \ price sensitivity parameter } (\sigma > 0)\\
+\phi   \ & \text{ \ flattening parameter } (\phi \in \mathbb{N} \text{, } \phi \nmid 2) \\
+\end{split}
+\end{align}
+\end{gather}
+
+
+\begin{center}
+\begin{tikzpicture}[scale=1.15]
+\begin{axis}[
+    axis lines = left,
+    xlabel = $P_n$,
+    ylabel = {$f(P_n)$},
+    xtick = {1},
+    ytick = {1},
+    y label style={at={(axis description cs:.15,1.00)}, rotate=270,anchor=south},
+    x label style={at={(axis description cs:1.05,.13)},anchor=north},
+]
+\addplot[domain=0:2, range=0:2]{(x-1)^3 + 1};
+\addplot[domain=0:2, range=0:2, dashed]{x};
+\addplot[dashed, samples=50, smooth,domain=0:6] coordinates {(1,1)(1,0)};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\noindent When $P_n$ is at \$1, $C_{opt} = C$ and there is no incentive given to move away from the current global collateralisation level. However, if $P_n < \$1$, then $C_{opt} < C$, incentivising issuers to burn nomins, thereby raising the price. The $P_n > \$1$ case is symmetric. Notice that when the $P_n$ is close to \$1, $ f'(P_n) $ is small. However, the further it diverges from \$1, the larger the slope becomes, providing a stronger incentive, in the form of potential fees, for a havven holder to move toward $C_{opt}$. \\
+
+\newpage
+
+\subsubsection{Maximum Collateralisation Ratio}
+
+\noindent Havven seeks to maintain $C \leq C_{opt} < C_{max} < 1$, in order to retain sufficient overcollateralisation. It might seem intuitive that $C_{max}$ should be a static value. However, since $C_{opt}$ varies linearly with $P_n$ and inversely with $P_h$,  there are situations where $C_{max}$ may need to change. Below we define $C_{max}$ in terms of $C_{opt}$. \\
+
+\begin{gather} \label{eq:maxcollateralisation}
+\begin{align}
+\begin{split}
+C_{max} \ &= \ a \cdot C_{opt} \\ 
+a & \geq 1 \\
+\end{split}
+\end{align}
+\end{gather}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.15]
+\begin{axis}[
+    axis lines = left,
+    xlabel = $C_{opt}$,
+    ylabel = $C_{max}$,
+    xtick = {1},
+    ytick = {1},
+    xticklabels = {,,},
+    yticklabels = {,,},
+    xtick style = {draw=none},
+    ytick style = {draw=none},
+    y label style={at={(axis description cs:0.18,1.00)}, rotate=270, anchor=south},
+    x label style={at={(axis description cs:1.08,0.14)}, anchor=north},
+]
+\addplot[domain=0:0.8]{1.25 * x};
+\addplot[domain=0:1, dashed, smooth]{x};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\noindent The value of $C_{max}$ determines how overcollateralised each nomin is at issuance. The higher its value, the more nomins can be generated for the same quantity of havvens. In contrast, if $C_{max}$ is low, the system has a greater capacity to absorb negative shocks in the havven price before it becomes undercollateralised.  The value of $C_{max}$ therefore represents a tradeoff between \textit{efficiency} and \textit{resilience}. By defining $C_{max}$ as a function of $C_{opt}$, Havven finds the optimal balance in this dilemma. This ensures that like $C_{opt}$, $C_{max}$ only changes as a consequence of instability in the nomin price. \\
+
+\noindent It should be noted that $C_{max} > 1$ corresponds to a fractional reserve monetary
+system, where a greater value of nomins can be issued against each havven. In Havven, this
+situation is unsustainable because it would cause simultaneous appreciation of havvens (up to at
+least the value of nomins issuable against a havven) and depreciation of nomins, immediately
+diminishing $C$, $C_{opt}$ and $C_{max}$, bringing them back under $1$.
+

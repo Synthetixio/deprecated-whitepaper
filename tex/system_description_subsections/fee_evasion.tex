@@ -1,0 +1,31 @@
+\newpage
+
+\subsection{Fee Evasion}
+
+\noindent Being based on Ethereum, Havven is potentially vulnerable to its tokens being wrapped by another
+smart contract which takes deposits, and replicates all exchange functionality on redeemable IOU tokens
+it issues. These wrapped tokens could then be exchanged without incurring fees.
+\noindent We consider this situation unlikely for a number of reasons. \\
+
+\noindent First, the fees are designed to be low enough that most users
+shouldn't notice them, so users will not in general be strongly motivated to switch
+to a marginal and less trustworthy alternative. \\
+
+\noindent Second, network effects are tremendously important for currencies; in order to have
+utility a token must be accepted for exchange in the marketplace. This is challenging enough in itself, but a wrapped
+token must do this to the extent that it displaces its own perfect substitute: the token it wraps.
+\noindent In Havven's case, this would undermine its built-in stabilisation mechanisms, which become more powerful with
+increased transaction volume. Consequently, as a wrapped nomin parasitises more of the nomin
+market, it destroys the basis of its own utility, which is that nomins themselves are stable. \\
+
+\noindent Finally, it is unlikely that a token wrapper will be credible, not having been publicly and expensively audited, while its primary function undermines the trustworthiness of its authors. \\
+
+\noindent Even as this may appear unlikely, it's a simple matter to implement a democratic remedy, weighted by havven balance,
+by which havven holders can freeze or confiscate the balance of any contract that wraps assets.
+Those havven holders are incentivised not to abuse this system for the same reason that
+bitcoin mining pools do not form cartels to double-spend: because abuse of this power
+would undermine the value of the system, and thus devalue their own holdings. \\
+
+\noindent The credible threat of such a system existing is enough to discourage token wrappers
+from being used, even if they are written, since any user who does so risks losing their
+entire wrapped balance.

@@ -1,0 +1,49 @@
+\subsection{Equilibrium Nomin Price}
+
+\noindent We first introduce the core system variables:
+
+\begin{align*}
+H &\text{\ \ havven quantity} & N &\text{\ \ nomin quantity} \\
+P_h &\text{\ \ havven price}  & P_n &\text{\ \ nomin price} \\
+\end{align*}
+
+% \todo[inline]{Consider renaming havven price symbol to reflect that it is computed from income}
+
+\noindent All havven tokens are created at initialisation, so $H$ is constant.
+The quantity of nomins floats, responding to the issuance actions of havven holders.
+The Havven system needs to incentivise issuers to maintain $N$ such that
+the nomin price $P_n$, is stable at \$1.
+As we proceed, we may subscript variables with $t$ to indicate the value of that variable at a
+given time. Any variable lacking such a subscript indicates the value of the quantity
+it represents at the current time. \\
+
+\noindent In Havven, the measure of the value of nomins against the value
+of havvens is called the collateralisation ratio:
+
+\begin{equation}
+C \ = \ \frac{P_n \cdot N}{P_h \cdot H} \label{eq:collateralisation}
+\end{equation}
+
+\vspace{3 mm}
+
+\noindent From the law of supply and demand, there exists some supply
+of nomins $N_{opt}$, where the related level of demand yields an equilibrium
+price of \$1. This quantity is associated with an optimal collateralisation ratio
+$C_{opt}$. We visualise this equilibrium below with a hypothetical demand and supply curve.  \\
+
+% \todo[inline]{curved lines}
+% \todo[inline]{make diagrams pretty}
+\begin{center}
+\begin{tikzpicture}[scale=3]
+    % draw axes
+    \draw [<->, thick] (0,2) node (yaxis) [above] {$P_n$} |- (2.5,0) node (xaxis) [right] {$N$};
+    % draw intersecting lines
+    \draw (0.5, 0.5) coordinate (a_1) -- (2,1.8) coordinate (a_2) node[pos=0.0, left] {S};
+    \draw (0.5, 1.8) coordinate (b_1) -- (2,0.5) coordinate (b_2) node[pos=1.0, right] {D};
+    % calculate coordinate of intersection
+    \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
+    \draw[dashed] (yaxis |- c) node [left] {$\$1$} -| (xaxis -| c) node[below] {$N_{opt} = C_{opt} \cdot P_h \cdot H$};
+\end{tikzpicture}
+\end{center}
+
+\noindent The system is unable to influence the demand for nomins. We assume that some level of demand exists given the utility of nomins as a stable cryptocurrency. Although demand cannot be manipulated, the supply of nomins is controlled by havven holders, whose issuance incentives are in turn controlled by the system. It follows that as we require a fixed price $P_n = \$1 $ and are unable to control either $P_h$ or $H$, we must manipulate $C_{opt}$ such that $N = N_{opt}$ in order to satisfy our requirement.
