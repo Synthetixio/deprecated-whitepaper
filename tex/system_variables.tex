@@ -3,36 +3,34 @@
 
 % \todo[inline]{More complete system variable section.}
 
-\noindent What follows are the main variables of the system. Under each heading, each row will correspond to a single quantity of interest. Each row will have three columns. Leftmost, a mathematical definition of the variable; in the middle, the dimension of the quantity (which units it is measured in); and on the rightmost, a short English summary of the variable.\\
+\noindent What follows are the main variables of the system. Under each
+heading, each row will correspond to a single quantity of interest. Each row
+will have three columns. Leftmost, a mathematical definition of the variable;
+in the middle, the dimension of the quantity (which units it is measured in);
+and on the rightmost, a short English summary of the variable. Items without
+a dimension provided are dimensionless quantities. \\
 
-\noindent Certain abbreviations will be used. For example, \(\HAV{}\) and \(\NOM{}\) will be used as abbreviations for havvens and nomins considered as units of measurement. \\
+\noindent Certain abbreviations will be used. For example, \(\HAV{}\) and
+\(\NOM{}\) will be used as abbreviations for havvens and nomins considered as
+units of measurement. \\
 
-\paragraph{Prices}
+\paragraph{Prices and Money Supply}
 \begin{align*}
-    P_h & \ && &(\frac{\text{\$}}{\HAV{}}) && &\text{: havven price.} \\
-    P_n & \ && &(\frac{\text{\$}}{\NOM{}}) && &\text{: nomin price.} \\
-    \pi &:= \frac{P_h}{P_n} \ && &(\frac{\NOM{}}{\HAV{}}) && &\text{: havven to nomin conversion factor.} \\
-    P_h' &= f(V_n, V_h) \cdot R && &(\frac{\text{\$}}{\NOM{} \cdot \text{sec}}) && &\text{: havven price rate of change.}
-    \intertext{Here \(R\) is a risk term incorporating, for example, volatility, number of buyers versus sellers, and so on.}
+    &P_h \ && &(\frac{\text{\$}}{\HAV{}}) && &\text{: havven price.} \\
+    &P_n \ && &(\frac{\text{\$}}{\NOM{}}) && &\text{: nomin price.} \\
+    \intertext{}
+    &H \ && &(\HAV{}) && &\text{: Total supply of havvens; constant at \(10^8\) havvens.} \\
+    &N \ && &(\NOM{}) && &\text{: Total supply of nomins; floating.} \\
+    &H_i \ && &(\HAV{}) && &\text{: Quantity of havvens owned by account \(i\).} \\
+    &N_i \ && &(\NOM{}) && &\text{: Quantity of nomins owned by account \(i\).} \\
 \end{align*}
-\\
 
-
-\paragraph{Money Supply}
+\paragraph{Collateralisation Ratios}
 \begin{align*}
-    &H \ && &(\HAV{}) && &\text{: Quantity of havvens, which is constant.} \\
-    &H_e \ && &(\HAV{}) && &\text{: Quantity of escrowed havvens.} \\
-    &N = H_N \cdot \pi \ && &(\NOM{}) && &\text{: Quantity of nomins. This can float.} \\
-    &H_N = \frac{N}{\pi} \ && &(\HAV{}) && &\text{: Havven value of issued nomins.}
-    \intertext{Ideally, \(H_N \leq H_e\).}
-\end{align*}
-\\
-
-\paragraph{Utilisation Ratios}
-\begin{align*}
-    &U = \frac{H_N}{H} \ && &\text{(dimensionless)} && &\text{: Empirical issuance ratio. } \\
-    &U_{max} \ && &\text{(dimensionless)} && &\text{: Targeted issuance ratio ceiling.}
-    \intertext{\(0 \leq U \leq U_{max} \leq 1\)}
+    &C &= \frac{P_n \cdot N}{P_h \cdot H} \ && & && &\text{: Global issuance ratio. } \\
+    &C_{opt} &= \frac{P_n \cdot N}{P_h \cdot H} \ && & && &\text{: Global targeting issuance ratio. Changes in response to \(P_n\). } \\
+    &N_{opt} &= C_{opt} \cdot P_h \cdot H \ && &(\NOM{}) && &\text{: Targeted nomin supply to encourage.} \\
+    \intertext{Under most conditions, we expect \(0 \leq C_{opt} \leq C_{max} \leq 1\)}
 \end{align*}
 \\
 
