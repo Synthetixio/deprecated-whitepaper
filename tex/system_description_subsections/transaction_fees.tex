@@ -21,11 +21,11 @@ target the optimal collateralisation ratio, by rewarding them with greater
 fees if they bring their $C_i$ into alignment with $C_{opt}$.\\
 
 \begin{equation}
-\alpha_{r,i} \ = \ \alpha_{base} \cdot \mathcal{F}_{i}(C_{i}, C_{opt}, C_{max})  \label{eq:feesreceived}
+\alpha_{r,i} \ = \ \alpha_{base} \cdot \mathit{\Gamma}_{i}  \label{eq:feesreceived}
 \end{equation}
 
 \begin{equation}
-\mathcal{F}_{i}(C_{i}, C_{opt}, C_{max}) \ = \
+\mathit{\Gamma}_{i} \ = \
 \begin{cases}
  \frac{C_{i}}{C_{opt}} &\mbox{when } C_{i} \leq C_{opt} \\[1em]
  \frac{C_{max} - C_{i}}{C_{max} - C_{opt}} &\mbox{when } C_{opt} < C_{i} \leq C_{max} \\[1em]
@@ -81,7 +81,7 @@ equal to the total amount of fees paid to the havven holders, so that $F_{r}
 $\alpha_{r,i}$ and solving for $\alpha_{base} $: \\
 
 \begin{equation}
-\alpha_{base} \ = \ \frac{F}{\sum_{i} H_{i} \cdot \mathcal{F}_{i}(C_{i}, C_{opt}, C_{max})} \label{eq:10}
+\alpha_{base} \ = \ \frac{F}{\sum_{i} H_{i} \cdot \mathit{\Gamma}_{i}} \label{eq:10}
 \end{equation} \\
 
 \noindent We have now defined the maximum fee rate, $\alpha_{base}$, in terms
