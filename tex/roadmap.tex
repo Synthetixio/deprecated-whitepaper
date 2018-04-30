@@ -1,19 +1,85 @@
 \section{Roadmap}
 
-Here we will outline the roadmap!
-Each section should include an overview, dates, goals, key included features, et cetera.
+The final Havven system will be released in phases. This appendix describes
+each of these phases and their expected completion dates.
 
-\subsection{ICO}
-Describe ICO
+\paragraph{Ether-Backed Nomins} (\texttt{eUSD})
 
-\subsection{Ether-Backed Nomins}
-Describe eUSD
+Duration: March until TBC1
 
-\subsection{Static collateralisation and whitelisted issuers}
-Describe nUSD
+Description:
+The ether-backed nomin system implements \texttt{eUSD}, an interim stablecoin.
+\texttt{eUSD} operates while the system is being developed.
+The \texttt{eUSD} price's stability is maintained by a pool of ether which
+backs the circulating stablecoin supply. In this system, \texttt{eUSD} can be
+purchased from, and sold into, the pool for \(US\$1\) worth of ether.
+The Havven foundation provides at least \(US\$2\) of ether collateral for each
+issued \texttt{eUSD}, which ensures that the entire supply is redeemable for its
+face value even in the face of the ether price falling by up to two thirds.
+Fees are collected on \texttt{eUSD} transactions, and these fees are collected
+by havven owners.
 
-\subsection{Universal non-discretionary issuance}
-Describe universal nUSD
+Features:
+\begin{itemize}
+    \item{\texttt{eUSD}}
+    \item{havvens}
+    \item{An ether price oracle}
+\end{itemize}
 
-\subsection{Complete system}
-Describe completed system
+
+\paragraph{System A} \texttt{nUSD}: Static C, proportional fees, and whitelisted issuers 
+
+Duration: TBC1 until TBC2
+
+Description:
+The A version of the \texttt{nUSD} system will allow issuance up to a static
+collateralisation ratio against havvens, which is set by the foundation.
+\texttt{nUSD} will be issued directly into the issuer's wallet, and fees will be paid
+proportionally with the number of issued nomins per user. Given that it's necessary to
+encourage liquidity, but not all the mechanisms outlined in this paper will be operating
+yet, issuance will be by the foundation itself, and potentially other white-listed
+addresses it trusts.
+
+The \texttt{eUSD} system, being based on ether collateral, has a constrained maximum supply.
+Therefore, in order to scale, the system must move towards an issuance mechanism based on havven-backed
+nomins. System A is the first step towards the final such system. As System A fundamentally
+changes the issuance mechanics, \texttt{nUSD} will be a distinct token from \texttt{eUSD},
+with \texttt{eUSD} exchangeable one-for-one with \texttt{nUSD} through the Havven
+foundation at the time of the \texttt{nUSD} launch, or exchangeable for \(US\$1\) worth of ether,
+as usual. After a liquidation period, the \texttt{eUSD} contract will be destroyed.
+Future updates to the Havven system will not entail the destruction of any nomin tokens; thus
+both \texttt{havvens} and \texttt{nUSD} will persist without further interruption.
+
+Features:
+\begin{itemize}
+    \item{\texttt{nUSD}}
+    \item{Havven-backed issuance mechanics}
+    \item{A havven price oracle}
+\end{itemize}
+
+
+\paragraph{System B} \texttt{nUSD}: Universal non-discretionary issuance
+
+Duration: TBC2 until TBC3
+
+Description:
+
+Features:
+
+
+\paragraph{System C} \texttt{nUSD}: Dynamic fee computations
+
+Duration: TBC3 until TBC4
+
+Description:
+
+Features:
+
+
+\paragraph{System D} Multicurrency nomins
+
+Duration: TBC4 until TBC5
+
+Description:
+
+Features:
