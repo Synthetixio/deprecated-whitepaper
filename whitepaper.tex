@@ -40,7 +40,7 @@
 \usepackage{amsthm}
 
 % Make itemize bullets slightly smaller
-\renewcommand\labelitemi{{\boldmath$\cdot$}}
+\renewcommand\labelitemi{{\boldmath\(\cdot\)}}
 
 \newtheorem{theorem}{Theorem}
 \theoremstyle{definition}
@@ -57,6 +57,7 @@
    \begin{genericthm}}
   {\end{genericthm}}
 
+\pgfplotsset{compat=1.15}
 \begin{document}
 
 % Macros
@@ -65,7 +66,7 @@
 
 \pagenumbering{roman}
 
-\title{A decentralised payment network and stablecoin\\ v0.7}
+\title{A decentralised payment network and stablecoin\\ v0.8}
 \author{Samuel Brooks, Anton Jurisevic, Michael Spain, Kain Warwick}
 \date{}
 
@@ -84,7 +85,7 @@
 \vspace{20mm}
 \begin{center}
   %\color{gray}
-  \small{\textit{\currenttime , \today}}
+  \small{\textit{\currenttime, \today}}
 \end{center}
 
 % \todo[inline]{Incorporate white paper criticisms.}
@@ -109,8 +110,8 @@
 \input{tex/system_analysis}
 
 \appendix
-\appendixpage
-\addappheadtotoc
+\appendixpage{}
+\addappheadtotoc{}
 \input{tex/roadmap}
 %\input{tex/alternative_approaches}
 %\input{tex/system_variables}

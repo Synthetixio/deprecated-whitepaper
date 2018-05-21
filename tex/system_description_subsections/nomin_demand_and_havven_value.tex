@@ -27,7 +27,7 @@ future volumes:
 \vspace{3mm}
 
 \begin{equation}
-    V_{t} \ = \ \sum_{t'=1}^{t} \frac{F_{t - t'} \cdot P_{n,t - t'}}{(1 + r)^{t'}} \label{eq:price}
+    V_{t} \ = \ \sum_{t'=1}^{t} \frac{F_{t - t'} \cdot P_{n,t - t'}}{{(1 + r)}^{t'}} \label{eq:price}
 \end{equation}
 
 with
@@ -44,13 +44,13 @@ Further, if it is assumed that the average fee take is approximated by \(F_t \cd
 \vspace{2mm}
 
 \begin{equation}
-    V_t \ \approx \ \sum_{t'=1}^{\infty} \frac{F_t \cdot P_{n,t}}{(1 + r)^{t'}} \ = \ \frac{F_t \cdot P_{n,t}}{H \cdot r}
+    V_t \ \approx \ \sum_{t'=1}^{\infty} \frac{F_t \cdot P_{n,t}}{{(1 + r)}^{t'}} \ = \ \frac{F_t \cdot P_{n,t}}{H \cdot r}
 \end{equation}
 
 \vspace{3mm}
 
-\noindent Consequently, $\frac{1}{r}$ approximates the number of periods for
-a havven to yield a fee return of $V_t$. A judicious choice of $r$ can then
-yield a $V_t$ which underestimates the market price of havvens (which also
+\noindent Consequently, \(\frac{1}{r}\) approximates the number of periods for
+a havven to yield a fee return of \(V_t\). A judicious choice of \(r\) can then
+yield a \(V_t\) which underestimates the market price of havvens (which also
 incorporates, for example, capital gains), while not unduly constraining
 nomin supply.
