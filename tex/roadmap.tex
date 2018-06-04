@@ -5,7 +5,7 @@ each of these phases and their expected completion dates.
 
 \paragraph{Ether-Backed Nomins} (\texttt{eUSD})
 
-Duration: March until TBC1
+Q2 2018
 
 Description:
 The ether-backed nomin system implements \texttt{eUSD}, an interim stablecoin.
@@ -19,6 +19,10 @@ face value even in the face of the ether price falling by up to two thirds.
 Fees are collected on \texttt{eUSD} transactions, and these fees are collected
 by havven owners.
 
+The \texttt{eUSD} system, being based on ether collateral, has a constrained maximum supply.
+Therefore, in order to scale, the system must move towards an issuance mechanism based on havven-backed
+nomins. System A is the first step towards the final such system.
+
 Features:
 \begin{itemize}
     \item{\texttt{eUSD}}
@@ -29,26 +33,31 @@ Features:
 
 \paragraph{System A} \texttt{nUSD}: Static C, proportional fees, and white-listed issuers
 
-Duration: TBC1 until TBC2
+Q2 2018
 
 Description:
-The A version of the \texttt{nUSD} system will allow issuance up to a static
+The System A version of \texttt{nUSD} allows issuance up to a static
 collateralisation ratio against havvens, which is set by the foundation.
 \texttt{nUSD} will be issued directly into the issuer's wallet, and fees will be paid
 proportionally with the number of issued nomins per user. Given that it's necessary to
 encourage liquidity, but not all the mechanisms outlined in this paper will be operating
 yet, issuance will be by the foundation itself, and potentially other white-listed
-addresses it trusts.
+addresses it trusts. In this way, the stability of the token is maintained by direct
+market intervention by the Havven foundation.
 
-The \texttt{eUSD} system, being based on ether collateral, has a constrained maximum supply.
-Therefore, in order to scale, the system must move towards an issuance mechanism based on havven-backed
-nomins. System A is the first step towards the final such system. As System A fundamentally
-changes the issuance mechanics, \texttt{nUSD} will be a distinct token from \texttt{eUSD},
-with \texttt{eUSD} exchangeable one-for-one with \texttt{nUSD} through the Havven
-foundation at the time of the \texttt{nUSD} launch, or exchangeable for \(US\$1\) worth of ether,
-as usual. After a liquidation period, the \texttt{eUSD} contract will be destroyed.
+As System A fundamentally changes the issuance mechanics, \texttt{nUSD} is a distinct
+token from \texttt{eUSD}, with \texttt{eUSD} exchangeable one-for-one with \texttt{nUSD}
+through the Havven foundation at the time of the \texttt{nUSD} launch, or exchangeable
+for \(US\$1\) worth of ether, as usual. After a liquidation period, the \texttt{eUSD} contract
+will be destroyed.
 Future updates to the Havven system will not entail the destruction of any nomin tokens; thus
 both \texttt{havvens} and \texttt{nUSD} will persist without further interruption.
+
+System A limits issuance and fee returns to the Havven foundation itself. Therefore
+only those havvens the foundation controls can be used to issue nomins against, which means
+the full value of the havven network cannot be deployed for issuance. The fact that nomins
+are created directly in the issuer's wallet may limit liquidity if issuers choose not to sell
+those nomins. Systems B and C aim to combat these limitations.
 
 Features:
 \begin{itemize}
@@ -60,28 +69,32 @@ Features:
 
 \paragraph{System B} \texttt{nUSD}: Universal non-discretionary issuance
 
-Duration: TBC2 until TBC3
+Q3 2018
 
 Description:
 
-System B will enforce that issuance occurs through a DEX so as to ensure that
-new liquidity is actually injected into the market. The Havven system
-will have to manage the volume of issue/burn orders on either side of the book
-while also continually updating the price at which they are offered.
+System B will enforce that issuance occurs through an issuance controller or
+decentralised exchange to ensure that new liquidity is actually injected
+into the market. The Havven system will have to manage the volume of
+issue/burn orders on either side of the book while also continually updating
+the price at which they are offered.
 
 
 \paragraph{System C} \texttt{nUSD}: Dynamic fee computations
 
-Duration: TBC3 until TBC4
+Q4 2018
 
 Description:
+
+The full featured incentive mechanisms will be activated so that users earn fees
+in accordance with how effectively they stabilise the nomin price.
 
 Features:
 
 
 \paragraph{System D} Multi-currency nomins
 
-Duration: TBC4 until TBC5
+Q1 2019
 
 Description:
 

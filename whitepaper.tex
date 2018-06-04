@@ -16,10 +16,17 @@
 \usepackage[superscript, biblabel, nomove]{cite}
 \usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
+\usepackage{xcolor}
 \usepackage{tikz}
+\usetikzlibrary{calc}
+
 \usepackage{pgfplots}
 \usepackage{datetime}
-\usepackage{color}
+\usepackage{wallpaper}
+\usepackage{pagecolor}
+\usepackage{afterpage}
+\usepackage[thin]{roboto}
+\usepackage[T1]{fontenc}
 
 % Use § for sections
 \crefformat{section}{\S#2#1#3}
@@ -60,12 +67,38 @@
 \pgfplotsset{compat=1.15}
 \begin{document}
 
+
 % Macros
 \newcommand{\HAV}{\textsc{hav}}
 \newcommand{\NOM}{\textsc{nom}}
 
-\pagenumbering{roman}
+\begin{tikzpicture}[overlay]
+  \draw[white, very thick] ($(current page.north west)+(-4cm, -24.3cm)$) rectangle ($(current page.south east)+(-6.5cm, -22cm)$);
+\end{tikzpicture}
 
+\pagenumbering{gobble}
+\ThisCenterWallPaper{1.0}{img/bg.png}
+\definecolor{havvenblue}{RGB}{8,53,92}
+%\newpagecolor{havvenblue}\afterpage{\restorepagecolor}
+\vspace*{5cm}
+\hspace*{-0.5cm}
+\textcolor{white}{\underline{\includegraphics[width=\linewidth]{img/havven-main-light1.png}}}
+\begin{center}
+  { \fontseries{m}\selectfont
+    \Huge \textsf{\textcolor{white}{The Stablecoin Network}}
+  }
+\end{center}
+%could also centre this with tikz
+%\begin{tikzpicture}[remember picture, overlay]
+%  \node[inner sep=0pt] at (current page.center) {%
+%      \includegraphics[width=\paperwidth,height=\paperheight]{img/rblend}%
+%  };
+%\end{tikzpicture}
+
+\pagebreak
+
+\CenterWallPaper{1.0}{lighterchevron.png}
+\pagenumbering{roman}
 \title{A decentralised payment network and stablecoin\\ v0.8}
 \author{Samuel Brooks, Anton Jurisevic, Michael Spain, Kain Warwick}
 \date{}
@@ -80,7 +113,12 @@
 \hfill
 
 \begin{abstract}
-\noindent There is currently no effective decentralised medium of exchange. We propose a decentralised peer-to-peer payment network that does not rely on a central authority to maintain trust and enables a price-stable token for value transfer. Prior to Bitcoin, attempts to create digital currencies were centralised, making them vulnerable to censorship and seizure. Bitcoin’s distributed consensus mechanism protected it from interference, but its fixed monetary policy fostered extreme volatility. Havven solves these problems by issuing a price-stabilised token against a distributed collateral pool which derives its value from the utility of the system. Fees are levied on transactions, and they are dispersed proportionally among collateral holders. Growth in transaction volume thus increases the value of the collateral, which allows the stable token supply to expand to meet demand. The resulting token retains the best features of Bitcoin, while the introduction of price stability enables the payment network to be used for everyday economic purposes.
+\noindent There is currently no effective decentralised medium of exchange.
+We propose a decentralised peer-to-peer payment network that does not rely
+on a central authority to maintain trust and enables a price-stable token
+for value transfer. Prior to Bitcoin, attempts to create digital currencies
+were centralised, making them vulnerable to censorship and seizure. Bitcoin’s
+distributed consensus mechanism protected it from interference, but its fixed monetary policy fostered extreme volatility. Havven solves these problems by issuing a price-stabilised token against a distributed collateral pool which derives its value from the utility of the system. Fees are levied on transactions, and they are dispersed proportionally among collateral holders. Growth in transaction volume thus increases the value of the collateral, which allows the stable token supply to expand to meet demand. The resulting token retains the best features of Bitcoin, while the introduction of price stability enables the payment network to be used for everyday economic purposes.
 \end{abstract}	
 \vspace{20mm}
 \begin{center}
