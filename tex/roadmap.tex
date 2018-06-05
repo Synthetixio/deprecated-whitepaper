@@ -1,13 +1,14 @@
 \section{Road Map}
 
-The final Havven system will be released in phases. This appendix describes
-each of these phases and their expected completion dates.
+The final Havven system will be released in phases. This phased rollout 
+accelerates market penetration while allowing
+features to be introduced incrementally. The intended approach  
+is to decentralise Havven as it is built. This will be accompanied by a gradual
+increase in the issuance ratio while the system develops.
+This will provide a balance of safety and functionality until Havven is fully mature.
 
-\paragraph{Ether-Backed Nomins} (\texttt{eUSD})
+\paragraph{Ether-Backed Nomins:} \texttt{eUSD} - Q2 2018
 
-Q2 2018
-
-Description:
 The ether-backed nomin system implements \texttt{eUSD}, an interim stablecoin.
 \texttt{eUSD} operates while the system is being developed.
 The \texttt{eUSD} price's stability is maintained by a pool of ether which
@@ -23,19 +24,9 @@ The \texttt{eUSD} system, being based on ether collateral, has a constrained max
 Therefore, in order to scale, the system must move towards an issuance mechanism based on havven-backed
 nomins. System A is the first step towards the final such system.
 
-Features:
-\begin{itemize}
-    \item{\texttt{eUSD}}
-    \item{havvens}
-    \item{An ether price oracle}
-\end{itemize}
 
+\paragraph{System A} \texttt{nUSD}: Foundation static issuance - Q2 2018
 
-\paragraph{System A} \texttt{nUSD}: Static C, proportional fees, and white-listed issuers
-
-Q2 2018
-
-Description:
 The System A version of \texttt{nUSD} allows issuance up to a static
 collateralisation ratio against havvens, which is set by the foundation.
 \texttt{nUSD} will be issued directly into the issuer's wallet, and fees will be paid
@@ -57,45 +48,70 @@ System A limits issuance and fee returns to the Havven foundation itself. Theref
 only those havvens the foundation controls can be used to issue nomins against, which means
 the full value of the havven network cannot be deployed for issuance. The fact that nomins
 are created directly in the issuer's wallet may limit liquidity if issuers choose not to sell
-those nomins. Systems B and C aim to combat these limitations.
+those nomins. Systems B aims to combat such limitations.
 
-Features:
+
+\paragraph{System B} \texttt{nUSD}: Universal issuance to market - Q3 2018
+
+System B will enforce that issuance occurs through an issuance controller or
+decentralised exchange to ensure that new liquidity is injected directly
+into the market at \$1 per nomin. The Havven system will manage open
+issue/burn orders while also continually updating the price at which they are
+offered.
+
+This phase will open issuance to the market at large, and fees will be rewarded
+in proportion with the quantity of locked havvens. This opens up the opportunity
+for anyone to engage in issuance. However, as not all of the intended incentive
+mechanisms will be operational, the market will be monitored closely by the Havven
+foundation, and the the issuance ratio maintained at a low level. These incentives will
+be activated in System C.
+
+
+\paragraph{System C} \texttt{nUSD}: Dynamic fee computations - Q4 2018
+
+The full featured incentive mechanisms will be activated so that users earn fees
+in accordance with how effectively they stabilise the nomin price. This is the
+system which is described in the body of this paper. Once this version of the system
+is operational, further extensions to its capabilities are anticipated for future work.
+
+
+\paragraph{System D} Multi-currency nomins - Q1 2019
+
+In principle, the Havven mechanism can target any price. 
+With this in mind, the foundation intends to allow issuance
+of different flavours of nomins. For example, in addition to 
+nUSD, the system could also allow nKRW to be issued, tracking
+the price of the Korean won. In such a system, issuers would be
+rewarded with fees only for currencies they have issued. This extension
+would replicate the Havven mechanism for each currency. 
+If such issuance occurs against the same collateral pool, it is
+straightforward to see that in the absence of other incentives,
+the issued supply of each nomin flavour should be proportional with the
+each flavour's share of total transaction volume.
+
+A multicurrency nomin system clearly has the advantage of providing the
+benefits of stablecoins to many markets, and thus of deepening
+the fee-generating volume for havvens. But that these nomin flavours
+are interrelated by the common pool of capital provides extra utility
+in the form of relatively cheap foreign exchange in nomins, using 
+havven issuance to settle between them.
+The introduction of new nomin flavours will become straightforward,
+requiring only the creation of a new oracle for the intended asset,
+which does not have to be a currency.
+
+
+\paragraph{Continuing Development}
+
+The Havven protocol is not tied to any particular distributed ledger,
+only requiring general smart contract capabilities and a modicum of speed.
+It is, however, tied to the solution of a number of fundamental problems
+in the blockchain space. To this end, the Havven foundation will continue
+its development efforts in a number of areas, which include:
+
 \begin{itemize}
-    \item{\texttt{nUSD}}
-    \item{Havven-backed issuance mechanics}
-    \item{A havven price oracle}
+    \item Advanced stablecoin mechanisms;
+    \item Fast decentralised oracles;
+    \item Alternate blockchains or multi-chain tokens;
 \end{itemize}
 
 
-\paragraph{System B} \texttt{nUSD}: Universal non-discretionary issuance
-
-Q3 2018
-
-Description:
-
-System B will enforce that issuance occurs through an issuance controller or
-decentralised exchange to ensure that new liquidity is actually injected
-into the market. The Havven system will have to manage the volume of
-issue/burn orders on either side of the book while also continually updating
-the price at which they are offered.
-
-
-\paragraph{System C} \texttt{nUSD}: Dynamic fee computations
-
-Q4 2018
-
-Description:
-
-The full featured incentive mechanisms will be activated so that users earn fees
-in accordance with how effectively they stabilise the nomin price.
-
-Features:
-
-
-\paragraph{System D} Multi-currency nomins
-
-Q1 2019
-
-Description:
-
-Features:

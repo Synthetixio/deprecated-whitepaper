@@ -17,12 +17,14 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
 \usepackage{xcolor}
+
 \usepackage{tikz}
 \usetikzlibrary{calc}
 
 \usepackage{pgfplots}
 \usepackage{datetime}
 \usepackage{wallpaper}
+\usepackage{transparent}
 \usepackage{pagecolor}
 \usepackage{afterpage}
 \usepackage[thin]{roboto}
@@ -72,17 +74,27 @@
 \newcommand{\HAV}{\textsc{hav}}
 \newcommand{\NOM}{\textsc{nom}}
 
+%%% TITLE PAGE %%%
+
+\pagenumbering{gobble}
+
+% Border %
 \begin{tikzpicture}[overlay]
   \draw[white, very thick] ($(current page.north west)+(-4cm, -24.3cm)$) rectangle ($(current page.south east)+(-6.5cm, -22cm)$);
 \end{tikzpicture}
 
-\pagenumbering{gobble}
+% Background %
+
 \ThisCenterWallPaper{1.0}{img/bg.png}
 \definecolor{havvenblue}{RGB}{8,53,92}
 %\newpagecolor{havvenblue}\afterpage{\restorepagecolor}
 \vspace*{5cm}
 \hspace*{-0.5cm}
-\textcolor{white}{\underline{\includegraphics[width=\linewidth]{img/havven-main-light1.png}}}
+\textcolor{white}{
+  \underline{
+    \includegraphics[width=\linewidth]{img/havven-main-light1.png}
+  }
+}
 \begin{center}
   { \fontseries{m}\selectfont
     \Huge \textsf{\textcolor{white}{The Stablecoin Network}}
@@ -97,7 +109,11 @@
 
 \pagebreak
 
-\CenterWallPaper{1.0}{lighterchevron.png}
+%\setlength{\wpXoffset}{2cm}
+%\setlength{\wpYoffset}{-5cm}
+%\CenterWallPaper{2.0}{img/chevrons-light.png}
+
+
 \pagenumbering{roman}
 \title{A decentralised payment network and stablecoin\\ v0.8}
 \author{Samuel Brooks, Anton Jurisevic, Michael Spain, Kain Warwick}
