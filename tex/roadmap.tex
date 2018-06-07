@@ -1,13 +1,36 @@
 \section{Road Map}
 
-The final Havven system will be released in phases. This phased rollout 
-accelerates market penetration while allowing
-features to be introduced incrementally. The intended approach  
-is to decentralise Havven as it is built. This will be accompanied by a gradual
+The final Havven system will be released in phases, described in the following
+table and sections. This phased rollout accelerates market penetration while
+allowing features to be introduced incrementally. The intended approach  
+is to decentralise Havven as it is built, which will be accompanied by a gradual
 increase in the issuance ratio while the system develops.
-This will provide a balance of safety and functionality until Havven is fully mature.
+This will provide a balance of safety and functionality until Havven is fully
+mature. \\
 
-\paragraph{Ether-Backed Nomins:} \texttt{eUSD} - Q1 2018 \\
+\vspace{0.5cm}
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{20pt}
+\begin{centering}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Type} & \textbf{Iteration} & \textbf{Release Window} \\
+        \hline
+        \hline
+        eUSD & & Q1 2018 \\
+        \hline
+        \hline
+        nUSD & System A & Q2 2018 \\ \cline{2-3}
+        & System B & Q3 2018 \\ \cline{2-3}
+        & System C & Q3 2018 \\ \cline{2-3}
+        & System D & Q4 2018 \\
+        \hline
+    \end{tabular} \\
+\end{centering}
+
+\vspace{0.5cm}
+
+\subsection{Ether-Backed Nomins (\texttt{eUSD})}
 
 \noindent The ether-backed nomin system implements \texttt{eUSD}, an interim stablecoin.
 \texttt{eUSD} operates while the system is being developed.
@@ -22,10 +45,12 @@ by havven owners. \\
 
 \noindent The \texttt{eUSD} system, being based on ether collateral, has a constrained maximum supply.
 Therefore, in order to scale, the system must move towards an issuance mechanism based on havven-backed
-nomins. System A is the first step towards the final such system.
+nomins.
 
 
-\paragraph{System A} \texttt{nUSD}: Foundation static issuance - Q2 2018 \\
+\subsection{Havven-Backed Nomins (\texttt{nUSD})}
+
+\paragraph{System A} Static Foundation Issuance \\
 
 \noindent The System A version of \texttt{nUSD} allows issuance up to a static
 collateralisation ratio against havvens, which is set by the foundation.
@@ -51,7 +76,7 @@ are created directly in the issuer's wallet may limit liquidity if issuers choos
 those nomins. Systems B aims to combat such limitations. \\
 
 
-\paragraph{System B} \texttt{nUSD}: Universal issuance to market - Q3 2018 \\
+\paragraph{System B} Universal Market Issuance \\
 
 \noindent System B will enforce that issuance occurs through an issuance controller or
 decentralised exchange to ensure that new liquidity is injected directly
@@ -67,7 +92,7 @@ foundation, and the the issuance ratio maintained at a low level. These incentiv
 be activated in System C. \\
 
 
-\paragraph{System C} \texttt{nUSD}: Dynamic fee computations - Q3 2018 \\
+\paragraph{System C} Dynamic Fee Incentives \\
 
 \noindent The full featured incentive mechanisms will be activated so that users earn fees
 in accordance with how effectively they stabilise the nomin price. This is the
@@ -75,7 +100,7 @@ system which is described in the body of this paper. Once this version of the sy
 is operational, further extensions to its capabilities are anticipated for future work. \\
 
 
-\paragraph{System D} Multi-currency nomins - Q4 2018 \\
+\paragraph{System D} Multi-Currency Nomins \\
 
 \noindent In principle, the Havven mechanism can target any price. 
 With this in mind, the foundation intends to allow issuance
@@ -100,7 +125,7 @@ requiring only the creation of a new oracle for the intended asset,
 which does not have to be a currency. \\
 
 
-\paragraph{Continuing Development}
+\subsection{Continuing Development}
 
 \noindent The Havven protocol is not tied to any particular distributed ledger,
 only requiring general smart contract capabilities and a modicum of speed.
