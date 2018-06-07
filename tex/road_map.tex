@@ -1,0 +1,148 @@
+\section{Road Map}
+
+The Havven system will be released in phases, described in the following
+sections. This phased rollout accelerates market penetration while
+allowing features to be introduced and monitored incrementally. The intended approach  
+is to decentralise Havven as it is built, which will be accompanied by a gradual
+increase in the issuance ratio while the system develops.
+This provides a balance of safety and functionality until Havven is fully
+mature.
+
+\paragraph{Release Schedule}
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{13pt}
+\begin{centering}
+    \begin{tabular}{|c|l|c|}
+        \hline
+        \textbf{Type} & \textbf{Iteration} & \textbf{Release (2018)} \\
+        \hline
+        \hline
+        eUSD & Ether-Backed Nomins & Q1 \\
+        \hline
+        \hline
+        nUSD & System A: Static Foundation Issuance & Q2 \\ \cline{2-3}
+        & System B: Dynamic Market Issuance & Q3 \\ \cline{2-3}
+        & System C: Multi-Currency Nomins& Q4 \\
+        \hline
+    \end{tabular} \\
+\end{centering}
+\vspace{0.5cm}
+
+\subsection{Ether-Backed Nomins (\texttt{eUSD})}
+
+\noindent The ether-backed nomin system implements \texttt{eUSD}, an interim stablecoin
+which is to operate while the havven-backed system is being developed.
+Price stability is maintained by a pool of ether which backs the circulating stablecoin
+supply. In this system, \texttt{eUSD} can be purchased from and sold into a pool
+for \$1 worth of ether. The Havven foundation provides at least \$2 of ether collateral
+for each issued \texttt{eUSD}, which ensures that the entire supply is redeemable for its
+face value even in the face of the ether price falling by up to two thirds. Fees are
+collected on transactions, and these fees are collected by havven owners. \\
+
+\noindent The \texttt{eUSD} system, being based on ether collateral, has a constrained
+maximum supply. Therefore, in order to scale, the system must move towards its ultimate
+issuance mechanism, where nomins are backed with havvens.
+
+\pagebreak
+\subsection{Havven-Backed Nomins (\texttt{nUSD})}
+
+\paragraph{System A} Static Foundation Issuance \\
+
+\noindent The System A version of \texttt{nUSD} allows issuance of nomins against
+the value of havvens up to a static ratio, which is set by the Havven foundation.
+\texttt{nUSD} will be created directly in the issuer's wallet, and fees paid
+proportionally with the number of issued nomins per user. Given that it's necessary to
+encourage liquidity, but not all the mechanisms outlined in this paper will be operating
+yet, issuance will be by the foundation itself, and potentially other white-listed
+addresses it trusts. In this way, the stability of the token is maintained by direct
+market intervention by the foundation. \\
+
+\noindent As System A fundamentally changes the issuance mechanics, \texttt{nUSD} is a distinct
+token from \texttt{eUSD}, even though both target a price of \$1. At the time of the \texttt{nUSD}
+launch, the \texttt{eUSD} contract will enter a liquidation period, when \texttt{eUSD}
+can be sold back to the contract. At the conclusion of this period, the contract will be destroyed.
+Future updates to the Havven system will not entail the destruction of any nomin tokens;
+thus both \texttt{havvens} and \texttt{nUSD} will persist without further interruption. \\
+
+\noindent System A limits issuance so that only those havvens the foundation controls can be
+used to back nomins, which means the full value of the havven network cannot be deployed for
+issuance. At this stage the market will be monitored closely by the Havven foundation, 
+and the issuance ratio maintained at a low level or gradually ramped up. 
+Yet this version of the system can't be opened up to the market at large, since not only are
+the incentive mechanisms described in this paper not operational, but nomins are created
+directly in the issuer's wallet. This may limit liquidity if issuers choose not to sell those
+nomins, and is counterproductive to the general goal of stability. Systems B aims to combat
+such limitations. \\
+
+
+\paragraph{System B} Dynamic Market Issuance \\
+
+\noindent System B composes the complete mechanism as described in the main body
+of this paper. The incentives will be activated so that users earn fees in
+accordance with how effectively they stabilise the nomin price. 
+System B will enforce that issuance occurs through an issuance controller or
+decentralised exchange to ensure that new liquidity is injected directly
+into the market at \$1 per nomin. The Havven system must manage open
+issue/burn orders while also continually updating the price at which they are
+offered.
+
+\noindent These elements being in place, market players are encouraged to behave correctly.
+Thus, this phase opens up the opportunity for anyone to engaging in the issuance process.
+With the intended mechanisms operational, any cap on the ultimate scale of the Havven system
+is effectively removed, and the most important remaining task is stimulating demand for nomins. \\
+
+
+\paragraph{System D} Multi-Currency Nomins \\
+
+\noindent One means of increasing usage of nomins is offering it
+denominated against a variety of different currencies.
+In principle, the Havven mechanism can target the price of any asset.
+With this in mind, the foundation intends to allow issuance
+of different flavours of nomins. For example, in addition to 
+nUSD, the system could also allow nKRW to be issued, tracking
+the price of the Korean won. In such a system, issuers would be
+rewarded with fees only for currencies they have issued.
+This extension would replicate the Havven mechanism for each currency. 
+If such issuance occurs against the same collateral pool, it is
+straightforward to see that in the absence of other incentives,
+the issued supply of each nomin flavour should be proportional with the
+each flavour's share of total transaction volume. \\
+
+\noindent A multicurrency nomin system clearly has the advantage of providing
+the benefits of stablecoins to many markets, and thus of deepening
+the fee-generating volume for havvens. But that these nomin flavours
+are interrelated by the common pool of capital provides extra utility
+in the form of relatively cheap foreign exchange in nomins, using 
+havven issuance to settle between them.
+The introduction of new nomin flavours will become straightforward,
+requiring only the creation of a new oracle for the intended asset,
+which does not have to be a currency. \\
+
+Once this version of the system is operational, additional extensions to its
+capabilities are anticipated for future work. \\
+
+
+\subsection{Continuing Development}
+
+\noindent The Havven protocol is not tied to any particular distributed ledger,
+only requiring general smart contract capabilities and a modicum of speed.
+However, its ultimate success is tied to the solution of a number of
+fundamental problems in the blockchain space, and to the quality of its own
+mechanisms. To this end, research and development efforts will continue in a
+number of relevant areas, which may include:
+
+\begin{itemize}
+    \item Fast decentralised oracles.
+    \item Alternative (scalable) blockchains and cross-chain functionality.
+    \item Improved fee structures, including dynamic fees and hedging charges.
+    \item Refined stabilisation mechanisms.
+    \item System parameter optimisation.
+    \item Stablecoin econometrics and modelling.
+\end{itemize}
+
+\noindent In addition to these fundamental questions, the Havven foundation will continue
+to pursue integrations with projects which would benefit from a stable unit of
+account. This encompasses any platform needing a settlement token which
+integrates with decentralised systems. All such efforts aim to increase nomin
+transaction volume, increasing the resources available for havven holders to
+stabilise the token.
