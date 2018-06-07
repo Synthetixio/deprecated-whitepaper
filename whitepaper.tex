@@ -29,6 +29,7 @@
 \usepackage{afterpage}
 \usepackage[thin]{roboto}
 \usepackage[T1]{fontenc}
+\usepackage{etoolbox}
 
 % Use § for sections
 \crefformat{section}{\S#2#1#3}
@@ -84,34 +85,61 @@
 \end{tikzpicture}
 
 % Background %
+\newtoggle{simplebg}
+\newtoggle{underlinelogo}
+\newtoggle{subtitle}
 
-\ThisCenterWallPaper{1.0}{img/bg.png}
-\definecolor{havvenblue}{RGB}{8,53,92}
-%\newpagecolor{havvenblue}\afterpage{\restorepagecolor}
+\togglefalse{simplebg}
+\togglefalse{underlinelogo}
+\togglefalse{subtitle}
+
+\iftoggle{simplebg} {
+  \definecolor{havvenblue}{RGB}{8,53,92}
+  \newpagecolor{havvenblue}\afterpage{\restorepagecolor}
+}{
+  \ThisCenterWallPaper{1.0}{img/bg.png}
+}
+
+
 \vspace*{5cm}
 \hspace*{-0.5cm}
-\textcolor{white}{
-  \underline{
-    \includegraphics[width=\linewidth]{img/havven-main-light1.png}
+\iftoggle{underlinelogo} {
+  \textcolor{white}{
+    \underline{
+      \includegraphics[width=\linewidth]{img/havven-main-light1.png}
+    }
+  }
+}{
+  \textcolor{white}{
+      \includegraphics[width=\linewidth]{img/havven-main-light1.png}
   }
 }
-\begin{center}
-  { \fontseries{m}\selectfont
-    \Huge \textsf{\textcolor{white}{The Stablecoin Network}}
-  }
-\end{center}
-%could also centre this with tikz
-%\begin{tikzpicture}[remember picture, overlay]
-%  \node[inner sep=0pt] at (current page.center) {%
-%      \includegraphics[width=\paperwidth,height=\paperheight]{img/rblend}%
-%  };
-%\end{tikzpicture}
+
+\iftoggle{subtitle} { 
+  \begin{center}
+    { \fontseries{m}\selectfont
+      \Huge \textsf{\textcolor{white}{The Stablecoin Network}}
+    }
+  \end{center}
+
+  %could also centre this with tikz
+  %\begin{tikzpicture}[remember picture, overlay]
+  %  \node[inner sep=0pt] at (current page.center) {%
+  %      \includegraphics[width=\paperwidth,height=\paperheight]{img/rblend}%
+  %  };
+  %\end{tikzpicture}
+}
 
 \pagebreak
 
-%\setlength{\wpXoffset}{2cm}
-%\setlength{\wpYoffset}{-5cm}
-%\CenterWallPaper{2.0}{img/chevrons-light.png}
+\newtoggle{watermarks}
+\toggletrue{watermarks}
+
+\iftoggle{watermarks} {
+  \setlength{\wpXoffset}{-3.25cm}
+  \setlength{\wpYoffset}{-13cm}
+  \CenterWallPaper{2.0}{img/chevrons-lighter.png}
+}
 
 
 \pagenumbering{roman}
@@ -161,12 +189,12 @@ distributed consensus mechanism protected it from interference, but its fixed mo
 \input{tex/introduction}
 %\input{tex/design_considerations}
 \input{tex/system_description}
-\input{tex/system_analysis}
 
 \appendix
 \appendixpage{}
 \addappheadtotoc{}
 \input{tex/roadmap}
+\input{tex/system_analysis}
 %\input{tex/alternative_approaches}
 %\input{tex/system_variables}
 
