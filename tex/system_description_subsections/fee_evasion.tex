@@ -2,14 +2,14 @@
 
 \subsection{Fee Evasion}
 
-\noindent Being based on Ethereum, Havven is potentially vulnerable to its
-tokens being wrapped by another smart contract which takes deposits, and
-replicates all exchange functionality on redeemable IOU tokens it issues.
-These wrapped tokens could then be exchanged without incurring fees.
-\noindent We consider this situation unlikely for a number of reasons. \\
+\noindent Being implemented with smart contracts, Havven is potentially
+vulnerable to its tokens being wrapped by another smart contract which takes
+deposits, and replicates all exchange functionality on redeemable IOU tokens
+it issues. These wrapped tokens could then be exchanged without incurring fees.
+We consider this situation unlikely for a number of reasons. \\
 
 \noindent First, the fees are designed to be low enough that most users
-shouldn't notice them, so users will not in general be strongly motivated to
+shouldn't notice them, so they will not in general be strongly motivated to
 switch to a marginal and less trustworthy alternative. Additionally, transfer
 fees will still be charged upon deposit into and withdrawal from
 token-wrapping contracts, which partly constrains the utility of the wrapper.
@@ -42,7 +42,7 @@ own holdings.
 
 \noindent The credible threat of such a system existing is enough to
 discourage token wrappers from being used, even if they are written, since
-any user who does so risks losing their entire wrapped balance. \\
+any user who does so risks losing their entire wrapped balance.
 
 \noindent An alternative solution is to institute a hedging fee, charged on static nomin
 balances. Such a fee could be discounted against transfer fees so that it
