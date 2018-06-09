@@ -3,19 +3,23 @@
 \subsection{Issuance Case Study} In this section we illustrate how Havven's inecentives encourage havven holders to maintain the stability of the nomin price. For simplicity, we consider a simple system which has only two havven holders.
 
 \subsubsection{Initial Conditions} We denote the fraction of e-commerce transactions using nomins with $\varepsilon GDP$ and assume the following inverse demand function for the nomin price:
-\begin{equation*}
+\begin{equation} \label{eq:nominprice}
 P_n = \frac{\varepsilon GDP}{vN} 
-\end{equation*}
+\end{equation}
 
 \noindent The expected profit of a havven holder $i$ in period $t$, with respect to fees received and their issuance actions can be expressed as follows: 
 \begin{equation*}
 \pi_{i,t} = \phi_{r,i,t} \frac{H_i}{r} + (N_{i,t} - N_{i,t-1}) P_{n,t}
 \end{equation*}
 
-\noindent The havven and nomin issuance balances for each holder are:
+\noindent Both havven holders have constant havven balances throughout the example:
 \begin{align*}
-H_1 &= 100 & N_1 &= 50 \\
-H_2 &= 200 & N_2 &= 100
+H_1 &= 100 & H_2 &= 50
+\end{align*}
+
+\noindent Their initial nomin issuance balances are:
+\begin{align*}
+N_{1,-1} &= 200 & N_{2,-1} &= 100
 \end{align*}
 
 \noindent The interest rate (r), transaction fee rate ($\phi_\epsilon$), velocity (v) and $\varepsilon GDP$ are:
@@ -28,7 +32,7 @@ r &= 0.6\% & \phi_\epsilon &= 0.2\% & v &= 6 & \varepsilon GDP &= 900
 \sigma &= 50 & \psi &= 3 & a&= 1.25
 \end{align*}
 
-\noindent With the above definition of $P_n$ and recalling our earlier definitions for $P_h$ \eqref{eq:havvenvalue} and the collateralisation ratios \eqref{eq:individualcollateralisation} \eqref{eq:optcollateralisation} \eqref{eq:maxcollateralisation} we determine the following:
+\noindent The initial prices and collateralisation ratios are:
 \begin{table}[!htbp]
 	\centering
 	\begin{tabular}{|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|}
@@ -50,7 +54,7 @@ r &= 0.6\% & \phi_\epsilon &= 0.2\% & v &= 6 & \varepsilon GDP &= 900
 
 \newpage
 
-\noindent At the beginning of period $t=0$, there is a 10\% decrease in $\varepsilon GDP$. Since the supply of nomins $N$ has not changed yet and the velocity $v$ is fixed over the short-term, the price $P_n$ decreases from \$1 to \$0.90.
+\noindent At the beginning of period $t=0$, there is a 10\% decrease in $\varepsilon GDP$ causing the nomin price $P_n$ to decrease from \$1 to \$0.90: 
 
 \begin{table}[!htbp]
 	\centering
@@ -65,27 +69,13 @@ r &= 0.6\% & \phi_\epsilon &= 0.2\% & v &= 6 & \varepsilon GDP &= 900
 	\label{table:Prices and collateralisation; t=0}
 \end{table}
 
-\subsubsection{Neither havven holder changes} If neither havven holder changes their nomin balance, then the nomin price will remain at \$0.90. Their expected profits remains the same because the system still distributes all fees. However, their number of locked havvens has increased.
-
+\subsubsection{Neither havven holder changes} If neither havven holder changes their $N_i$, then $P_n$ will remain at \$0.90. Altough for both havven holders $\phi_{r,i,1} < \phi_{base,1}$, their expected profits remain the same since all fees must be distributed and collectively, they own all havvens. However, their number of locked havvens has increased:
 \begin{align*}
 N_{1,1} &= 50 & \check{H}_{1,1} &= 88.4 & \pi_{1,1} &= 100 \\
 N_{2,1} &= 100 & \check{H}_{2,1} &= 176.8 & \pi_{2,1} &= 200 
 \end{align*}
 
-\begin{table}[!htbp]
-	\centering
-	\begin{tabular}{|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|}
-		\hline
-		\text{$P_{n,1}$}&\text{$P_{h,1}$}&\text{$C_1$}&\text{$C_{1,1}$}&\text{$C_{2,1}$}&\text{$f(P_{n,1})$}&\text{$C_{opt,1}$}&\text{$C_{max,1}$}\\
-		\hline
-		0.9 & 0.9 & 0.5 & 0.5 & 0.5 & 0.905 &  0.4525 & 0.5656 \\
-		\hline
-	\end{tabular}
-	\caption{Negative shock; no change; t = 1}
-	\label{table:Prices and collateralisation; no change; t=1}
-\end{table}
-
-\subsubsection{Both havven holders change} Instead of remaining idle, each havven holder has an opportunity to increase the proportion of fees they receive, by changing their number of issued nomins $N_{i,1}$ to align with $C_{opt}$. Since the fee collection is maximized when $C_{opt,1} = C_{i,1}$, they choose:
+\subsubsection{Both havven holders change} Instead of remaining idle, each havven holder has an opportunity to increase their $\phi_{r,i,1}$ by changing their number of issued nomins $N_{i,1}$ to align with $C_{opt,0}$:
 \begin{equation*}
 N_{i,1} = C_{opt,1}P_{h,1}H_i/P_{n,0}
 \end{equation*}
@@ -96,8 +86,7 @@ N_{1,1} &= 45.25 & \check{H}_{1,1} &= 80 & \pi_{1,1} &= 86.22 \\
 N_{2,1} &= 90.5 & \check{H}_{2,1} &= 160 & \pi_{2,1} &= 172.45 
 \end{align*}
 
-\noindent Due to their actions, the nomin price, $P_{n,1}$ shifts very close to $1$ and $f(P_{n,1})\approx 1$ and $C_{opt,1}\approx C_{i,1}$. This means there is no further incentive for either havven holder to change the nomin supply $N$, since they are receiving the maximum possible fees. Also, their number of locked havvens has reverted back to the original level.
-
+\noindent Due to their actions, the nomin price, $P_{n,1} \approx 1$, $f(P_{n,1})\approx 1$ and $C_{opt,1}\approx C_1$. There is no further incentive for either havven holder to change their $N_i$.
 \begin{table}[!htbp]
 	\centering
 	\begin{tabular}{|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1.5cm}|m{1cm}|m{1cm}|}
@@ -111,13 +100,15 @@ N_{2,1} &= 90.5 & \check{H}_{2,1} &= 160 & \pi_{2,1} &= 172.45
 	\label{table:negative shock both follow mechanism}
 \end{table}
 
-\subsubsection{Havven holder 1 changes} We now consider the scenario in which only the first havven holder changes their number of issued nomins. We show the payoffs for each holder after 6 iterations. Havven holder $1$ profit improves after each iteration at the expense of havven holder $2$'s profit. 
+\newpage
+
+\subsubsection{Havven holder 1 changes} We now consider the scenario in which only the first havven holder changes their $N_i$. We show the payoffs for each holder after 6 iterations. Havven holder $1$ improves his profit at the expense of havven holder $2$:
 
 \begin{align*}\label{pi_neg_shock_only N1_ t=6}
 N_{1,6} &= 46.57 & \check{H}_{1,6} &= 80 & \pi_{1,6} &= 118.53 \\
 N_{2,6} &= 100 & \check{H}_{2,6} &= 171.77 & \pi_{2,6} &= 171.58
 \end{align*}
-\noindent $P_{n}$ stabilizes around $\$0.921$ instead of $\$1$. The reason being that, although $P_n\neq 1$, $C_{1,6}$ is similar to $C_{opt,6}$. As a consequence, havven holder $1$ is already getting the highest possible amount of fees and has no incentives to change his number of nomins anymore.
+\noindent $P_{n}$ stabilizes around $\$0.921$ instead of $\$1$. The reason being that, although $P_n\neq 1$, $C_{1,6} = C_{opt,6}$. This means that havven holder $1$ has no further incentive to change $N_1$:
 
 \begin{table}[!htbp]
 	\centering
@@ -128,15 +119,16 @@ N_{2,6} &= 100 & \check{H}_{2,6} &= 171.77 & \pi_{2,6} &= 171.58
 		0.921 & 0.9 & 0.500 & 0.477 & 0.512 & 0.953 & 0.477  & 0.596 \\
 		\hline
 	\end{tabular}
+	\caption{Negative shock; havven holder 1 changes; t = 6}
 \end{table}
 
-\subsubsection{Havven holder 2 changes} Finally, we consider the case in which only havven holder $2$ reacts.
+\subsubsection{Havven holder 2 changes} Finally, we consider the case in which only havven holder $2$ changes $N_2$:
 \begin{align*}
 N_{1,6} &= 50 & \check{H}_{1,6} &= 85.31 & \pi_{1,6} &= 77.25 \\
 N_{2,6} &= 93.78 & \check{H}_{2,6} &= 160 & \pi_{2,6} &= 204.90
 \end{align*}
 
-\noindent In this case, havven holder $2$ improves his profits at expense of the other havven holder's profits. Again, $P_n$ does not stabilize at $1$ but does stabilize closer to $1$ than in the previous case, since havven holder $2$ has more impact over the supply of nomins.
+\noindent In this case, havven holder $2$ improves his profit at expense of havven holder $1$. Again, $P_n$ does not stabilize at $1$ but does stabilize closer to $1$ than in the previous scenario, since havven holder $2$ has a larger fraction of $N$:
 \begin{table}[!htbp]
 	\centering
 	\begin{tabular}{|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1cm}|m{1.5cm}|m{1cm}|m{1cm}|}
@@ -146,9 +138,12 @@ N_{2,6} &= 93.78 & \check{H}_{2,6} &= 160 & \pi_{2,6} &= 204.90
 		0.939 & 0.9 & 0.500 & 0.522 & 0.489 & 0.978 & 0.489  & 0.612 \\
 		\hline
 	\end{tabular}
+	\caption{Negative shock; havven holder 2 changes; t = 6}
 \end{table}
 
 \subsubsection{Nash Equilbrium} Both havven holders are best off by changing their nomin issuance in align with $C_{opt}$. Although for each of them the best scenario would be if the other does not do anything, this scenario cannot be an equilibrium. This can be seen from the following strategic game representation of the previous analysis (for this representation, we assume that all iterations are made instantaneously and simultaneously by both havven holders).
+
+\newpage
 
 \begin{table}[!htbp]
 	\centering
