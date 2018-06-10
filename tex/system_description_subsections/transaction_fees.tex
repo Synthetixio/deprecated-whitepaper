@@ -8,11 +8,11 @@ the price.
 
 \subsubsection{Fees Received by Havven Holders}
 
-\noindent The fee rate paid to a havven holder that has escrowed is
-\(\alpha_r\). The actual fee they receive is \(H_i \cdot \alpha_r\), being
+\noindent The fee rate received by a havven holder that has escrowed havvens is
+\(\phi_{r,i}\). The actual fee they receive is \(H_i \cdot \phi_{r,i}\), being
 proportional with their havven balance. This rate changes with respect to
 their unique collateralisation ratio, \(C_i\). It increases linearly to a
-maximum \(\alpha_{base}\) at the optimal collateralisation ratio \(C_{opt}\),
+maximum \(\phi_{base}\) at the optimal collateralisation ratio \(C_{opt}\),
 before quickly diminishing as \(C_i\) approaches the maximum collateralisation
 ratio \(C_{max}\). \\
 
@@ -21,7 +21,7 @@ target the optimal collateralisation ratio, by rewarding them with greater
 fees if they bring their \(C_i\) into alignment with \(C_{opt}\).\\
 
 \begin{equation}
-\alpha_{r,i} \ = \ \alpha_{base} \cdot \mathit{\Gamma}_{i}  \label{eq:feesreceived}
+\phi_{r,i} \ = \ \phi_{base} \cdot \mathit{\Gamma}_{i}  \label{eq:feesreceived}
 \end{equation}
 
 \begin{equation}
@@ -37,14 +37,14 @@ fees if they bring their \(C_i\) into alignment with \(C_{opt}\).\\
 \begin{center}
 \begin{tikzpicture}[scale=3]
     % draw axes
-    \draw [<->, thick] (0,2) node (yaxis) [above] {\(\alpha_r\)} |- (2.5,0) node (xaxis) [right] {\(C_i\)};
+    \draw [<->, thick] (0,2) node (yaxis) [above] {\(\phi_{r,i}\)} |- (2.5,0) node (xaxis) [right] {\(C_i\)};
     % draw two lines
     \draw (0.0, 0.0) coordinate (a_1) -- (1.75,0.75) coordinate (a_2);
     \draw (1.75, 0.75) coordinate (a_1) -- (2.25,0.0) coordinate (a_2);
     \coordinate (c) at (1.75, 0.75);
     \coordinate (d) at (2.25, 0.0);
     \coordinate (e) at (0.00, 0.00);
-    \draw[dashed] (yaxis |- c) node [left] {\(\alpha_{base}\)} -| (xaxis -| c) node [below] {\(C_{opt}\)};
+    \draw[dashed] (yaxis |- c) node [left] {\(\phi_{base}\)} -| (xaxis -| c) node [below] {\(C_{opt}\)};
     \draw[dashed] (xaxis -| d) node [below] {\(C_{max}\)};
 \end{tikzpicture}
 \end{center}
@@ -57,34 +57,34 @@ transaction fee. Transaction fees allow the system to generate revenue, which
 it can distribute to havven holders as an incentive to maintain nomin supply
 at \(N_{opt}\). \\
 
-\noindent The fee rate charged on nomin transactions is \(\alpha_c\). It is
+\noindent The fee rate charged on nomin transactions is \(\phi_c\). It is
 constant and will be sufficiently small that it provides little to no
 friction for the user. We may then express the total fees collected in the
 last period, \(F\), as a function of the velocity of nomins \(v\) and the total
 nomin supply \(N\):
 
 \begin{equation}
-    F \ = \ v \cdot \alpha_c \cdot N
+    F \ = \ v \cdot \phi_c \cdot N
 \end{equation}
 
 \subsubsection{Base Fee Rate}
 
-Let us define the total fees paid to havven holders \(F_{r}\): \\
+Let us define the total fees received by havven holders \(F_{r}\): \\
 
 \begin{equation}
-F_{r} \ = \ \sum_{i} H_{i} \cdot \alpha_{r,i} \label{eq:totalfeesreceived}
+F_{r} \ = \ \sum_{i} H_{i} \cdot \phi_{r,i} \label{eq:totalfeesreceived}
 \end{equation} \\
 
 \noindent Havven requires that the total fees collected from users has to be
 equal to the total amount of fees paid to the havven holders, so that \(F_{r}
 = F\). Substituting our earlier definition~\eqref{eq:feesreceived} for
-\(\alpha_{r,i}\) and solving for \(\alpha_{base} \): \\
+\(\phi_{r,i}\) and solving for \(\phi_{base} \): \\
 
 \begin{equation}
-\alpha_{base} \ = \ \frac{F}{\sum_{i} H_{i} \cdot \mathit{\Gamma}_{i}} \label{eq:10}
+\phi_{base} \ = \ \frac{F}{\sum_{i} H_{i} \cdot \mathit{\Gamma}_{i}} \label{eq:10}
 \end{equation} \\
 
-\noindent We have now defined the maximum fee rate, \(\alpha_{base}\), in terms
+\noindent We have now defined the maximum fee rate, \(\phi_{base}\), in terms
 of the fees collected, \(F\). This rate should be achieved when an individual's
 \(C_i\) is at \(C_{opt}\). \\
 
