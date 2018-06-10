@@ -1,22 +1,174 @@
 \newpage
 
-\subsection{Issuance Case Study} In this section we illustrate how Havven's
-incentives encourage havven holders to maintain stability. This is an adaptation
-of results presented in much greater depth in an economic analysis by \href{http://cryptecon.org/}{\textcolor{blue}{cryptecon}},
-which can be found \href{https://havven.io/uploads/havven_cryptecon_report_may_2018.pdf}{\textcolor{blue}{here}}. \\
+\subsection{Issuance Case Study}
+
+\noindent In this section we illustrate how Havven's incentives encourage havven holders to
+maintain stability.
+
+\noindent In \ref{subsubsec:practicalissuance}, we first present a simplified example the practical issuance
+dynamics for a havven holder, Bob, if he targets \(C_{opt}\). In the second part, \ref{subsubsec:coptimality},
+we examine the optimality of following this strategy with a more sophisticated model
+of the mechanism as a two-player game. \\
+
+\noindent It should be noted that these are simply illustrative examples to give the 
+reader a feel for the nature of the system's issuance dynamics. This
+section is partly an adaptation of the calibrated analysis results presented
+in much greater depth in as part of the economic analysis of Havven performed by
+\href{http://cryptecon.org/}{\textcolor{blue}{cryptecon}}, which can be found in
+its entirety \href{https://havven.io/uploads/havven_cryptecon_report_may_2018.pdf}{\textcolor{blue}{here}}. \\
+
+\noindent The cryptecon investigation concluded that the Havven system
+generally stabilises the nomin price at \$1, but most of the supporting
+apparatus has been omitted in this white paper. Therefore, an interested reader should
+consult that reference for further details and an explanation of the assumptions
+which underly its results. \\
+
+\noindent Throughout this section we will assume implementation upon Ethereuem, therefore
+in this example, the system will buy and sell nomins in exchange for ether, but this could be 
+substituted with any asset tradeable in a decentralised way. \\
+
+\newpage
+\subsubsection{Practical Issuance Dynamics}
+\label{subsubsec:practicalissuance}
+
+\noindent \textbf{Initial Conditions} \\
+
+\noindent Bob decides to purchase 100 havvens at \$1 each.
+The system is in price equilibrium, with the global collateralisation
+ratio $C$ equal to the optimal collateralisation ratio
+$C_{opt}$. We will denote Bob's personal \(H\) and \(C_i\) with
+\(H_{bob}\) and \(C_{bob}\). The initial conditions are then as follows:
+
+\begin{align*}
+C_{max} &= 0.5 & C_{opt} &= 0.4 & C &= 0.4 \\
+P_n &= 1 & P_h &= 1 & H_{bob} &= 100 \\
+\end{align*}
+
+\noindent These quantities will remain constant throughout the example:
+
+\begin{align*}
+\sigma &= 50 & \psi &= 3 & a&= 1.25
+\end{align*}
+
+\vspace{4mm}
+
+\noindent Initially, Bob's wallet contains only free havvens, but he wants to
+earn the maximum possible fees, so he issues nomins up to $C_{opt}$.
+The system generates 40 nomins and escrows 80 of his havvens,
+locking \$80 worth of value in the system. The nomins are sold for \$40 worth
+of ether and the proceeds are transferred to Bob's account.
+
+%\begin{figure}[h!]
+%    \centering
+%    \begin{subfigure}{.5\textwidth}
+%        \centering
+%        \includegraphics[width=0.60\textwidth]{img/wallet}
+%    \end{subfigure}%
+%    \begin{subfigure}{.5\textwidth}
+%        \centering
+%        \includegraphics[width=0.80\textwidth]{img/escrowed}
+%    \end{subfigure}
+%\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.40\textwidth]{img/escrowed}
+\end{figure}
+
+\vspace{2mm}
+
+\noindent We now proceed to examine the respective consequences for Bob of nomin and havven
+price shocks.
+
+\newpage
+\noindent \textbf{Nomin Price Shock} \\
+
+\noindent This example shows how the system incentivises havven holders
+to correct instability in the nomin price.
+
+\begin{enumerate}
+    \item{As a consequence of reduced demand in decentralised trading markets,
+          the nomin price $P_n$ drops to \$0.90. The system needs to incentivise havven
+          holders to reduce the supply of nomins so that the price returns to \$1.00.
+    }
+    \item{First, consider that both $C$ and $C_{bob}$ have decreased to 0.36.
+          Since the nomin price has changed, $C_{opt}$ is recalculated to 0.342, which
+          is smaller than both $C_{bob}$ and $C$. Consequently, $C_{max}$ also changes
+          to 0.4275. This increases the percentage of Bob's havvens that are locked.
+    }
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.4\textwidth]{img/pn_drop}
+    \end{figure}
+
+    \item{Bob now has a higher dollar value of locked havvens and $C_{bob} >
+          C_{opt}$. This means that he is no longer receiving the maximum fee rate
+          $\phi_{base}$. In order to return to $\phi_{base}$ he must lower
+          $C_{bob}$ back to $C_{opt}$ by burning some nomins. He needs to work out how
+          many to burn.
+    }
+
+    \item{He should burn 2 nomins so that he has 38 total issued, which will cost
+          \$1.80. When the system completes this process, his locked havvens will
+          reduce back to 80. In addition, $C_{bob}$ is equal to $C_{opt}$ at 0.342,
+          which means he is once again receiving the maximum fee rate.
+    }
+    \begin{figure}[h!]
+    \centering
+        \includegraphics[width=0.4\textwidth]{img/post_burn}
+    \end{figure}
+
+    \item{Bob has taken the correct actions to raise the low nomin price. By
+          electing to burn nomins, the system performed a limit buy order on his
+          behalf, putting upward pressure on the nomin price. As compensation for doing
+          so, he is rewarded with the optimal fee rate $\phi_{base}$.
+    }
+\end{enumerate}
+
+
+\newpage
+\noindent \textbf{Havven Price Shock (Market Price)} \\
+
+\noindent This example illustrates how the system maintains the dollar value of the underlying
+collateral by adjusting the quantity of a user's escrowed havvens when the
+havven price changes. We will use the same initial conditions as in the previous example.
+
+\begin{enumerate}
+\item{As before, Bob elects to issue up to $C_{opt}$ in order to maximise fees.}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.4\textwidth]{img/escrowed}
+\end{figure}
+\item{The havven price $P_h$ drops to \$0.90, which means the value of Bob's wallet has decreased to \$90. Both $C$ and $C_{bob}$ have increased to 0.44. Since the nomin price has not changed, the system does not need to incentivise issuance or burning. This is reflected in the new value of $C_{opt}$, which changes to 0.44, matching $C$ and $C_{bob}$. }
+\item{However, the system needs to escrow more of Bob's havvens to maintain the dollar value of the locked collateral. The system has now locked around 89\% of Bob's havvens, to maintain \$80 of locked collateral.}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/ph_drop}
+\end{figure}
+\end{enumerate} 
+
+
+\newpage
+\subsubsection{Optimality of Targeting \(C_{opt}\)}
+\label{subsubsec:coptimality}
 
 \noindent \textbf{Initial Conditions} \\
 
 \noindent We denote the fraction of e-commerce transactions using nomins with $\varepsilon \cdot GDP$ and
 assume the following inverse demand function for the nomin price:
 
-\begin{equation*} \label{eq:nominprice} P_{n,t} = \frac{\varepsilon \cdot GDP_t}{v_tN_t} \end{equation*}
+\begin{equation*}
+    \label{eq:nominprice} P_{n,t} = \frac{\varepsilon \cdot GDP_t}{v_tN_t}
+\end{equation*}
+
+\vspace{4mm}
 
 \noindent The expected profit of a havven holder \(i\) in period \(t\), with
 respect to fees and their issuance actions can be expressed as follows:
 
 \begin{equation*} 
-\pi_{i,t} = \phi_{r,i,t} \frac{H_{i,t}}{r} + (N_{i,t} - N_{i,t-1}) P_{n,t} \label{eq:profit}
+\pi_{i,t} = \phi_{r,i,t} \cdot \frac{H_{i,t}}{r} \ + \ (N_{i,t} - N_{i,t-1}) \cdot P_{n,t} \label{eq:profit}
 \end{equation*}
 
 
@@ -104,7 +256,7 @@ N_{2,1} &= 100 & \check{H}_{2,1} &= 176.8 & \pi_{2,1} &= 200
 $\phi_{r,i,1}$ by changing $N_{i,1}$ to align with $C_{opt,0}$:
 
 \begin{equation*}
-N_{i,1} = C_{opt,0}P_{h,0}H_i/P_{n,0}
+N_{i,1} = \frac{C_{opt,0} \cdot P_{h,0} \cdot H_i}{P_{n,0}}
 \end{equation*}
 
 \noindent If both havven holders target $C_{opt}$, their new nomin balances,
@@ -132,8 +284,6 @@ $\check{H}_i$ to the level it was originally:
     \caption{Negative shock; both change; t = 1}
     \label{table:negative shock both follow mechanism}
 \end{table}
-
-\newpage
 
 \noindent \textbf{Havven holder 1 changes} \\
 

@@ -1,6 +1,6 @@
 \subsection{Nomin Demand and Havven Value}
 
-\noindent Being freely-tradable ERC20 tokens, havvens will have a market
+\noindent Being freely-tradable tokens, havvens will have a market
 price which, like the nomin price, can be measured with an oracle. Initially,
 while nomin demand is low, we will use a seven day rolling average of the
 market price for both havvens and nomins. This rolling average is designed to
@@ -36,7 +36,7 @@ P_{n,t} \ \ & \text{ the nomin price at period } t\\
 r \ \ & \text{ a falloff term}  \\
 \end{align*}
 
-\noindent This can be computed efficiently, because \(V_{t+1} = \frac{V_t + F_t \cdot P_{n,t}}{1 + r}\). 
+\noindent This can be computed efficiently, because \(V_{t+1} = \frac{V_t \ + \ F_t \cdot P_{n,t}}{1 + r}\). 
 Further, for large enough \(t\), if it is assumed that \(P_n \approx \$1\) and that current fees are close to
 future ones, so that \(F_t \approx F_{t'}, \ t < t'\), then:
 
