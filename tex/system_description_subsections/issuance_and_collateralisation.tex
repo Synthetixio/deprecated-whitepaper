@@ -1,7 +1,7 @@
 \subsection{Issuance and Collateralisation} 
 
-\noindent Havven's goal is to remain overcollateralised. In order to do so,
-the system defines a collateralisation target:
+\noindent Havven's goal is to stabilise the nomin price while remaining
+overcollateralised. In order to do so, the system defines a collateralisation target:
 
 \begin{equation}
 0 < C_{opt} < 1  \label{eq:target}
@@ -9,13 +9,15 @@ the system defines a collateralisation target:
 
 \vspace{2 mm}
 
-\noindent It is necessary at this point to distinguish, for an account \(i\),
-between the nomins it contains \(N_i\) (equity) and the nomins it has issued
-\(\check{N_i}\) (debt). Note that globally, \(\sum_{i}N_i =
-\sum_{i}\check{N_i}\), as all nomins were issued by some account. However, a
-given account may have a balance different from its issuance debt. Hence we
-can define the collateralisation ratio for an individual account \(i\) in terms
-of its issuance debt:
+\noindent \(C_{opt}\) is implicitly closer to \(C^*_{P_h}\) than \(C\) is; when \(C\)
+approaches \(C_{opt}\), it also approaches \(C^*_{P_h}\). \\
+
+\noindent It is necessary at this point to distinguish for an account \(i\)
+the nomins it contains \(N_i\) (equity) from the nomins it has issued
+\(\check{N_i}\) (debt). Note that globally, \(\sum_{i}N_i = \sum_{i}\check{N_i}\),
+as all nomins were issued by some account. However, a given account may have a
+balance different from its issuance debt. Hence we can define the collateralisation
+ratio for an individual account \(i\) in terms of its issuance debt:
 
 \begin{equation}
 C_i \ = \ \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcollateralisation}
@@ -25,7 +27,8 @@ C_i \ = \ \frac{P_n \cdot \check{N_i}}{P_h \cdot H_i}  \label{eq:individualcolla
 
 \noindent The system provides incentives for individual issuers to bring
 their \(C_i\) closer to \(C_{opt}\) while maintaining \(C_{opt}\) itself at a level
-that stabilises the price. \\
+that stabilises the price. As each \(C_i\) targets \(C_{opt}\), the overall
+collateralisation ratio does also. \\
 
 \noindent \textbf{Nomin Issuance}
 

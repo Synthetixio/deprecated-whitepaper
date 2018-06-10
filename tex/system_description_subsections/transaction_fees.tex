@@ -1,10 +1,9 @@
-\newpage
 \subsection{Transaction Fees}
 Havven needs a direct incentive mechanism that can correct the global
 collateralisation ratio, \(C\), in response to changes in the price of havvens
 or nomins. In order to target the correct price, the system adjusts the fees
-it pays to havven holders as according to their effectiveness in stabilising
-the price.
+it pays to havven holders according to their effectiveness in stabilising
+the nomin price.
 
 \subsubsection{Fees Received by Havven Holders}
 
@@ -54,13 +53,13 @@ fees if they bring their \(C_i\) into alignment with \(C_{opt}\).\\
 \subsubsection{Nomin Transaction Fees}
 Every time a nomin transaction occurs, the Havven system charges a small
 transaction fee. Transaction fees allow the system to generate revenue, which
-it can distribute to havven holders as an incentive to maintain nomin supply
-at \(N_{opt}\). \\
+it can distribute to havven holders as an incentive to move the circulating nomin supply
+towards \(N^*\). \\
 
 \noindent The fee rate charged on nomin transactions is \(\phi_c\). It is
 constant and will be sufficiently small that it provides little to no
-friction for the user. We may then express the total fees collected in the
-last period, \(F\), as a function of the velocity of nomins \(v\) and the total
+friction for the user. We may then express the total fees collected in a period,
+\(F\), as a function of the velocity of nomins \(v\) and the total
 nomin supply \(N\):
 
 \begin{equation}
@@ -76,19 +75,19 @@ F_{r} \ = \ \sum_{i} H_{i} \cdot \phi_{r,i} \label{eq:totalfeesreceived}
 \end{equation} \\
 
 \noindent Havven requires that the total fees collected from users has to be
-equal to the total amount of fees paid to the havven holders, so that \(F_{r}
-= F\). Substituting our earlier definition~\eqref{eq:feesreceived} for
+equal to the total amount of fees paid to the havven holders in the following period, so that \(F_{r,t}
+= F_{t-1}\). Substituting our earlier definition~\eqref{eq:feesreceived} for
 \(\phi_{r,i}\) and solving for \(\phi_{base} \): \\
 
 \begin{equation}
-\phi_{base} \ = \ \frac{F}{\sum_{i} H_{i} \cdot \mathit{\Gamma}_{i}} \label{eq:feebase}
+\phi_{base,t} \ = \ \frac{F_{t-1}}{\sum_{i} H_{i,t} \cdot \mathit{\Gamma}_{i,t}} \label{eq:feebase}
 \end{equation} \\
 
 \noindent We have now defined the maximum fee rate, \(\phi_{base}\), in terms
 of the fees collected, \(F\). This rate should be achieved when an individual's
-\(C_i\) is at \(C_{opt}\). \\
+\(C_i\) was at \(C_{opt}\) in the previous period. \\
 
-\noindent The definition of \(C_{opt}\) must therefore provide the following
-incentive. If \(P_n > \$1\) then the system must encourage more nomins to be
-issued. However, if \(P_n < \$1\), the system must encourage nomins to be
+\noindent The definition of \(C_{opt}\) therefore provides the following
+incentive. If \(P_n > \$1\) then the system encourages more nomins to be
+issued. However, if \(P_n < \$1\), the system encourages nomins to be
 burned.

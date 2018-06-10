@@ -26,11 +26,12 @@ C \ = \ \frac{P_n \cdot N}{P_h \cdot H} \label{eq:collateralisation}
 
 \vspace{3 mm}
 
-\noindent From the law of supply and demand, there exists some supply of
-nomins \(N_{opt}\), where the related level of demand yields an equilibrium
-price of \$1. This quantity is associated with an optimal collateralisation
-ratio \(C_{opt}\). We visualise this equilibrium below with a hypothetical
-demand and supply curve. \\
+\noindent From the law of supply and demand, at a given level of demand,
+there exists some supply of nomins \(N^*\) which yields an equilibrium
+price of \$1. This quantity is associated with an ideal collateralisation
+ratio at a particular havven price \(C^*_{P_h}\) which is achieved when \(N = N^*\).
+Therefore, when \(C = C^*_{P_h}\), \(P_n = \$1\).
+We visualise this equilibrium below with hypothetical demand and supply curves. \\
 
 % \todo[inline]{curved lines}
 % \todo[inline]{make diagrams pretty}
@@ -43,7 +44,7 @@ demand and supply curve. \\
     \draw (0.5, 1.8) coordinate (b_1) -- (2,0.5) coordinate (b_2) node[pos=1.0, right] {D};
     % calculate coordinate of intersection
     \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
-    \draw[dashed] (yaxis |- c) node [left] {\(\$1\)} -| (xaxis -| c) node[below] {\(N_{opt} = C_{opt} \cdot P_h \cdot H\)};
+    \draw[dashed] (yaxis |- c) node [left] {\(\$1\)} -| (xaxis -| c) node[below] {\(N^* = C^*_{P_h} \cdot P_h \cdot H\)};
 \end{tikzpicture}
 \end{center}
 
@@ -69,10 +70,9 @@ demand and supply curve. \\
 
 %intersection @
 %(3*5*23/2*13, 5*13/2*3) = (345/26, 65/6) = (13.3, 10.8)
-\noindent The system is unable to influence the demand for nomins. We assume
-that some level of demand exists given the utility of nomins as a stable
-cryptocurrency. Although demand cannot be manipulated, the supply of nomins
-is controlled by havven holders, whose issuance incentives are in turn
-controlled by the system. It follows that as we require a fixed price \(P_n =
-\$1 \) and are unable to control either \(P_h\) or \(H\), we must manipulate
-\(C_{opt}\) such that \(N = N_{opt}\) in order to satisfy our requirement.
+\noindent We assume that some level of demand exists given the utility of nomins as a stable
+cryptocurrency. Although the organic supply and demand for nomins cannot be easily
+manipulated, all issuance is controlled by havven holders, whose incentives are in turn
+controlled by the system. It follows that as we require a fixed price \(P_n = \$1\)
+and are unable to control either \(P_h\) or \(H\), we must incentivise havven holders
+to manipulate \(N\), and therefore \(C\), in order to satisfy our requirement.

@@ -1,12 +1,16 @@
-\newpage
 \subsection{Collateralisation Ratio}
+\label{subsec:collatratio}
 \subsubsection{Optimal Collateralisation Ratio}
 
 \noindent The optimal collateralisation ratio \(C_{opt}\) is a target for
-havven holders to reach in order to maximise the amount of fees they receive.
-\(C_{opt}\) is defined in terms of the nomin price \(P_n\), such that its value
+havven holders to reach which brings the global \(C\) closer to \(C^*_{P_h}\).
+If havven holders target \(C_{opt}\) effectively, the amount of fees they receive
+is maximised.
+
+\noindent \(C_{opt}\) is defined as a positive function of \(P_n\), such that its value
 directly tracks changes in the nomin price; a havven holder wishing to
-maximise their fees will target \(C_{opt}\) by issuing or destroying nomins. \\
+maximise their fees will target \(C_{opt}\) by issuing or destroying nomins
+to manipulate their individual \(C_i\). \\
 
 \noindent The function for \(C_{opt}\) given below provides our dynamic target
 for havven holders based on the price of nomins:
@@ -41,24 +45,32 @@ f(P_n) \ &= \ \max(\sigma \cdot {(P_n - 1)}^{\psi} + 1, 0) \\
 \end{tikzpicture}
 \end{center}
 
-\noindent When \(P_n\) is at \$1, \(C_{opt} = C\) and there is no incentive given
-to move away from the current global collateralisation level. However, if
-\(P_n < \$1\), then \(C_{opt} < C\), incentivising issuers to burn nomins,
-thereby raising the price. The \(P_n > \$1\) case is symmetric. Notice that
-when the \(P_n\) is close to \$1, \( f'(P_n) \) is small. However, the further it
-diverges from \$1, the larger the slope becomes, providing a stronger
-incentive, in the form of potential fees, for a havven holder to move toward
+\noindent When \(P_n\) is at \$1, no signal is available to suggest that
+the global nomin supply is incorrect.
+In this case \(C_{opt} = C\) and no incentive exists to move away
+from current collateralisation levels.
+However, if \(P_n < \$1\), nomin supply outstrips demand; then \(C_{opt} < C\),
+which encourages issuers to burn nomins, thereby raising the price. 
+This movement of \(C_{opt}\) reflects the fact that \(C^*_{P_h} < C\)
+under these circumstances. The \(P_n > \$1\) case is symmetric. \\
+
+\noindent Notice that when the \(P_n\) is close to \$1, \( f'(P_n) \) is small,
+so that Havven does not overshoot the correct nomin supply. However, the further it
+diverges from \$1, the larger the slope becomes, providing a stronger fee
+incentive for a havven holder to move toward
 \(C_{opt}\). \\
 
-\newpage
 
 \subsubsection{Maximum Collateralisation Ratio}
 
 \noindent Havven seeks to maintain \(C \leq C_{opt} < C_{max} < 1\), in order
-to retain sufficient overcollateralisation. It might seem intuitive that
+to retain sufficient havven collateral. It might seem intuitive that
 \(C_{max}\) should be a static value. However, since \(C_{opt}\) varies linearly
 with \(P_n\) and inversely with \(P_h\), there are situations where \(C_{max}\) may
-need to change. Below we define \(C_{max}\) in terms of \(C_{opt}\). \\
+need to change. We allow that a user may wish to set their \(C_i > C_{max}\), but
+constrain by how much they may do so.
+
+\noindent Below we define \(C_{max}\) in terms of \(C_{opt}\).
 
 \begin{gather} \label{eq:maxcollateralisation}
 \begin{align}
@@ -69,30 +81,32 @@ a & \geq 1 \\
 \end{align}
 \end{gather}
 
-\begin{center}
-\begin{tikzpicture}[scale=1.15]
-\begin{axis}[
-    axis lines = left,
-    xlabel = \(C_{opt}\),
-    ylabel = \(C_{max}\),
-    xtick = {1},
-    ytick = {1},
-    xticklabels = {,,},
-    yticklabels = {,,},
-    xtick style = {draw=none},
-    ytick style = {draw=none},
-    y label style={at={(axis description cs:0.18,1.00)}, rotate=270, anchor=south},
-    x label style={at={(axis description cs:1.08,0.14)}, anchor=north},
-]
-\addplot[domain=0:0.8]{1.25 * x};
-\addplot[domain=0:1, dashed, smooth]{x};
-\end{axis}
-\end{tikzpicture}
-\end{center}
+%\begin{center}
+%\begin{tikzpicture}[scale=1.15]
+%\begin{axis}[
+%    axis lines = left,
+%    xlabel = \(C_{opt}\),
+%    ylabel = \(C_{max}\),
+%    xtick = {1},
+%    ytick = {1},
+%    xticklabels = {,,},
+%    yticklabels = {,,},
+%    xtick style = {draw=none},
+%    ytick style = {draw=none},
+%    y label style={at={(axis description cs:0.18,1.00)}, rotate=270, anchor=south},
+%    x label style={at={(axis description cs:1.08,0.14)}, anchor=north},
+%]
+%\addplot[domain=0:0.8]{1.25 * x};
+%\addplot[domain=0:1, dashed, smooth]{x};
+%\end{axis}
+%\end{tikzpicture}
+%\end{center}
 
-\noindent The value of \(C_{max}\) determines how overcollateralised each nomin
-is at issuance. The higher its value, the more nomins can be generated for
-the same quantity of havvens. In contrast, if \(C_{max}\) is low, the system
+\vspace{2mm}
+
+\noindent The value of \(C_{max}\) determines how much collateral each nomin
+is issued against. The higher it is, the more nomins can be generated for
+the same value of havvens. By contrast, if \(C_{max}\) is low, the system
 has a greater capacity to absorb negative shocks in the havven price before
 it becomes undercollateralised. The value of \(C_{max}\) therefore represents a
 tradeoff between \textit{efficiency} and \textit{resilience}. By defining
