@@ -1,0 +1,266 @@
+\section{Modelling}
+
+We take the view that falsification is vital in validating a proposed
+cryptoeconomic system. The more resilient a given system is to hypothetical
+attacks, the more trust can be put in its viability. \\
+
+\noindent Ultimately this must done empirically, but it is also important to
+model Havven extensively before launch. Therefore in our quantitative
+analysis we have sought above all to identify its failure modes, and also to
+characterise its stability under a range of conditions. \\
+
+\noindent In our quantitative analysis, we have taken three distinct approaches in modelling the system:
+\begin{itemize}
+    \item[] \textbf{Analytical}
+    
+	By expressing our system in the language of game theory and microeconomics,
+	we seek to gain insight into Havven's incentive structure and the resulting
+	price equilibria. Examining the problem from this direction leads us to
+	concise and mathematically robust conclusions.
+
+    \item[] \textbf{Simulationist}
+
+    We implement a broad range of strategies as AI agents, and examine how the
+    market responds under different initial conditions, with different constituent
+	populations, and in response to external shocks. This approach allows us to
+	examine situations which are analytically intractable.
+
+    \item[] \textbf{Empirical}
+
+	The earlier releases of the Havven system are invaluable in testing our
+	assumptions about later ones. Observation of real market
+	behaviour allows us to better understand how it responds in different
+	situations, and therefore how to choose appropriate values for system
+	variables.
+\end{itemize}
+
+\noindent Some of the results of our analytical investigations can be found
+\href{https://havven.io/uploads/havven_cryptecon_report_may_2018.pdf}{\textcolor{blue}{here}},
+while a simulation may be found \href{https://research.havven.io/}{\textcolor{blue}{here}},
+and its code \href{https://github.com/havven/simulation}{\textcolor{blue}{here}}.
+
+\subsection{Agent-Based Modelling}
+It has been observed that analytic methods are often difficult to
+apply in the complex and dynamic setting of a market.
+One suggested solution to this problem is \textit{agent-based modelling}.
+Under this paradigm, we proceed by first defining rational agent behaviour
+and then simulating the interplay of those strategies over time.
+We seek to develop a more effective
+method of characterising market behaviour and equilibrium prices than pure analytic reasoning. \\
+%~\cite{poggio2001agent}\\
+
+\noindent Such simulations also provide an immediate means of measuring
+quantities of interest. Simply by observing
+the model, we can discover how varying input parameters
+affect system outputs in an experimental fashion.
+One important corollary is that this is a way of extracting reasonable
+settings for system parameters (such as fee levels) that might be difficult
+to reason about \textit{a priori}. These systems, reactive as they are,
+also provide a method for testing proposed remedies for any identified failure
+modes, and are a platform to simulate the conclusions of any antecedent game-theoretic
+reasoning. \\
+
+\subsection{Expected Market Players}
+
+Here we outline some of the players anticipated in the market. These
+represent only some of the agents that our modelling and simulations are predicated upon.
+
+\begin{itemize}
+	\item[] \textbf{Havven Holders}
+
+	A havven holder provides the collateral and liquidity for the system.
+	It is assumed that havven holders primarily seek fee revenues, and escrow most of their havvens,
+	adjusting their issuance to track Havven's moving fee incentives.
+	While these incentives make sense if havvens are relatively stable in the long term,
+	Havven will also provide incentives for correcting the nomin price in in the short term.
+	Returns for these actors are primarily realised in fees, seignorage, and the appreciation of havvens resulting
+	from their constrained supply.
+
+	\item[] \textbf{Nomin Users}
+
+	These are the market participants who will make up the base demand
+	for any stablecoin, chasing its superior utility as a medium of exchange or as
+	as means of hedging against other forms of value. 
+	The users of nomins may include merchants, consumers, service providers, cryptocurrency market actors
+	such as exchanges. 
+	
+	The transaction volume these users provide is necessary for fees to exist.
+	They may be disincentivised from using the system in low liquidity situations or with excessive volatility
+	in the price of nomins.
+	
+	\newpage
+
+	\item[] \textbf{Speculators}
+	
+	Speculators may tend to magnify price corrections, and are a significant vector by which to introduce
+	exogenous shocks to the system. In our modelling we induce volatility by simulating modes of interest
+	such as large capital flows in response to breaking news and the like.
+
+	Speculators also produce an important stabilisation force. When the market believes that the price is
+	being stabilised, upward price shifts induce sell pressure, and downward
+	price shifts induce buy pressure. This strategy is profitable on the assumption that the price
+	will return to the equilibrium point. This neutral stabilisation force is a self-sustaining
+	negative feedback loop which operates independently of other incentives; preliminary simulations and observations of other systems
+	have verified the efficacy of this corrective pressure.
+	
+	%\item{Malicious Attackers}
+	
+	%We should examine what happens if a George Soros (or otherwise) attacks Havven.
+	% \todo[inline]{List the various possible attacks against the system.}
+
+	%\item[] \textbf{Buyer of Last Resort}
+	
+	%While the system is designed to work without intervention, the Havven foundation
+	%will have capital reserves with which to intervene in the market to stabilise
+	%nomin prices in extreme situations. 
+	
+	%The advantage that such a market participant confers, given that a very large market entity is
+	%willing to underwrite the stability of the coin, is that profit strategies predicated upon the
+	%stability of the token become less risky and so more feasible. As a result, 
+	%any such presence, even if it rarely intervenes in the market, enhances the
+	%aforementioned neutral stabilisation force. In our modelling, the Havven foundation in this capacity takes on the role of providing confidence.
+	
+	%Modelling results will inform the need of such an actor in the ecosystem.
+
+	\item[] \textbf{Arbitrageurs and Market Makers}
+
+	The arbitrage force allows us to assume that the havven/nomin, havven/fiat, nomin/fiat
+	prices are properly in alignment or will soon become aligned. Market-making activities
+	allow us in our modelling to neglect the bid/ask spread, and situations where there is insufficient
+	liquidity for players to transact.
+	
+\end{itemize}
+
+\noindent Please visit \href{http://research.havven.io}{\texttt{http://research.havven.io}} for
+an alpha version of our model. The interested reader can find additional discussion of payment networks,
+stablecoins, and cryptoeconomics at \href{http://blog.havven.io}{\texttt{http://blog.havven.io}}.
+
+
+\pagebreak
+
+% \todo[inline]{Discuss that the game theory conclusions can be simulated}
+
+% \noindent In sum, then, the modelling seeks to answer the following, among other questions:
+
+% \begin{itemize}
+%     \item Does the system stabilise its nomin price?
+%     \item Under what conditions can stability fail?
+%     \item What are reasonable initial settings for fees and other parameters?
+%     \item What effect does the utilisation ratio have on havven/nomin price ratio?
+%     \item What is an effective utilisation ratio?
+%     \item What is the effect of a direct redemption regime?
+%     \item What are the expected returns for havven-holders?
+% \end{itemize}
+
+% \todo[inline]{Fuller description of the technicals of the modelling.}
+
+% \subsection{Modelling Havven}
+
+% \paragraph{Environment}
+
+% \paragraph{Agents}
+
+% \paragraph{Optimal strategy mix}
+
+
+% \subsection{Fee/velocity/return computations}
+% \todo[inline]{Fee/velocity/return computations}
+
+% \section{Qualitative System Analysis}
+
+% This section provides a qualitative treatment of the reaction of the Havven system in response to various scenarios listed below:
+
+% \todo[inline]{Scenario analysis.}
+
+% \subsection{Incentives}
+
+% \paragraph{Why would anyone use nomins?}
+% \begin{itemize}
+% 	\item Versus havvens?
+% 	\item Versus alternatives?
+% \end{itemize}
+
+% \paragraph{Why would anyone issue nomins?}
+% \begin{itemize}
+% 	\item Fees
+% 	\item Because they thought the peg would break in the positive direction.
+% \end{itemize}
+
+% \subsection{Scenarios}
+
+% \subsubsection{Havvens appreciate against nomins.} \label{sec:havven-nomin-appreciation}
+% \begin{itemize}
+% 	\item{Havven-holders can issue more nomins.}
+
+% 	This might be scary because we either want the nomin supply to fall, or nomin demand to increase.
+% 	This is fine if the nomin price fell, because then nomin demand should increase.
+% 	However, if it was simply that the havven price increased, then this might encourage
+% 	oversupply of nomins as issuers compete for shares of the fee pool.
+
+% 	\item{Cheaper exit}
+
+% 	Anyone who has previously issued havvens but who wants to exit can buy nomins for
+% 	cheaper than they issued them at, so egress with a profit.
+% 	Alternatively, if the havven price doubles, then only half of their stake is required
+% 	to back the nomins they have issued. They can use these proceeds to completely liquidate
+% 	their position.
+
+% 	\item{Each nomin locks fewer havvens.}
+	
+% \end{itemize}
+
+% \subsubsection{Havvens depreciate against nomins.} \label{sec:havven-nomin-depreciation}
+
+% \begin{itemize}
+% 	\item{Havven-holders can issue fewer nomins.}
+	
+% 	Perhaps they may even be under-staked.
+
+% 	\item{Each nomin locks more havvens.}
+% 	\item{A player can issue a quantity of nomins and sell them for havvens.}
+		  
+% 	They would do this on the assumption that, once the nomin price decreases as a result of the increased
+% 	supply, they will be able to buy back the same quantity of nomins to free up their
+% 	havvens more cheaply.
+% \end{itemize}
+
+% \subsubsection{Nomin/havven liquidity dries up}
+% \begin{itemize}
+% 	\item Low nomin supply
+
+% 	Nomins should appreciate against the havven. See \cref{sec:havven-nomin-depreciation}.
+% 	Fee takings will decrease, hurting havven-holders in the long run,
+% 	which should incentivise them to inject nomins into the ecosystem.
+
+% 	\item Low havven supply
+
+% 	If system backers are sitting on a pile of havvens, then the havven should
+% 	appreciate. See \cref{sec:havven-nomin-appreciation,sec:havven-appreciation}.
+% \end{itemize}
+
+
+% \subsubsection{Long-run havven price appreciation}\label{sec:havven-appreciation}
+% \todo[inline]{Long-run havven appreciation scenario.}
+% In this instance, over the long run, the price of havvens could appreciate quite substantially,
+% which will lead to an increase in nomin issuance rights (and so probably actual nomins in circulation).
+% There are at least two reasons that havvens could appreciate:
+% \begin{itemize}
+% 	\item Increased nomin velocity/demand, leading to greater fees;
+% 	This is fine: in this case, nomin issuance rights increase in proportion with demand for the currency.
+
+% 	\item Speculation
+% 	This is not so fine: in this case, the nomin supply can be expanded without any accompanying
+% 	expansion in its demand, which will depress the nomin price.
+	% \todo[inline]{Resolve disconnect between speculation-driven value of havvens and nomin supply.}
+% \end{itemize}
+
+% \subsubsection{Long-run havven price depreciation}\label{sec:havven-depreciation}
+% \todo[inline]{Long-run havven depreciation scenario.}
+
+% \subsubsection{Radical shifts in usage}
+% \todo[inline]{Usage-shift scenario.}
+
+% \todo[inline]{List expected players in the market.}
+% \todo[inline]{Outline incentives and actions for different players.}
+
+% \pagebreak

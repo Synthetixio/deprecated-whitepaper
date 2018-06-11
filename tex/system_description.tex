@@ -23,10 +23,10 @@ issued strongly supports a stable price. \\
 \noindent \textbf{Stabilisation Incentives} \\
 
 \noindent Havven rewards those that have issued nomins. These rewards are
-derived from transaction fees and are distributed in proportion with how well
-each issuer maintains the correct nomin supply. The system monitors the nomin
-price, and responds by adjusting its targeted global supply, which individual
-issuers are incentivised to move towards. \\
+derived from transaction fees and are distributed in proportion with how
+effectively each issuer acts to maintain the correct nomin supply.
+The system monitors the nomin price, and responds by adjusting its targeted
+global supply, which individual issuers are incentivised to move towards. \\
 
 \noindent Where volatility persists, stronger stabilisation mechanisms may be
 applied, for example automated collateral recovery. Where a significant
@@ -36,12 +36,9 @@ for hedging is not being solely borne by transactions.
 
 \newpage
 
-\include{tex/system_description_subsections/equilibrium_nomin_price}
-\include{tex/system_description_subsections/issuance_and_collateralisation}
-\include{tex/system_description_subsections/transaction_fees}
-\include{tex/system_description_subsections/collateralisation_ratio}
-\include{tex/system_description_subsections/nomin_demand_and_havven_value}
-\include{tex/system_description_subsections/issuance_case_study}
-\include{tex/system_description_subsections/fee_evasion}
-
+\input{tex/system_description_subsections/equilibrium_nomin_price}
+\input{tex/system_description_subsections/issuance_and_collateralisation}
 \newpage
+\input{tex/system_description_subsections/collateralisation_ratio}
+\newpage
+\input{tex/system_description_subsections/transaction_fees}
