@@ -1,0 +1,39 @@
+\subsection{Cross Chain Compatibility}
+
+\subsubsection{Capturing Transactions}
+
+\noindent Havven has been designed to support multiple blockchains. The Ethereum
+chain was chosen for the initial launch because of the maturity of the ecosystem.
+Due to reliance on fees generated from transactions, we must be able to capture
+transaction volume across multiple chains. This will allow havven to scale 
+faster and de-risk scaling and other challenges on each individual chain. \\
+
+\subsubsection{Deployment Strategies and Tradeoffs}
+
+\noindent There are two approaches to deploying Havven to a new chain, direct
+and indirect collateralisation. Direct collateralisation relies on establishing a
+collateral pool on the new chain through minting Havven tokens on that chain. 
+Indirect collateralisation does not require the establishment of a new collateral 
+pool, instead an atomic swap contract is created to allow nomins to be transferred 
+between the chains. This means transactions on the second chain will still accrue 
+fees, but these fees will flow back to the original chain. Given that these chains
+are competing for users, this may create issues for adoption on the second chain. 
+The solution to this may be to deploy a native Havven blockchain, which would make 
+it possible to migrate the collateral pools back a single chain and reduce 
+interchain competition for fees. Given these tradeoffs the likely path will be 
+direct collateralisation.\\
+
+\subsubsection{Future Considerations}
+
+\noindent Having distinct collateral pools will allow for different governance 
+structures to be employed across each chain as well as experimentation with system 
+variables.\\
+
+\noindent It could also be through a swap between the two chains, in this case a 
+holder of HAV on Ethereum would swap their HAV.ETH tokens for HAV.newchain. These 
+two approaches each have tradeoffs. In the first approach the network will need to 
+be bootstrapped again starting from zero volume. In the second approach the collateral 
+value will be split between the two chains, this could have a short term impact on 
+the circulating currency on that chain. One advantage of the second approach, though, 
+is that it allows the market to move the collateral to whichever chain demands it 
+based on the transaction fees generated on that chain.\\
