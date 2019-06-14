@@ -1,3 +1,7 @@
+# DEPRECATED
+
+__This old white paper has been deprecated since the release of multi-currency support on 7/12/18. The system has diverged significantly since the orginal whitepaper. Its reference is for historical purposes only. Please refer to the new Synthetix Litepaper.__
+
 # Havven white paper
 
 `havven_white_paper.pdf` will be maintained as an up-to-date render of the latest under-construction Havven white paper.
